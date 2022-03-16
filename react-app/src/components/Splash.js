@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
-import UsersList from '../UsersList';
-import DemoUser from './DemoUser';
-import LoginForm from './LoginForm';
-import SignUpForm from './SignUpForm';
+import UsersList from './UsersList';
+import DemoUser from './auth/DemoUser';
+import LoginForm from './auth/LoginForm';
+import SignUpForm from './auth/SignUpForm';
 
 const SplashPage = ({user}) => {
     
