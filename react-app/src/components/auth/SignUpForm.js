@@ -9,6 +9,7 @@ const SignUpForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
   // const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     // if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password, fullName));
       if (data) {
         setErrors(data)
       // }
@@ -33,6 +34,10 @@ const SignUpForm = () => {
 
   const updatePassword = (e) => {
     setPassword(e.target.value);
+  };
+
+  const updateFullName = (e) => {
+    setFullName(e.target.value);
   };
 
   // const updateRepeatPassword = (e) => {
@@ -52,21 +57,30 @@ const SignUpForm = () => {
           ))}
         </div>
         <div>
-          <label>User Name</label>
-          <input
-            type='text'
-            name='username'
-            onChange={updateUsername}
-            value={username}
-          ></input>
-        </div>
-        <div>
           <label>Email</label>
           <input
             type='text'
             name='email'
             onChange={updateEmail}
             value={email}
+          ></input>
+        </div>
+        <div>
+          <label>Full Name</label>
+          <input
+            type='text'
+            name='fullName'
+            onChange={updateFullName}
+            value={fullName}
+          ></input>
+        </div>
+        <div>
+          <label>User Name</label>
+          <input
+            type='text'
+            name='username'
+            onChange={updateUsername}
+            value={username}
           ></input>
         </div>
         <div>

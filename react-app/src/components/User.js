@@ -32,6 +32,9 @@ function User() {
       <li>
         <strong>Email</strong> {user.email}
       </li>
+      <li>
+        <strong>Name</strong> {user.fullName}
+      </li>
     </ul>
   );
 }
