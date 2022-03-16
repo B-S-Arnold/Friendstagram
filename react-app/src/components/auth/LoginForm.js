@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import DemoUser from './DemoUser';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -26,9 +27,6 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to='/' />;
-  }
 
   return (
     <form onSubmit={onLogin}>
@@ -56,9 +54,10 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
       </div>
+      <button type='submit'>Login</button>
     </form>
+    
   );
 };
 
