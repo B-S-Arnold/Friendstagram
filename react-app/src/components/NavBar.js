@@ -2,6 +2,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import AddImageModal from './modals/AddImageModal';
 import DemoUser from './auth/DemoUser';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
@@ -30,6 +31,9 @@ const NavBar = ({user}) => {
           </li>
           <li>
             <LogoutButton />
+          </li>
+          <li>
+            <AddImageModal />
           </li>
         </ul>
       </nav>

@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { createImage } from '../../store/images'
 
 
-const ImageForm = () => {
+const AddImageForm = () => {
 
     const user = useSelector(state => state.session.user);
     
@@ -21,9 +21,9 @@ const ImageForm = () => {
         e.preventDefault();
         let newImage = await dispatch(createImage(picture, caption));
         if (newImage?.errors) return setErrors(newImage.errors)
-        if (newImage) {
-            history.push(`/${user.username}`);
-        }
+        // if (newImage) {
+        //     history.push(`/${user.username}`);
+        // }
     }
 
     return (
@@ -58,4 +58,4 @@ const ImageForm = () => {
 }
 
 
-export default ImageForm;
+export default AddImageForm;

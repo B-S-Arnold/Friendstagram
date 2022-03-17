@@ -7,7 +7,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import SplashPage from './components/auth/Splash';
+import SplashPage from './components/Splash';
 
 function App() {
   const user = useSelector(state => state.session.user);

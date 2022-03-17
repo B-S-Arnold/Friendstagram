@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import AddImageForm from './forms/AddImageForm';
+import AddImageModal from './modals/AddImageModal';
 
 function UsersList() {
   const [users, setUsers] = useState([]);

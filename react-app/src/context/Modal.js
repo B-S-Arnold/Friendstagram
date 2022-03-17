@@ -1,40 +1,38 @@
-import { createContext, useContext, useRef, useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+import React, { useContext, useRef, useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import './Modal.css';
 
-const FormModalContext = createContext();
+const ModalContext = React.createContext();
 
-const ModalProvider = ({ children }) => {
-    const formRef = useRef();
-    const [value, setValue] = useState(null);
+export function ModalProvider({ children }) {
+    const modalRef = useRef();
+    const [value, setValue] = useState();
 
     useEffect(() => {
-        setValue(formRef.current);
+        setValue(modalRef.current);
     }, [])
 
     return (
         <>
-            <FormModalContext.Provider value={value}>
+            <ModalContext.Provider value={value}>
                 {children}
-            </FormModalContext.Provider>
-            <div ref={formRef} />
+            </ModalContext.Provider>
+            <div ref={modalRef} />
         </>
-    )
-};
+    );
+}
 
-export const FormModal = ({ onClose, children }) => {
-    const formModal = useContext(FormModalContext);
-    if (!formModal) return null;
+export function Modal({ onClose, children }) {
+    const modalNode = useContext(ModalContext);
+    if (!modalNode) return null;
 
     return ReactDOM.createPortal(
-        <div id='modal'>
-            <div id='modal-background' onClick={onClose} />
-            <div id='modal-content'>
+        <div id="modal">
+            <div id="modal-background" onClick={onClose} />
+            <div id="modal-content">
                 {children}
             </div>
         </div>,
-        formModal
-    )
+        modalNode
+    );
 }
-
-export default ModalProvider;
