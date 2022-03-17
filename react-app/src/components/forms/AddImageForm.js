@@ -19,11 +19,13 @@ const AddImageForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("Picture and Cap", picture, caption)
         let newImage = await dispatch(createImage(picture, caption));
+        // console.log("Picture and Cap again!!!", picture, caption)
         if (newImage?.errors) return setErrors(newImage.errors)
-        // if (newImage) {
-        //     history.push(`/${user.username}`);
-        // }
+        if (newImage) {
+            history.push(`/${user.username}`);
+        }
     }
 
     return (
@@ -37,7 +39,8 @@ const AddImageForm = () => {
             <div>
                 <input
                     type='text'
-                    placeholder='url'
+                    placeholder='picture'
+                    name='picture'
                     value={picture}
                     onChange={(e) => setPicture(e.target.value)}
                 />
@@ -46,12 +49,12 @@ const AddImageForm = () => {
                 <label htmlFor='body'>Caption</label>
                 <textarea
                     className='caption'
-                    name='body'
+                    name='caption'
                     placeholder='Add a caption to your post...'
                     value={caption}
                     onChange={(e) => setCaption(e.target.value)}
                 />
-                <button disabled={errors.length > 0}>Submit</button>
+                <button type='submit' disabled={errors.length > 0}>Submit</button>
             </div>
         </form>
     )

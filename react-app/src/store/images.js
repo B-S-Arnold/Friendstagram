@@ -30,9 +30,15 @@ const editCaption = (image) => ({
 export const createImage = (picture, caption) => async dispatch => {
     const response = await fetch(`/api/images/`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify( {picture, caption} )
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            picture,
+            caption
+            }),
     });
+    console.log("RESPONSE", response)
     
     const image = await response.json() 
     if (image?.errors) return image
@@ -65,11 +71,10 @@ export const readImages = () => async (dispatch) => {
 //image reducer
 const initialState = {}
 
-const imgReducer = (state = initialState, action) => {
-
+const imageReducer = (state = initialState, action) => {
     let newState = { ...state }
-
     switch (action.type) {
+        
         case LOAD_IMG:
             action.images.forEach(image => {
                 newState[image.id] = image;
@@ -84,4 +89,4 @@ const imgReducer = (state = initialState, action) => {
 
 }
 
-export default imgReducer
+export default imageReducer

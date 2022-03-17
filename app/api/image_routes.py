@@ -5,9 +5,8 @@ from app.forms.image_form import ImageForm
 
 
 image_routes = Blueprint('images', __name__)
-
-@image_routes.route('/', methods=['GET', 'POST'])
 @login_required
+@image_routes.route('/', methods=['GET', 'POST'])
 def images_api():
 
     form = ImageForm()
