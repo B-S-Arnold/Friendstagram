@@ -5,13 +5,13 @@ import AddImageForm from './forms/AddImageForm';
 import AddImageModal from './modals/AddImageModal';
 
 function UsersList() {
-  const [users, setUsers] = useState([]);
   const sessionUser = useSelector(state => state.session.user)
+  const [users, setUsers] = useState([]);
   const images = Object.values(useSelector(state => state.images))
   console.log("ALL IMAGES", images)
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchData() { 
       const response = await fetch('/api/users/');
       const responseData = await response.json();
       setUsers(responseData.users);
@@ -39,7 +39,7 @@ function UsersList() {
     console.log("THIS USER",thisUser)
     return (
       <li key={image.id}>
-        <div> Post By: {thisUser[0].username}</div>
+        <div> Post By: {thisUser[0]?.username}</div>
         <NavLink to={`/${sessionUser.username}`}>{image.picture}</NavLink>
         <div>{image.caption}</div> 
       </li>
