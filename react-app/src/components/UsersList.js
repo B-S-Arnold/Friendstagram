@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import AddImageForm from './forms/AddImageForm';
 import AddImageModal from './modals/AddImageModal';
 
 function UsersList() {
   const [users, setUsers] = useState([]);
+  const sessionUser = useSelector(state => state.session.user)
+  const images = Object.values(useSelector(state => state.images))
+  console.log("ALL IMAGES", images)
 
   useEffect(() => {
     async function fetchData() {
@@ -14,6 +18,7 @@ function UsersList() {
     }
     fetchData();
   }, []);
+  console.log("USERS", users)
 
   const userComponents = users.map((user) => {
     return (
@@ -23,10 +28,35 @@ function UsersList() {
     );
   });
 
+  const allImages = images.map((image) => {
+    const thisUser = users.map(user => {
+      if (user.id === image.userId){
+        return user}
+      return null
+
+    })
+
+    console.log("THIS USER",thisUser)
+    return (
+      <li key={image.id}>
+        <div> Post By: {thisUser[0].username}</div>
+        <NavLink to={`/${sessionUser.username}`}>{image.picture}</NavLink>
+        <div>{image.caption}</div> 
+      </li>
+    );
+  });
+
   return (
     <>
-      <h1>User List: </h1>
-      <ul>{userComponents}</ul>
+      <h1>Home Page: </h1>
+      <div>
+        <h2>List of all users</h2>
+        <ul>{userComponents}</ul>
+      </div>
+      <div>
+        <h2>List of all images</h2>
+        <ul>{allImages}</ul>
+      </div>
     </>
   );
 }

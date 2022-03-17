@@ -32,9 +32,9 @@ function App() {
         <Route path='/' exact={true}>
           <SplashPage user={user}/>
         </Route>
-        <Route path='/sign-up' exact={true}>
+        <ProtectedRoute path='/sign-up' exact={true}>
           <SignUpForm />
-        </Route>
+        </ProtectedRoute>
         <ProtectedRoute path='/:username' exact={true} >
           <User />
         </ProtectedRoute>
