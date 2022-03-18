@@ -18,7 +18,7 @@ const ViewImageModal = ({ image }) => {
             </button>
             {renderModal ? (
                 <Modal onClose={() => setRenderModal(false)}>
-                    <div onClose={() => setRenderModal(false)} setRenderModal={setRenderModal}>
+                    <div onClose={() => setRenderModal(false)}>
                         <h1> ID: {image.id} </h1>
                         <h3> PIC: {image.picture}</h3>
                         <h3> CAP: {image.caption}</h3>

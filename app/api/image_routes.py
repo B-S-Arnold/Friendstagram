@@ -9,6 +9,8 @@ image_routes = Blueprint('images', __name__)
 @image_routes.route('/', methods=['GET', 'POST'])
 def images_api():
 
+# POST
+
     form = ImageForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -31,3 +33,31 @@ def images_api():
     images = Image.query.all()
     return {'images': [image.to_dict() for image in images]}
 
+@image_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
+def image_api(id):
+    
+    image = Image.query.get(id)
+    
+# PUT
+    
+    form = ImageForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        
+            image.userId=current_user.id,
+            image.picture=image.picture,
+            image.caption=form.data['caption'],
+            image.edited=True
+
+            db.session.commit()
+            return image.to_dict()
+
+# DELETE
+
+    if not form.data['caption']:
+        db.session.delete(image)
+        db.session.commit()
+        return {'message': 'Image deleted'}
+
+    if form.errors:
+        return {'errors': form.errors}
