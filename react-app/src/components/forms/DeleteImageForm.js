@@ -1,20 +1,12 @@
-// import { deleteImage } from '../../store/images';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { deleteImage } from '../../store/images';
+import { useDispatch } from 'react-redux';
 
 const DeleteImageForm = ({setRenderModal, image}) => {
     const dispatch = useDispatch();
-    const history = useHistory();
-    // const dev = useSelector((state) => state.developers[id])
-    // HOW TO GET IMAGE? THROUGH PROPS... OR USE SELECTOR?
-    
     const handleDelete = async (e) => {
         e.preventDefault();
 
-        // dispatch(deleteImage(image))
-        //     .then(() => {
-        //         history.push(`/${username}`)
-        //     })
+        dispatch(deleteImage(image))
     }
 
     const handleClose = (e) => {

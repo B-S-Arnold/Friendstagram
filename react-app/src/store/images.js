@@ -1,9 +1,7 @@
 const ADD_IMG = 'images/ADD_IMG'
 const LOAD_IMG = 'images/LOAD_IMG'
 const REM_IMG = 'images/REM_IMG'
-
-// edit caption of image
-const EDIT_CAP = 'images/EDIT_CAP'
+const EDIT_IMG = 'images/EDIT_IMG'
 
 const addImage = (image) => ({
     type: ADD_IMG,
@@ -21,7 +19,7 @@ const removeImage = (image) => ({
 })
 
 const editCaption = (image) => ({
-    type: EDIT_CAP,
+    type: EDIT_IMG,
     image
 })
 
@@ -62,9 +60,33 @@ export const readImages = () => async (dispatch) => {
 
 //destroy image
 
+export const deleteImage = (image) => async dispatch => {
+    const response = await fetch(`/api/images/${image.id}`, {
+        method: 'DELETE',
+    })
+    if (response.ok) {
+        const deletedImage = await response.json();
+        dispatch(removeImage(image))
+        return deletedImage
+    }
 
+}
 
 //update image
+
+export const updateImage = (id, picture, caption) => async dispatch => {
+    const response = await fetch(`/api/images/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ picture, caption })
+    });
+    if (response.ok) {
+        const editedImage = await response.json()
+        if (editedImage?.errors) return editedImage
+        dispatch(editCaption(editedImage))
+        return editedImage
+    }
+}
 
 
 
@@ -81,6 +103,12 @@ const imageReducer = (state = initialState, action) => {
             })
             return newState
         case ADD_IMG:
+            newState[action.image.id] = action.image;
+            return newState
+        case REM_IMG:
+            delete newState[action.image.id]
+            return newState
+        case EDIT_IMG:
             newState[action.image.id] = action.image;
             return newState
         default:
