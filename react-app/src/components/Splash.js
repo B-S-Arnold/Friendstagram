@@ -5,6 +5,7 @@ import UsersList from './UsersList';
 import DemoUser from './auth/DemoUser';
 import LoginForm from './auth/LoginForm';
 import SignUpForm from './auth/SignUpForm';
+import './LoginSignup.css'
 
 const SplashPage = ({user}) => {
     
@@ -14,21 +15,32 @@ const SplashPage = ({user}) => {
 
 
     return (
-    <div>
-        <div>
-            <LoginForm />
+    <div className='divContainer'>
+        <div className='loginContainer'>
+            <div className='title'>
+                Friendstagram
+            </div>
+            <div>
+                <LoginForm />
+            </div>
+            <div className='orLineContainer'>
+                <hr />
+                <div className='orWord'>
+                    OR
+                </div>
+                <hr />
+            </div>
+            <div>
+                <DemoUser />
+            </div>
         </div>
-        <div>
-            OR
-        </div>
-        <div>
-        <DemoUser />
-        </div>
-        <div>
-            Don't have an account?
-            <NavLink to='/sign-up' exact={true} activeClassName='active'>
-                Sign Up
-            </NavLink>
+        <div className='redirContainer'>
+            <div>
+                Don't have an account?
+                <NavLink to='/sign-up' exact={true} activeClassName='active'>
+                    Sign up
+                </NavLink>
+            </div>
         </div>
     </div>
     
