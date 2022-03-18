@@ -35,8 +35,6 @@ function UsersList() {
       return null
 
     })
-
-    console.log("THIS USER",thisUser)
     return (
       <li key={image.id}>
         <div> Post By: {thisUser[0]?.username}</div>
