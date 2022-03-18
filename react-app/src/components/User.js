@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
+import DeleteImageModal from './modals/DeleteImageModal';
+import ViewImageModal from './modals/ViewImageModal';
 
 function User() {
   const [user, setUser] = useState({});
@@ -26,18 +28,18 @@ function User() {
   if (!user) {
     return null;
   }
-  
+  //ALL IMAGES DISPLAYED FUNCTION
   const allImages = userImages.map((image) => {
     return (
       <li key={image.id}>
-        <NavLink to={`/${username}`}>{image.picture}</NavLink>
-        <div>{image.caption}</div>
+          <ViewImageModal image={image}/>
       </li>
     );
   });
 
   return (
     <>
+      <h2>User info</h2>
       <ul>
         <li>
           <strong>User Id {user.id}</strong>
@@ -50,6 +52,9 @@ function User() {
         </li>
         <li>
           <strong>Name</strong> {user.fullName}
+        </li>
+        <li>
+          {user.bio ? <><strong>Bio</strong> {user.bio}</>: <></>}
         </li>
       </ul>
       <div>

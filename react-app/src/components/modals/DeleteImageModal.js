@@ -1,16 +1,17 @@
 import { Modal } from '../../context/Modal';
 import { useState } from 'react';
-import AddImageForm from '../forms/AddImageForm';
+import DeleteImageForm from '../forms/DeleteImageForm';
 
-const AddImageModal = () => {
+const DeleteImageModal = ({ image }) => {
     const [renderModal, setRenderModal] = useState(false);
+
 
     return (
         <>
-            <button onClick={() => setRenderModal(true)}>Click Here to add an Image</button>
+            <button onClick={() => setRenderModal(true)}>Delete</button>
             {renderModal ? (
                 <Modal onClose={() => setRenderModal(false)}>
-                    <AddImageForm />
+                    <DeleteImageForm  onClose={() => setRenderModal(false)} setRenderModal={setRenderModal} image={image} />
                 </Modal>
             ) : null
             }
@@ -18,4 +19,4 @@ const AddImageModal = () => {
     )
 };
 
-export default AddImageModal;
+export default DeleteImageModal;
