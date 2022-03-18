@@ -1,0 +1,116 @@
+
+/* VERTICALLY CENTER? */
+
+.divContainer{
+    display: flex;
+    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: solid 1px #dbdbdb;
+    height: 382px;
+    width: 350px;
+}
+
+.signupContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: solid 1px #dbdbdb;
+    height: 542px;
+    width: 350px;
+}
+
+.redirContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: solid 1px #dbdbdb;
+    height: 63px;
+    width: 350px;
+}
+
+.inputField{
+    background-color: #fafafa;
+    margin: 9px 0px 7px 8px;
+    font-size: 12px;
+    border: solid 1px #dbdbdb;
+    text-overflow: ellipsis;
+    height: 36px;
+    width: 252px;
+    border-radius: 3px;
+}
+
+.inputField:focus{
+    border-color: #8e8e8ed0;
+    outline: none;
+}
+
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.btn{
+    background-color: #0095f6;
+    border: transparent;
+    color: #fff;
+    height: 32px;
+    width: 258px;
+    border-radius: 3px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.btn:hover{
+    cursor:pointer;
+}
+
+.title{
+    font-family: cursive;
+    font-size: 40px;
+}
+
+.blurb{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #8e8e8e
+}
+
+.orLineContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+hr{
+    width: 100px;
+    border-color: #8e8e8e;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-top: solid .1px #dbdbdb;
+}
+
+.orWord{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    color: #8e8e8e;
+    margin: 0px 20px;
+}

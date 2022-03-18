@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import DemoUser from './DemoUser';
+import '../LoginSignup.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -49,75 +50,100 @@ const SignUpForm = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={onSignUp}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+    <div className='divContainer'>
+      <div className='signupContainer'>
+        <div className='title'>
+          Friendstagram
         </div>
         <div>
-          <label>Email</label>
-          <input
-            type='text'
-            name='email'
-            onChange={updateEmail}
-            value={email}
-          ></input>
+          <div className='blurb'>
+            Sign up to see photos
+          </div>
+          <div className='blurb'>
+            from your friends.
+          </div>
         </div>
         <div>
-          <label>Full Name</label>
-          <input
-            type='text'
-            name='fullName'
-            onChange={updateFullName}
-            value={fullName}
-          ></input>
+          <DemoUser />
         </div>
-        <div>
-          <label>User Name</label>
-          <input
-            type='text'
-            name='username'
-            onChange={updateUsername}
-            value={username}
-          ></input>
+        
+        <div className='orLineContainer'>
+          <hr />
+          <div className='orWord'>
+            OR
+          </div>
+          <hr />
         </div>
-        <div>
-          <label>Password</label>
-          <input
-            type='password'
-            name='password'
-            onChange={updatePassword}
-            value={password}
-          ></input>
-        </div>
-        {/* <div>
-          <label>Repeat Password</label>
-          <input
-            type='password'
-            name='repeat_password'
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-          ></input>
-        </div> */}
-        <button type='submit'>Sign up</button>
-      </form>
-      <div>
-        OR
+        <form className='formContainer' onSubmit={onSignUp}>
+          <div>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div>
+            <input
+              className='inputField'
+              placeholder='Email'
+              type='text'
+              name='email'
+              onChange={updateEmail}
+              value={email}
+            ></input>
+          </div>
+          <div>
+            <input
+              className='inputField'
+              placeholder='Full Name'
+              type='text'
+              name='fullName'
+              onChange={updateFullName}
+              value={fullName}
+            ></input>
+          </div>
+          <div>
+            <input
+              className='inputField'
+              placeholder='Username'
+              type='text'
+              name='username'
+              onChange={updateUsername}
+              value={username}
+            ></input>
+          </div>
+          <div>
+            <input
+              className='inputField'
+              placeholder='Password'
+              type='password'
+              name='password'
+              onChange={updatePassword}
+              value={password}
+            ></input>
+          </div>
+          {/* <div>
+            <label>Repeat Password</label>
+            <input
+              type='password'
+              name='repeat_password'
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              required={true}
+            ></input>
+          </div> */}
+          
+          <button className='btn' type='submit'>Sign up</button>
+        </form>
       </div>
-      <div>
-        <DemoUser />
-      </div>
-      <div>
-        
-        Have an account?
-        
-        <NavLink to='/' exact={true} activeClassName='active'>
-          Log in
-        </NavLink>
-        
+      <div className='redirContainer'>
+        <div>
+          
+          Have an account? 
+          
+          <NavLink to='/' exact={true} activeClassName='active'>
+            Log in
+          </NavLink>
+          
+        </div>
       </div>
     </div>
   );
