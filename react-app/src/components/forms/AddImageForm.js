@@ -21,7 +21,7 @@ const AddImageForm = () => {
         e.preventDefault();
         console.log("Picture and Cap", picture, caption)
         let newImage = await dispatch(createImage(picture, caption));
-        // console.log("Picture and Cap again!!!", picture, caption)
+        
         if (newImage?.errors) return setErrors(newImage.errors)
         if (newImage) {
             history.push(`/${user.username}`);
