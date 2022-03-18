@@ -45,7 +45,7 @@ def image_api(id):
     if form.validate_on_submit():
         
             image.userId=current_user.id,
-            image.picture=image.picture,
+            image.picture=form.data['picture']
             image.caption=form.data['caption'],
             image.edited=True
 

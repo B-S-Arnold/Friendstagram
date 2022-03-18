@@ -1,9 +1,7 @@
 const ADD_IMG = 'images/ADD_IMG'
 const LOAD_IMG = 'images/LOAD_IMG'
 const REM_IMG = 'images/REM_IMG'
-
-// edit caption of image
-const EDIT_CAP = 'images/EDIT_CAP'
+const EDIT_IMG = 'images/EDIT_IMG'
 
 const addImage = (image) => ({
     type: ADD_IMG,
@@ -21,7 +19,7 @@ const removeImage = (image) => ({
 })
 
 const editCaption = (image) => ({
-    type: EDIT_CAP,
+    type: EDIT_IMG,
     image
 })
 
@@ -76,11 +74,11 @@ export const deleteImage = (image) => async dispatch => {
 
 //update image
 
-export const updateImage = (id, caption) => async dispatch => {
+export const updateImage = (id, picture, caption) => async dispatch => {
     const response = await fetch(`/api/images/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ caption })
+        body: JSON.stringify({ picture, caption })
     });
     if (response.ok) {
         const editedImage = await response.json()
@@ -109,6 +107,9 @@ const imageReducer = (state = initialState, action) => {
             return newState
         case REM_IMG:
             delete newState[action.image.id]
+            return newState
+        case EDIT_IMG:
+            newState[action.image.id] = action.image;
             return newState
         default:
             return state;
