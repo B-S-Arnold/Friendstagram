@@ -11,7 +11,7 @@ const DeleteImageModal = ({ image }) => {
             <button onClick={() => setRenderModal(true)}>Delete</button>
             {renderModal ? (
                 <Modal onClose={() => setRenderModal(false)}>
-                    <DeleteImageForm  onClose={() => setRenderModal(false)} setRenderModal={setRenderModal} />
+                    <DeleteImageForm  onClose={() => setRenderModal(false)} setRenderModal={setRenderModal} image={image} />
                 </Modal>
             ) : null
             }

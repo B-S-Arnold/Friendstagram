@@ -32,8 +32,6 @@ function User() {
   const allImages = userImages.map((image) => {
     return (
       <li key={image.id}>
-        <NavLink to={`/${username}`}>{image.picture}</NavLink>
-        <div>{image.caption}</div>
           <ViewImageModal image={image}/>
       </li>
     );
