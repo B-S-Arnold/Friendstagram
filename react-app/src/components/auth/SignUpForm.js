@@ -139,7 +139,7 @@ const SignUpForm = () => {
           
           Have an account? 
           
-          <NavLink to='/' exact={true} activeClassName='active'>
+          <NavLink to='/' exact={true} className='link' activeClassName='active'>
             Log in
           </NavLink>
           

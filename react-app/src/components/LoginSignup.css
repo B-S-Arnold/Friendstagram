@@ -56,12 +56,16 @@
 .inputField:focus{
     border-color: #8e8e8ed0;
     outline: none;
+    /* padding-left: 0px;
+    margin-left: 0px; */
 }
 
 .formContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* padding-left: 0px;
+    margin-left: 0px; */
     /* justify-content: center; */
 }
 
@@ -113,4 +117,10 @@ hr{
     font-size: 13px;
     color: #8e8e8e;
     margin: 0px 20px;
+}
+
+.link{
+    padding: 5px;
+    color: #0095f6;
+    text-decoration: none;
 }
