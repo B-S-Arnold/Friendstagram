@@ -1,0 +1,79 @@
+
+/* change spacer after navbar fixed */
+.spacer{
+    /* background-color: black; */
+    width: 100px;
+    height: 150px;
+}
+
+.homePageContainer{
+    /* display: flex; */
+    align-items: column;
+    width: 100%;
+    /* position: absolute; */
+}
+
+.userListDiv{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #fff;
+    border: solid 1px #dbdbdb;
+    height: 119px;
+    width: 614px;
+    justify-content: flex-start;
+    margin: 20px
+}
+
+.innerUserListDiv{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    /* align-items: flex-start; */
+
+}
+.eachUser{
+    /* display: flex;
+    flex-direction: column; */
+    
+    background-image: url("../images/default.png");
+    background-size:contain;
+    width: 56px;
+    height: 56px;
+    border: solid #fff 2px;
+    outline: solid purple 2px;
+    border-radius: 50%;
+}
+
+.eachUserName{
+    text-align: center;
+    margin-top: 5px;
+    width: 56px;
+    border-radius: 50%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+    font-weight: lighter;
+}
+
+.imageListDiv{
+    justify-content: center;
+    width: 614px;
+    display: flex;
+    flex-direction: column;
+}
+
+.eachImage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: solid 1px #dbdbdb;
+    /* height is temporary */
+    /* should adjust to image size */
+    height: 382px;
+    width: 614px;
+    justify-content: center;
+    margin: 20px
+}

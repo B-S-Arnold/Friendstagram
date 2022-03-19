@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import AddImageForm from './forms/AddImageForm';
-import AddImageModal from './modals/AddImageModal';
+import './Home.css'
 
 function UsersList() {
   const sessionUser = useSelector(state => state.session.user)
@@ -22,9 +21,14 @@ function UsersList() {
 
   const userComponents = users.map((user) => {
     return (
-      <li key={user.id}>
-        <NavLink to={`/${user.username}`}>{user.username}</NavLink>
-      </li>
+      <div className='innerUserListDiv'>
+        <NavLink to={`/${user.username}`} className='eachUser' key={user.id}>
+          {user.profileImage}
+        </NavLink>
+        <div className='eachUserName'>
+          {user.username}
+        </div>
+      </div>
     );
   });
 
@@ -36,26 +40,24 @@ function UsersList() {
 
     })
     return (
-      <li key={image.id}>
+      <div className='eachImage' key={image.id}>
         <div> Post By: {thisUser[0]?.username}</div>
         <NavLink to={`/${sessionUser.username}`}>{image.picture}</NavLink>
         <div>{image.caption}</div> 
-      </li>
+      </div>
     );
   });
 
   return (
-    <>
-      <h1>Home Page: </h1>
+    <div className='homePageContainer'>
+      <div className='spacer'/>
       <div>
-        <h2>List of all users</h2>
-        <ul>{userComponents}</ul>
+        <div className='userListDiv'>{userComponents}</div>
       </div>
       <div>
-        <h2>List of all images</h2>
-        <ul>{allImages}</ul>
+        <div className='imageListDiv'>{allImages}</div>
       </div>
-    </>
+    </div>
   );
 }
 

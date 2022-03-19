@@ -19,10 +19,12 @@
 .linkContainer{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    
     
 }
 
 .personal{
-    padding: 10px;
+    
+    padding: 10px 15px;
 }

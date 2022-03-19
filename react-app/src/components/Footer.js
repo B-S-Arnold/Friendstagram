@@ -19,14 +19,23 @@ const Footer = () => {
                         LinkedIn
                     </a>
                 </div>
+                <div className='personal'>
+                    <a href='https://www.appacademy.io/' >
+                        App Academy
+                    </a>
+                </div>
             </div>
             <div className='linkContainer'>
                 <div className='personal'>
-                    Friendstagram by Bryan Arnold
+                    Bryan Arnold
+                </div>
+                <div className='personal'>
+                    Friendstagram
                 </div>
                 <div className='personal'>
                     bryanscottarnold@gmail.com
                 </div>
+                
             </div>
         </footer>
     );
