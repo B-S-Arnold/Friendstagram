@@ -7,6 +7,7 @@ function UsersList() {
   const sessionUser = useSelector(state => state.session.user)
   const [users, setUsers] = useState([]);
   const images = Object.values(useSelector(state => state.images))
+  const comments = Object.values(useSelector(state => state.comments))
   console.log("ALL IMAGES", images)
 
   useEffect(() => {
@@ -32,13 +33,28 @@ function UsersList() {
     );
   });
 
+  //NOT GETTING USERS!!!!
   const allImages = images.map((image) => {
-    const thisUser = users.map(user => {
-      if (user.id === image.userId){
+    const thisUser = users?.map(user => {
+      console.log("THIS USER", user)
+      if (user?.id === image?.userId){
         return user}
       return null
 
     })
+
+    //function for comments
+    const allComments = comments.filter(comment => comment.imageId === image.id)
+
+    //func for rendering comments
+    const eachComment = allComments.map((comment) => {
+      <div>
+
+      </div>
+    })
+
+    // filter(img => img.userId === user.id)
+
     return (
       <div className='eachImage' key={image.id}>
         <div> Post By: {thisUser[0]?.username}</div>
@@ -47,6 +63,7 @@ function UsersList() {
       </div>
     );
   });
+
 
   return (
     <div className='homePageContainer'>
