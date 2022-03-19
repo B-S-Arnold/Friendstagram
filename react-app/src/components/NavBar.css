@@ -12,6 +12,7 @@
     font-family: Helvetica;
     /* -webkit-box-align: center; */
     align-items: center;
+    justify-content: center;
     /* background-color: green; */
     background-color: #fff;
     border-bottom: solid 1px #dbdbdb;
@@ -21,5 +22,86 @@
     margin-top: 0px;
     padding-top: 0px;
     z-index: 1;
+    height: 60px;
 }
+
+.title{
+    font-family: cursive;
+    font-size: 25px;
+    font-weight: bolder;
+    text-decoration: none;
+    color: black;
+    margin: 200px;
+}
+
+.navUL{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.navBtnContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 100px;
+}
+
+.navbtn{
+
+    background-size:contain;
+    width: 56px;
+    height: 56px;
+    border: solid #fff 2px;
+    background-color: transparent;
+    margin: 5px;
+    
+}
+
+.navbtn:hover{
+    cursor:pointer
+}
+
+.homebtn{
+    background-image: url("../images/inHouse.png");
+    padding: 17px 26px;
+}
+
+/* Render inHome or outHome conditionally */
+
+/* .inHomebtn{
+    background-image: url("../images/inHouse.png");
+    padding: 17px 26px;
+}
+
+.outHomebtn{
+    background-image: url("../images/outHouse.png");
+    padding: 17px 26px;
+} */
+
+.addimg{
+    background-image: url("../images/plus.png");
+}
+
+.userbtn{
+
+    background-image: url("../images/default.png");
+    
+}
+
+
+/* DROPDOWN INSTEAD OF MODAL */
+
+.dropdown-container {
+    overflow: hidden;
+    float: left;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
 

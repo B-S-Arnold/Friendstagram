@@ -7,7 +7,7 @@ const AddImageModal = () => {
 
     return (
         <>
-            <button onClick={() => setRenderModal(true)}>Click Here to add an Image</button>
+            <button className='addimg navbtn' onClick={() => setRenderModal(true)}>+</button>
             {renderModal ? (
                 <Modal onClose={() => setRenderModal(false)}>
                     <AddImageForm />

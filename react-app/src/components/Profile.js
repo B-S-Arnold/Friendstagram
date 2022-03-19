@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import DeleteImageModal from './modals/DeleteImageModal';
 import ViewImageModal from './modals/ViewImageModal';
+import './ProfileAndView.css'
 
 function User() {
   const [user, setUser] = useState({});
@@ -31,35 +32,36 @@ function User() {
   //ALL IMAGES DISPLAYED FUNCTION
   const allImages = userImages.map((image) => {
     return (
-      <li key={image.id}>
+      <div key={image.id}>
           <ViewImageModal image={image}/>
-      </li>
+      </div>
     );
   });
 
   return (
     <>
+      <div className='spacer' />
       <h2>User info</h2>
-      <ul>
-        <li>
+      <div>
+        <div>
           <strong>User Id {user.id}</strong>
-        </li>
-        <li>
+        </div>
+        <div>
           <strong>Username</strong> {username}
-        </li>
-        <li>
+        </div>
+        <div>
           <strong>Email</strong> {user.email}
-        </li>
-        <li>
+        </div>
+        <div>
           <strong>Name</strong> {user.fullName}
-        </li>
-        <li>
+        </div>
+        <div>
           {user.bio ? <><strong>Bio</strong> {user.bio}</>: <></>}
-        </li>
-      </ul>
+        </div>
+      </div>
       <div>
           <h2>All of {username}'s images</h2>
-          <ul>{allImages}</ul>
+        <div className='myImageDiv'>{allImages}</div>
       </div>
     </>
   );
