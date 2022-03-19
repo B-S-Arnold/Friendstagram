@@ -2,7 +2,7 @@ import { Modal } from '../../context/Modal';
 import { useState } from 'react';
 import DeleteCommentForm from '../forms/DeleteCommentForm';
 
-const DeleteComentModal = ({ comment }) => {
+const DeleteCommentModal = ({ comment }) => {
     const [renderModal, setRenderModal] = useState(false);
 
 
@@ -19,4 +19,4 @@ const DeleteComentModal = ({ comment }) => {
     )
 };
 
-export default DeleteComentModal;
+export default DeleteCommentModal;

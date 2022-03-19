@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { updateComment } from '../../store/comments';
+import { deleteComment, updateComment } from '../../store/comments';
+
 
 
 const EditCommentForm = ({ comment }) => {
@@ -11,21 +11,30 @@ const EditCommentForm = ({ comment }) => {
     const id = comment.id
     const imageId = comment.imageId
 
-    // const [picture, setPicture] = useState(image?.picture);
     const [content, setContent] = useState(comment?.content);
     const [errors, setErrors] = useState([]);
 
     const dispatch = useDispatch();
-    const history = useHistory()
 
-    // const userId = user.id
+    const thisComment = comment
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        let editedComment
 
-        let editedImage = await dispatch(updateComment(id, imageId, content));
+        if (content === ''){
 
-        if (editedImage?.errors) return setErrors(editedImage.errors)
+            editedComment = await dispatch(deleteComment(thisComment));
+            
+                
+        } else {
+            
+            editedComment = await dispatch(updateComment(id, imageId, content));
+        }
+        
+
+        if (editedComment?.errors) return setErrors(editedComment.errors)
         
     }
 
@@ -42,7 +51,7 @@ const EditCommentForm = ({ comment }) => {
                 <textarea
                     className='content'
                     name='content'
-                    placeholder='Add a comment...'
+                    placeholder='Edit your comment...'
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
