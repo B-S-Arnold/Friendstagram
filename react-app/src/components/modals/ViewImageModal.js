@@ -18,8 +18,8 @@ const ViewImageModal = ({ image }) => {
 
 
     return (
-        <>
-            <button onClick={() => setRenderModal(true)} image={image}>
+        <div >
+            <button className='myImage' onClick={() => setRenderModal(true)} image={image}>
             <h1> ID: {image.id} </h1>
             <h3> PIC: {image.picture}</h3>
             
@@ -48,7 +48,7 @@ const ViewImageModal = ({ image }) => {
                 </Modal>
             ) : null
             }
-        </>
+        </div>
     )
 };
 
