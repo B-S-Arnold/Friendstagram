@@ -17,7 +17,7 @@ const SplashPage = ({user}) => {
     return (
     <div className='divContainer'>
         <div className='loginContainer'>
-            <div className='title'>
+            <div className='mainTitle'>
                 Friendstagram
             </div>
             <div>

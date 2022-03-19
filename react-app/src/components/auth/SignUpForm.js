@@ -52,7 +52,7 @@ const SignUpForm = () => {
   return (
     <div className='divContainer'>
       <div className='signupContainer'>
-        <div className='title'>
+        <div className='mainTitle'>
           Friendstagram
         </div>
         <div>

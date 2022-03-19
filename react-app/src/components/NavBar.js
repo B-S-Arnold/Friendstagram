@@ -32,7 +32,7 @@ const NavBar = ({user}) => {
           <div className='navUL'>
             <div className='splitter' />
             <div>
-              <NavLink className='title' to='/' exact={true} activeClassName='active'>
+              <NavLink className='navbarTitle' to='/' exact={true} activeClassName='active'>
                 Friendstagram
               </NavLink>
             </div>

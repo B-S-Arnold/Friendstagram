@@ -2,7 +2,6 @@
     position: fixed;
     margin-top: 0px;
     padding-top: 0px;
-    /* position: relative; */
     width: 100%;
     top: 0;
     left: 0;
@@ -10,10 +9,8 @@
 }
 .navContainer{
     font-family: Helvetica;
-    /* -webkit-box-align: center; */
     align-items: center;
     justify-content: center;
-    /* background-color: green; */
     background-color: #fff;
     border-bottom: solid 1px #dbdbdb;
     position: relative;
@@ -25,13 +22,13 @@
     height: 60px;
 }
 
-.title{
+.navbarTitle{
     font-family: cursive;
     font-size: 25px;
     font-weight: bolder;
     text-decoration: none;
     color: black;
-    margin: 200px;
+    margin: 0px 200px;
 }
 
 .navUL{
@@ -94,7 +91,7 @@
 
 /* DROPDOWN INSTEAD OF MODAL */
 
-.dropdown-container {
+/* .dropdown-container {
     overflow: hidden;
     float: left;
     border: none;
@@ -103,5 +100,5 @@
     background-color: inherit;
     font-family: inherit;
     margin: 0;
-  }
+  } */
 
