@@ -34,7 +34,6 @@ const AddCommentForm = ({image}) => {
                 ))}
             </div>
             <div>
-                <label htmlFor='body'>Content</label>
                 <textarea
                     className='content'
                     name='content'

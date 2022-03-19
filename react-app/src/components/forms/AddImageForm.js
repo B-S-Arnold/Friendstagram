@@ -46,7 +46,7 @@ const AddImageForm = () => {
                 />
             </div>
             <div>
-                <label htmlFor='body'>Caption</label>
+                
                 <textarea
                     className='caption'
                     name='caption'

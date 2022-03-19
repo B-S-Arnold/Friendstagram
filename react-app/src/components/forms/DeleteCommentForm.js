@@ -1,26 +1,25 @@
-import { deleteImage } from '../../store/images';
 import { useDispatch } from 'react-redux';
+import { deleteComment } from '../../store/comments';
 
-const DeleteImageForm = ({setRenderModal, image}) => {
+const DeleteCommentForm = ({ setRenderModal, comment }) => {
     const dispatch = useDispatch();
     const handleDelete = async (e) => {
         e.preventDefault();
 
-        dispatch(deleteImage(image))
+        dispatch(deleteComment(comment))
     }
 
     const handleClose = (e) => {
         setRenderModal(false);
-        
+
     }
     return (
         <div>
-            <p>Are you sure you want to delete this post?</p>
-            <p>All information associated will be lost.</p>
+            <p>Are you sure you want to delete this comment?</p>
             <button onClick={handleDelete}>Yes</button>
             <button onClick={handleClose}>No</button>
         </div>
     )
 }
 
-export default DeleteImageForm
+export default DeleteCommentForm

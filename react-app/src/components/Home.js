@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import AddCommentForm from './forms/AddCommentForm';
+import EditCommentForm from './forms/EditCommentForm';
 import './Home.css'
+import DeleteComentModal from './modals/DeleteCommentModal';
 
 function UsersList() {
   const sessionUser = useSelector(state => state.session.user)
@@ -56,7 +58,13 @@ function UsersList() {
     const eachComment = allComments.map((comment) => {
       return(
           <div key={comment.id}>
+            <div>
             Comment: {comment.content}
+            {sessionUser.id === comment.userId ? <>
+            <EditCommentForm comment={comment}/>
+            <DeleteComentModal comment={comment}/>
+            </> : <></>}
+            </div>
           </div>
       )
     })
@@ -69,8 +77,10 @@ function UsersList() {
         <NavLink to={`/${thisUser?.username}`}>{thisUser?.username}</NavLink>
         <div> Picture: {image?.picture}</div>
         <div>
-          <div>{image.caption}</div> 
-          <div>{eachComment}</div>
+          <div>{image.caption}</div>
+          <div>
+            <div>{eachComment}</div>
+          </div>
         </div>
         <AddCommentForm image = {image}/>
       </div>
