@@ -73,7 +73,7 @@ export const deleteComment = (comment) => async dispatch => {
 //update comment
 
 export const updateComment = (id, imageId, content) => async dispatch => {
-    const response = await fetch(`/api/images/${id}`, {
+    const response = await fetch(`/api/comments/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ imageId, content })

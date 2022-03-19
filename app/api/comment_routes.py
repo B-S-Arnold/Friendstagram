@@ -15,7 +15,7 @@ def comments_api():
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-            comment = CommentForm(
+            comment = Comment(
                 userId=current_user.id,
                 imageId=form.data['imageId'],
                 content=form.data['content'],

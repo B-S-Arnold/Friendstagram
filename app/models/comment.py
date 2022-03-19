@@ -6,7 +6,7 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer,  db.ForeignKey('users.id'), nullable=False)
-    imageId = db.Column(db.Integer,  db.ForeignKey('images.id'), nullable=False)
+    imageId = db.Column(db.Integer,  db.ForeignKey('images.id', ondelete='CASCADE'), nullable=False)
     content = db.Column(db.Text, nullable=False)
     edited = db.Column(db.Boolean)
 
