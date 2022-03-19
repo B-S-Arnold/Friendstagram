@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { updateComment } from '../../store/comments';
-import { updateImage } from '../../store/images'
 
 
 const EditCommentForm = ({ comment }) => {
@@ -27,9 +26,7 @@ const EditCommentForm = ({ comment }) => {
         let editedImage = await dispatch(updateComment(id, imageId, content));
 
         if (editedImage?.errors) return setErrors(editedImage.errors)
-        if (editedImage) {
-            history.push(`/${user.username}`);
-        }
+        
     }
 
     return (
@@ -41,7 +38,7 @@ const EditCommentForm = ({ comment }) => {
                 ))}
             </div>
             <div>
-                <label htmlFor='body'>Content</label>
+                
                 <textarea
                     className='content'
                     name='content'
