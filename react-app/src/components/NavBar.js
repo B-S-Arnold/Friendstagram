@@ -7,6 +7,8 @@ import './NavBar.css'
 import { readImages } from '../store/images';
 import DropdownModal from './modals/DropdownModal';
 import { readComments } from '../store/comments';
+import LogoutButton from './auth/LogoutButton';
+import Dropdown from './Dropdown';
 
 
 
@@ -46,7 +48,10 @@ const NavBar = ({user}) => {
                 <AddImageModal />
               </div>
               <div>
-                <DropdownModal />
+                {/* <DropdownModal /> */}
+                <button className='userbtn navbtn'>
+                  <Dropdown />
+                </button>
               </div>
               <div className='splitter' />
             </div>
