@@ -10,7 +10,7 @@
 .navContainer{
     font-family: Helvetica;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     background-color: #fff;
     border-bottom: solid 1px #dbdbdb;
     position: relative;
@@ -44,22 +44,68 @@
     align-items: center;
     justify-content: center;
     margin: 100px;
+    position:relative;
 }
 
 .navbtn{
-
+    /* position: absolute; */
     background-size:contain;
     width: 56px;
     height: 56px;
     border: solid #fff 2px;
     background-color: transparent;
     margin: 5px;
+    z-index: 2;
     
 }
 
 .navbtn:hover{
     cursor:pointer
 }
+
+.dropdown{
+    display:none;
+    /* position:absolute; */
+    /* align-items: center; */
+    background-color: #fff;
+    z-index: 3;
+    /* border: solid black 1px; */
+    /* height: 300px; */
+    margin-top: 53px;
+    width: 300px;
+    border-radius: 5px;
+    /* margin: 0px; */
+    right:100px;
+    box-shadow:  0 0 10px #dbdbdb;
+    
+
+}
+
+.dropdownbtn{
+    padding: 10px;
+    margin:0px;
+}
+.dropdownbtn:hover{
+    background-color: #fafafa;
+}
+
+.profbtn{
+    border-radius: 5px 5px 0 0;
+}
+
+.logoutbtn{
+    border-top: solid 1px #dbdbdb;
+    border-radius: 0 0 5px 5px;
+}
+
+ .userbtn:focus .dropdown{
+    display:block;
+    
+}
+
+/* .dropdown:hover{
+    display:block;
+} */
 
 .homebtn{
     background-image: url("../images/inHouse.png");
@@ -83,8 +129,10 @@
 }
 
 .userbtn{
-
+    top: -3px;
+    position: fixed;
     background-image: url("../images/default.png");
+    /* position: absolute; */
     
 }
 
