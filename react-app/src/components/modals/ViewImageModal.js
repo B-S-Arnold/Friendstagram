@@ -4,7 +4,6 @@ import DeleteImageModal from './DeleteImageModal';
 import { useSelector } from 'react-redux';
 import EditImageForm from '../forms/EditImageForm';
 import EditCommentForm from '../forms/EditCommentForm';
-import DeleteCommentForm from '../forms/DeleteCommentForm';
 import './ViewImage.css'
 import DeleteCommentModal from './DeleteCommentModal';
 

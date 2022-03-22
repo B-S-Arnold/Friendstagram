@@ -22,7 +22,7 @@ const EditImageForm = ({image}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Picture and Cap", picture, caption)
+  
         let editedImage = await dispatch(updateImage( id, picture, caption ));
 
         if (editedImage?.errors) return setErrors(editedImage.errors)

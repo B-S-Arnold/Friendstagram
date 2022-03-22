@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
-import DeleteImageModal from './modals/DeleteImageModal';
+import { useParams } from 'react-router-dom';
 import ViewImageModal from './modals/ViewImageModal';
 import './Profile.css'
 
@@ -12,8 +11,6 @@ function User() {
   
   const images = Object.values(useSelector(state => state.images))
   const userImages = images.filter(img => img.userId === user.id)
-  console.log(images)
-  console.log("USER IMAGES", userImages)
 
   useEffect(() => {
     if (!username) {
@@ -38,7 +35,6 @@ function User() {
   }
   //ALL IMAGES DISPLAYED FUNCTION
 
-  console.log("users!!!!",users)
   const allImages = userImages.map((image) => {
     const expand = false;
     return (

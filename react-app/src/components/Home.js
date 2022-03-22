@@ -12,7 +12,6 @@ function UsersList() {
   const [users, setUsers] = useState([]);
   const images = Object.values(useSelector(state => state.images))
   const comments = Object.values(useSelector(state => state.comments))
-  console.log("ALL IMAGES", images)
 
   useEffect(() => {
     async function fetchData() { 
@@ -22,7 +21,6 @@ function UsersList() {
     }
     fetchData();
   }, []);
-  // console.log("USERS", users)
 
   const userComponents = users.map((user) => {
     return (
@@ -45,7 +43,6 @@ function UsersList() {
     
     
     // .map(user => {
-    //   console.log("THIS USER", user)
     //   if (user?.id === image?.userId){
     //     return user}
     //   return null
@@ -78,7 +75,7 @@ function UsersList() {
     const thisDiv = <div></div> 
 
     // }
-    // console.log("THIS USER!!!!!!!!",thisUser)
+  
     // filter(img => img.userId === user.id)
     const expand = true
 

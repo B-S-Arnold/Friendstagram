@@ -1,13 +1,11 @@
 
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
 import AddImageModal from './modals/AddImageModal';
 import './NavBar.css'
 import { readImages } from '../store/images';
-import DropdownModal from './modals/DropdownModal';
 import { readComments } from '../store/comments';
-import LogoutButton from './auth/LogoutButton';
 import Dropdown from './Dropdown';
 
 
