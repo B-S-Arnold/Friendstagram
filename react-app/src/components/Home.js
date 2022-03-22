@@ -87,7 +87,17 @@ function UsersList() {
           <NavLink to={`/${thisUser?.username}`}>{thisUser?.username}</NavLink>
           options modal
         </div>
-        <div className='imgpic'> {image?.picture}</div>
+        <div className='imgpic'>
+          {/* RENDER IMAGE */}
+            <img
+              height="293px"
+              width="293px"
+              src={image?.picture}
+              alt="new"
+              
+            />
+          
+        </div>
         <div className='imginfo'>
           <div>{image.caption}</div>
           {/* RENDER COMMENTS */}

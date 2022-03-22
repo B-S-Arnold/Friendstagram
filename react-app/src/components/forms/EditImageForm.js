@@ -9,9 +9,9 @@ const EditImageForm = ({image}) => {
     const user = useSelector(state => state.session.user);
 
     const id = image.id
-    const picture = image.picture
+    // const picture = image.picture
 
-    // const [picture, setPicture] = useState(image?.picture);
+    const [picture, setPicture] = useState(image?.picture);
     const [caption, setCaption] = useState(image?.caption);
     const [errors, setErrors] = useState([]);
 
@@ -39,15 +39,24 @@ const EditImageForm = ({image}) => {
                     <div key={error[0]}>{error[1]}</div>
                 ))}
             </div>
-            {/* <div>
+            <div>
                 <input
                     type='text'
-                    placeholder='picture'
+                    placeholder='Add a picture...'
                     name='picture'
                     value={picture}
                     onChange={(e) => setPicture(e.target.value)}
                 />
-            </div> */}
+            </div>
+            <div>
+                {/* RENDER IMAGE */}
+                    <img
+                        height="293px"
+                        width="293px"
+                        src={picture}
+                        alt="new"
+                    />
+            </div>
             <div>
                 <textarea
                     className='caption'
