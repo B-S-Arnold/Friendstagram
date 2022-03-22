@@ -16,6 +16,7 @@ const SplashPage = ({user}) => {
 
     return (
     <div className='divContainer'>
+        <div className='spacer'/>
         <div className='loginContainer'>
             <div className='mainTitle'>
                 Friendstagram
@@ -35,7 +36,7 @@ const SplashPage = ({user}) => {
             </div>
         </div>
         <div className='redirContainer'>
-            <div>
+            <div className = 'switchdiv'>
                 Don't have an account?
                     <NavLink to='/sign-up' exact={true} className='link' activeClassName='active'>
                     Sign up

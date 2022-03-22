@@ -9,33 +9,23 @@ const Footer = () => {
     return (
         <footer className='footerContainer'>
             <div className='linkContainer'>
-                <div className='personal'>
-                    <a href='https://github.com/B-S-Arnold' >
+                    <a className ='personal' href='https://github.com/B-S-Arnold' >
                         GitHub
-                    </a>
-                </div>
-                <div className='personal'>
-                    <a href='https://www.linkedin.com/in/bryan-arnold-882378215/' >
+                    </a>           
+                    <a className='personal' href='https://www.linkedin.com/in/bryan-arnold-882378215/' >
                         LinkedIn
-                    </a>
-                </div>
-                <div className='personal'>
-                    <a href='https://www.appacademy.io/' >
+                    </a>         
+                    <a className='personal' href='https://www.appacademy.io/' >
                         App Academy
                     </a>
-                </div>
             </div>
             <div className='linkContainer'>
                 <div className='personal'>
-                    Bryan Arnold
-                </div>
-                <div className='personal'>
-                    Friendstagram
-                </div>
-                <div className='personal'>
                     bryanscottarnold@gmail.com
                 </div>
-                
+                <div className='personal'>
+                    2022 Friendstagram from Bryan Arnold
+                </div>
             </div>
         </footer>
     );

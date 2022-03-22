@@ -40,15 +40,15 @@ const NavBar = ({user}) => {
             </div>
             <div className='splitter'/>
             <div className='navBtnContainer'>
-              
-              <div>
-                <NavLink className='homebtn navbtn' to='/' exact={true} activeClassName='active' />
+              <div className='buttondiv'>
+                <div className='buttondiv'>
+                  <button className='homebtn navbtn' />
+                </div>
               </div>
               <div>
                 <AddImageModal />
               </div>
-              <div>
-                {/* <DropdownModal /> */}
+              <div className=' buttondiv'>
                 <button className='userbtn navbtn'>
                   <Dropdown />
                 </button>

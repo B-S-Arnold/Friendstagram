@@ -1,3 +1,4 @@
+import { user } from 'pg/lib/defaults';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -89,13 +90,33 @@ function UsersList() {
 
 
   return (
+    
     <div className='homePageContainer'>
-      <div className='spacer'/>
-      <div>
-        <div className='userListDiv'>{userComponents}</div>
-      </div>
-      <div>
-        <div className='imageListDiv'>{allImages}</div>
+      <div className='spacer' />
+      <div className='centeredContainer'>
+        <div className='rowdiv'>
+          {/* <div className='coldiv'> */}
+            <div>
+              <div className='userListDiv'>{userComponents}</div>
+            </div>
+            <div>
+              <div className='imageListDiv'>{allImages}</div>
+            </div>
+          {/* </div> */}
+        </div>
+        <div className='rowdiv'>
+          <div className='userinfodiv'>
+            <div className='innerUserListDiv'>
+              <NavLink to={`/${sessionUser.username}`} className='thisUser' >
+                {/* {sessionUser.profileImage} */}
+              </NavLink>
+            </div>
+              <div className='thisUserName'>
+                <div className='usersUN'>{sessionUser.username}</div>
+                <div className='usersFN'> {sessionUser.fullName}</div>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
   );
