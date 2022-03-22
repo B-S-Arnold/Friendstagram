@@ -36,7 +36,6 @@ export const createImage = (picture, caption) => async dispatch => {
             caption
             }),
     });
-    console.log("RESPONSE", response)
     
     const image = await response.json() 
     if (image?.errors) return image

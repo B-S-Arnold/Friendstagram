@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import { readImages } from '../../store/images';
+
 
 const ProtectedRoute = props => {
   const user = useSelector(state => state.session.user)

@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link, NavLink, Redirect } from 'react-router-dom';
-import AddImageModal from './modals/AddImageModal';
-import LogoutButton from './auth/LogoutButton';
 import './Footer.css'
 
 const Footer = () => {

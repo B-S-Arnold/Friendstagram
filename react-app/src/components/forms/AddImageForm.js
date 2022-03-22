@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createImage } from '../../store/images'
@@ -19,7 +19,7 @@ const AddImageForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Picture and Cap", picture, caption)
+
         let newImage = await dispatch(createImage(picture, caption));
         
         if (newImage?.errors) return setErrors(newImage.errors)

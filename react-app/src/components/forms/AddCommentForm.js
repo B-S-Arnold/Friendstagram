@@ -1,19 +1,15 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { createComment } from '../../store/comments';
 
 
 
 const AddCommentForm = ({image}) => {
 
-    const user = useSelector(state => state.session.user);
-
     const [content, setContent] = useState('');
     const [errors, setErrors] = useState([]);
 
     const dispatch = useDispatch();
-    const history = useHistory()
 
     const imageId = image.id
 

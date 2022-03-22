@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteComment, updateComment } from '../../store/comments';
 
 
 
 const EditCommentForm = ({ comment }) => {
-
-    const user = useSelector(state => state.session.user);
 
     const id = comment.id
     const imageId = comment.imageId
