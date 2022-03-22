@@ -127,3 +127,9 @@
 .usersFN{
     color: #8e8e8e;
 }
+
+.imghead{
+    display: flex;
+    justify-content: space-between;
+    width: 614px;
+}

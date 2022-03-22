@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 import AddCommentForm from './forms/AddCommentForm';
 import EditCommentForm from './forms/EditCommentForm';
 import './Home.css'
-import DeleteComentModal from './modals/DeleteCommentModal';
+import DeleteCommentModal from './modals/DeleteCommentModal';
+import ViewImageModal from './modals/ViewImageModal';
 
 function UsersList() {
   const sessionUser = useSelector(state => state.session.user)
@@ -21,7 +22,7 @@ function UsersList() {
     }
     fetchData();
   }, []);
-  console.log("USERS", users)
+  // console.log("USERS", users)
 
   const userComponents = users.map((user) => {
     return (
@@ -56,33 +57,55 @@ function UsersList() {
 
     //func for rendering comments
     const eachComment = allComments.map((comment) => {
+      const commenter = users?.filter(user => user.id === comment.userId)[0]
       return(
           <div key={comment.id}>
             <div>
-            Comment: {comment.content}
+            <strong>{commenter?.username}</strong> {comment.content}
             {sessionUser.id === comment.userId ? <>
             <EditCommentForm comment={comment}/>
-            <DeleteComentModal comment={comment}/>
+            <DeleteCommentModal comment={comment}/>
             </> : <></>}
             </div>
           </div>
       )
     })
+
+    // const ViewComments = () => {
+      
+    //   return <div className='exCom' onClick={Unexpand}>View all {eachComment.length} comments</div>
+    //   return <div className='unexCom' onClick={Expand}>View all {eachComment.length} comments</div>
+    const thisDiv = <div></div> 
+
+    // }
     // console.log("THIS USER!!!!!!!!",thisUser)
     // filter(img => img.userId === user.id)
+    const expand = true
 
     //NOT GETTING USERS!!!! (PART 2)
     return (
       <div className='eachImage' key={image.id}>
-        <NavLink to={`/${thisUser?.username}`}>{thisUser?.username}</NavLink>
-        <div> Picture: {image?.picture}</div>
-        <div>
-          <div>{image.caption}</div>
-          <div>
-            <div>{eachComment}</div>
-          </div>
+        <div className='imghead'>
+          <NavLink to={`/${thisUser?.username}`}>{thisUser?.username}</NavLink>
+          <NavLink to={`/${thisUser?.username}`}>{thisUser?.username}</NavLink>
+          options modal
         </div>
-        <AddCommentForm image = {image}/>
+        <div className='imgpic'> {image?.picture}</div>
+        <div className='imginfo'>
+          <div>{image.caption}</div>
+          {/* RENDER COMMENTS */}
+          {eachComment.length ?
+            <>
+              {eachComment.length === 1 ?
+                <div>{eachComment}</div>
+                : <ViewImageModal image={image} expand={expand} users={users}/> }
+            </>
+
+            
+            : <></>}
+          
+        </div>
+        <AddCommentForm className='imgadd'image = {image} thisDiv ={thisDiv}/>
       </div>
     );
   });

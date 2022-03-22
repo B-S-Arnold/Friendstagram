@@ -44,15 +44,18 @@ const NavBar = ({user}) => {
   
     return (
       <div className='containerContainer'>
-        <nav className='navContainer'>
-          <div className='navUL'>
+        {/* <nav className='navOuterContainer'> */}
+          <div className='navContainer'>
             <div className='splitter' />
+          <div className='splitter' />
             <div>
               <NavLink className='navbarTitle' to='/' exact={true} activeClassName='active'>
                 Friendstagram
               </NavLink>
             </div>
             <div className='splitter'/>
+            <div className='splitter' />
+            <div className='splitter' />
             <div className='navBtnContainer'>
               <div className='buttondiv'>
                 <div className='buttondiv'>
@@ -67,10 +70,10 @@ const NavBar = ({user}) => {
                   <Dropdown />
                 </button>
               </div>
-              <div className='splitter' />
             </div>
+            <div className='splitter' />
           </div>
-        </nav>
+        {/* </nav> */}
       </div>
     );
   }

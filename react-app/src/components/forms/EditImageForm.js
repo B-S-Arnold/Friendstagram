@@ -49,7 +49,6 @@ const EditImageForm = ({image}) => {
                 />
             </div> */}
             <div>
-                <label htmlFor='body'>Caption</label>
                 <textarea
                     className='caption'
                     name='caption'
