@@ -1,4 +1,3 @@
-import { user } from 'pg/lib/defaults';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -95,14 +94,14 @@ function UsersList() {
       <div className='spacer' />
       <div className='centeredContainer'>
         <div className='rowdiv'>
-          {/* <div className='coldiv'> */}
+          
             <div>
               <div className='userListDiv'>{userComponents}</div>
             </div>
             <div>
               <div className='imageListDiv'>{allImages}</div>
             </div>
-          {/* </div> */}
+          
         </div>
         <div className='rowdiv'>
           <div className='userinfodiv'>
