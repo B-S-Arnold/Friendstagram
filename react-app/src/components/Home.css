@@ -31,8 +31,13 @@
     height: 119px;
     width: 614px;
     justify-content: flex-start;
-    margin: 12px 20px
+    margin: 12px 20px;
+    overflow: auto;
 }
+
+/* .userListDiv::-webkit-scrollbar{
+    background-color: black;
+} */
 
 .innerUserListDiv{
     display: flex;
@@ -121,4 +126,10 @@
 
 .usersFN{
     color: #8e8e8e;
+}
+
+.imghead{
+    display: flex;
+    justify-content: space-between;
+    width: 614px;
 }

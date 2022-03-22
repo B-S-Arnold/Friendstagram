@@ -71,21 +71,4 @@ ROWS OF 3 */
     /* flex-direction: column; */
 }
 
-.myImage{
-    /* display: flex; */
-    /* flex-direction: column; */
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    border: solid 1px #dbdbdb;
-    /* height is temporary */
-    /* should adjust to image size */
-    height: 293px;
-    width: 293px;
-    justify-content: center;
-    margin: 14px
-}
-
-.myImage:hover{
-    cursor: pointer;
-}
+/* Image Grid is in ViewImage.css */

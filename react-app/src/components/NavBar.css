@@ -32,13 +32,13 @@
     margin: 0px 200px;
 }
 
-.navUL{
+/* .navUL{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
-}
+} */
 
 .navBtnContainer{
     display: flex;
@@ -146,6 +146,9 @@
     
 }
 
+.splitter{
+    margin: 12px;
+}
 
 
 

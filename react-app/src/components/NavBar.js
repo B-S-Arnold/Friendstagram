@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
 import AddImageModal from './modals/AddImageModal';
 import './NavBar.css'
 import { readImages } from '../store/images';
@@ -16,6 +16,7 @@ import Dropdown from './Dropdown';
 
 const NavBar = ({user}) => {
 
+  const history = useHistory()
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,22 +28,38 @@ const NavBar = ({user}) => {
     fetchData()
   }, [dispatch])
 
+
+    const HomeButton = () => {
+
+    const goHome = () => {
+      history.push(`/`);
+    }
+
+      return <button className='homebtn navbtn' onClick={goHome} />
+    // return <NavLink to={`/${user.username}`} exact={true} activeClassName='active'>
+    //     Profile
+    // </NavLink>
+  };
+
   
     return (
       <div className='containerContainer'>
-        <nav className='navContainer'>
-          <div className='navUL'>
+        {/* <nav className='navOuterContainer'> */}
+          <div className='navContainer'>
             <div className='splitter' />
+          <div className='splitter' />
             <div>
               <NavLink className='navbarTitle' to='/' exact={true} activeClassName='active'>
                 Friendstagram
               </NavLink>
             </div>
             <div className='splitter'/>
+            <div className='splitter' />
+            <div className='splitter' />
             <div className='navBtnContainer'>
               <div className='buttondiv'>
                 <div className='buttondiv'>
-                  <button className='homebtn navbtn' />
+                  <HomeButton />
                 </div>
               </div>
               <div>
@@ -53,10 +70,10 @@ const NavBar = ({user}) => {
                   <Dropdown />
                 </button>
               </div>
-              <div className='splitter' />
             </div>
+            <div className='splitter' />
           </div>
-        </nav>
+        {/* </nav> */}
       </div>
     );
   }

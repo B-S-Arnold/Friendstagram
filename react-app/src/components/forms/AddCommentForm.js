@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { createComment } from '../../store/comments';
 
 
+
 const AddCommentForm = ({image}) => {
 
     const user = useSelector(state => state.session.user);
