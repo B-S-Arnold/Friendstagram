@@ -11,17 +11,17 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
-  // const [repeatPassword, setRepeatPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    // if (password === repeatPassword) {
+    if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password, fullName));
       if (data) {
         setErrors(data)
-      // }
+      }
     }
   };
 
@@ -41,9 +41,9 @@ const SignUpForm = () => {
     setFullName(e.target.value);
   };
 
-  // const updateRepeatPassword = (e) => {
-  //   setRepeatPassword(e.target.value);
-  // };
+  const updateRepeatPassword = (e) => {
+    setRepeatPassword(e.target.value);
+  };
 
   if (user) {
     return <Redirect to='/' />;
@@ -51,6 +51,7 @@ const SignUpForm = () => {
 
   return (
     <div className='divContainer'>
+      <div className='spacer' />
       <div className='signupContainer'>
         <div className='mainTitle'>
           Friendstagram
@@ -84,7 +85,7 @@ const SignUpForm = () => {
             <input
               className='inputField'
               placeholder='Email'
-              type='text'
+              type='email'
               name='email'
               onChange={updateEmail}
               value={email}
@@ -120,22 +121,23 @@ const SignUpForm = () => {
               value={password}
             ></input>
           </div>
-          {/* <div>
-            <label>Repeat Password</label>
+          <div>
             <input
+              className='inputField'
+              placeholder='Repeat Password'
               type='password'
               name='repeat_password'
               onChange={updateRepeatPassword}
               value={repeatPassword}
               required={true}
             ></input>
-          </div> */}
+          </div>
           
           <button className='btn' type='submit'>Sign up</button>
         </form>
       </div>
       <div className='redirContainer'>
-        <div>
+        <div className='switchdiv'>
           
           Have an account? 
           

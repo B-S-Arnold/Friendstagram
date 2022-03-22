@@ -39,31 +39,28 @@ function User() {
   });
 
   return (
-    <>
+    <div className= 'profPageContainer'>
       <div className='spacer' />
-      <h2>User info</h2>
-      <div>
-        <div>
-          <strong>User Id {user.id}</strong>
+      <div className='profHead'>
+        <div className= 'profpic'/>
+        <div className= 'profInfo'>
+          <div className = 'profUN'>
+            {username}
+          </div>
+          <div className = 'profNum'>
+            <strong>{userImages.length}</strong> posts
+          </div>
+          <div className= 'profFNandBio'>
+            <strong>{user.fullName}</strong>
+            <div>{user.bio ? <><strong>Bio</strong> {user.bio}</> : <> </>}</div>
+          </div>
         </div>
-        <div>
-          <strong>Username</strong> {username}
-        </div>
-        <div>
-          <strong>Email</strong> {user.email}
-        </div>
-        <div>
-          <strong>Name</strong> {user.fullName}
-        </div>
-        <div>
-          {user.bio ? <><strong>Bio</strong> {user.bio}</>: <></>}
-        </div>
+        <div className='minispacer'/>
       </div>
-      <div>
-          <h2>All of {username}'s images</h2>
-        <div className='myImageDiv'>{allImages}</div>
-      </div>
-    </>
+      
+      <div className='myImageDiv'>{allImages}</div>
+      
+    </div>
   );
 }
 export default User;
