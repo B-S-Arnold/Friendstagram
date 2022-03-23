@@ -30,7 +30,6 @@ const AddImageForm = () => {
 
     return (
         <form className='add-image' onSubmit={handleSubmit}>
-            <div>Add Image</div>
             <div>
                 {Object.entries(errors).map((error) => (
                     <div key={error[0]}>{error[1]}</div>
@@ -39,10 +38,19 @@ const AddImageForm = () => {
             <div>
                 <input
                     type='text'
-                    placeholder='picture'
+                    placeholder='Add a picture...'
                     name='picture'
                     value={picture}
                     onChange={(e) => setPicture(e.target.value)}
+                />
+            </div>
+            <div>
+                {/* RENDER IMAGE */}
+                <img
+                    height="293px"
+                    width="293px"
+                    src={picture}
+                    alt="new"
                 />
             </div>
             <div>

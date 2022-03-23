@@ -55,8 +55,13 @@ const ViewImageModal = ({ image, expand, users }) => {
 
         thisDiv = <button className='myImage' onClick={() => setRenderModal(true)} image={image}>
             <div>
-                <h1> ID: {image.id} </h1>
-                <h3> PIC: {image.picture}</h3>
+                {/* RENDER IMAGE */}
+                <img
+                    height="293px"
+                    width="293px"
+                    src={image.picture}
+                    alt="new"
+                />
             </div>
 
 
@@ -82,7 +87,17 @@ const ViewImageModal = ({ image, expand, users }) => {
                 <Modal onClose={() => setRenderModal(false)}>
                     <div className='viewModal' onClose={() => setRenderModal(false)}>
 
-                        <div className='picView'> {image.picture}</div>
+                        <div className='picView'>
+                            {/* RENDER IMAGE */}
+                                <img
+                                    // height="293px"
+                                    // width="293px"
+                                    src={image.picture}
+                                    alt="new"
+                                />
+                            
+                        
+                        </div>
                         <div className='infoView'>
                             
                             <div className='infoHead'>
