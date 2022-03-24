@@ -88,7 +88,7 @@ const AddImageForm = () => {
                 <div>
                     {/* RENDER IMAGE */}
                     <img
-                        
+                        className='imgFormImg'
                         src={picture}
                         alt="pic"
                         id='pic'

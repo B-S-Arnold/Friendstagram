@@ -118,3 +118,8 @@
     resize: none;
 }
 
+.imgFormImg{
+    max-height: 280px;
+    max-width: 500px;
+}
+
