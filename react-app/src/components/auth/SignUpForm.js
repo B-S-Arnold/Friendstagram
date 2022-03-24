@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -45,11 +45,8 @@ const SignUpForm = () => {
     setErrors(errors.splice(1,0,'All fields are required'))
     
   }
-  // if (password === repeatPassword && errors.includes('Password and Confirm Password must match.')) {
-  //   setErrors(errors.splice(1, 0, 'Password and Confirm Password must match.'))
-  // }
+  
   // PASSWORD ERRORS
-  // if pas
 
   if (password !== repeatPassword && !errors.includes('Password and Confirm Password must match.')) {
     errors.push('Password and Confirm Password must match.')
@@ -69,15 +66,35 @@ const SignUpForm = () => {
   }
 
   //EMAIL ERRORS
-  if (!email.includes('@') && !errors.includes('Email address must be valid. (example@domain.com)')) {
+  if ((!email.includes('@') || !validEmail()) && !errors.includes('Email address must be valid. (example@domain.com)')) {
     errors.push('Email address must be valid. (example@domain.com)')
     setErrors(errors)
   }
+  function validEmail() {
+    const splitAtEmail = email.split('@')[email.split('@').length-1]
+    console.log("split at email", splitAtEmail)
+    if (splitAtEmail) {
+      const splitDotEmail = splitAtEmail.split('.')[splitAtEmail.split('.').length-1]
+      console.log('split DOT EMAIL', splitDotEmail)
+      if (splitDotEmail){
+        console.log('BOOLEAN', splitDotEmail.length > 2)
+        return splitDotEmail.length >= 2;
+      }
+    }
+  }
+  
 
-  if (email.includes('@') && errors.includes('Email address must be valid. (example@domain.com)')) {
+  
+  
+
+
+
+  if (email.includes('@') && validEmail() && errors.includes('Email address must be valid. (example@domain.com)')) {
     setErrors(errors.splice(1, 0, 'Email address must be valid. (example@domain.com)'))
   }
 
+  
+  
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -106,6 +123,10 @@ const SignUpForm = () => {
   return (
     <div className='divContainer'>
       <div className='spacer' />
+      <div className='contContainer'>
+
+      <div className='phoneImg' />
+      <div>
       <div className='signupContainer'>
         <div className='mainTitle'>
           Friendstagram
@@ -199,6 +220,8 @@ const SignUpForm = () => {
             Log in
           </NavLink>
           
+        </div>
+        </div>
         </div>
       </div>
     </div>

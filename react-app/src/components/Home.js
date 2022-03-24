@@ -34,7 +34,7 @@ function UsersList() {
       </div>
     );
   });
-
+  images.reverse()
   //NOT GETTING USERS!!!! (PART 1)
   const allImages = images.map((image) => {
     const thisUser = users?.filter(user => user.id === image.userId)[0]
@@ -89,6 +89,7 @@ function UsersList() {
         </div>
         <div className='imgpic'>
           {/* RENDER IMAGE */}
+          
             <img
               height="293px"
               width="293px"
