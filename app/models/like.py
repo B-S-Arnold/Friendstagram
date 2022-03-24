@@ -8,6 +8,8 @@ class Like(db.Model):
     userId = db.Column(db.Integer,  db.ForeignKey('users.id'), nullable=False)
     imageId = db.Column(db.Integer,  db.ForeignKey('images.id', ondelete='CASCADE'), nullable=False)
 
+    image = db.relationship('Image', back_populates='likes')
+    
     def to_dict(self):
         return {
             "id": self.id,

@@ -9,6 +9,8 @@ class Comment(db.Model):
     imageId = db.Column(db.Integer,  db.ForeignKey('images.id', ondelete='CASCADE'), nullable=False)
     content = db.Column(db.Text, nullable=False)
     edited = db.Column(db.Boolean)
+    
+    image = db.relationship('Image', back_populates='comments')
 
     def to_dict(self):
         return {
