@@ -53,15 +53,37 @@ const ViewImageModal = ({ image, expand, users }) => {
 
     } else {
 
+        // TESTING
+        
+        // TESTING
+
+
+        // if(image.picture.width )
+        // const width = image?.naturalWidth;
+        // const height = image.picture.clientHeight;
+
+        // const thisImage =
+        //                 <img
+        //                     height='auto'
+        //                     width='auto'
+        //                     className='foto'
+        //                     src={image.picture}
+        //                     alt="new"
+        //                 />
+        // console.log("HEIGHT", thisImage.clientHeight)
+
+        // console.log('WIDTH', width)
+        // Create dummy image to get real width and height
+        
         thisDiv = <button className='myImage' onClick={() => setRenderModal(true)} image={image}>
             <div>
                 {/* RENDER IMAGE */}
                 <img
-                    height="293px"
-                    width="293px"
+                    className='foto'
                     src={image.picture}
                     alt="new"
                 />
+                
             </div>
 
 
@@ -90,8 +112,8 @@ const ViewImageModal = ({ image, expand, users }) => {
                         <div className='picView'>
                             {/* RENDER IMAGE */}
                                 <img
-                                    // height="293px"
-                                    // width="293px"
+                                    height="293px"
+                                    width="293px"
                                     src={image.picture}
                                     alt="new"
                                 />

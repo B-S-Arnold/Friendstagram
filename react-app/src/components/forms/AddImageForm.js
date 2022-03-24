@@ -19,7 +19,7 @@ const AddImageForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        
         let newImage = await dispatch(createImage(picture, caption));
         
         if (newImage?.errors) return setErrors(newImage.errors)

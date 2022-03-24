@@ -98,6 +98,11 @@
     cursor:pointer;
 }
 
+.btn:disabled{
+    background-color: #adddfe;
+    
+}
+
 .mainTitle{
     margin-top: 20px;
     font-family: cursive;

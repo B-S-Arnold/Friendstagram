@@ -18,9 +18,16 @@ def username_exists(form, field):
     user = User.query.filter(User.username == username).first()
     if user:
         raise ValidationError('Username is already in use.')
+
+
+# BACKEND ERROR EXAMPLE...
+# ALSO MUST PLACE FUNC IN FORM BELOW
+
+# def invalid_email(form, field):
     
-
-
+#     email = field.data
+#     if '@' and '.com' not in email:
+#         raise ValidationError('Email address is not valid.')
 
 class SignUpForm(FlaskForm):
     username = StringField(
