@@ -64,6 +64,7 @@
 .infoView{
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 }
 
 .infoHead{
@@ -136,4 +137,8 @@
     background-color:#fafafa
 }
 
-
+.nameAndCapView{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
