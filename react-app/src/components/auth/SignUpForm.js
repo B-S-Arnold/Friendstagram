@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -15,15 +15,69 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+
+
+
   const onSignUp = async (e) => {
     e.preventDefault();
+
+    
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password, fullName));
       if (data) {
         setErrors(data)
       }
     }
+    
   };
+
+
+
+
+  //ERRORS
+
+  //ALL FIELDS REQUIRED
+  if ((!email || !username || !password || !fullName || !repeatPassword) && !errors.includes('All fields are required')) {
+    errors.push('All fields are required')
+    setErrors(errors)
+  }
+  if ((email && username && password && fullName && repeatPassword) && errors.includes('All fields are required')) {
+    setErrors(errors.splice(1,0,'All fields are required'))
+    
+  }
+  // if (password === repeatPassword && errors.includes('Password and Confirm Password must match.')) {
+  //   setErrors(errors.splice(1, 0, 'Password and Confirm Password must match.'))
+  // }
+  // PASSWORD ERRORS
+  // if pas
+
+  if (password !== repeatPassword && !errors.includes('Password and Confirm Password must match.')) {
+    errors.push('Password and Confirm Password must match.')
+    setErrors(errors)
+  }
+  if (password.length < 8 && !errors.includes('Password must be 8 or more characters.')) {
+    errors.push('Password must be 8 or more characters.')
+    setErrors(errors)
+  }
+  
+  if (password.length >= 8 && errors.includes('Password must be 8 or more characters.')) {
+    setErrors(errors.splice(1, 0, 'Password must be 8 or more characters.'))
+  }
+  
+  if (password === repeatPassword && errors.includes('Password and Confirm Password must match.')){
+    setErrors(errors.splice(1,0,'Password and Confirm Password must match.'))
+  }
+
+  //EMAIL ERRORS
+  if (!email.includes('@') && !errors.includes('Email address must be valid. (example@domain.com)')) {
+    errors.push('Email address must be valid. (example@domain.com)')
+    setErrors(errors)
+  }
+
+  if (email.includes('@') && errors.includes('Email address must be valid. (example@domain.com)')) {
+    setErrors(errors.splice(1, 0, 'Email address must be valid. (example@domain.com)'))
+  }
+
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -133,7 +187,7 @@ const SignUpForm = () => {
             ></input>
           </div>
           
-          <button className='btn' type='submit'>Sign up</button>
+          <button className='btn' disabled={errors.length > 0} type='submit'>Sign up</button>
         </form>
       </div>
       <div className='redirContainer'>
