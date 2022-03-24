@@ -1,134 +1,133 @@
-# Flask React Project
+# Friendstagram
 
-This is the starter for the Flask React project.
+Friendstagram is a clone of Instagram
 
-## Getting started
+The app currently featuring:
+* Authenticated users
+* Image posts
+* Comment posts
+* Home Page with all images
+* Profile pages with all images by those users
 
-1. Clone this repository (only this branch)
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+## Steps to run this app
 
-2. Install dependencies
+### 1. Clone this repo
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+```sh
+https://github.com/B-S-Arnold/Friendstagram
+```
+### 2. Install the dependencies from the root directory
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+```sh
+pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+```
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+### 3. Create a POSTGRESQL user with CREATEDB and PASSWORD in PSQL
 
-   ```bash
-   pipenv shell
-   ```
+```sh
+CREATE USER <name> WITH CREATEDB PASSWORD <'password'>;
+```
+* NOTE: remeber this information, as you will be using it in step 5
 
-   ```bash
-   flask db upgrade
-   ```
+### 4. Create a POSTGRESQL database WITH OWNER as the user you created 
 
-   ```bash
-   flask seed all
-   ```
+```sh
+CREATE DATABASE <dbname> WITH OWNER <name>;
+```
 
-   ```bash
-   flask run
-   ```
+### 5. Create a .env file in the backend directory based on the .env.example found wihtin said directory
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+### 6. Enter your username and password information in your .env file along with a secure set of (random) characters for your SECRET_KEY
 
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
+### 7. Open the Python shell
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+```sh
+pipenv shell
+```
+### 8. Upgrade and seed the database
+* NOTE - if at any moment, you wish to undo seeds and migrations perform the following:
 
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
+```sh
+ flask db upgrade
+```
 
-## Deploy to Heroku
+```sh
+flask seed all
+```
 
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
+### 8. Run flask from within the shell in the root directory
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+```sh
+flask run
+```
 
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
+### 9. Open up a second terminal and CD into react-app. Start npm services, which should open in the browser
 
-   ```bash
-   heroku login
-   ```
+```sh
+npm start
+```
 
-6. Login to the heroku container registry
+* if the browser does not automatically open, navigate to http://localhost:3000
 
-   ```bash
-   heroku container:login
-   ```
+### 10. Once on the home page, you click the "Log in" button, which can will give you the option to log in as a "Demo User"
 
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
+* alternatively you can navigate to the "Sign up" page, and will automatically be logged in as an authenticated user with your specified information
 
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
+### 11. The nav bar will remain on the top of the window at all times, so if you are ever lost you will have access to:
 
-9. Release your docker container to heroku
+* The Home Page by clicking on the Friendstagram logo or the Home icon.
+* The "Plus" icon to add a new image
+* The "User" icon to access a dropdown menu with the following:
+   * Profile
+   * Logout
 
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
+<!-- HERE -->
 
-10. set up your database
 
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
 
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
 
-12. profit
+### 12. As a logged in user, you can do the following:
 
-### For M1 Mac users
+* Create a unique listing
+* Update a listing you created
+* Delete your listings
+* Review listings from other users
+* Delete those reviews
 
-(Replaces **Step 8**)
+### 13. To Log Out or Create a Listing, click the traveler icon
 
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
+* you can log back in with any credentials you used to sign up
 
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
+### 14. To view a list of the listing, click the "Current Listings" link
 
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
+### 15. When looking at a list of listings, you can navigate to that particular listing page by clicking it
 
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+### 16. On the individual listing page:
 
-3. Use docker to push the image to the Heroku container registry:
+* if the listing is yours, you can edit or delete the listing
+* if the listing belongs to another user, you can leave a review and delete said review
 
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+## That concludes the navigation and functionality of PopPilgrim
+## Thank you for viewing
+
+* Remember to stop the services in the frontend and backend directories
+
+## The following steps are to remove tables and the database from your local machine
+
+### 1. Undo seeds and migrations from the database, and drop the database
+
+```sh
+npx dotenv sequelize db:seed:undo:all
+npx dotenv sequelize db:migrate:undo:all
+npx dotenv sequelize db:drop
+```
+
+### 2. Undo seeds and migrations from the database
+
+```sh
+DROP USER <name>;
+```
+
+### The tables, database, and user should all be dropped from your local machine
+
