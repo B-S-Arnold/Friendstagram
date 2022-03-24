@@ -6,6 +6,9 @@ import EditImageForm from '../forms/EditImageForm';
 import EditCommentForm from '../forms/EditCommentForm';
 import './ViewImage.css'
 import DeleteCommentModal from './DeleteCommentModal';
+import AddCommentForm from '../forms/AddCommentForm';
+import OptionsModal from './OptionsModal';
+import EditCommentModal from './EditCommentModal';
 
 const ViewImageModal = ({ image, expand, users }) => {
     const [renderModal, setRenderModal] = useState(false);
@@ -37,7 +40,7 @@ const ViewImageModal = ({ image, expand, users }) => {
                         }
 
                         {sessionUser.id === comment.userId ? <>
-                            <EditCommentForm comment={comment} />
+                            <EditCommentModal comment={comment} />
                             <DeleteCommentModal comment={comment} />
                         </> : <></>}
                     </div>
@@ -109,9 +112,10 @@ const ViewImageModal = ({ image, expand, users }) => {
                 <Modal onClose={() => setRenderModal(false)}>
                     <div className='viewModal' onClose={() => setRenderModal(false)}>
 
-                        <div className='picView'>
+                        <div className='picViewDiv'>
                             {/* RENDER IMAGE */}
                                 <img
+                                    className='picViewPic'
                                     height="293px"
                                     width="293px"
                                     src={image.picture}
@@ -128,8 +132,11 @@ const ViewImageModal = ({ image, expand, users }) => {
                                 
                                 {sessionUser.id === image.userId? <>
                                     {/* OPTIONS */}
-                                    <EditImageForm image={image}/>
-                                    <DeleteImageModal image={image}/>
+                                    <OptionsModal image = {image}/>
+                                    {/* <button className='viewImgOptions'/> */}
+                                    
+                                    {/* <EditImageModal image={image}/>
+                                    <DeleteImageModal image={image}/> */}
                                 
                                 </>:<></>}
                             </div>
@@ -140,6 +147,7 @@ const ViewImageModal = ({ image, expand, users }) => {
                                     }
                                     {eachComment}
                             </div>
+                            <AddCommentForm image = {image}/>
                         </div>
                     
                     </div>

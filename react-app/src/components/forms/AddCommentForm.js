@@ -24,13 +24,13 @@ const AddCommentForm = ({image}) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>Add Comment</div>
+            
             <div>
                 {Object.entries(errors).map((error) => (
                     <div key={error[0]}>{error[1]}</div>
                 ))}
             </div>
-            <div>
+            <div className='imgcom'>
                 <textarea
                     className='content'
                     name='content'
@@ -38,7 +38,7 @@ const AddCommentForm = ({image}) => {
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
-                <button type='submit' disabled={errors.length > 0}>Submit</button>
+                <button className='combtn'type='submit' disabled={errors.length > 0}>Post</button>
             </div>
         </form>
     )

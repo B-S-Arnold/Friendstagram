@@ -4,7 +4,10 @@ import { NavLink } from 'react-router-dom';
 import AddCommentForm from './forms/AddCommentForm';
 import EditCommentForm from './forms/EditCommentForm';
 import './Home.css'
+import './Overflow.css'
 import DeleteCommentModal from './modals/DeleteCommentModal';
+import EditCommentModal from './modals/EditCommentModal';
+import OptionsModal from './modals/OptionsModal';
 import ViewImageModal from './modals/ViewImageModal';
 
 function UsersList() {
@@ -39,8 +42,8 @@ function UsersList() {
   const allImages = images.map((image) => {
     const thisUser = users?.filter(user => user.id === image.userId)[0]
     
-    
-    
+  
+   
     
     // .map(user => {
     //   if (user?.id === image?.userId){
@@ -55,14 +58,33 @@ function UsersList() {
     //func for rendering comments
     const eachComment = allComments.map((comment) => {
       const commenter = users?.filter(user => user.id === comment.userId)[0]
+      // let expand = false
+      
+      // const commentEdit = () => {
+      //   let expand = false;
+      //   const expandEdit = () => {
+      //     expand = true
+      //   }
+      
+      //   return <button onClick={expandEdit}>Edit</button>
+      // }
+      // { expand === false ? <div>{comment.content}</div> : <EditCommentForm comment={comment} /> }
+
       return(
-          <div key={comment.id}>
-            <div>
-            <strong>{commenter?.username}</strong> {comment.content}
-            {sessionUser.id === comment.userId ? <>
-            <EditCommentForm comment={comment}/>
-            <DeleteCommentModal comment={comment}/>
-            </> : <></>}
+          <div  key={comment.id}>
+          <div className='commentDiv'>
+              <strong>{commenter?.username}</strong>
+              
+              {/* <div>{comment.content}</div> */}
+              <div>{comment.content}</div>
+              
+              {sessionUser.id === comment.userId ? <>
+              <div className='EDdiv'>
+                <EditCommentModal comment={comment} />
+                <DeleteCommentModal comment={comment}/>
+              </div>
+              </> : <></>}
+            
             </div>
           </div>
       )
@@ -82,25 +104,30 @@ function UsersList() {
     //NOT GETTING USERS!!!! (PART 2)
     return (
       <div className='eachImage' key={image.id}>
-        <div className='imghead'>
-          <NavLink to={`/${thisUser?.username}`}>{thisUser?.username}</NavLink>
-          <NavLink to={`/${thisUser?.username}`}>{thisUser?.username}</NavLink>
-          options modal
+        
+        <div className='imghead'> 
+          <NavLink className='eachPicPP' to={`/${thisUser?.username}`} />
+          <NavLink className='eachPicUN'to={`/${thisUser?.username}`}>{thisUser?.username}</NavLink>
+          {image.userId === sessionUser.id ? <OptionsModal image={image}/> : <div className='noimgOptions' /> }
+          
         </div>
-        <div className='imgpic'>
-          {/* RENDER IMAGE */}
+        <div className='imgdivhome'>
           
             <img
-              height="293px"
-              width="293px"
+              className = 'imgpic'
               src={image?.picture}
               alt="new"
               
             />
-          
         </div>
+        
         <div className='imginfo'>
-          <div>{image.caption}</div>
+          <div className='homeCapDiv'>
+            <strong>{thisUser?.username}</strong>
+            <div>{image.caption}</div>
+            <div className='EDdivfake' />
+              
+          </div>
           {/* RENDER COMMENTS */}
           {eachComment.length ?
             <>
@@ -113,7 +140,7 @@ function UsersList() {
             : <></>}
           
         </div>
-        <AddCommentForm className='imgadd'image = {image} thisDiv ={thisDiv}/>
+        <AddCommentForm image = {image} thisDiv ={thisDiv}/>
       </div>
     );
   });
@@ -134,17 +161,21 @@ function UsersList() {
             </div>
           
         </div>
-        <div className='rowdiv'>
-          <div className='userinfodiv'>
-            <div className='innerUserListDiv'>
-              <NavLink to={`/${sessionUser.username}`} className='thisUser' >
-                {/* {sessionUser.profileImage} */}
-              </NavLink>
-            </div>
-              <div className='thisUserName'>
-                <div className='usersUN'>{sessionUser.username}</div>
-                <div className='usersFN'> {sessionUser.fullName}</div>
+        <div className='rightContainer'>
+          <div className='staticContainer'>
+            <div className='rowdiv'>
+              <div className='userinfodiv'>
+                <div className='innerUserListDiv'>
+                  <NavLink to={`/${sessionUser.username}`} className='thisUser' >
+                    {/* {sessionUser.profileImage} */}
+                  </NavLink>
+                </div>
+                  <div className='thisUserName'>
+                    <div className='usersUN'>{sessionUser.username}</div>
+                    <div className='usersFN'> {sessionUser.fullName}</div>
+                  </div>
               </div>
+            </div>
           </div>
         </div>
       </div>

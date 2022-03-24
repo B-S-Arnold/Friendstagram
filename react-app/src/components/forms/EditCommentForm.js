@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteComment, updateComment } from '../../store/comments';
-
+import '../Overflow.css'
 
 
 const EditCommentForm = ({ comment }) => {
@@ -19,41 +19,31 @@ const EditCommentForm = ({ comment }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let editedComment
-
-        if (content === ''){
-
-            editedComment = await dispatch(deleteComment(thisComment));
-            
-                
-        } else {
-            
-            editedComment = await dispatch(updateComment(id, imageId, content));
-        }
-        
+    
+        let editedComment = await dispatch(updateComment(id, imageId, content));
 
         if (editedComment?.errors) return setErrors(editedComment.errors)
         
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='comeditform' onSubmit={handleSubmit}>
 
             <div>
                 {Object.entries(errors).map((error) => (
                     <div key={error[0]}>{error[1]}</div>
                 ))}
             </div>
-            <div>
-                
+            <div className='inputComDiv'>
+                <label>Edit Your Comment:</label>
                 <textarea
-                    className='content'
+                    className='content-edit'
                     name='content'
                     placeholder='Edit your comment...'
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
-                <button type='submit' disabled={errors.length > 0}>Submit</button>
+                <button className='subEdCom' type='submit' disabled={errors.length > 0}>Submit</button>
             </div>
         </form>
     )

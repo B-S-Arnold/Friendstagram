@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { $CombinedState } from 'redux';
 import { createImage } from '../../store/images'
 
 
@@ -27,6 +28,33 @@ const AddImageForm = () => {
             history.push(`/${user.username}`);
         }
     }
+    
+    // ERRORS FOR IMAGES
+
+    // useEffect(() => {
+        
+
+
+            const thisUrl = new Image();
+            thisUrl.onload = () => {
+
+                if (errors?.includes('Image address not found')) {
+                    setErrors(errors.splice(1, 0, 'Image address not found'))
+
+                }
+            };
+            thisUrl.onerror = () => {
+
+                if (!errors?.includes('Image address not found')) {
+                    errors.push('Image address not found')
+                    setErrors(errors)
+                }
+            };
+            thisUrl.src = picture;
+       
+    
+    // }, [errors, setErrors, picture, setPicture]);
+
 
     return (
         <form className='add-image' onSubmit={handleSubmit}>
@@ -35,14 +63,21 @@ const AddImageForm = () => {
                     <div key={error[0]}>{error[1]}</div>
                 ))}
             </div>
+            
             <div>
                 <input
                     type='text'
                     placeholder='Add a picture...'
                     name='picture'
                     value={picture}
-                    onChange={(e) => setPicture(e.target.value)}
+                    onChange={(e) => {
+                        
+                        setPicture(e.target.value)
+                    }}
                 />
+            </div>
+            <div>
+                Image Preview
             </div>
             <div>
                 {/* RENDER IMAGE */}
@@ -51,8 +86,12 @@ const AddImageForm = () => {
                     width="293px"
                     src={picture}
                     alt="new"
+                    id='pic'
                 />
+                
+                
             </div>
+            
             <div>
                 
                 <textarea
@@ -62,8 +101,9 @@ const AddImageForm = () => {
                     value={caption}
                     onChange={(e) => setCaption(e.target.value)}
                 />
-                <button type='submit' disabled={errors.length > 0}>Submit</button>
+                <button type='submit' disabled={ errors.length > 0}>Submit</button>
             </div>
+            
         </form>
     )
 }
