@@ -9,6 +9,7 @@ import DeleteCommentModal from './DeleteCommentModal';
 import AddCommentForm from '../forms/AddCommentForm';
 import OptionsModal from './OptionsModal';
 import EditCommentModal from './EditCommentModal';
+import { NavLink } from 'react-router-dom';
 
 const ViewImageModal = ({ image, expand, users }) => {
     const [renderModal, setRenderModal] = useState(false);
@@ -31,7 +32,7 @@ const ViewImageModal = ({ image, expand, users }) => {
 
                     {/* DISPLAY COMMENTS */}
 
-                    <div className= 'viewCommentDiv'>
+                    <div className= 'commentDiv'>
                         <strong>{commenter.username}</strong> {comment.content}
 
                         {comment.edited === true ?
@@ -40,8 +41,12 @@ const ViewImageModal = ({ image, expand, users }) => {
                         }
 
                         {sessionUser.id === comment.userId ? <>
-                            <EditCommentModal comment={comment} />
-                            <DeleteCommentModal comment={comment} />
+                            
+                            <div className='EDdiv'>
+                                <EditCommentModal comment={comment} />
+                                <DeleteCommentModal comment={comment} />
+                            </div>
+
                         </> : <></>}
                     </div>
                 </div>
@@ -126,10 +131,10 @@ const ViewImageModal = ({ image, expand, users }) => {
                         </div>
                         <div className='infoView'>
                             
-                            <div className='infoHead'>
+                            <div className='imghead'>
 
-                                {imgUser.username}
-                                
+                                <NavLink className='eachPicPP' to={`/${imgUser?.username}`} />
+                                <NavLink className='eachPicUN' to={`/${imgUser?.username}`}>{imgUser?.username}</NavLink>
                                 {sessionUser.id === image.userId? <>
                                     {/* OPTIONS */}
                                     <OptionsModal image = {image}/>
@@ -142,10 +147,24 @@ const ViewImageModal = ({ image, expand, users }) => {
                             </div>
                             <div className='infoComments'>
                                     {image.edited === true ?
-                                        <><div>Edited</div> <h3>{image.caption}</h3></> :
-                                        <> <h3>{image.caption}</h3></>
+                                        <>
+                                            <div className='homeCapDiv'>
+                                                <strong>{imgUser.username}</strong>
+                                                <div>{image.caption}</div>
+                                            <div className='EDdivfake' />
+                                            </div>
+
+                                        </> :
+                                        <>
+                                            <div className='nameAndCapView'>
+                                                <strong>{imgUser.username}</strong>
+                                                <div>{image.caption}</div>
+                                            </div>
+                                        </>
                                     }
-                                    {eachComment}
+                            </div>
+                            <div>
+                                {eachComment}
                             </div>
                             <AddCommentForm image = {image}/>
                         </div>
