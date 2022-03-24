@@ -175,6 +175,31 @@ function UsersList() {
                     <div className='usersFN'> {sessionUser.fullName}</div>
                   </div>
               </div>
+              <div className='aboveLC'>
+                <div className='linkContainer'>
+                  <a className='personal' href='https://github.com/B-S-Arnold' >
+                    GitHub
+                  </a>
+                  <a className='personal' href='https://www.linkedin.com/in/bryan-arnold-882378215/' >
+                    LinkedIn
+                  </a>
+                  
+                </div>
+                <div className='linkContainer'>
+                  <a className='personal' href='https://www.appacademy.io/' >
+                    App Academy
+                  </a>
+                  <div className='personal'>
+                    bryanscottarnold@gmail.com
+                  </div>
+                </div>
+                <div className='linkContainer'>
+                  <div className='personal'>
+                    <div>2022 Friendstagram </div>
+                    <div>from Bryan Arnold</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
