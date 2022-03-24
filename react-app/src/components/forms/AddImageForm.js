@@ -57,7 +57,13 @@ const AddImageForm = () => {
 
 
     return (
-        <form className='add-image' onSubmit={handleSubmit}>
+        <form className='image-form' onSubmit={handleSubmit}>
+            <div className='instruct'>
+                <div>Add a picture from its url image address.</div>
+                <div>This can be done by right clicking an image</div>
+                <div>and copying the image address.</div>
+                <div>The picture should render on this page.</div>
+            </div>
             <div>
                 {Object.entries(errors).map((error) => (
                     <div key={error[0]}>{error[1]}</div>
@@ -66,6 +72,7 @@ const AddImageForm = () => {
             
             <div>
                 <input
+                    className='urlInput'
                     type='text'
                     placeholder='Add a picture...'
                     name='picture'
@@ -77,19 +84,17 @@ const AddImageForm = () => {
                 />
             </div>
             <div>
-                Image Preview
-            </div>
-            <div>
-                {/* RENDER IMAGE */}
-                <img
-                    height="293px"
-                    width="293px"
-                    src={picture}
-                    alt="new"
-                    id='pic'
-                />
-                
-                
+                <div className='instruct'>Image Preview</div>
+                <div>
+                    {/* RENDER IMAGE */}
+                    <img
+                        className='imgFormImg'
+                        src={picture}
+                        alt="pic"
+                        id='pic'
+                    />
+                    
+                </div>
             </div>
             
             <div>
@@ -101,8 +106,9 @@ const AddImageForm = () => {
                     value={caption}
                     onChange={(e) => setCaption(e.target.value)}
                 />
-                <button type='submit' disabled={ errors.length > 0}>Submit</button>
+                
             </div>
+            <button className='btn'type='submit' disabled={errors.length > 0}>Submit</button>
             
         </form>
     )
