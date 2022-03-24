@@ -1,6 +1,6 @@
 # Friendstagram
 
-Friendstagram is a clone of Instagram
+Friendstagram is a clone of Instagram by Bryan Arnold
 
 The app currently featuring:
 * Authenticated users
@@ -89,45 +89,45 @@ npm start
 
 ### 12. As a logged in user, you can do the following:
 
-* Create a unique listing
-* Update a listing you created
-* Delete your listings
-* Review listings from other users
-* Delete those reviews
+* Post images with captions
+* View your own images and those of others
+* Edit your images and captions
+* Delete Images
+* Comment on your own and others' images
+* View all of your comments and the comments others have made
+* Edit your comments
+* Delete your comments
 
-### 13. To Log Out or Create a Listing, click the traveler icon
+### 13. Working with Images
 
-* you can log back in with any credentials you used to sign up
+* You can post an image from anywhere on the site with the "Plus" icon in the NavBar
+* You can view your images as they show up on the Home page feed,
+or you can view images on individual Profile pages, including your own
+* To edit or delete an image, click the "Ellipsis" appearing in the top right corner of images belonging to you
 
-### 14. To view a list of the listing, click the "Current Listings" link
+### 14. Working with Comments
+* On the main feed page, you can comment on other's images
+* On the main feed page, images will only display 1 comment, and anymore than that, there will be a "View all #num comments" button
+  * This will show the image with all of it's comments
+  * Also, it will have an "Add Comment" field at the bottom
+* Anywhere you can see a comment that you made, there will be edit and delete buttons.
 
-### 15. When looking at a list of listings, you can navigate to that particular listing page by clicking it
+### 15. To Log Out
 
-### 16. On the individual listing page:
+* Click on your "Profile" icon in the NavBar, and click the "Logout" button
 
-* if the listing is yours, you can edit or delete the listing
-* if the listing belongs to another user, you can leave a review and delete said review
+### Thank you for trying Friendstagram!
 
-## That concludes the navigation and functionality of PopPilgrim
-## Thank you for viewing
+### Contact info:
 
-* Remember to stop the services in the frontend and backend directories
+Bryan Arnold
 
-## The following steps are to remove tables and the database from your local machine
+LinkedIn: 'https://www.linkedin.com/in/bryan-arnold-882378215/'
+GitHub: https://github.com/B-S-Arnold
+email: bryanscottarnold@gmail.com
 
-### 1. Undo seeds and migrations from the database, and drop the database
 
-```sh
-npx dotenv sequelize db:seed:undo:all
-npx dotenv sequelize db:migrate:undo:all
-npx dotenv sequelize db:drop
-```
 
-### 2. Undo seeds and migrations from the database
+This project was made in 2022 as a part of the App Academy curriculum
 
-```sh
-DROP USER <name>;
-```
-
-### The tables, database, and user should all be dropped from your local machine
-
+https://www.appacademy.io/

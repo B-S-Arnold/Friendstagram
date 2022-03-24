@@ -10,8 +10,8 @@ class Image(db.Model):
     caption = db.Column(db.Text)
     edited = db.Column(db.Boolean)
     
-    db.relationship('Comment', cascade='all, delete-orphan')
-    db.relationship('Like', cascade='all, delete-orphan')
+    comments=db.relationship('Comment', back_populates='image', cascade='all, delete-orphan')
+    likes=db.relationship('Like', back_populates='image', cascade='all, delete-orphan')
 
     def to_dict(self):
         return {
