@@ -13,7 +13,7 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      setErrors(['The given email and password combination do not exist.']);
     }
   };
 
@@ -24,6 +24,11 @@ const LoginForm = () => {
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
+
+
+  // if (errors) {
+  //   setErrors(['The given email and password combination do not exist.'])
+  // }
 
 
   return (

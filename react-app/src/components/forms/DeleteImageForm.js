@@ -14,11 +14,9 @@ const DeleteImageForm = ({setRenderModal, image}) => {
         
     }
     return (
-        <div>
-            <p>Are you sure you want to delete this post?</p>
-            <p>All information associated will be lost.</p>
-            <button onClick={handleDelete}>Yes</button>
-            <button onClick={handleClose}>No</button>
+        <div className='delModal'>
+            <div className='delBtn' onClick={handleDelete}>Delete</div>
+            <div className='cancelBtn' onClick={handleClose}>Cancel</div>
         </div>
     )
 }

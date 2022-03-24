@@ -33,7 +33,7 @@ def comments_api():
     comments = Comment.query.all()
     return {'comments': [comment.to_dict() for comment in comments]}
 
-@comment_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
+@comment_routes.route('/<int:id>', methods=['PUT'])
 def comment_api(id):
     
     comment = Comment.query.get(id)
@@ -54,10 +54,15 @@ def comment_api(id):
 
 # DELETE
 
-    if not form.data['content']:
+    if form.errors:
+        return {'errors': form.errors}
+    
+    
+@comment_routes.route('/<int:id>', methods=['DELETE'])
+def comment_del_api(id):
+    
+        comment = Comment.query.get(id)
+    
         db.session.delete(comment)
         db.session.commit()
         return {'message': 'Comment deleted'}
-
-    if form.errors:
-        return {'errors': form.errors}

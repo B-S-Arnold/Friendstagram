@@ -71,4 +71,12 @@ ROWS OF 3 */
     /* flex-direction: column; */
 }
 
+/* @media (max-width: 970px) {
+    .myImageDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    
+} */
+
 /* Image Grid is in ViewImage.css */

@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { deleteComment } from '../../store/comments';
+import '../Overflow.css'
 
 const DeleteCommentForm = ({ setRenderModal, comment }) => {
     const dispatch = useDispatch();
@@ -14,10 +15,9 @@ const DeleteCommentForm = ({ setRenderModal, comment }) => {
 
     }
     return (
-        <div>
-            <p>Are you sure you want to delete this comment?</p>
-            <button onClick={handleDelete}>Yes</button>
-            <button onClick={handleClose}>No</button>
+        <div className='delModal'>
+            <div className='delBtn' onClick={handleDelete}>Delete</div>
+            <div className='cancelBtn' onClick={handleClose}>Cancel</div>
         </div>
     )
 }

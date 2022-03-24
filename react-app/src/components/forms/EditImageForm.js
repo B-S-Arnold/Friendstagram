@@ -31,6 +31,26 @@ const EditImageForm = ({image}) => {
         }
     }
 
+
+    const thisUrl = new Image();
+    thisUrl.onload = () => {
+
+        if (errors?.includes('Image address not found')) {
+            setErrors(errors.splice(1, 0, 'Image address not found'))
+
+        }
+    };
+    thisUrl.onerror = () => {
+
+        if (!errors?.includes('Image address not found')) {
+            errors.push('Image address not found')
+            setErrors(errors)
+        }
+    };
+    thisUrl.src = picture;
+
+
+
     return (
         <form onSubmit={handleSubmit}>
             
@@ -48,6 +68,7 @@ const EditImageForm = ({image}) => {
                     onChange={(e) => setPicture(e.target.value)}
                 />
             </div>
+            <div>Image Preview</div>
             <div>
                 {/* RENDER IMAGE */}
                     <img

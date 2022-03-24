@@ -15,30 +15,35 @@ const SplashPage = ({user}) => {
     return (
     <div className='divContainer'>
         <div className='spacer'/>
-        <div className='loginContainer'>
-            <div className='mainTitle'>
-                Friendstagram
-            </div>
+        <div className='contContainer'>
+            <div className='phoneImg'/>
             <div>
-                <LoginForm />
-            </div>
-            <div className='orLineContainer'>
-                <hr />
-                <div className='orWord'>
-                    OR
+                <div className='loginContainer'>
+                    <div className='mainTitle'>
+                        Friendstagram
+                    </div>
+                    <div>
+                        <LoginForm />
+                    </div>
+                    <div className='orLineContainer'>
+                        <hr />
+                        <div className='orWord'>
+                            OR
+                        </div>
+                        <hr />
+                    </div>
+                    <div>
+                        <DemoUser />
+                    </div>
                 </div>
-                <hr />
-            </div>
-            <div>
-                <DemoUser />
-            </div>
-        </div>
-        <div className='redirContainer'>
-            <div className = 'switchdiv'>
-                Don't have an account?
-                    <NavLink to='/sign-up' exact={true} className='link' activeClassName='active'>
-                    Sign up
-                </NavLink>
+                <div className='redirContainer'>
+                    <div className = 'switchdiv'>
+                        Don't have an account?
+                            <NavLink to='/sign-up' exact={true} className='link' activeClassName='active'>
+                            Sign up
+                        </NavLink>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

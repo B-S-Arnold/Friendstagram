@@ -8,7 +8,7 @@ const DeleteCommentModal = ({ comment }) => {
 
     return (
         <>
-            <button onClick={() => setRenderModal(true)}>Delete</button>
+            <button className='delcom' onClick={() => setRenderModal(true)}>Delete</button>
             {renderModal ? (
                 <Modal onClose={() => setRenderModal(false)}>
                     <DeleteCommentForm onClose={() => setRenderModal(false)} setRenderModal={setRenderModal} comment={comment} />

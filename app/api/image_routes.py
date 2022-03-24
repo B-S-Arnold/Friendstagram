@@ -33,7 +33,7 @@ def images_api():
     images = Image.query.all()
     return {'images': [image.to_dict() for image in images]}
 
-@image_routes.route('/<int:id>', methods=['PUT', 'DELETE'])
+@image_routes.route('/<int:id>', methods=['PUT'])
 def image_api(id):
     
     image = Image.query.get(id)
@@ -51,13 +51,19 @@ def image_api(id):
 
             db.session.commit()
             return image.to_dict()
+        
+    if form.errors:
+        return {'errors': form.errors}
+
+@image_routes.route('/<int:id>', methods=['DELETE'])
+def image_del_api(id):
 
 # DELETE
 
-    if not form.data['caption']:
+        image = Image.query.get(id)
+    
         db.session.delete(image)
         db.session.commit()
         return {'message': 'Image deleted'}
 
-    if form.errors:
-        return {'errors': form.errors}
+    
