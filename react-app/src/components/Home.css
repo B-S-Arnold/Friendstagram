@@ -48,16 +48,19 @@
 
 }
 .eachUser{
-    /* display: flex;
-    flex-direction: column; */
-    
+    /* Maybe background in round div surrounding eachuser */
+    /* background: linear-gradient(25deg, orange, purple, purple); */
+
     background-image: url("../images/default.png");
     background-size:contain;
+    
     width: 56px;
     height: 56px;
-    border: solid #fff 2px;
-    outline: solid purple 2px;
+    border: solid #fff 1px;
+    outline: none;
     border-radius: 50%;
+    box-shadow: 0 0 0 3px purple;
+    
     z-index: 0;
 }
 

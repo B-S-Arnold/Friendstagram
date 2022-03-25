@@ -28,6 +28,7 @@ function UsersList() {
   const userComponents = users.map((user) => {
     return (
       <div key={user.id} className='innerUserListDiv'>
+        
         <NavLink to={`/${user.username}`} className='eachUser' >
           {user.profileImage}
         </NavLink>
