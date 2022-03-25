@@ -103,8 +103,17 @@
     border-radius: 0 0 5px 5px;
 }
 
+:focus{
+    outline: 0;
+}
+
  .userbtn:focus .dropdown{
-    display:block;
+    position: absolute;
+    display:flex;
+    flex-direction: column;
+    outline: 0;
+    border: none;
+    
     
 }
 
@@ -139,8 +148,8 @@
 
 .userbtn{
    
-    top: 13px;
-    position: fixed;
+    /* top: 13px;
+    position: fixed; */
     background-image: url("../images/default.png");
     /* position: absolute; */
     

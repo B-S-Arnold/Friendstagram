@@ -26,11 +26,11 @@ const SplashPage = ({user}) => {
                         <LoginForm />
                     </div>
                     <div className='orLineContainer'>
-                        <hr />
+                        <hr className='loginline'/>
                         <div className='orWord'>
                             OR
                         </div>
-                        <hr />
+                        <hr className='loginline'/>
                     </div>
                     <div>
                         <DemoUser />

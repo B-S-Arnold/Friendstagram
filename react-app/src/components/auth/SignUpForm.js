@@ -144,11 +144,11 @@ const SignUpForm = () => {
         </div>
         
         <div className='orLineContainer'>
-          <hr />
+          <hr className='loginline' />
           <div className='orWord'>
             OR
           </div>
-          <hr />
+          <hr className='loginline' />
         </div>
         <form className='formContainer' onSubmit={onSignUp}>
           <div>

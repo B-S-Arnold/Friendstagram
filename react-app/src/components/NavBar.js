@@ -7,6 +7,7 @@ import './NavBar.css'
 import { readImages } from '../store/images';
 import { readComments } from '../store/comments';
 import Dropdown from './Dropdown';
+import { $CombinedState } from 'redux';
 
 
 
@@ -40,6 +41,8 @@ const NavBar = ({user}) => {
   };
 
   
+
+  
     return (
       <div className='containerContainer'>
         {/* <nav className='navOuterContainer'> */}
@@ -64,9 +67,9 @@ const NavBar = ({user}) => {
                 <AddImageModal />
               </div>
               <div className=' buttondiv'>
-                <button className='userbtn navbtn'>
+              <div id='focus' tabindex="1" className='userbtn navbtn'>
                   <Dropdown />
-                </button>
+                </div>
               </div>
             </div>
             <div className='splitter' />

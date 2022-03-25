@@ -56,7 +56,7 @@
     
     width: 56px;
     height: 56px;
-    border: solid #fff 1px;
+    border: solid #fff 2px;
     outline: none;
     border-radius: 50%;
     box-shadow: 0 0 0 3px purple;
@@ -150,13 +150,17 @@
 }
 
 .eachPicPP{
+
     background-image: url("../images/default.png");
     background-size:contain;
-    width: 56px;
-    height: 56px;
+    
+    width: 32px;
+    height: 32px;
     border: solid #fff 2px;
-    outline: solid purple 2px;
+    outline: none;
     border-radius: 50%;
+    box-shadow: 0 0 0 3px purple;
+    
     z-index: 0;
 }
 
@@ -211,11 +215,20 @@
 }
 
 .imgcom{
-    width: 615px;
+    width: 600px;
     display: flex;
     flex-direction: row;
     min-height: 53px;
-    border-top: #dbdbdbad solid 1px;
+    
+}
+
+.commentline{
+    width: 615px;
+    border-color: #8e8e8e;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-top: solid .1px #dbdbdbad;
 }
 
 .content{
@@ -230,6 +243,7 @@
     padding: 10px;
     text-align:unset;
     outline: none;
+    
 }
 
 .combtn{
@@ -315,3 +329,4 @@
 .aboveLC{
     margin-top:300px;
 }
+

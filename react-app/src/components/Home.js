@@ -141,6 +141,7 @@ function UsersList() {
             : <></>}
           
         </div>
+        <hr className='commentline'/>
         <AddCommentForm image = {image} thisDiv ={thisDiv}/>
       </div>
     );
