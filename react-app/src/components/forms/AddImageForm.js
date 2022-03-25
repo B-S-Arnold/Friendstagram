@@ -31,7 +31,7 @@ const AddImageForm = () => {
     
     // ERRORS FOR IMAGES
 
-    // useEffect(() => {
+    useEffect(() => {
         
 
 
@@ -53,7 +53,7 @@ const AddImageForm = () => {
             thisUrl.src = picture;
        
     
-    // }, [errors, setErrors, picture, setPicture]);
+    }, []);
 
 
     return (
