@@ -4,7 +4,7 @@ import { deleteComment, updateComment } from '../../store/comments';
 import '../Overflow.css'
 
 
-const EditCommentForm = ({ comment }) => {
+const EditCommentForm = ({ comment, setRenderModal }) => {
 
     const id = comment.id
     const imageId = comment.imageId
@@ -14,7 +14,7 @@ const EditCommentForm = ({ comment }) => {
 
     const dispatch = useDispatch();
 
-    const thisComment = comment
+    
     
 
     const handleSubmit = async (e) => {
@@ -23,6 +23,10 @@ const EditCommentForm = ({ comment }) => {
         let editedComment = await dispatch(updateComment(id, imageId, content));
 
         if (editedComment?.errors) return setErrors(editedComment.errors)
+        if(editedComment){
+            setRenderModal(false)
+            setContent('')
+        }
         
     }
 

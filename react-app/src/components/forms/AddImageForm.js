@@ -5,7 +5,7 @@ import { $CombinedState } from 'redux';
 import { createImage } from '../../store/images'
 
 
-const AddImageForm = () => {
+const AddImageForm = ({setRenderModal}) => {
 
     const user = useSelector(state => state.session.user);
     
@@ -14,9 +14,7 @@ const AddImageForm = () => {
     const [errors, setErrors] = useState([]);
 
     const dispatch = useDispatch();
-    const history = useHistory()
 
-    // const userId = user.id
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,7 +23,7 @@ const AddImageForm = () => {
         
         if (newImage?.errors) return setErrors(newImage.errors)
         if (newImage) {
-            history.push(`/${user.username}`);
+            setRenderModal(false)
         }
     }
     
@@ -52,7 +50,7 @@ const AddImageForm = () => {
             };
             thisUrl.src = picture;
 
-            
+
        
     
     // }, [picture]);

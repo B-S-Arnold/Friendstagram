@@ -10,7 +10,7 @@ const EditCommentModal = ({ comment }) => {
             <div className='editcom' onClick={() => setRenderModal(true)}>Edit</div>
             {renderModal ? (
                 <Modal onClose={() => setRenderModal(false)}>
-                    <EditCommentForm comment={comment} />
+                    <EditCommentForm comment={comment} setRenderModal={setRenderModal} />
                 </Modal>
             ) : null
             }

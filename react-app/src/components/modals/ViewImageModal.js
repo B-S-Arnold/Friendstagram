@@ -28,7 +28,7 @@ const ViewImageModal = ({ image, expand, users }) => {
             
             const commenter = users?.filter(user => user.id === comment.userId)[0]
             return (
-                <div key={comment.id}>
+                <div key={comment.id} >
 
                     {/* DISPLAY COMMENTS */}
 
@@ -83,7 +83,7 @@ const ViewImageModal = ({ image, expand, users }) => {
         // console.log('WIDTH', width)
         // Create dummy image to get real width and height
         // const default
-        let path = '../../images/not-found.jpeg'
+        
         
         thisDiv = <button className='myImage' onClick={() => setRenderModal(true)} image={image}>
             <div>
@@ -118,7 +118,7 @@ const ViewImageModal = ({ image, expand, users }) => {
     // }
     
     
-
+    
     return (
         <div>
             
@@ -132,10 +132,16 @@ const ViewImageModal = ({ image, expand, users }) => {
                             {/* RENDER IMAGE */}
                                 <img
                                     className='picViewPic'
-                                    height="293px"
-                                    width="293px"
+                                    // height="293px"
+                                    // width="293px"
                                     src={image.picture}
+                                    id='thispic'
                                     alt="new"
+                                    height='auto'
+                                    onError={e => {
+                                        e.onerror = null
+                                        e.target.src = require('../../images/not-found.jpeg').default
+                                    }}
                                 />
                             
                         
@@ -174,9 +180,18 @@ const ViewImageModal = ({ image, expand, users }) => {
                                         </>
                                     }
                             </div>
-                            <div>
-                                {eachComment}
+                            <div className='viewCommentDiv'>
+                                
+                                {!eachComment?.length > 0 ? <>
+                                <div className="commentDiv">
+                                    <div>No comments...</div>
+                                    <div>Be the first to comment!</div>
+                                    </div>
+                                </>:
+                                    <><div className='EVCdiv'>{eachComment}</div> </>
+                                }
                             </div>
+                            <hr className='commentline' />
                             <AddCommentForm image = {image}/>
                         </div>
                     

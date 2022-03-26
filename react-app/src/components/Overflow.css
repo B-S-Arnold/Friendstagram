@@ -37,6 +37,10 @@
     margin: 10px;
 }
 
+.subEdCom:hover{
+    cursor: pointer;
+}
+
 .delModal{
     display:flex;
     flex-direction: column;

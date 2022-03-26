@@ -1,7 +1,7 @@
 import { deleteImage } from '../../store/images';
 import { useDispatch } from 'react-redux';
 
-const DeleteImageForm = ({setRenderModal, image}) => {
+const DeleteImageForm = ({setRenderModal, image, renderOptionsModal}) => {
     const dispatch = useDispatch();
     const handleDelete = async (e) => {
         e.preventDefault();
@@ -11,6 +11,7 @@ const DeleteImageForm = ({setRenderModal, image}) => {
 
     const handleClose = (e) => {
         setRenderModal(false);
+        renderOptionsModal(false)
         
     }
     return (

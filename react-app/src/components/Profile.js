@@ -67,6 +67,7 @@ function User() {
       <div className='myImageDiv'>{allImages}</div>
       
     </div>
+    
   );
 }
 export default User;

@@ -14,8 +14,8 @@ const OptionsModal = ({ image }) => {
             {renderModal ? (
                 <Modal onClose={() => setRenderModal(false)}>
                     <div className='optionsModal'>
-                        <EditImageModal image={image}/>
-                        <DeleteImageModal image={image}/>
+                        <EditImageModal image={image} renderOptionsModal={setRenderModal}/>
+                        <DeleteImageModal image={image} renderOptionsModal={setRenderModal}/>
                     </div>
                 </Modal>
             ) : null

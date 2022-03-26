@@ -31,7 +31,9 @@ const Dropdown = () => {
 
     return (
         <>
+            <div className='triangle' />
             <div className="dropdown">
+                
             
             <div>
                 <ProfileButton />

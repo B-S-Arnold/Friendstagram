@@ -19,6 +19,9 @@ const AddCommentForm = ({image}) => {
         let newComment = await dispatch(createComment(imageId, content));
 
         if (newComment?.errors) return setErrors(newComment.errors)
+        if(newComment){
+            setContent('')
+        }
         
     }
 

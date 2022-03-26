@@ -67,6 +67,7 @@
     cursor:pointer
 }
 
+
 .dropdown{
     display:none;
     /* position:absolute; */
@@ -113,9 +114,8 @@
     flex-direction: column;
     outline: 0;
     border: none;
-    
-    
 }
+
 
 .buttondiv{
  padding: 0;

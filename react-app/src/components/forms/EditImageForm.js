@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { updateImage } from '../../store/images'
 
 
-const EditImageForm = ({image}) => {
+const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
 
     const user = useSelector(state => state.session.user);
 
@@ -16,7 +16,7 @@ const EditImageForm = ({image}) => {
     const [errors, setErrors] = useState([]);
 
     const dispatch = useDispatch();
-    const history = useHistory()
+    // const history = useHistory()
 
     // const userId = user.id
 
@@ -27,7 +27,8 @@ const EditImageForm = ({image}) => {
 
         if (editedImage?.errors) return setErrors(editedImage.errors)
         if (editedImage) {
-            history.push(`/${user.username}`);
+            setRenderModal(false)
+            renderOptionsModal(false)
         }
     }
 
@@ -75,7 +76,7 @@ const EditImageForm = ({image}) => {
                 />
             </div>
             <div>
-                <div classNAme='instruct'>Image Preview</div>
+                <div className='instruct'>Image Preview</div>
                 <div>
                     {/* RENDER IMAGE */}
                         <img
@@ -84,6 +85,11 @@ const EditImageForm = ({image}) => {
                             src={picture}
                             alt="pic"
                             id='pic'
+                            onError={e => {
+                                e.onerror = null
+                                e.target.src = require('../../images/not-found.jpeg').default
+
+                        }}
                         />
                 </div>
             </div>
