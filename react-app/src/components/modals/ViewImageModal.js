@@ -11,12 +11,12 @@ import OptionsModal from './OptionsModal';
 import EditCommentModal from './EditCommentModal';
 import { NavLink } from 'react-router-dom';
 
+
 const ViewImageModal = ({ image, expand, users }) => {
     const [renderModal, setRenderModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user)
     // const users = Object.values(useSelector(state => state.users))
     const comments = Object.values(useSelector(state => state.comments))
-
 
     const allComments = comments.filter(comment => comment.imageId === image.id)
     let eachComment
@@ -82,6 +82,8 @@ const ViewImageModal = ({ image, expand, users }) => {
 
         // console.log('WIDTH', width)
         // Create dummy image to get real width and height
+        // const default
+        let path = '../../images/not-found.jpeg'
         
         thisDiv = <button className='myImage' onClick={() => setRenderModal(true)} image={image}>
             <div>
@@ -90,6 +92,13 @@ const ViewImageModal = ({ image, expand, users }) => {
                     className='foto'
                     src={image.picture}
                     alt="new"
+                    
+                    onError={e => {
+                        e.onerror = null
+                        e.target.src = require('../../images/not-found.jpeg').default
+                    }}
+                    
+                    
                 />
                 
             </div>
@@ -99,6 +108,8 @@ const ViewImageModal = ({ image, expand, users }) => {
         </button >
 
     }
+
+    
     // Make function so EDIT CAPTION BUTTON renders in place of CAPTION
     // Remeber to use pass IMAGE as props
 

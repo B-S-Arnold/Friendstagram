@@ -118,6 +118,10 @@ function UsersList() {
               className = 'imgpic'
               src={image?.picture}
               alt="new"
+              onError={e => {
+                e.onerror = null
+                e.target.src = require('../images/not-found.jpeg').default
+              }}
               
             />
         </div>

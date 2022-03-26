@@ -67,7 +67,7 @@ const NavBar = ({user}) => {
                 <AddImageModal />
               </div>
               <div className=' buttondiv'>
-              <div id='focus' tabindex="1" className='userbtn navbtn'>
+              <div id='focus' tabIndex="1" className='userbtn navbtn'>
                   <Dropdown />
                 </div>
               </div>

@@ -31,7 +31,7 @@ const AddImageForm = () => {
     
     // ERRORS FOR IMAGES
 
-    useEffect(() => {
+    // useEffect(() => {
         
 
 
@@ -51,18 +51,22 @@ const AddImageForm = () => {
                 }
             };
             thisUrl.src = picture;
+
+            
        
     
-    }, []);
+    // }, [picture]);
 
 
     return (
         <form className='image-form' onSubmit={handleSubmit}>
             <div className='instruct'>
                 <div>Add a picture from its url image address.</div>
+                <div>
+                </div>
                 <div>This can be done by right clicking an image</div>
                 <div>and copying the image address.</div>
-                <div>The picture should render on this page.</div>
+                {/* <div>The picture should render on this page.</div> */}
             </div>
             <div>
                 {Object.entries(errors).map((error) => (
@@ -77,25 +81,34 @@ const AddImageForm = () => {
                     placeholder='Add a picture...'
                     name='picture'
                     value={picture}
+                    // onerror={"this.onerror=null; this.src='../../images/default.png'"}
+                    alt='not found'
                     onChange={(e) => {
                         
                         setPicture(e.target.value)
                     }}
                 />
             </div>
-            <div>
+            {/* <div>
                 <div className='instruct'>Image Preview</div>
                 <div>
-                    {/* RENDER IMAGE */}
+                    
                     <img
                         className='imgFormImg'
                         src={picture}
                         alt="pic"
                         id='pic'
+                        onError={e => {
+                            e.onerror = null
+                            e.target.src = require('../../images/not-found.jpeg').default
+                        
+                        }}
+                        
+                        
                     />
                     
                 </div>
-            </div>
+            </div> */}
             
             <div>
                 
