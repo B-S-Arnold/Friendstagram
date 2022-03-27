@@ -32,13 +32,14 @@ const ViewImageModal = ({ image, expand, users }) => {
 
                     {/* DISPLAY COMMENTS */}
 
-                    <div className= 'commentDiv'>
-                        <strong>{commenter.username}</strong> {comment.content}
+                    <div className= 'nameAndCapView'>
+                        <strong>{commenter.username}</strong> 
+                        <div className='cap-com'>{comment.content}</div>
 
-                        {comment.edited === true ?
-                            <><div className='editedViewCom'>Edited</div></> :
-                            <> <div className='uneditedViewCom'></div></>
-                        }
+                        {/* {comment.edited === true ?
+                            <><div className='editedViewCom'>Edited</div></> : */}
+                            {/* <> <div className='uneditedViewCom'></div></> */}
+                        {/* } */}
 
                         {sessionUser.id === comment.userId ? <>
                             
@@ -163,33 +164,36 @@ const ViewImageModal = ({ image, expand, users }) => {
                                 </>:<></>}
                             </div>
                             <div className='infoComments'>
-                                    {image.edited === true ?
-                                        <>
-                                            <div className='homeCapDiv'>
-                                                <strong>{imgUser.username}</strong>
-                                                <div>{image.caption}</div>
-                                            <div className='EDdivfake' />
-                                            </div>
+                                <div>
+                                        {/* {image.edited === true ?
+                                            <>
+                                                <div className='homeCapDiv'>
+                                                    <strong>{imgUser.username}</strong>
+                                                    <div className='cap-com'>{image.caption}</div>
+                                                    <div>Edited</div>
+                                                <div className='EDdivfake' />
+                                                </div>
 
-                                        </> :
-                                        <>
-                                            <div className='nameAndCapView'>
-                                                <strong>{imgUser.username}</strong>
-                                                <div>{image.caption}</div>
+                                            </> : */}
+                                            <div>
+                                                <div className='nameAndCapView'>
+                                                    <strong>{imgUser.username}</strong>
+                                                    <div className='cap-com'>{image.caption}</div>
+                                                </div>
                                             </div>
-                                        </>
+                                        {/* } */}
+                                </div>
+                                <div className='viewCommentDiv'>
+                                    
+                                    {!eachComment?.length > 0 ? <>
+                                    <div className="commentDiv">
+                                        <div>No comments...</div>
+                                        <div>Be the first to comment!</div>
+                                        </div>
+                                    </>:
+                                        <><div className='EVCdiv'>{eachComment}</div> </>
                                     }
-                            </div>
-                            <div className='viewCommentDiv'>
-                                
-                                {!eachComment?.length > 0 ? <>
-                                <div className="commentDiv">
-                                    <div>No comments...</div>
-                                    <div>Be the first to comment!</div>
-                                    </div>
-                                </>:
-                                    <><div className='EVCdiv'>{eachComment}</div> </>
-                                }
+                                </div>
                             </div>
                             <hr className='commentline' />
                             <AddCommentForm image = {image}/>

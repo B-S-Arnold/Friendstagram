@@ -32,6 +32,9 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
         }
     }
 
+    //IMG ERRORS
+
+    //CHECK IMAGE ONERROR
 
     const thisUrl = new Image();
     thisUrl.onload = () => {
@@ -41,6 +44,7 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
 
         }
     };
+
     thisUrl.onerror = () => {
 
         if (!errors?.includes('Image address not found')) {
@@ -49,6 +53,28 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
         }
     };
     thisUrl.src = picture;
+
+    // HTTPS:// CHECK
+
+    if (!picture?.match(/^https?:\/\//) && !errors?.includes('Image must come from valid web address.')) {
+        errors.push('Image must come from valid web address.')
+        setErrors(errors)
+    }
+
+    if (picture?.match(/^https?:\/\//) && errors?.includes('Image must come from valid web address.')) {
+        setErrors(errors.splice(1, 0, 'Image must come from valid web address.'))
+    }
+
+    // IMG FILE TYPE CHECK
+
+    if (!picture?.match(/\.(jpe?g|gif|png|bmp)$/) && !errors?.includes('Image must have a valid file extension.')) {
+        errors.push('Image must have a valid file extension.')
+        setErrors(errors)
+    }
+
+    if (picture?.match(/\.(jpe?g|gif|png|bmp)$/) && errors?.includes('Image must have a valid file extension.')) {
+        setErrors(errors.splice(1, 0, 'Image must have a valid file extension.'))
+    }
 
 
 
@@ -78,7 +104,6 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
             <div>
                 <div className='instruct'>Image Preview</div>
                 <div>
-                    {/* RENDER IMAGE */}
                         <img
                         
                             className='imgFormImg'

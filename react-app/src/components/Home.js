@@ -73,11 +73,11 @@ function UsersList() {
 
       return(
           <div  key={comment.id}>
-          <div className='commentDiv'>
+          <div className='nameAndCapView'>
               <strong>{commenter?.username}</strong>
               
               {/* <div>{comment.content}</div> */}
-              <div>{comment.content}</div>
+              <div className='cap-com'>{comment.content}</div>
               
               {sessionUser.id === comment.userId ? <>
               <div className='EDdiv'>
@@ -127,9 +127,9 @@ function UsersList() {
         </div>
         
         <div className='imginfo'>
-          <div className='homeCapDiv'>
+          <div className='nameAndCapView'>
             <strong>{thisUser?.username}</strong>
-            <div>{image.caption}</div>
+            <div className='cap-com'>{image.caption}</div>
             <div className='EDdivfake' />
               
           </div>

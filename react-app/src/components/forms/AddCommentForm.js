@@ -21,6 +21,7 @@ const AddCommentForm = ({image}) => {
         if (newComment?.errors) return setErrors(newComment.errors)
         if(newComment){
             setContent('')
+            setErrors([])
         }
         
     }

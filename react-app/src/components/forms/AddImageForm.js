@@ -17,6 +17,7 @@ const AddImageForm = ({setRenderModal}) => {
 
 
     const handleSubmit = async (e) => {
+
         e.preventDefault();
         
         let newImage = await dispatch(createImage(picture, caption));
@@ -30,30 +31,49 @@ const AddImageForm = ({setRenderModal}) => {
     // ERRORS FOR IMAGES
 
     // useEffect(() => {
-        
 
+    const thisUrl = new Image();
+    thisUrl.onload = () => {
 
-            const thisUrl = new Image();
-            thisUrl.onload = () => {
+        if (errors?.includes('Image address not found.')) {
+            setErrors(errors.splice(1, 0, 'Image address not found.'))
+            
+        }
+    };
+    thisUrl.onerror = () => {
 
-                if (errors?.includes('Image address not found')) {
-                    setErrors(errors.splice(1, 0, 'Image address not found'))
-
-                }
-            };
-            thisUrl.onerror = () => {
-
-                if (!errors?.includes('Image address not found')) {
-                    errors.push('Image address not found')
-                    setErrors(errors)
-                }
-            };
-            thisUrl.src = picture;
-
-
-       
+        if (!errors?.includes('Image address not found.')) {
+            errors.push('Image address not found.')
+            setErrors(errors)
+            // setPicture('../../images/not-found.jpeg')
+        }
+    };
+    thisUrl.src = picture;
     
     // }, [picture]);
+
+    // HTTPS:// CHECK
+
+    if (!picture?.match(/^https?:\/\//) && !errors?.includes('Image must come from valid web address.')){
+        errors.push('Image must come from valid web address.')
+        setErrors(errors)
+    }
+
+    if (picture?.match(/^https?:\/\//) && errors?.includes('Image must come from valid web address.')){
+        setErrors(errors.splice(1, 0, 'Image must come from valid web address.'))
+    }
+
+    // IMG FILE TYPE CHECK
+
+    if (!picture?.match(/\.(jpe?g|gif|png|bmp)$/) && !errors?.includes('Image must have a valid file extension.')) {
+        errors.push('Image must have a valid file extension.')
+        setErrors(errors)
+    }
+
+    if (picture?.match(/\.(jpe?g|gif|png|bmp)$/) && errors?.includes('Image must have a valid file extension.')) {
+        setErrors(errors.splice(1, 0, 'Image must have a valid file extension.'))
+    }
+
 
 
     return (
@@ -87,7 +107,7 @@ const AddImageForm = ({setRenderModal}) => {
                     }}
                 />
             </div>
-            {/* <div>
+            <div>
                 <div className='instruct'>Image Preview</div>
                 <div>
                     
@@ -106,7 +126,7 @@ const AddImageForm = ({setRenderModal}) => {
                     />
                     
                 </div>
-            </div> */}
+            </div>
             
             <div>
                 

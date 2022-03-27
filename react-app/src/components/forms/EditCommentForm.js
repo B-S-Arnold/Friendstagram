@@ -25,7 +25,7 @@ const EditCommentForm = ({ comment, setRenderModal }) => {
         if (editedComment?.errors) return setErrors(editedComment.errors)
         if(editedComment){
             setRenderModal(false)
-            setContent('')
+            // setContent('')
         }
         
     }
