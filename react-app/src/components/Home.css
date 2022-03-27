@@ -195,6 +195,7 @@
     /* overflow:hidden; */
     object-fit:contain;
     max-width: 614px;
+    min-width:614px;
     max-height: auto;
     height: auto;
     display: inline;
