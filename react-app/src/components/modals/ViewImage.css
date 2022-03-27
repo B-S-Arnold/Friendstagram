@@ -88,14 +88,20 @@
 
 .picViewPic{
     object-fit:contain;
-    max-width: 614px;
-    max-height: 700px;
-    height: auto;
+    /* max-width: 614px;
+    max-height: 700px; */
+    height: 622px;
     width: auto;
-    min-width:365px;
+    max-height: 622px;
+    min-height: 622px;
+    max-width: auto;
+    min-width: auto;
+    
     /* min-height:565px; */
     height: auto;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .options{

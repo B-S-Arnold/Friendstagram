@@ -31,9 +31,19 @@ function UsersList() {
         <NavLink to={`/${user.username}`} className='eachUser' >
           {user.profileImage}
         </NavLink>
-        <div className='eachUserName'>
-          {user.username}
-        </div>
+        {user.username.length <=8? <>
+          <div className='eachUserName'>
+            {user.username}
+          </div>
+        
+        </> : <>
+            <div className='eachUserName'>
+              {user.username.substring(0,8)+'...'}
+            </div>
+
+
+        </>}
+        
       </div>
     );
   });

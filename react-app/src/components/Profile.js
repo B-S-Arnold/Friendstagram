@@ -54,7 +54,8 @@ function User() {
             {username}
           </div>
           <div className = 'profNum'>
-            <strong>{userImages.length}</strong> posts
+            {userImages?.length === 1?<><strong>{userImages?.length}</strong> post</>
+            :<><strong>{userImages?.length}</strong> posts</>}
           </div>
           <div className= 'profFNandBio'>
             <strong>{user.fullName}</strong>
