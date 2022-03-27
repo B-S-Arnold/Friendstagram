@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useDispatch} from 'react-redux';
 import { updateImage } from '../../store/images'
 
 
 const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
 
-    const user = useSelector(state => state.session.user);
+    // const user = useSelector(state => state.session.user);
 
     const id = image.id
     // const picture = image.picture

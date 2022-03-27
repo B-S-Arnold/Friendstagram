@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -14,6 +14,7 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
 
 
 
@@ -82,12 +83,6 @@ const SignUpForm = () => {
       }
     }
   }
-  
-
-  
-  
-
-
 
   if (email.includes('@') && validEmail() && errors.includes('Email address must be valid. (example@domain.com)')) {
     setErrors(errors.splice(1, 0, 'Email address must be valid. (example@domain.com)'))
@@ -207,8 +202,10 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
+              {/* TOOK DISABLED OUT OF SUBMIT BUTTON */}
+              {/* disabled={errors.length > 0} */}
           
-          <button className='btn' disabled={errors.length > 0} type='submit'>Sign up</button>
+          <button className='btn' type='submit'>Sign up</button>
         </form>
       </div>
       <div className='redirContainer'>

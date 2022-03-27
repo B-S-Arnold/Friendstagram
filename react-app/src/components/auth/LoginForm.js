@@ -26,9 +26,6 @@ const LoginForm = () => {
   };
 
 
-  // if (errors) {
-  //   setErrors(['The given email and password combination do not exist.'])
-  // }
 
 
   return (

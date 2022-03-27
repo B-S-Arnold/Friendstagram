@@ -1,9 +1,6 @@
 import { Modal } from '../../context/Modal';
 import { useState } from 'react';
-import DeleteImageModal from './DeleteImageModal';
 import { useSelector } from 'react-redux';
-import EditImageForm from '../forms/EditImageForm';
-import EditCommentForm from '../forms/EditCommentForm';
 import './ViewImage.css'
 import DeleteCommentModal from './DeleteCommentModal';
 import AddCommentForm from '../forms/AddCommentForm';

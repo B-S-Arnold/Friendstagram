@@ -1,6 +1,5 @@
 import { Modal } from '../../context/Modal';
 import { useState } from 'react';
-import DeleteCommentForm from '../forms/DeleteCommentForm';
 import DeleteImageModal from './DeleteImageModal';
 import EditImageModal from './EditImageModal';
 

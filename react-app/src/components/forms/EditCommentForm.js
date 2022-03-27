@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteComment, updateComment } from '../../store/comments';
+import { updateComment } from '../../store/comments';
 import '../Overflow.css'
 
 

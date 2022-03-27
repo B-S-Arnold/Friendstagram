@@ -7,7 +7,6 @@ import './NavBar.css'
 import { readImages } from '../store/images';
 import { readComments } from '../store/comments';
 import Dropdown from './Dropdown';
-import { $CombinedState } from 'redux';
 
 
 
