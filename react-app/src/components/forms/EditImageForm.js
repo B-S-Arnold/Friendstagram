@@ -63,6 +63,14 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
 
 
     // HTTPS:// CHECK
+    if (picture?.length > 300 && !urlerrors?.includes('*URL cannot be longer than 300 characters')) {
+        urlerrors.push('*URL cannot be longer than 300 characters')
+        seturlerrors(urlerrors)
+    }
+
+    if (picture?.length <= 300 && urlerrors?.includes('*URL cannot be longer than 300 characters')) {
+        seturlerrors(urlerrors.splice(1, 0, '*URL cannot be longer than 300 characters'))
+    }
 
     if (!picture?.match(/^https?:\/\//) && !urlerrors?.includes('Image must come from valid web address.')) {
         urlerrors.push('Image must come from valid web address.')
