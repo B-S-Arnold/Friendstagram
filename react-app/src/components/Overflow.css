@@ -182,10 +182,14 @@
     border-radius: 15px;
 }
 
-.passerr{
+.errcont{
     position:absolute;
-    right: 200px;
-    top: 500px;
+}
+
+.passerr{
+    position:relative;
+    left: 360px;
+    top: -265px;
     height: auto;
     width:fit-content;
     /* margin-left: 100px; */
@@ -197,9 +201,9 @@
 }
 
 .emerr{
-    position: absolute;
-    right: 150px;
-    top: 335px;
+    position: relative;
+    left: 360px;
+    top: -500px;
     height: auto;
     width:fit-content;
     /* margin-left: 100px; */

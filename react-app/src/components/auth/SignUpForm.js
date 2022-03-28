@@ -170,11 +170,6 @@ const SignUpForm = () => {
               value={email}
             ></input>
           </div>
-              <div className='errors emerr'>
-                {emailerrors.map((error, ind) => (
-                  <div key={ind}>{error}</div>
-                ))}
-              </div>
           <div>
             <input
               className='inputField'
@@ -205,11 +200,7 @@ const SignUpForm = () => {
               value={password}
             ></input>
           </div>
-              <div className='errors passerr'>
-                {passerrors.map((error, ind) => (
-                  <div key={ind}>{error}</div>
-                ))}
-              </div>
+              
           <div>
             <input
               className='inputField'
@@ -238,6 +229,19 @@ const SignUpForm = () => {
           
         </div>
         </div>
+        <div className='errcont'>
+        {passerrors?.length>0?
+          <div className='errors passerr'>
+            {passerrors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div> : <></>}
+          {emailerrors?.length>0? <div className='errors emerr'>
+            {emailerrors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>: <></>}
+          </div>
         </div>
       </div>
     </div>
