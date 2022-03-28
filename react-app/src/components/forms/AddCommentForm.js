@@ -8,6 +8,8 @@ const AddCommentForm = ({image}) => {
 
     const [content, setContent] = useState('');
     const [errors, setErrors] = useState([]);
+    const [comerrors, setcomerrors] = useState([])
+
 
     const dispatch = useDispatch();
 
@@ -26,14 +28,20 @@ const AddCommentForm = ({image}) => {
         
     }
 
+    //Comment errors
+    
+
+    if (content?.length > 1000 && !comerrors?.includes('Comment length cannot excede 1,000 characters.')) {
+        comerrors.push('Comment length cannot excede 1,000 characters.')
+        setcomerrors(comerrors)
+    }
+    if (content?.length <= 1000 && comerrors?.includes('Comment length cannot excede 1,000 characters.')) {
+        setcomerrors(comerrors.splice(1, 0, 'Comment length cannot excede 1,000 characters.'))
+    }
+
     return (
+        <>
         <form onSubmit={handleSubmit}>
-            
-            <div>
-                {Object.entries(errors).map((error) => (
-                    <div key={error[0]}>{error[1]}</div>
-                ))}
-            </div>
             <div className='imgcom'>
                 <textarea
                     className='content'
@@ -42,9 +50,18 @@ const AddCommentForm = ({image}) => {
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
-                <button className='combtn'type='submit' disabled={errors.length > 0}>Post</button>
+                <button className='combtn'type='submit' disabled={comerrors.length > 0}>Post</button>
             </div>
         </form>
+            <div className='errors'>
+                {Object.entries(errors).map((error) => (
+                    <div key={error[0]}>{error[1]}</div>
+                ))}
+                {Object.entries(comerrors).map((error) => (
+                    <div key={error[0]}>{error[1]}</div>
+                ))}
+            </div>
+        </>
     )
 }
 

@@ -7,6 +7,7 @@
 * Authenticated users
 * Image posts
 * Comment posts
+* Log in and Sign up pages with validations
 * Home Page with all images
 * Profile pages with all images by those users
 
@@ -15,7 +16,9 @@
 * Followers
 * Replies
 * Comment and Reply Likes
-* User information: including bios profile pictures
+* Search Bar
+* Emoji button for Captions, Comments, and Replies
+* User information: including bios and profile pictures
 * The ability to update or delete your account
 * Uploading photos from local storage
 * And more...
@@ -144,6 +147,7 @@ https://friendsta-gram.herokuapp.com/
   * The uploader's clickable profile image, the uploader's clickable name, and an option's button (...) if uploaded by the current user
   * The uploader's name and the image's caption, followed by all comments on the image
   * An "Add a comment..." field with a "Post" button
+
 <div style='display:flex;flex-dirextion:row;'>
   <div style='display:grid'>
     <strong style='text-align:center;text-decoration:underline'>View Modal</strong>
@@ -188,7 +192,7 @@ https://friendsta-gram.herokuapp.com/
 ### Feel free to test it out all you like
 ### To log out, click the "User" icon on the Nav Bar to access the "Log out" button
 
-### Contact me for any job offers
+# Contact me for any job offers
 
 Bryan Arnold
 bryanscottarnold@gmail.com
@@ -209,10 +213,30 @@ https://www.appacademy.io/
 
 ### Technologies used
 
+* GitHub (git repository)
+  * planned the website, created blueprints, and kept track of my progress using utilities offered by GitHub
+  * used GitHub to create, push to, and branch on a repository
 * Javascript and React (frontend)
+  * installed dependencies using npm and ran the front end server on localhost
+  * made use of Javascript's ability to create modals, params, use scoping, and error handling
+  * made use of React libary's UseEffect, Redirect, UseState, useDispatch, etc.
+  * created and updated State, and updated pages seamlessly with React
+  * used frontend stores, api fetches, and reducers to send CRUD data to the backend
 * Python and Flask (backend)
+  * created forms and routes for CRUD features in the backend
+  * used pipenv shell to migrate, update, and seed the database
+  * ran the backend server through Flask
+  * created a relational database, with table dependency and cascading delete
 * HTML and CSS (layout and styling)
+  * implemented a vast majority of HTML in JS files
+  * used HTML element wrapping and css positiong to manipulate the size, location, and appearance of HTML elements
+  * used HTML to source images from urls, and JavaScript to check the sources legitimacy
 * Docker and Heroku (deploying and hosting online)
+  * used Docker to send the image of the flask/react app to Heroku
+  * used Heroku container and commands to push the app, and manage the live database
+  * deployed the website on Heroku, allowing remote access to the website
+
+
 
 
 ## Steps to run this app

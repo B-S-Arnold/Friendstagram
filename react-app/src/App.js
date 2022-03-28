@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -8,6 +8,7 @@ import User from './components/Profile';
 import { authenticate } from './store/session';
 import SplashPage from './components/Splash';
 import Footer from './components/Footer';
+
 
 function App() {
   const user = useSelector(state => state.session.user);
@@ -39,6 +40,9 @@ function App() {
         <ProtectedRoute path='/:username' exact={true} >
           <User />
         </ProtectedRoute>
+        {/* <Route>
+          <Redirect to='/' />
+        </Route> */}
       </Switch>
       <Footer />
     </BrowserRouter>

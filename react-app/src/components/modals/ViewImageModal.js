@@ -86,6 +86,7 @@ const ViewImageModal = ({ image, expand, users }) => {
         thisDiv = <button className='myImage' onClick={() => setRenderModal(true)} image={image}>
             <div>
                 {/* RENDER IMAGE */}
+                
                 <img
                     className='foto'
                     src={image.picture}
@@ -95,6 +96,7 @@ const ViewImageModal = ({ image, expand, users }) => {
                         e.onerror = null
                         e.target.src = require('../../images/not-found.jpeg').default
                     }}
+                    
                     
                     
                 />

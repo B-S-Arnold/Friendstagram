@@ -17,15 +17,17 @@ function User() {
       return;
     }
     (async () => {
-      const response = await fetch(`/api/users/${username}`);
       const usersRes = await fetch('/api/users/');
       const responseData = await usersRes.json();
+      setUsers(responseData.users);
+      
+    
+      const response = await fetch(`/api/users/${username}`);
       const user = await response.json();
       setUser(user);
 
       // const usersRes = await fetch('/api/users/');
       // const responseData = await usersRes.json();
-      setUsers(responseData.users);
 
     })();
   }, [username]);

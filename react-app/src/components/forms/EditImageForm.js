@@ -13,6 +13,8 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
     const [picture, setPicture] = useState(image?.picture);
     const [caption, setCaption] = useState(image?.caption);
     const [errors, setErrors] = useState([]);
+    const [caperrors, setcaperrors] = useState([]);
+    const [urlerrors, seturlerrors] = useState([]);
 
     const dispatch = useDispatch();
     // const history = useHistory()
@@ -35,44 +37,69 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
 
     //CHECK IMAGE ONERROR
 
+    // ERRORS FOR IMAGES
+
+    // useEffect(() => {
+
     const thisUrl = new Image();
     thisUrl.onload = () => {
 
-        if (errors?.includes('Image address not found')) {
-            setErrors(errors.splice(1, 0, 'Image address not found'))
+        if (urlerrors?.includes('Image address not found.')) {
+            seturlerrors(urlerrors.splice(1, 0, 'Image address not found.'))
 
         }
     };
-
     thisUrl.onerror = () => {
 
-        if (!errors?.includes('Image address not found')) {
-            errors.push('Image address not found')
-            setErrors(errors)
+        if (!urlerrors?.includes('Image address not found.')) {
+            urlerrors.push('Image address not found.')
+            seturlerrors(urlerrors)
+            // setPicture('../../images/not-found.jpeg')
         }
     };
     thisUrl.src = picture;
 
+    // }, [picture]);
+
+
     // HTTPS:// CHECK
 
-    if (!picture?.match(/^https?:\/\//) && !errors?.includes('Image must come from valid web address.')) {
-        errors.push('Image must come from valid web address.')
-        setErrors(errors)
+    if (!picture?.match(/^https?:\/\//) && !urlerrors?.includes('Image must come from valid web address.')) {
+        urlerrors.push('Image must come from valid web address.')
+        seturlerrors(urlerrors)
     }
 
-    if (picture?.match(/^https?:\/\//) && errors?.includes('Image must come from valid web address.')) {
-        setErrors(errors.splice(1, 0, 'Image must come from valid web address.'))
+    if (picture?.match(/^https?:\/\//) && urlerrors?.includes('Image must come from valid web address.')) {
+        seturlerrors(urlerrors.splice(1, 0, 'Image must come from valid web address.'))
+    }
+
+    if (picture === '' && !urlerrors?.includes('*URL field is required.')) {
+        urlerrors.push('*URL field is required.')
+        seturlerrors(urlerrors)
+    }
+
+    if (!picture?.match === '' && urlerrors?.includes('*URL field is required.')) {
+        seturlerrors(urlerrors.splice(1, 0, '*URL field is required.'))
     }
 
     // IMG FILE TYPE CHECK
 
-    if (!picture?.match(/\.(jpe?g|gif|png|bmp)$/) && !errors?.includes('Image must have a valid file extension.')) {
-        errors.push('Image must have a valid file extension.')
-        setErrors(errors)
+    if (!picture?.match(/\.(jpe?g|gif|png|bmp)$/) && !urlerrors?.includes('Image address must end with a valid file extension.')) {
+        urlerrors.push('Image address must end with a valid file extension.')
+        seturlerrors(urlerrors)
     }
 
-    if (picture?.match(/\.(jpe?g|gif|png|bmp)$/) && errors?.includes('Image must have a valid file extension.')) {
-        setErrors(errors.splice(1, 0, 'Image must have a valid file extension.'))
+    if (picture?.match(/\.(jpe?g|gif|png|bmp)$/) && urlerrors?.includes('Image address must end with a valid file extension.')) {
+        seturlerrors(urlerrors.splice(1, 0, 'Image address must end with a valid file extension.'))
+    }
+
+    if (caption?.length > 1000 && !caperrors?.includes('Caption has a 1,000 character limit.')) {
+        caperrors.push('Caption has a 1,000 character limit.')
+        setcaperrors(caperrors)
+    }
+
+    if (caption?.length <= 1000 && caperrors?.includes('Caption has a 1,000 character limit.')) {
+        setcaperrors(caperrors.splice(1, 0, 'Caption has a 1,000 character limit.'))
     }
 
 
@@ -80,10 +107,10 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
     return (
         <form className='image-form'onSubmit={handleSubmit}>
             <div className='instruct'>
-                <div>Change your picture by using another picture's url image address.</div>
+                <div>Change your picture by using url image address.</div>
                 <div>This can be done by right clicking an image</div>
                 <div>and copying the image address.</div>
-                <div>The picture should render on this page.</div>
+                {/* <div>The picture should render on this page.</div> */}
             </div>
             <div>
                 {Object.entries(errors).map((error) => (
@@ -100,7 +127,12 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
                     onChange={(e) => setPicture(e.target.value)}
                 />
             </div>
-            <div>
+            {urlerrors.length ? <div className='errors urlerrors'>
+                {Object.entries(urlerrors).map((error) => (
+                    <div key={error[0]}>{error[1]}</div>
+                ))}
+            </div> : <></>}
+            {/* <div>
                 <div className='instruct'>Image Preview</div>
                 <div>
                         <img
@@ -116,7 +148,7 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
                         }}
                         />
                 </div>
-            </div>
+            </div> */}
             <div>
                 <textarea
                     className='caption'
@@ -127,7 +159,11 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
                 />
                 
             </div>
-            <button className='btn' type='submit' disabled={errors.length > 0}>Submit</button>
+            {caperrors.length ? <div className='errors caperrors'>{Object.entries(caperrors).map((error) => (
+                <div key={error[0]}>{error[1]}</div>
+            ))}
+            </div> : <></>}
+            <button className='btn' type='submit' disabled={caperrors.length > 0 || urlerrors.length}>Submit</button>
         </form>
     )
 }

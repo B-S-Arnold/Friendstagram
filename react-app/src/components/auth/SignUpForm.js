@@ -7,6 +7,10 @@ import '../LoginSignup.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
+  const [emailerrors, setemailerrors] = useState([])
+  const [passerrors, setpasserrors] = useState([])
+  const [allerrors, setallerrors] = useState([])
+  const [unerrors, setunerrors] = useState([])
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,54 +42,54 @@ const SignUpForm = () => {
   //ERRORS
 
   //ALL FIELDS REQUIRED
-  if ((!email || !username || !password || !fullName || !repeatPassword) && !errors.includes('All fields are required')) {
-    errors.push('All fields are required')
-    setErrors(errors)
+  if ((!email || !username || !password || !fullName || !repeatPassword) && !allerrors.includes('All fields are required')) {
+    allerrors.push('All fields are required')
+    setallerrors(allerrors)
   }
-  if ((email && username && password && fullName && repeatPassword) && errors.includes('All fields are required')) {
-    setErrors(errors.splice(1,0,'All fields are required'))
-    
+  if ((email && username && password && fullName && repeatPassword) && allerrors.includes('All fields are required')) {
+    setallerrors(allerrors.splice(1,0,'All fields are required'))
   }
   
   // PASSWORD ERRORS
 
-  if (password !== repeatPassword && !errors.includes('Password and Confirm Password must match.')) {
-    errors.push('Password and Confirm Password must match.')
-    setErrors(errors)
+  if (password !== repeatPassword && !passerrors.includes('Password and Repeat Password must match.')) {
+    passerrors.push('Password and Repeat Password must match.')
+    setpasserrors(passerrors)
   }
-  if (password.length < 8 && !errors.includes('Password must be 8 or more characters.')) {
-    errors.push('Password must be 8 or more characters.')
-    setErrors(errors)
+  if (password.length < 8 && !passerrors.includes('Password must be 8 or more characters.')) {
+    passerrors.push('Password must be 8 or more characters.')
+    setpasserrors(passerrors)
   }
   
   if (password.length >= 8 && errors.includes('Password must be 8 or more characters.')) {
-    setErrors(errors.splice(1, 0, 'Password must be 8 or more characters.'))
+    setpasserrors(passerrors.splice(1, 0, 'Password must be 8 or more characters.'))
   }
   
-  if (password === repeatPassword && errors.includes('Password and Confirm Password must match.')){
-    setErrors(errors.splice(1,0,'Password and Confirm Password must match.'))
+  if (password === repeatPassword && passerrors.includes('Password and Repeat Password must match.')){
+    setpasserrors(passerrors.splice(1,0,'Password and Repeat Password must match.'))
   }
 
   //EMAIL ERRORS
-  if ((!email.includes('@') || !validEmail()) && !errors.includes('Email address must be valid. (example@domain.com)')) {
-    errors.push('Email address must be valid. (example@domain.com)')
-    setErrors(errors)
-  }
   function validEmail() {
     const splitAtEmail = email.split('@')[email.split('@').length-1]
-    console.log("split at email", splitAtEmail)
+    // console.log("split at email", splitAtEmail)
     if (splitAtEmail) {
       const splitDotEmail = splitAtEmail.split('.')[splitAtEmail.split('.').length-1]
-      console.log('split DOT EMAIL', splitDotEmail)
+      // console.log('split DOT EMAIL', splitDotEmail)
       if (splitDotEmail){
-        console.log('BOOLEAN', splitDotEmail.length > 2)
+        // console.log('BOOLEAN', splitDotEmail.length > 2)
         return splitDotEmail.length >= 2;
       }
     }
   }
 
-  if (email.includes('@') && validEmail() && errors.includes('Email address must be valid. (example@domain.com)')) {
-    setErrors(errors.splice(1, 0, 'Email address must be valid. (example@domain.com)'))
+  if ((!email.includes('@') || !validEmail()) && !emailerrors.includes('Email address must be valid. (example@domain.com)')) {
+    emailerrors.push('Email address must be valid. (example@domain.com)')
+    setemailerrors(emailerrors)
+  }
+
+  if (email.includes('@') && validEmail() && emailerrors.includes('Email address must be valid. (example@domain.com)')) {
+    setemailerrors(emailerrors.splice(1, 0, 'Email address must be valid. (example@domain.com)'))
   }
 
   
@@ -146,11 +150,16 @@ const SignUpForm = () => {
           <hr className='loginline' />
         </div>
         <form className='formContainer' onSubmit={onSignUp}>
-          <div>
+          <div className='errors '>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
           </div>
+              <div className='errors'>
+                {allerrors.map((error, ind) => (
+                  <div key={ind}>{error}</div>
+                ))}
+              </div>
           <div>
             <input
               className='inputField'
@@ -161,6 +170,11 @@ const SignUpForm = () => {
               value={email}
             ></input>
           </div>
+              <div className='errors emerr'>
+                {emailerrors.map((error, ind) => (
+                  <div key={ind}>{error}</div>
+                ))}
+              </div>
           <div>
             <input
               className='inputField'
@@ -191,6 +205,11 @@ const SignUpForm = () => {
               value={password}
             ></input>
           </div>
+              <div className='errors passerr'>
+                {passerrors.map((error, ind) => (
+                  <div key={ind}>{error}</div>
+                ))}
+              </div>
           <div>
             <input
               className='inputField'
@@ -205,7 +224,7 @@ const SignUpForm = () => {
               {/* TOOK DISABLED OUT OF SUBMIT BUTTON */}
               {/* disabled={errors.length > 0} */}
           
-          <button className='btn' type='submit'>Sign up</button>
+          <button className='btn' disabled={allerrors.length>0 || passerrors.length>0 || emailerrors.length>0} type='submit'>Sign up</button>
         </form>
       </div>
       <div className='redirContainer'>

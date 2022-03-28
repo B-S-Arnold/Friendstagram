@@ -10,6 +10,8 @@ const AddImageForm = ({setRenderModal}) => {
     const [picture, setPicture] = useState('');
     const [caption, setCaption] = useState('');
     const [errors, setErrors] = useState([]);
+    const [caperrors, setcaperrors] = useState([]);
+    const [urlerrors, seturlerrors] = useState([]);
 
     const dispatch = useDispatch();
 
@@ -33,44 +35,73 @@ const AddImageForm = ({setRenderModal}) => {
     const thisUrl = new Image();
     thisUrl.onload = () => {
 
-        if (errors?.includes('Image address not found.')) {
-            setErrors(errors.splice(1, 0, 'Image address not found.'))
+        if (urlerrors?.includes('*Image address not found.')) {
+            seturlerrors(urlerrors.splice(1, 0, '*Image address not found.'))
             
         }
     };
     thisUrl.onerror = () => {
 
-        if (!errors?.includes('Image address not found.')) {
-            errors.push('Image address not found.')
-            setErrors(errors)
+        if (!urlerrors?.includes('*Image address not found.')) {
+            urlerrors.push('*Image address not found.')
+            seturlerrors(urlerrors)
             // setPicture('../../images/not-found.jpeg')
         }
     };
     thisUrl.src = picture;
     
     // }, [picture]);
+    
 
     // HTTPS:// CHECK
 
-    if (!picture?.match(/^https?:\/\//) && !errors?.includes('Image must come from valid web address.')){
-        errors.push('Image must come from valid web address.')
-        setErrors(errors)
+    // if (picture?.length > 300 && !urlerrors?.includes('*URL cannot be longer than 300 characters')) {
+    //     urlerrors.push('*URL cannot be longer than 300 characters')
+    //     seturlerrors(urlerrors)
+    // }
+
+    // if (!picture?.length <= 300 && urlerrors?.includes('*URL cannot be longer than 300 characters')) {
+    //     seturlerrors(urlerrors.splice(1, 0, '*URL cannot be longer than 300 characters'))
+    // }
+
+    if (picture==='' && !urlerrors?.includes('*URL field is required.')) {
+        urlerrors.push('*URL field is required.')
+        seturlerrors(urlerrors)
     }
 
-    if (picture?.match(/^https?:\/\//) && errors?.includes('Image must come from valid web address.')){
-        setErrors(errors.splice(1, 0, 'Image must come from valid web address.'))
+    if (!picture?.match === '' && urlerrors?.includes('*URL field is required.')) {
+        seturlerrors(urlerrors.splice(1, 0, '*URL field is required.'))
+    }
+
+    if (!picture?.match(/^https?:\/\//) && !urlerrors?.includes('*Image must come from valid web address.')){
+        urlerrors.push('*Image must come from valid web address.')
+        seturlerrors(urlerrors)
+    }
+
+    if (picture?.match(/^https?:\/\//) && urlerrors?.includes('*Image must come from valid web address.')){
+        seturlerrors(urlerrors.splice(1, 0, '*Image must come from valid web address.'))
     }
 
     // IMG FILE TYPE CHECK
 
-    if (!picture?.match(/\.(jpe?g|gif|png|bmp)$/) && !errors?.includes('Image must have a valid file extension.')) {
-        errors.push('Image must have a valid file extension.')
-        setErrors(errors)
+    if (!picture?.match(/\.(jpe?g|gif|png|bmp)$/) && !urlerrors?.includes('*Image address must end with a valid file extension.')) {
+        urlerrors.push('*Image address must end with a valid file extension.')
+        seturlerrors(urlerrors)
     }
 
-    if (picture?.match(/\.(jpe?g|gif|png|bmp)$/) && errors?.includes('Image must have a valid file extension.')) {
-        setErrors(errors.splice(1, 0, 'Image must have a valid file extension.'))
+    if (picture?.match(/\.(jpe?g|gif|png|bmp)$/) && urlerrors?.includes('*Image address must end with a valid file extension.')) {
+        seturlerrors(urlerrors.splice(1, 0, '*Image address must end with a valid file extension.'))
     }
+
+    if (caption?.length > 1000 && !caperrors?.includes('*Caption has a 1,000 character limit.')){
+        caperrors.push('*Caption has a 1,000 character limit.')
+        setcaperrors(caperrors)
+    }
+
+    if (caption?.length <= 1000 && caperrors?.includes('*Caption has a 1,000 character limit.')) {
+        setcaperrors(caperrors.splice(1, 0, '*Caption has a 1,000 character limit.'))
+    }
+
 
 
 
@@ -84,7 +115,7 @@ const AddImageForm = ({setRenderModal}) => {
                 <div>and copying the image address.</div>
                 {/* <div>The picture should render on this page.</div> */}
             </div>
-            <div>
+            <div className='errors'>
                 {Object.entries(errors).map((error) => (
                     <div key={error[0]}>{error[1]}</div>
                 ))}
@@ -105,7 +136,13 @@ const AddImageForm = ({setRenderModal}) => {
                     }}
                 />
             </div>
-            <div>
+            {urlerrors.length ? <div className='errors urlerrors'>
+                {Object.entries(urlerrors).map((error) => (
+                    <div key={error[0]}>{error[1]}</div>
+                ))}
+            </div> : <></>}
+            
+            {/* <div>
                 <div className='instruct'>Image Preview</div>
                 <div>
                     
@@ -124,7 +161,7 @@ const AddImageForm = ({setRenderModal}) => {
                     />
                     
                 </div>
-            </div>
+            </div> */}
             
             <div>
                 
@@ -137,7 +174,12 @@ const AddImageForm = ({setRenderModal}) => {
                 />
                 
             </div>
-            <button className='btn'type='submit' disabled={errors.length > 0}>Submit</button>
+            
+            {caperrors.length ? <div className='errors caperrors'>{Object.entries(caperrors).map((error) => (
+                <div key={error[0]}>{error[1]}</div>
+            ))}
+            </div> : <></>}
+            <button className='btn'type='submit' disabled={caperrors.length > 0 || urlerrors.length > 0}>Submit</button>
             
         </form>
     )
