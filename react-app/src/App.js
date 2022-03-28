@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -40,9 +40,6 @@ function App() {
         <ProtectedRoute path='/:username' exact={true} >
           <User />
         </ProtectedRoute>
-        {/* <Route>
-          <Redirect to='/' />
-        </Route> */}
       </Switch>
       <Footer />
     </BrowserRouter>

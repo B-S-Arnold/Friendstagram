@@ -36,8 +36,21 @@ const SignUpForm = () => {
     
   };
 
+  if (username.includes(' ') && !unerrors.includes('Username cannot have a space.')) {
+    unerrors.push('Username cannot have a space.')
+    setunerrors(unerrors)
+  }
+  if (!username.includes(' ') && unerrors.includes('Username cannot have a space.')) {
+    setunerrors(unerrors.splice(1, 0, 'Username cannot have a space.'))
+  }
 
-
+  if (username.length > 30 && !unerrors.includes('Username must cannot be over 30 characters')) {
+    unerrors.push('Username must cannot be over 30 characters')
+    setunerrors(unerrors)
+  }
+  if (username.length <= 30 && unerrors.includes('Username must cannot be over 30 characters')) {
+    setunerrors(unerrors.splice(1, 0, 'Username must cannot be over 30 characters'))
+  }
 
   //ERRORS
 
@@ -56,13 +69,13 @@ const SignUpForm = () => {
     passerrors.push('Password and Repeat Password must match.')
     setpasserrors(passerrors)
   }
-  if (password.length < 8 && !passerrors.includes('Password must be 8 or more characters.')) {
-    passerrors.push('Password must be 8 or more characters.')
+  if ((password.length < 8 || password.length > 25) && !passerrors.includes('Password must be between 8 and 25 characters.')) {
+    passerrors.push('Password must be between 8 and 25 characters.')
     setpasserrors(passerrors)
   }
   
-  if (password.length >= 8 && errors.includes('Password must be 8 or more characters.')) {
-    setpasserrors(passerrors.splice(1, 0, 'Password must be 8 or more characters.'))
+  if (password.length >= 8 && password.length <= 25 && passerrors.includes('Password must be between 8 and 25 characters.')) {
+    setpasserrors(passerrors.splice(1, 0, 'Password must be between 8 and 25 characters.'))
   }
   
   if (password === repeatPassword && passerrors.includes('Password and Repeat Password must match.')){
@@ -83,14 +96,16 @@ const SignUpForm = () => {
     }
   }
 
-  if ((!email.includes('@') || !validEmail()) && !emailerrors.includes('Email address must be valid. (example@domain.com)')) {
-    emailerrors.push('Email address must be valid. (example@domain.com)')
+  if ((!email.includes('@') || email.length > 250 || !validEmail()) && !emailerrors.includes('Email address must be valid and under 250 characters.')) {
+    emailerrors.push('Email address must be valid and under 250 characters.')
     setemailerrors(emailerrors)
   }
 
-  if (email.includes('@') && validEmail() && emailerrors.includes('Email address must be valid. (example@domain.com)')) {
-    setemailerrors(emailerrors.splice(1, 0, 'Email address must be valid. (example@domain.com)'))
+  if (email.includes('@') && email.length <= 250 && validEmail() && emailerrors.includes('Email address must be valid and under 250 characters.')) {
+    setemailerrors(emailerrors.splice(1, 0, 'Email address must be valid and under 250 characters.'))
   }
+
+  
 
   
   
@@ -215,7 +230,7 @@ const SignUpForm = () => {
               {/* TOOK DISABLED OUT OF SUBMIT BUTTON */}
               {/* disabled={errors.length > 0} */}
           
-          <button className='btn' disabled={allerrors.length>0 || passerrors.length>0 || emailerrors.length>0} type='submit'>Sign up</button>
+          <button className='btn' disabled={allerrors.length>0 || passerrors.length>0 || emailerrors.length>0 || unerrors.length>0} type='submit'>Sign up</button>
         </form>
       </div>
       <div className='redirContainer'>
@@ -241,6 +256,11 @@ const SignUpForm = () => {
               <div key={ind}>{error}</div>
             ))}
           </div>: <></>}
+          {unerrors?.length > 0 ? <div className='errors unerr'>
+            {unerrors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+              ))}
+            </div> : <></>}
           </div>
         </div>
       </div>

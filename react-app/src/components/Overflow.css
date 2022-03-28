@@ -189,7 +189,7 @@
 .passerr{
     position:relative;
     left: 360px;
-    top: -265px;
+    top: -260px;
     height: auto;
     width:fit-content;
     /* margin-left: 100px; */
@@ -212,4 +212,17 @@
     border: red solid 2px;
     border-radius: 15px;
 
+}
+
+.unerr{
+    position: relative;
+    left: 360px;
+    top: -493px;
+    height: auto;
+    width:fit-content;
+    /* margin-left: 100px; */
+    padding: 20px;
+    background-color: white;
+    border: red solid 2px;
+    border-radius: 15px;
 }
