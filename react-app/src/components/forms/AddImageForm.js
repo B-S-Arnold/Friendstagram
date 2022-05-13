@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 const AddImageForm = ({setRenderModal}) => {
 
-        const history = useHistory(); // so that we can redirect after the image upload is successful
+        // const history = useHistory(); // so that we can redirect after the image upload is successful
         const [image, setImage] = useState(null);
         const [imageLoading, setImageLoading] = useState(false);
         const handleSubmit = async (e) => {
@@ -25,7 +25,7 @@ const AddImageForm = ({setRenderModal}) => {
             if (res.ok) {
                 await res.json();
                 setImageLoading(false);
-                history.push("/images");
+                setRenderModal(false);
             }
             else {
                 setImageLoading(false);
