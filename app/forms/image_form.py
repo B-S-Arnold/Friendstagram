@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired
 
 
 class ImageForm(FlaskForm):
-    url = StringField('url', validators=[DataRequired()])
+    url = StringField('Url', validators=[DataRequired()])
     caption = TextAreaField('Caption')
     submit = SubmitField('Submit')
    

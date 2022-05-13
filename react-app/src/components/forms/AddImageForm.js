@@ -40,7 +40,7 @@ const AddImageForm = ({ setRenderModal }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className='instruct'>Image Preview</div>
+            {/* <div className='instruct'>Image Preview</div>
                  <div>
 
                      <img
@@ -57,7 +57,7 @@ const AddImageForm = ({ setRenderModal }) => {
 
                      />
 
-                </div>
+                </div> */}
             <input
                 type="file"
                 accept="image/*"

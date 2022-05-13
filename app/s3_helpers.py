@@ -13,6 +13,9 @@ s3 = boto3.client(
    aws_secret_access_key=os.environ.get("S3_SECRET")
 )
 
+print(os.environ.get("S3_KEY"))
+print(os.environ.get("S3_SECRET"))
+
 
 def allowed_file(filename):
     print(filename)

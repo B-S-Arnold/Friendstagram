@@ -27,11 +27,12 @@ def upload_image():
         # it means that there was an error when we tried to upload
         # so we send back that error message
         print("HERE")
+        print(upload)
         return upload, 400
 
     url = upload["url"]
     # we can use the
-    new_image = Image(user=current_user, url=url)
+    new_image = Image(userId=current_user.id, url=url, caption='', edited=False)
     db.session.add(new_image)
     db.session.commit()
     return {"url": url}
