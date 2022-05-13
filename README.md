@@ -18,7 +18,7 @@
 * Comment and Reply Likes
 * Search Bar
 * Emoji button for Captions, Comments, and Replies
-* User information: including bios and profile pictures
+* User information: including bios and profile urls
 * The ability to update or delete your account
 * Uploading photos from local storage
 * And more...

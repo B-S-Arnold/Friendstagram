@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateImage } from '../../store/images'
 
 
-const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
+const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
 
     // const user = useSelector(state => state.session.user);
 
     const id = image.id
-    // const picture = image.picture
+    // const url = image.url
 
-    const [picture, setPicture] = useState(image?.picture);
+    const [url, seturl] = useState(image?.url);
     const [caption, setCaption] = useState(image?.caption);
     const [errors, setErrors] = useState([]);
     const [caperrors, setcaperrors] = useState([]);
@@ -23,8 +23,8 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-  
-        let editedImage = await dispatch(updateImage( id, picture, caption ));
+
+        let editedImage = await dispatch(updateImage(id, url, caption));
 
         if (editedImage?.errors) return setErrors(editedImage.errors)
         if (editedImage) {
@@ -54,50 +54,50 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
         if (!urlerrors?.includes('Image address not found.')) {
             urlerrors.push('Image address not found.')
             seturlerrors(urlerrors)
-            // setPicture('../../images/not-found.jpeg')
+            // seturl('../../images/not-found.jpeg')
         }
     };
-    thisUrl.src = picture;
+    thisUrl.src = url;
 
-    // }, [picture]);
+    // }, [url]);
 
 
     // HTTPS:// CHECK
-    if (picture?.length > 300 && !urlerrors?.includes('*URL cannot be longer than 300 characters')) {
+    if (url?.length > 300 && !urlerrors?.includes('*URL cannot be longer than 300 characters')) {
         urlerrors.push('*URL cannot be longer than 300 characters')
         seturlerrors(urlerrors)
     }
 
-    if (picture?.length <= 300 && urlerrors?.includes('*URL cannot be longer than 300 characters')) {
+    if (url?.length <= 300 && urlerrors?.includes('*URL cannot be longer than 300 characters')) {
         seturlerrors(urlerrors.splice(1, 0, '*URL cannot be longer than 300 characters'))
     }
 
-    if (!picture?.match(/^https?:\/\//) && !urlerrors?.includes('Image must come from valid web address.')) {
+    if (!url?.match(/^https?:\/\//) && !urlerrors?.includes('Image must come from valid web address.')) {
         urlerrors.push('Image must come from valid web address.')
         seturlerrors(urlerrors)
     }
 
-    if (picture?.match(/^https?:\/\//) && urlerrors?.includes('Image must come from valid web address.')) {
+    if (url?.match(/^https?:\/\//) && urlerrors?.includes('Image must come from valid web address.')) {
         seturlerrors(urlerrors.splice(1, 0, 'Image must come from valid web address.'))
     }
 
-    if (picture === '' && !urlerrors?.includes('*URL field is required.')) {
+    if (url === '' && !urlerrors?.includes('*URL field is required.')) {
         urlerrors.push('*URL field is required.')
         seturlerrors(urlerrors)
     }
 
-    if (!picture?.match === '' && urlerrors?.includes('*URL field is required.')) {
+    if (!url?.match === '' && urlerrors?.includes('*URL field is required.')) {
         seturlerrors(urlerrors.splice(1, 0, '*URL field is required.'))
     }
 
     // IMG FILE TYPE CHECK
 
-    if (!picture?.match(/\.(jpe?g|gif|png|bmp)$/) && !urlerrors?.includes('Image address must end with a valid file extension.')) {
+    if (!url?.match(/\.(jpe?g|gif|png|bmp)$/) && !urlerrors?.includes('Image address must end with a valid file extension.')) {
         urlerrors.push('Image address must end with a valid file extension.')
         seturlerrors(urlerrors)
     }
 
-    if (picture?.match(/\.(jpe?g|gif|png|bmp)$/) && urlerrors?.includes('Image address must end with a valid file extension.')) {
+    if (url?.match(/\.(jpe?g|gif|png|bmp)$/) && urlerrors?.includes('Image address must end with a valid file extension.')) {
         seturlerrors(urlerrors.splice(1, 0, 'Image address must end with a valid file extension.'))
     }
 
@@ -113,12 +113,12 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
 
 
     return (
-        <form className='image-form'onSubmit={handleSubmit}>
+        <form className='image-form' onSubmit={handleSubmit}>
             <div className='instruct'>
-                <div>Change your picture by using url image address.</div>
+                <div>Change your url by using url image address.</div>
                 <div>This can be done by right clicking an image</div>
                 <div>and copying the image address.</div>
-                {/* <div>The picture should render on this page.</div> */}
+                {/* <div>The url should render on this page.</div> */}
             </div>
             <div>
                 {Object.entries(errors).map((error) => (
@@ -129,10 +129,10 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
                 <input
                     className='urlInput'
                     type='text'
-                    placeholder='Add a picture...'
-                    name='picture'
-                    value={picture}
-                    onChange={(e) => setPicture(e.target.value)}
+                    placeholder='Add a url...'
+                    name='url'
+                    value={url}
+                    onChange={(e) => seturl(e.target.value)}
                 />
             </div>
             {urlerrors.length ? <div className='errors urlerrors'>
@@ -146,7 +146,7 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
                         <img
                         
                             className='imgFormImg'
-                            src={picture}
+                            src={url}
                             alt="pic"
                             id='pic'
                             onError={e => {
@@ -165,7 +165,7 @@ const EditImageForm = ({image, setRenderModal, renderOptionsModal}) => {
                     value={caption}
                     onChange={(e) => setCaption(e.target.value)}
                 />
-                
+
             </div>
             {caperrors.length ? <div className='errors caperrors'>{Object.entries(caperrors).map((error) => (
                 <div key={error[0]}>{error[1]}</div>

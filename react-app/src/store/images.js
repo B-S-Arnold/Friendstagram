@@ -25,23 +25,23 @@ const editCaption = (image) => ({
 
 //create image
 
-export const createImage = (picture, caption) => async dispatch => {
+export const createImage = (url, caption) => async dispatch => {
     const response = await fetch(`/api/images/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            picture,
+            url,
             caption
-            }),
+        }),
     });
-    
-    const image = await response.json() 
+
+    const image = await response.json()
     if (image?.errors) return image
     dispatch(addImage(image))
     return image
-    
+
 
 }
 
@@ -73,11 +73,11 @@ export const deleteImage = (image) => async dispatch => {
 
 //update image
 
-export const updateImage = (id, picture, caption) => async dispatch => {
+export const updateImage = (id, url, caption) => async dispatch => {
     const response = await fetch(`/api/images/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ picture, caption })
+        body: JSON.stringify({ url, caption })
     });
     if (response.ok) {
         const editedImage = await response.json()
@@ -95,7 +95,7 @@ const initialState = {}
 const imageReducer = (state = initialState, action) => {
     let newState = { ...state }
     switch (action.type) {
-        
+
         case LOAD_IMG:
             action.images.forEach(image => {
                 newState[image.id] = image;

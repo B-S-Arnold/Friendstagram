@@ -6,7 +6,7 @@ class Image(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer,  db.ForeignKey('users.id'), nullable=False)
-    picture = db.Column(db.String, nullable=False)
+    url = db.Column(db.String, nullable=False)
     caption = db.Column(db.Text)
     edited = db.Column(db.Boolean)
     
@@ -17,7 +17,7 @@ class Image(db.Model):
         return {
             "id": self.id,
             "userId": self.userId,
-            "picture": self.picture,
+            "url": self.url,
             "caption": self.caption,
             "edited": self.edited
         }

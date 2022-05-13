@@ -61,7 +61,7 @@ def get_all_images():
 #     if form.validate_on_submit():
 #             image = Image(
 #                 userId=current_user.id,
-#                 picture=form.data['picture'],
+#                 url=form.data['url'],
 #                 caption=form.data['caption'],
 #                 edited=False
 #             )
@@ -89,7 +89,7 @@ def get_all_images():
 #     if form.validate_on_submit():
         
 #             image.userId=current_user.id,
-#             image.picture=form.data['picture']
+#             image.url=form.data['url']
 #             image.caption=form.data['caption'],
 #             image.edited=True
 
