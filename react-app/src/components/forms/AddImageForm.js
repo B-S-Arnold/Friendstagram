@@ -1,5 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {FileDrop} from 'react-file-drop';
 import { useHistory } from "react-router-dom";
+
+// filepond
+
+import { FilePond, File, registerPlugin } from 'react-filepond'
+import 'filepond/dist/filepond.min.css'
+import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
+
 // import { useDispatch} from 'react-redux';
 // import { createImage } from '../../store/images'
 
@@ -7,12 +18,26 @@ import { useHistory } from "react-router-dom";
 const AddImageForm = ({ setRenderModal }) => {
 
     // const history = useHistory(); // so that we can redirect after the image upload is successful
+    // const dropzone = new Dropzone("div#myId", { url: "/file/post" });
     const [image, setImage] = useState(null);
+    const [caption, setCaption] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
+
+    // useEffect(() => {
+    //     (async (image) => {
+            
+    //     setImage(image)
+            
+            
+    //     })();
+    // }, [image]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
+        // formData.append("caption", caption)
         formData.append("image", image);
+        // console.log("FORM DATA!!!!",formData);
 
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
@@ -20,7 +45,7 @@ const AddImageForm = ({ setRenderModal }) => {
         setImageLoading(true);
         const res = await fetch('/api/images', {
             method: "POST",
-            body: formData,
+            body: formData
         });
         if (res.ok) {
             await res.json();
@@ -37,27 +62,46 @@ const AddImageForm = ({ setRenderModal }) => {
         const file = e.target.files[0];
         setImage(file);
     }
-
+    const styles = { border: '1px solid black', width: 600, color: 'black', padding: 20 };
     return (
+        <>
         <form onSubmit={handleSubmit}>
-            {/* <div className='instruct'>Image Preview</div>
-                 <div>
+            
 
-                     <img
-                         className='imgFormImg'
-                         src={image}
-                         alt="pic"
-                         id='pic'
-                         onError={e => {
-                             e.onerror = null
-                             e.target.src = require('../../images/not-found.jpeg').default
+            <div style={styles}>
+                <FileDrop
+                onFrameDragEnter={(event) => console.log('onFrameDragEnter', event)}
+                onFrameDragLeave={(event) => console.log('onFrameDragLeave', event)}
+                onFrameDrop={(event) => console.log('onFrameDrop', event)}
+                onDragOver={(event) => console.log('onDragOver', event)}
+                onDragLeave={(event) => console.log('onDragLeave', event)}
+                
+                onDrop={(files, event) => {
+                    console.log('OnDrop!', files, event)
+                    const file = files[0];
+                    
+                    console.log(file)
+                    setImage(file)}}
+                >
+                    {/* <img
+                        className='imgFormImg'
+                        src={image}
+                        alt="pic"
+                        id='pic'
+                        onError={e => {
+                            e.onerror = null
+                            e.target.src = require('../../images/not-found.jpeg').default
 
-                         }}
+                        }} */}
 
 
-                     />
+                    {/* /> */}
+                Drop some files here!
+                </FileDrop>
+            </div>
+            
+                 
 
-                </div> */}
             <input
                 type="file"
                 accept="image/*"
@@ -65,7 +109,40 @@ const AddImageForm = ({ setRenderModal }) => {
             />
             <button type="submit">Submit</button>
             {(imageLoading) && <p>Loading...</p>}
+            
+            <div>
+
+                 <textarea
+                     className='caption'
+                     name='caption'
+                     placeholder='Write a caption...'
+                     value={caption}
+                     onChange={(e) => setCaption(e.target.value)}
+                 />
+
+             </div>
+
+             {/* {caperrors.length ? <div className='errors caperrors'>{Object.entries(caperrors).map((error) => (
+                 <div key={error[0]}>{error[1]}</div>
+             ))}
+             </div> : <></>} */}
+
         </form>
+            <div>
+
+
+                {/* <FilePond
+                    files={image}
+                    onupdatefiles={setImage}
+                    allowMultiple={false}
+                    maxFiles={1}
+                    server="/api/images"
+                    name="files"
+                    labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+                /> */}
+
+            </div>
+        </>
     )
 }
 

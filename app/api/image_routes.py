@@ -13,9 +13,16 @@ image_routes = Blueprint("images", __name__)
 def upload_image():
     if "image" not in request.files:
         return {"errors": "image required"}, 400
-
+    
+    # image= request.files
     image = request.files["image"]
-
+    print('***IMIMIMAGAGA!!!!!', image, type(image))
+    
+    # caption = request.files["caption"]
+    print("NEW IMG OBJ!!!!!!", image)
+    # print("NEW CAPT OBJ!!!", caption)
+    # print("NEW IMG OBJ URL", image.url)
+    # print("NEW IMAGE ID", image.id)
     if not allowed_file(image.filename):
         return {"errors": "file type not permitted"}, 400
 
@@ -33,7 +40,7 @@ def upload_image():
 
     url = upload["url"]
     # we can use the
-    new_image = Image(userId=current_user.id, url=url, caption='', edited=False)
+    new_image = Image(userId=current_user.id, url=url, caption='caption', edited=False)
     db.session.add(new_image)
     db.session.commit()
     return {"url": url}
@@ -48,6 +55,24 @@ def get_all_images():
 # GET IMAGE BY USERID
 
 # EDIT IMAGE (CAPTION)
+
+@image_routes.route('/<int:id>', methods=['PUT'])
+def image_api(id):
+    image = Image.query.get(id)
+    caption = request.files["caption"]
+    
+    # form = ImageForm()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+    if image.url:
+        
+            # image.userId=current_user.id,
+            # image.url=form.data['url']
+            image.caption=caption,
+            image.edited=True
+
+            db.session.commit()
+            return image.to_dict()
+        
 
 # DELETE IMAGE
 
