@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {FileDrop} from 'react-file-drop';
 import { useHistory } from "react-router-dom";
+
 
 // filepond
 
@@ -22,6 +23,11 @@ const AddImageForm = ({ setRenderModal }) => {
     const [image, setImage] = useState(null);
     const [caption, setCaption] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
+
+
+
+   
+    
 
     // useEffect(() => {
     //     (async (image) => {
@@ -129,7 +135,10 @@ const AddImageForm = ({ setRenderModal }) => {
              </div> : <></>} */}
 
         </form>
+            
             <div>
+
+                
 
 
                 {/* <FilePond
