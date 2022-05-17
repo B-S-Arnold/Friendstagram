@@ -2,10 +2,11 @@ from flask import Blueprint, request
 from app.models import db, Image
 from flask_login import current_user, login_required
 from app.s3_helpers import (
-    upload_file_to_s3, allowed_file, get_unique_filename)
+    upload_file_to_s3, allowed_file, get_unique_filename, delete_file_from_s3)
 
 image_routes = Blueprint("images", __name__)
 
+# POST IMAGE
 
 @image_routes.route("", methods=["POST"])
 @login_required
@@ -37,11 +38,39 @@ def upload_image():
     db.session.commit()
     return {"url": url}
 
+# GET ALL IMAGES
 
 @image_routes.route("")
 def get_all_images():
     images = Image.query.order_by(Image.id.desc()).all()
     return {"images": [image.to_dict() for image in images]}
+
+# GET IMAGE BY USERID
+
+# EDIT IMAGE (CAPTION)
+
+# DELETE IMAGE
+
+@image_routes.route('/<int:id>', methods=['DELETE'])
+def delete_image(id):
+    
+
+        image = Image.query.get(id)
+        print("IMAGE!!!", image)
+        delete = delete_file_from_s3(image.url)
+        print('DELETE!!!!', delete)
+        if delete == False:
+            # if the dictionary doesn't have a filename key
+            # it means that there was an error when we tried to upload
+            # so we send back that error message
+            print("HERE")
+            print(delete)
+            return delete, 400
+    
+        
+        db.session.delete(image)
+        db.session.commit()
+        return {"Image Deleted": [image.to_dict()]}
 
 # from flask import Blueprint, request
 # from flask_login import login_required, current_user
