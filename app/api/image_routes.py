@@ -56,14 +56,15 @@ def delete_image(id):
     
 
         image = Image.query.get(id)
-        print("IMAGE!!!", image)
-        delete = delete_file_from_s3(image.url)
-        print('DELETE!!!!', delete)
+        
+        url_arr = image.url.split("/")
+        key = url_arr[len(url_arr)-1]
+        
+        delete = delete_file_from_s3(key)
         if delete == False:
             # if the dictionary doesn't have a filename key
             # it means that there was an error when we tried to upload
             # so we send back that error message
-            print("HERE")
             print(delete)
             return delete, 400
     
