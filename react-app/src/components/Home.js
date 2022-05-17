@@ -12,13 +12,24 @@ import ViewImageModal from './modals/ViewImageModal';
 function UsersList() {
   const sessionUser = useSelector(state => state.session.user)
   const [users, setUsers] = useState([]);
-  const images = Object.values(useSelector(state => state.images))
+  // const images = Object.values(useSelector(state => state.images))
+  const [images, setImages] = useState([])
   const comments = Object.values(useSelector(state => state.comments))
+
 
   useEffect(() => {
     async function fetchData() {
       const response = await fetch('/api/users/');
       const responseData = await response.json();
+
+      const res = await fetch('/api/images')
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data)
+        setImages(data.images)
+      } else {
+        console.log('error')
+      }
       setUsers(responseData.users);
     }
     fetchData();
@@ -47,38 +58,20 @@ function UsersList() {
       </div>
     );
   });
-  images.reverse()
-  //NOT GETTING USERS!!!! (PART 1)
+ 
+
   const allImages = images.map((image) => {
     const thisUser = users?.filter(user => user.id === image.userId)[0]
 
 
 
 
-    // .map(user => {
-    //   if (user?.id === image?.userId){
-    //     return user}
-    //   return null
-
-    // })
-    // (user => user.id === image.userId)
-    //function for comments
+   
     const allComments = comments.filter(comment => comment.imageId === image.id)
 
     //func for rendering comments
     const eachComment = allComments.map((comment) => {
       const commenter = users?.filter(user => user.id === comment.userId)[0]
-      // let expand = false
-
-      // const commentEdit = () => {
-      //   let expand = false;
-      //   const expandEdit = () => {
-      //     expand = true
-      //   }
-
-      //   return <button onClick={expandEdit}>Edit</button>
-      // }
-      // { expand === false ? <div>{comment.content}</div> : <EditCommentForm comment={comment} /> }
 
       return (
         <div key={comment.id}>
@@ -100,18 +93,13 @@ function UsersList() {
       )
     })
 
-    // const ViewComments = () => {
 
-    //   return <div className='exCom' onClick={Unexpand}>View all {eachComment.length} comments</div>
-    //   return <div className='unexCom' onClick={Expand}>View all {eachComment.length} comments</div>
     const thisDiv = <div></div>
 
-    // }
 
-    // filter(img => img.userId === user.id)
     const expand = true
 
-    //NOT GETTING USERS!!!! (PART 2)
+
     return (
       <div className='eachImage' key={image.id}>
 
@@ -182,7 +170,7 @@ function UsersList() {
               <div className='userinfodiv'>
                 <div className='innerUserListDiv'>
                   <NavLink to={`/${sessionUser.username}`} className='thisUser' >
-                    {/* {sessionUser.profileImage} */}
+                    
                   </NavLink>
                 </div>
                 <div className='thisUserName'>
