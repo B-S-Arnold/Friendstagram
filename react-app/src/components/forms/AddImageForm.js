@@ -4,12 +4,12 @@ import { useHistory } from "react-router-dom";
 
 // filepond
 
-import { FilePond, File, registerPlugin } from 'react-filepond'
-import 'filepond/dist/filepond.min.css'
-import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
-import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
-import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
-registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
+// import { FilePond, File, registerPlugin } from 'react-filepond'
+// import 'filepond/dist/filepond.min.css'
+// import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
+// import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
+// import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
+// registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
 
 // import { useDispatch} from 'react-redux';
 // import { createImage } from '../../store/images'
@@ -35,9 +35,10 @@ const AddImageForm = ({ setRenderModal }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-        // formData.append("caption", caption)
+        formData.append("caption", caption)
         formData.append("image", image);
-        // console.log("FORM DATA!!!!",formData);
+        
+        // console.log("JDSAGFJHASDJ", formData["caption"])
 
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
