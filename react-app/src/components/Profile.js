@@ -9,7 +9,8 @@ function User() {
   const [users, setUsers] = useState({})
   const { username }  = useParams();
   
-  const images = Object.values(useSelector(state => state.images))
+  // const images = Object.values(useSelector(state => state.images))
+  const [images, setImages] = useState([])
   const userImages = images.filter(img => img.userId === user.id)
 
   useEffect(() => {
@@ -26,6 +27,15 @@ function User() {
       const user = await response.json();
       setUser(user);
 
+      const res = await fetch('/api/images');
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data)
+        setImages(data.images)
+      } else {
+        console.log("error")
+      }
+
       // const usersRes = await fetch('/api/users/');
       // const responseData = await usersRes.json();
 
@@ -36,7 +46,7 @@ function User() {
     return null;
   }
   //ALL IMAGES DISPLAYED FUNCTION
-  userImages.reverse()
+
   const allImages = userImages.map((image) => {
     const expand = false;
     return (
