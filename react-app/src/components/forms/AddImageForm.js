@@ -3,15 +3,15 @@ import {FileDrop} from 'react-file-drop';
 import { useHistory } from "react-router-dom";
 
 
+
 // filepond
 
-// import { FilePond, File, registerPlugin } from 'react-filepond'
-// import 'filepond/dist/filepond.min.css'
-// import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
-// import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
-// import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
-// registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
-
+import { FilePond, File, registerPlugin } from 'react-filepond'
+import 'filepond/dist/filepond.min.css'
+import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
 // import { useDispatch} from 'react-redux';
 // import { createImage } from '../../store/images'
 
@@ -24,8 +24,9 @@ const AddImageForm = ({ setRenderModal }) => {
     const [caption, setCaption] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
 
+   
 
-
+    console.log(FilePond)
    
     
 
@@ -129,6 +130,8 @@ const AddImageForm = ({ setRenderModal }) => {
 
              </div>
 
+                
+
              {/* {caperrors.length ? <div className='errors caperrors'>{Object.entries(caperrors).map((error) => (
                  <div key={error[0]}>{error[1]}</div>
              ))}
@@ -136,12 +139,8 @@ const AddImageForm = ({ setRenderModal }) => {
 
         </form>
             
-            <div>
-
-                
-
-
-                {/* <FilePond
+            {/* <div>
+                <FilePond
                     files={image}
                     onupdatefiles={setImage}
                     allowMultiple={false}
@@ -149,9 +148,8 @@ const AddImageForm = ({ setRenderModal }) => {
                     server="/api/images"
                     name="files"
                     labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
-                /> */}
-
-            </div>
+                />
+            </div> */}
         </>
     )
 }
