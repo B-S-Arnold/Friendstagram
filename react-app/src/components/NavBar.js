@@ -67,7 +67,7 @@ const NavBar = ({user}) => {
               </div>
               <div className=' buttondiv'>
               <div id='focus' tabIndex="1" className='userbtn navbtn'>
-                {user.url ? <>
+                {user?.url ? <>
 
                   <img
                     className='userimgbtn'
@@ -82,9 +82,9 @@ const NavBar = ({user}) => {
                     
                   />
                 </> : <>
-                  <div id='focus' tabIndex="1" className='userbtn navbtn'>
-                    <Dropdown />
-                  </div>
+                  {/* <div id='focus' tabIndex="1" className='userbtn navbtn'> */}
+                    {/* <Dropdown /> */}
+                  {/* </div> */}
                 </>}
                   <Dropdown />
                 </div>

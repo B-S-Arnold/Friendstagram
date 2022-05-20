@@ -8,6 +8,10 @@ import OptionsModal from './OptionsModal';
 import EditCommentModal from './EditCommentModal';
 import { NavLink } from 'react-router-dom';
 import ChangeProfPicForm from '../forms/ChangeProfilePicForm';
+import DeleteImageModal from './DeleteImageModal';
+import DelProfPicForm from './DelProfPicForm';
+import ProfPicDel from './ProfPicDel';
+import ProfPicEdit from './ProfPicEdit';
 
 
 const ChangeProfPicModal = ({ user }) => {
@@ -18,7 +22,10 @@ const ChangeProfPicModal = ({ user }) => {
     // const users = Object.values(useSelector(state => state.users))
     let thisPic
 
-    
+    const handleCancel = (e) => {
+        e.preventDefault()
+        setRenderModal(false)
+    }
         if (sessionUser?.id === user?.id){
             thisPic = (
                 <>
@@ -76,7 +83,11 @@ const ChangeProfPicModal = ({ user }) => {
     
             {renderModal ? (
                 <Modal onClose={() => setRenderModal(false)}>
-                    <ChangeProfPicForm setRenderModal={setRenderModal} user={user} />
+                    <div className ='optionsModal'>
+                        <ProfPicEdit renderOptionsModal={setRenderModal} user={user} />
+                        <ProfPicDel renderOptionsModal={setRenderModal} user={user} />
+                        <div className='canppbtn btnhover' onClick={handleCancel}> Cancel</div>
+                    </div>
                 </Modal>
             ) : null
             }
