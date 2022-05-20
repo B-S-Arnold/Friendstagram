@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 
 
-const ChangeProfPicForm = ({ setRenderModal, user }) => {
+const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
 
     const [image, setImage] = useState(null);
     // const [caption, setCaption] = useState('');
@@ -31,7 +31,7 @@ const ChangeProfPicForm = ({ setRenderModal, user }) => {
         if (res.ok) {
             await res.json();
             setImageLoading(false);
-            setRenderModal(false);
+            renderOptionsModal(false);
         }
         else {
             setImageLoading(false);
