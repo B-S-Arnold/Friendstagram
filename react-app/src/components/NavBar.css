@@ -123,6 +123,23 @@
     border: none;
 }
 
+.userimgbtn{
+    position: absolute;
+    display:flex;
+    flex-direction: column;
+    outline: 0;
+    border: none;
+    background-size:contain;
+    width: 24px;
+    height: 24px;
+    /* border: solid #fff 2px; */
+    background-color: transparent;
+    border: transparent;
+    margin: 0px;
+    z-index: 2;
+    border-radius: 50%;
+}
+
 
 .buttondiv{
  padding: 0;

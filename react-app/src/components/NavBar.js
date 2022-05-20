@@ -67,6 +67,25 @@ const NavBar = ({user}) => {
               </div>
               <div className=' buttondiv'>
               <div id='focus' tabIndex="1" className='userbtn navbtn'>
+                {user.url ? <>
+
+                  <img
+                    className='userimgbtn'
+                    src={user.url}
+                    alt="new"
+
+                    onError={e => {
+                      e.onerror = null
+                      e.target.src = require('../images/not-found.jpeg').default
+                    }}
+
+                    
+                  />
+                </> : <>
+                  <div id='focus' tabIndex="1" className='userbtn navbtn'>
+                    <Dropdown />
+                  </div>
+                </>}
                   <Dropdown />
                 </div>
               </div>
