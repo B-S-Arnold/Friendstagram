@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     fullName = db.Column(db.String(40), nullable=False)
-    profileImage = db.Column(db.String)
+    url = db.Column(db.String)
     bio = db.Column(db.Text)
     
     @property
@@ -31,6 +31,6 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'fullName': self.fullName,
-            'profileImage': self.profileImage,
+            'url': self.url,
             'bio': self.bio,
         }

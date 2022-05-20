@@ -40,7 +40,7 @@ function UsersList() {
       <div key={user.id} className='innerUserListDiv'>
 
         <NavLink to={`/${user.username}`} className='eachUser' >
-          {user.profileImage}
+          {user.url}
         </NavLink>
         {user.username.length <= 8 ? <>
           <div className='eachUserName'>
@@ -58,7 +58,7 @@ function UsersList() {
       </div>
     );
   });
- 
+
 
   const allImages = images.map((image) => {
     const thisUser = users?.filter(user => user.id === image.userId)[0]
@@ -66,7 +66,7 @@ function UsersList() {
 
 
 
-   
+
     const allComments = comments.filter(comment => comment.imageId === image.id)
 
     //func for rendering comments
@@ -170,7 +170,7 @@ function UsersList() {
               <div className='userinfodiv'>
                 <div className='innerUserListDiv'>
                   <NavLink to={`/${sessionUser.username}`} className='thisUser' >
-                    
+
                   </NavLink>
                 </div>
                 <div className='thisUserName'>
