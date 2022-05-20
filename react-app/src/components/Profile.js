@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import ChangeProfPicForm from './forms/ChangeProfilePicForm';
+import ChangeProfPicModal from './modals/ChangeProfPicModal';
 import ViewImageModal from './modals/ViewImageModal';
 import './Profile.css'
 
@@ -26,6 +28,7 @@ function User() {
       const response = await fetch(`/api/users/${username}`);
       const user = await response.json();
       setUser(user);
+      console.log("USER!!!", user)
 
       const res = await fetch('/api/images');
       if (res.ok) {
@@ -60,7 +63,15 @@ function User() {
     <div className= 'profPageContainer'>
       <div className='spacer' />
       <div className='profHead'>
-        <div className= 'profpic'/>
+        <div>{user.url ?
+        <>
+          
+            <ChangeProfPicModal user={user} />
+        </> : <>
+          
+            <ChangeProfPicModal user={user} />
+        </>}</div>
+        {/* <div className= 'profpic'/> */}
         <div className= 'profInfo'>
           <div className = 'profUN'>
             {username}

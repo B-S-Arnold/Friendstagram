@@ -11,21 +11,15 @@ image_routes = Blueprint("images", __name__)
 @image_routes.route("", methods=["POST"])
 @login_required
 def upload_image():
-    # if "image" not in request.files:
-    #     return {"errors": "image required"}, 400
+    if "image" not in request.files:
+        return {"errors": "image required"}, 400
     
-    # image= request.files
-    print("REQREQREQ", request.files)
-    print("REQREQREQdsjafhjka", request.form)
+    image = request.files
+    
     image = request.files["image"]
-    print('***IMIMIMAGAGA!!!!!', image, type(image))
-    
+       
     caption = request.form["caption"]
-    print("NEW IMG OBJ!!!!!!", image)
-    
-    # print("NEW CAPT OBJ!!!", caption)
-    # print("NEW IMG OBJ URL", image.url)
-    # print("NEW IMAGE ID", image.id)
+   
     if not allowed_file(image.filename):
         return {"errors": "file type not permitted"}, 400
 
@@ -34,15 +28,12 @@ def upload_image():
     upload = upload_file_to_s3(image)
 
     if "url" not in upload:
-        # if the dictionary doesn't have a filename key
-        # it means that there was an error when we tried to upload
-        # so we send back that error message
         
         print(upload)
         return upload, 400
 
     url = upload["url"]
-    # we can use the
+    
     new_image = Image(userId=current_user.id, url=url, caption=caption, edited=False)
     db.session.add(new_image)
     db.session.commit()
