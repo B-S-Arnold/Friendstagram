@@ -39,7 +39,7 @@ const ChangeProfPicModal = ({ user }) => {
                         <div className='rightPPSpacer' />
                         </div>
                     </> : <>
-                            <button className='profpicbtn' onClick={() => setRenderModal(true)} />
+                            <button className='noprofpicbtn' onClick={() => setRenderModal(true)} />
                     </>}
                 </>
             

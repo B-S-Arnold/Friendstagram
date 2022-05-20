@@ -40,7 +40,21 @@ function UsersList() {
       <div key={user.id} className='innerUserListDiv'>
 
         <NavLink to={`/${user.username}`} className='eachUser' >
-          {user.url}
+          { user.url ? <>
+
+            <img
+              className='eachUserPic'
+              src={user.url}
+              alt="new"
+
+              onError={e => {
+                e.onerror = null
+                e.target.src = require('../images/not-found.jpeg').default
+              }}
+
+            />
+          </> : <></>}
+          
         </NavLink>
         {user.username.length <= 8 ? <>
           <div className='eachUserName'>
@@ -104,7 +118,22 @@ function UsersList() {
       <div className='eachImage' key={image.id}>
 
         <div className='imghead'>
-          <NavLink className='eachPicPP' to={`/${thisUser?.username}`} />
+          <NavLink className='eachPicPP' to={`/${thisUser?.username}`} >
+            {thisUser?.url ? <>
+
+              <img
+                className='eachPicPP2'
+                src={thisUser?.url}
+                alt="new"
+
+                onError={e => {
+                  e.onerror = null
+                  e.target.src = require('../images/not-found.jpeg').default
+                }}
+
+              />
+            </> : <></>}
+          </NavLink>
           <NavLink className='eachPicUN' to={`/${thisUser?.username}`}>{thisUser?.username}</NavLink>
           {image.userId === sessionUser.id ? <OptionsModal image={image} /> : <div className='noimgOptions' />}
 
@@ -170,7 +199,20 @@ function UsersList() {
               <div className='userinfodiv'>
                 <div className='innerUserListDiv'>
                   <NavLink to={`/${sessionUser.username}`} className='thisUser' >
+                    {sessionUser.url ? <>
 
+                      <img
+                        className='eachUserPic'
+                        src={sessionUser.url}
+                        alt="new"
+
+                        onError={e => {
+                          e.onerror = null
+                          e.target.src = require('../images/not-found.jpeg').default
+                        }}
+
+                      />
+                    </> : <></>}
                   </NavLink>
                 </div>
                 <div className='thisUserName'>

@@ -39,13 +39,13 @@ ROWS OF 3 */
     z-index: 0;
 }
 
-.profpicbtn {
+.noprofpicbtn{
     background-image: url("../images/default.png");
     border: none;
     background-size: contain;
     width: 150px;
     height: 150px;
-    margin: 0px;
+    margin: 0px 100px;
     /* padding: 0 141.7px; */
     /* border: solid #fff 2px; */
     /* outline: solid purple 2px; */
@@ -53,6 +53,22 @@ ROWS OF 3 */
     z-index: 0;
 }
 
+.profpicbtn {
+    background-image: url("../images/default.png");
+    border: none;
+    background-size: contain;
+    width: 150px;
+    height: 150px;
+    margin: 0px 0px;
+    /* padding: 0 141.7px; */
+    /* border: solid #fff 2px; */
+    /* outline: solid purple 2px; */
+    border-radius: 50%;
+    z-index: 0;
+}
+.noprofpicbtn:hover {
+    cursor: pointer;
+}
 .profpicbtn:hover{
     cursor: pointer;
 }
