@@ -28,6 +28,14 @@ const Dropdown = () => {
         // </NavLink>
     };
 
+    const SettingsButton = () => {
+        const toSettings = () => {
+            history.push(`/accounts/edit/`)
+        }
+
+        return <div className='dropdownbtn' onClick={toSettings}>Settings</div>
+    }
+
 
     return (
         <>
@@ -41,6 +49,9 @@ const Dropdown = () => {
                 {/* <NavLink className='dropdownbtn' to={`/${user.username}`} exact={true} activeClassName='active'>
                     Profile
                 </NavLink> */}
+            </div>
+            <div>
+                <SettingsButton />
             </div>
             <div>
                 <LogoutButton  />

@@ -10,13 +10,13 @@ const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
     const id = image.id
     // const url = image.url
 
-    const [url, seturl] = useState(image?.url);
+    // const [url, seturl] = useState(image?.url);
     const [caption, setCaption] = useState(image?.caption);
     const [errors, setErrors] = useState([]);
     const [caperrors, setcaperrors] = useState([]);
-    const [urlerrors, seturlerrors] = useState([]);
+    // const [urlerrors, seturlerrors] = useState([]);
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     // const history = useHistory()
 
     // const userId = user.id
@@ -24,12 +24,28 @@ const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        let editedImage = await dispatch(updateImage(id, url, caption));
+        const formData = new FormData();
+        formData.append("caption", caption)
 
-        if (editedImage?.errors) return setErrors(editedImage.errors)
-        if (editedImage) {
-            setRenderModal(false)
-            renderOptionsModal(false)
+        // let editedImage = await dispatch(updateImage(id, url, caption));
+
+        // if (editedImage?.errors) return setErrors(editedImage.errors)
+        // if (editedImage) {
+        //     setRenderModal(false)
+        //     renderOptionsModal(false)
+        // }
+        const res = await fetch(`/api/images/${id}`, {
+            method: "PUT",
+            body: formData
+        });
+        if (res.ok) {
+            await res.json();
+            // setImageLoading(false);
+            setRenderModal(false);
+        }
+        else {
+            // setImageLoading(false);
+            console.log("error")
         }
     }
 
@@ -41,65 +57,65 @@ const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
 
     // useEffect(() => {
 
-    const thisUrl = new Image();
-    thisUrl.onload = () => {
+    // const thisUrl = new Image();
+    // thisUrl.onload = () => {
 
-        if (urlerrors?.includes('Image address not found.')) {
-            seturlerrors(urlerrors.splice(1, 0, 'Image address not found.'))
+    //     if (urlerrors?.includes('Image address not found.')) {
+    //         seturlerrors(urlerrors.splice(1, 0, 'Image address not found.'))
 
-        }
-    };
-    thisUrl.onerror = () => {
+    //     }
+    // };
+    // thisUrl.onerror = () => {
 
-        if (!urlerrors?.includes('Image address not found.')) {
-            urlerrors.push('Image address not found.')
-            seturlerrors(urlerrors)
-            // seturl('../../images/not-found.jpeg')
-        }
-    };
-    thisUrl.src = url;
+    //     if (!urlerrors?.includes('Image address not found.')) {
+    //         urlerrors.push('Image address not found.')
+    //         seturlerrors(urlerrors)
+    //         // seturl('../../images/not-found.jpeg')
+    //     }
+    // };
+    // thisUrl.src = url;
 
     // }, [url]);
 
 
     // HTTPS:// CHECK
-    if (url?.length > 300 && !urlerrors?.includes('*URL cannot be longer than 300 characters')) {
-        urlerrors.push('*URL cannot be longer than 300 characters')
-        seturlerrors(urlerrors)
-    }
+    // if (url?.length > 300 && !urlerrors?.includes('*URL cannot be longer than 300 characters')) {
+    //     urlerrors.push('*URL cannot be longer than 300 characters')
+    //     seturlerrors(urlerrors)
+    // }
 
-    if (url?.length <= 300 && urlerrors?.includes('*URL cannot be longer than 300 characters')) {
-        seturlerrors(urlerrors.splice(1, 0, '*URL cannot be longer than 300 characters'))
-    }
+    // if (url?.length <= 300 && urlerrors?.includes('*URL cannot be longer than 300 characters')) {
+    //     seturlerrors(urlerrors.splice(1, 0, '*URL cannot be longer than 300 characters'))
+    // }
 
-    if (!url?.match(/^https?:\/\//) && !urlerrors?.includes('Image must come from valid web address.')) {
-        urlerrors.push('Image must come from valid web address.')
-        seturlerrors(urlerrors)
-    }
+    // if (!url?.match(/^https?:\/\//) && !urlerrors?.includes('Image must come from valid web address.')) {
+    //     urlerrors.push('Image must come from valid web address.')
+    //     seturlerrors(urlerrors)
+    // }
 
-    if (url?.match(/^https?:\/\//) && urlerrors?.includes('Image must come from valid web address.')) {
-        seturlerrors(urlerrors.splice(1, 0, 'Image must come from valid web address.'))
-    }
+    // if (url?.match(/^https?:\/\//) && urlerrors?.includes('Image must come from valid web address.')) {
+    //     seturlerrors(urlerrors.splice(1, 0, 'Image must come from valid web address.'))
+    // }
 
-    if (url === '' && !urlerrors?.includes('*URL field is required.')) {
-        urlerrors.push('*URL field is required.')
-        seturlerrors(urlerrors)
-    }
+    // if (url === '' && !urlerrors?.includes('*URL field is required.')) {
+    //     urlerrors.push('*URL field is required.')
+    //     seturlerrors(urlerrors)
+    // }
 
-    if (!url?.match === '' && urlerrors?.includes('*URL field is required.')) {
-        seturlerrors(urlerrors.splice(1, 0, '*URL field is required.'))
-    }
+    // if (!url?.match === '' && urlerrors?.includes('*URL field is required.')) {
+    //     seturlerrors(urlerrors.splice(1, 0, '*URL field is required.'))
+    // }
 
     // IMG FILE TYPE CHECK
 
-    if (!url?.match(/\.(jpe?g|gif|png|bmp)$/) && !urlerrors?.includes('Image address must end with a valid file extension.')) {
-        urlerrors.push('Image address must end with a valid file extension.')
-        seturlerrors(urlerrors)
-    }
+    // if (!url?.match(/\.(jpe?g|gif|png|bmp)$/) && !urlerrors?.includes('Image address must end with a valid file extension.')) {
+    //     urlerrors.push('Image address must end with a valid file extension.')
+    //     seturlerrors(urlerrors)
+    // }
 
-    if (url?.match(/\.(jpe?g|gif|png|bmp)$/) && urlerrors?.includes('Image address must end with a valid file extension.')) {
-        seturlerrors(urlerrors.splice(1, 0, 'Image address must end with a valid file extension.'))
-    }
+    // if (url?.match(/\.(jpe?g|gif|png|bmp)$/) && urlerrors?.includes('Image address must end with a valid file extension.')) {
+    //     seturlerrors(urlerrors.splice(1, 0, 'Image address must end with a valid file extension.'))
+    // }
 
     if (caption?.length > 1000 && !caperrors?.includes('Caption has a 1,000 character limit.')) {
         caperrors.push('Caption has a 1,000 character limit.')
@@ -125,7 +141,7 @@ const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
                     <div key={error[0]}>{error[1]}</div>
                 ))}
             </div>
-            <div>
+            {/* <div>
                 <input
                     className='urlInput'
                     type='text'
@@ -134,12 +150,12 @@ const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
                     value={url}
                     onChange={(e) => seturl(e.target.value)}
                 />
-            </div>
-            {urlerrors.length ? <div className='errors urlerrors'>
+            </div> */}
+            {/* {urlerrors.length ? <div className='errors urlerrors'>
                 {Object.entries(urlerrors).map((error) => (
                     <div key={error[0]}>{error[1]}</div>
                 ))}
-            </div> : <></>}
+            </div> : <></>} */}
             {/* <div>
                 <div className='instruct'>Image Preview</div>
                 <div>
@@ -171,7 +187,7 @@ const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
                 <div key={error[0]}>{error[1]}</div>
             ))}
             </div> : <></>}
-            <button className='btn' type='submit' disabled={caperrors.length > 0 || urlerrors.length}>Submit</button>
+            <button className='btn' type='submit' disabled={caperrors.length > 0}>Submit</button>
         </form>
     )
 }
