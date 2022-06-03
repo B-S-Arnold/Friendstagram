@@ -53,7 +53,7 @@ def get_all_images():
 @image_routes.route('/<int:id>', methods=['PUT'])
 def image_api(id):
     image = Image.query.get(id)
-    caption = request.files["caption"]
+    caption = request.form["caption"]
     
     # form = ImageForm()
     # form['csrf_token'].data = request.cookies['csrf_token']

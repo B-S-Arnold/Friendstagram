@@ -8,6 +8,7 @@ import User from './components/Profile';
 import { authenticate } from './store/session';
 import SplashPage from './components/Splash';
 import Footer from './components/Footer';
+import Settings from './components/Settings';
 
 
 function App() {
@@ -37,8 +38,11 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/:username' exact={true} >
+        <ProtectedRoute path='/:username/' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/accounts/edit' exact={true}>
+          <Settings />
         </ProtectedRoute>
       </Switch>
       <Footer />
