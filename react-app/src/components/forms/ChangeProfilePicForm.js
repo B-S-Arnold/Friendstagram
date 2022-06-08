@@ -18,7 +18,6 @@ const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
         // formData.append("caption", caption)
         formData.append("image", image);
         
-        // console.log("JDSAGFJHASDJ", formData["caption"])
 
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
