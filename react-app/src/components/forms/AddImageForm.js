@@ -17,8 +17,7 @@ import { useHistory } from "react-router-dom";
 // import { createImage } from '../../store/images'
 
 
-const AddImageForm = ({ setRenderModal }) => {
-
+const AddImageForm = ({ setRenderModal }) => 
     // const history = useHistory(); // so that we can redirect after the image upload is successful
     // const dropzone = new Dropzone("div#myId", { url: "/file/post" });
     const [image, setImage] = useState(null);
