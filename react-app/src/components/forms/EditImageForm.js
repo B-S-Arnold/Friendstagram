@@ -131,9 +131,8 @@ const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
     return (
         <form className='image-form' onSubmit={handleSubmit}>
             <div className='instruct'>
-                <div>Change your url by using url image address.</div>
-                <div>This can be done by right clicking an image</div>
-                <div>and copying the image address.</div>
+                <div>Caption</div>
+                
                 {/* <div>The url should render on this page.</div> */}
             </div>
             <div>

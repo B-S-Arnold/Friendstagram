@@ -24,8 +24,8 @@ const AddImageForm = ({ setRenderModal }) => {
     // const history = useHistory(); // so that we can redirect after the image upload is successful
     // const dropzone = new Dropzone("div#myId", { url: "/file/post" });
     const [image, setImage] = useState([]);
-    const [caption, setCaption] = useState('');
-    const [imageLoading, setImageLoading] = useState(false);
+    // const [caption, setCaption] = useState('');
+    // const [imageLoading, setImageLoading] = useState(false);
     // console.log(file)
 
    
@@ -95,7 +95,10 @@ const AddImageForm = ({ setRenderModal }) => {
     // }
 
     function Previews({setImage}) {
+        const [caption, setCaption] = useState('');
         const [files, setFiles] = useState([]);
+        const [imageLoading, setImageLoading] = useState(false);
+
         // console.log(files)
         
 
@@ -191,7 +194,66 @@ const AddImageForm = ({ setRenderModal }) => {
 
         return (
             <section className="container">
-                <form onSubmit={handleSubmit}>
+                {(imageLoading) ? <p>Loading...</p> : <form onSubmit={handleSubmit}>
+                    <div {...getRootProps({ className: 'dropzone' })}>
+                        <input {...getInputProps()} />
+                        <p>Drag 'n' drop some files here, or click to select files</p>
+                    </div>
+                    <aside style={thumbsContainer}>
+                        {thumbs}
+
+                    </aside>
+                    {/* <button onClick={onNext}>Next</button> */}
+                    {/* <Dropzone onDrop={(file) => setImage(file[0])}>
+
+                    {({ getRootProps, getInputProps }) => (
+                        <section>
+
+                            <div {...getRootProps()}>
+
+                                <input
+                                    // className='ref-test'
+                                    {...getInputProps()}
+
+                                    
+                                />
+
+
+                            </div>
+                        </section>
+                    )}
+                </Dropzone> */}
+                    {/* <input
+                        type="file"
+                        accept="image/*"
+                        onChange={updateImage}
+                    /> */}
+                    {/* {(imageLoading) && <p>Loading...</p>} */}
+                    {/* <button onClick={onNext}>Next</button> */}
+
+                    <button type="submit">Submit</button>
+
+                    <div>
+
+                        <textarea
+                            className='caption'
+                            name='caption'
+                            placeholder='Write a caption...'
+                            value={caption}
+                            onChange={(e) => setCaption(e.target.value)}
+                        />
+
+                    </div>
+
+
+
+                    {/* {caperrors.length ? <div className='errors caperrors'>{Object.entries(caperrors).map((error) => (
+                 <div key={error[0]}>{error[1]}</div>
+             ))}
+             </div> : <></>} */}
+
+                </form>}
+                {/* <form onSubmit={handleSubmit}>
                 <div {...getRootProps({ className: 'dropzone' })}>
                     <input {...getInputProps()} />
                     <p>Drag 'n' drop some files here, or click to select files</p>
@@ -199,7 +261,7 @@ const AddImageForm = ({ setRenderModal }) => {
                 <aside style={thumbsContainer}>
                     {thumbs}
                     
-                </aside>
+                </aside> */}
                 {/* <button onClick={onNext}>Next</button> */}
                 {/* <Dropzone onDrop={(file) => setImage(file[0])}>
 
@@ -225,12 +287,12 @@ const AddImageForm = ({ setRenderModal }) => {
                         accept="image/*"
                         onChange={updateImage}
                     /> */}
-                    {(imageLoading) && <p>Loading...</p>}
+                    {/* {(imageLoading) && <p>Loading...</p>} */}
                     {/* <button onClick={onNext}>Next</button> */}
 
-                    <button type="submit">Submit</button>
+                    {/* <button type="submit">Submit</button> */}
 
-                    <div>
+                    {/* <div>
 
                         <textarea
                             className='caption'
@@ -240,7 +302,7 @@ const AddImageForm = ({ setRenderModal }) => {
                             onChange={(e) => setCaption(e.target.value)}
                         />
 
-                    </div>
+                    </div> */}
 
 
 
@@ -249,7 +311,7 @@ const AddImageForm = ({ setRenderModal }) => {
              ))}
              </div> : <></>} */}
 
-                </form>
+                {/* </form> */}
             </section>
         );
     }
