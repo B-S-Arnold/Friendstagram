@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import {FileDrop} from 'react-file-drop';
-import { useHistory } from "react-router-dom";
+import { FileDrop } from 'react-file-drop';
+import { useNavigate } from "react-router-dom";
 import Dropzone from 'react-dropzone';
 import { useDropzone } from 'react-dropzone';
 
@@ -21,14 +21,14 @@ import { useDropzone } from 'react-dropzone';
 
 const AddImageForm = ({ setRenderModal }) => {
 
-    // const history = useHistory(); // so that we can redirect after the image upload is successful
+    // const history = useNavigate(); // so that we can redirect after the image upload is successful
     // const dropzone = new Dropzone("div#myId", { url: "/file/post" });
     const [image, setImage] = useState([]);
     // const [caption, setCaption] = useState('');
     // const [imageLoading, setImageLoading] = useState(false);
     // console.log(file)
 
-   
+
     const thumbsContainer = {
         display: 'flex',
         flexDirection: 'row',
@@ -67,7 +67,7 @@ const AddImageForm = ({ setRenderModal }) => {
     //     const formData = new FormData();
     //     formData.append("caption", caption)
     //     formData.append("image", image);
-        
+
     //     // console.log("JDSAGFJHASDJ", formData["caption"])
 
     //     // aws uploads can be a bit slow—displaying
@@ -94,13 +94,13 @@ const AddImageForm = ({ setRenderModal }) => {
     //     setImage(file);
     // }
 
-    function Previews({setImage}) {
+    function Previews({ setImage }) {
         const [caption, setCaption] = useState('');
         const [files, setFiles] = useState([]);
         const [imageLoading, setImageLoading] = useState(false);
 
         // console.log(files)
-        
+
 
         // function onDropFunc (acceptedFiles) {
         //     // setImage(acceptedFiles[0])
@@ -146,7 +146,7 @@ const AddImageForm = ({ setRenderModal }) => {
             accept: {
                 'image/*': []
             },
-            onDrop:  acceptedFiles => {
+            onDrop: acceptedFiles => {
                 // console.log('FILES!!!!', acceptedFiles)
                 setFiles(acceptedFiles.map(file => Object.assign(file, {
                     preview: URL.createObjectURL(file)
@@ -157,27 +157,27 @@ const AddImageForm = ({ setRenderModal }) => {
             }
         });
 
-        
 
-        const thumbs = files.map(file => 
-            // setImage(file)
-            (
+
+        const thumbs = files.map(file =>
+        // setImage(file)
+        (
             <div style={thumb} key={file.name}>
                 <div style={thumbInner}>
-                    <img 
+                    <img
                         src={file.preview}
                         style={img}
                         alt="pic"
                         // Revoke data uri after image is loaded
-                        
+
                         onLoad={() => { URL.revokeObjectURL(file.preview) }}
                     />
-                    
+
                 </div>
             </div>
         ));
-        
-        
+
+
 
         useEffect(() => {
             // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
@@ -282,17 +282,17 @@ const AddImageForm = ({ setRenderModal }) => {
                         </section>
                     )}
                 </Dropzone> */}
-                    {/* <input
+                {/* <input
                         type="file"
                         accept="image/*"
                         onChange={updateImage}
                     /> */}
-                    {/* {(imageLoading) && <p>Loading...</p>} */}
-                    {/* <button onClick={onNext}>Next</button> */}
+                {/* {(imageLoading) && <p>Loading...</p>} */}
+                {/* <button onClick={onNext}>Next</button> */}
 
-                    {/* <button type="submit">Submit</button> */}
+                {/* <button type="submit">Submit</button> */}
 
-                    {/* <div>
+                {/* <div>
 
                         <textarea
                             className='caption'
@@ -306,7 +306,7 @@ const AddImageForm = ({ setRenderModal }) => {
 
 
 
-                    {/* {caperrors.length ? <div className='errors caperrors'>{Object.entries(caperrors).map((error) => (
+                {/* {caperrors.length ? <div className='errors caperrors'>{Object.entries(caperrors).map((error) => (
                  <div key={error[0]}>{error[1]}</div>
              ))}
              </div> : <></>} */}
@@ -325,11 +325,11 @@ const AddImageForm = ({ setRenderModal }) => {
     const styles = { border: '1px solid black', width: 600, color: 'black', padding: 20 };
     return (
         <>
-        {/* <form onSubmit={handleSubmit}> */}
-                <Previews setImage={setImage} />
+            {/* <form onSubmit={handleSubmit}> */}
+            <Previews setImage={setImage} />
 
 
-                {/* <Dropzone onDrop={(file) => setImage(file[0])}>
+            {/* <Dropzone onDrop={(file) => setImage(file[0])}>
                     
                     {({ getRootProps, getInputProps }) => (
                         <section>
@@ -354,14 +354,14 @@ const AddImageForm = ({ setRenderModal }) => {
                         </section>
                     )}
                 </Dropzone> */}
-                
 
-                
 
-            
-                
-            
-                 
+
+
+
+
+
+
 
             {/* <input
                 type="file"
@@ -385,15 +385,15 @@ const AddImageForm = ({ setRenderModal }) => {
 
              </div> */}
 
-                
 
-             {/* {caperrors.length ? <div className='errors caperrors'>{Object.entries(caperrors).map((error) => (
+
+            {/* {caperrors.length ? <div className='errors caperrors'>{Object.entries(caperrors).map((error) => (
                  <div key={error[0]}>{error[1]}</div>
              ))}
              </div> : <></>} */}
 
-        {/* </form> */}
-            
+            {/* </form> */}
+
             {/* <div>
                 <FilePond
                     files={image}

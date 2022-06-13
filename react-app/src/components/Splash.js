@@ -39,7 +39,7 @@ const SplashPage = ({user}) => {
                 <div className='redirContainer'>
                     <div className = 'switchdiv'>
                         Don't have an account?
-                            <NavLink to='/sign-up' exact={true} className='link' activeClassName='active'>
+                            <NavLink to='/sign-up' exact='true' className='link' >
                             Sign up
                         </NavLink>
                     </div>

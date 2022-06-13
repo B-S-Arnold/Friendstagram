@@ -1,11 +1,10 @@
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import DropSearch from './DropSearch';
 
 
 const SearchBar = () => {
     const [params, setParams] = useState('')
-    const history = useHistory();
+    const navigate = useNavigate();
     const [users, setUsers] = useState([]);
 
         useEffect(() => {
@@ -38,19 +37,15 @@ const SearchBar = () => {
         // console.log(users.filter(params))
         // history.push(`/search/${params.trim()}`)
         // setParams('')
+        
         allSearched = searchedUsers.map((user) => {
-            console.log(user.id)
-            return (
-                <>
-                    <div className='spacer'/>
-                    <div className='spacer' />
-                    <div className='spacer' />
-                    <div className='spacer' />
-                    <div className='spacer' />
-                    <div className='spacer' />
 
-                    <div className='each' key={user.name}>{user.name}</div>
-                </>
+            const toUser = () => {
+                navigate(`/${user.username}`)
+            }
+
+            return (
+                <div className='dropname' key={user.id} onClick={toUser}>{user.username}</div>
             )
 
         })
@@ -60,9 +55,10 @@ const SearchBar = () => {
 
 
     return (
-        <div >
+        <div className='searchdiv'>
             <input type='text' name='search' value={params} placeholder='Search'  onChange={(e) => setParams(e.target.value)} />
-            <DropSearch params={params}/>
+            
+            <div className='dropsearch'>{allSearched}</div>
         </div>
     )
 }

@@ -16,7 +16,7 @@ const DropdownModal = ( ) => {
                 <Modal onClose={() => setRenderModal(false)}>
                     <div onClose={() => setRenderModal(false)}>
                         <div>
-                            <NavLink to={`/${user.username}`} exact={true} activeClassName='active'>
+                            <NavLink to={`/${user.username}`} exact={'true'}>
                                 Profile
                             </NavLink>
                         </div>
