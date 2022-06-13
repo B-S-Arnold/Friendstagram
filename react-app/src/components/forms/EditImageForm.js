@@ -5,8 +5,7 @@ import { updateImage } from '../../store/images'
 
 const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
 
-    // const user = useSelector(state => state.session.user);
-
+    
     const id = image.id
     // const url = image.url
 
