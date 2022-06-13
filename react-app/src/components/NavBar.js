@@ -1,12 +1,13 @@
 
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, useNavigate } from 'react-router-dom';
 import AddImageModal from './modals/AddImageModal';
 import './NavBar.css'
 // import { readImages } from '../store/images';
 import { readComments } from '../store/comments';
 import Dropdown from './Dropdown';
+import SearchBar from './NavSearch';
 
 
 
@@ -14,7 +15,7 @@ import Dropdown from './Dropdown';
 
 const NavBar = ({user}) => {
 
-  const history = useHistory()
+  const history = useNavigate()
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,7 +47,7 @@ const NavBar = ({user}) => {
       <div className='containerContainer'>
         {/* <nav className='navOuterContainer'> */}
           <div className='navContainer'>
-            <div className='splitter' />
+            {/* <div className='splitter' /> */}
           <div className='splitter' />
             <div>
               <NavLink className='navbarTitle' to='/' exact={true} activeClassName='active'>
@@ -54,9 +55,11 @@ const NavBar = ({user}) => {
               </NavLink>
             </div>
             <div className='splitter'/>
+          <SearchBar />
             <div className='splitter' />
             <div className='splitter' />
             <div className='navBtnContainer'>
+              
               <div className='buttondiv'>
                 <div className='buttondiv'>
                   <HomeButton />
