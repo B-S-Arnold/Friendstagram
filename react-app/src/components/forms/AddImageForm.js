@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {FileDrop} from 'react-file-drop';
 import { useHistory } from "react-router-dom";
+import Dropzone from 'react-dropzone';
+import { useDropzone } from 'react-dropzone';
 
 
 
@@ -17,95 +19,297 @@ import { useHistory } from "react-router-dom";
 // import { createImage } from '../../store/images'
 
 
-const AddImageForm = ({ setRenderModal }) => 
+const AddImageForm = ({ setRenderModal }) => {
+
     // const history = useHistory(); // so that we can redirect after the image upload is successful
     // const dropzone = new Dropzone("div#myId", { url: "/file/post" });
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState([]);
     const [caption, setCaption] = useState('');
     const [imageLoading, setImageLoading] = useState(false);
+    // console.log(file)
 
    
+    const thumbsContainer = {
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        marginTop: 16
+    };
+
+    const thumb = {
+        display: 'inline-flex',
+        borderRadius: 2,
+        border: '1px solid #eaeaea',
+        marginBottom: 8,
+        marginRight: 8,
+        width: 'fit-content',
+        height: 500,
+        padding: 4,
+        boxSizing: 'border-box'
+    };
+
+    const thumbInner = {
+        display: 'flex',
+        minWidth: 0,
+        overflow: 'hidden'
+    };
+
+    const img = {
+        display: 'block',
+        width: 'auto',
+        height: '100%'
+    };
 
     // console.log(FilePond)
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append("caption", caption)
-        formData.append("image", image);
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     const formData = new FormData();
+    //     formData.append("caption", caption)
+    //     formData.append("image", image);
         
-        // console.log("JDSAGFJHASDJ", formData["caption"])
+    //     // console.log("JDSAGFJHASDJ", formData["caption"])
 
-        // aws uploads can be a bit slow—displaying
-        // some sort of loading message is a good idea
+    //     // aws uploads can be a bit slow—displaying
+    //     // some sort of loading message is a good idea
 
-        setImageLoading(true);
-        const res = await fetch('/api/images', {
-            method: "POST",
-            body: formData
+    //     setImageLoading(true);
+    //     const res = await fetch('/api/images', {
+    //         method: "POST",
+    //         body: formData
+    //     });
+    //     if (res.ok) {
+    //         await res.json();
+    //         setImageLoading(false);
+    //         setRenderModal(false);
+    //     }
+    //     else {
+    //         setImageLoading(false);
+    //         console.log("error")
+    //     }
+    // }
+
+    // const updateImage = (e) => {
+    //     const file = e.target.files[0];
+    //     setImage(file);
+    // }
+
+    function Previews({setImage}) {
+        const [files, setFiles] = useState([]);
+        // console.log(files)
+        
+
+        // function onDropFunc (acceptedFiles) {
+        //     // setImage(acceptedFiles[0])
+        //     return setFiles(acceptedFiles.map(file => Object.assign(file, {
+        //         preview: URL.createObjectURL(file)
+        //     })));
+        // }
+
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData();
+            formData.append("caption", caption)
+            formData.append("image", files[0]);
+
+            // console.log("JDSAGFJHASDJ", formData["caption"])
+
+            // aws uploads can be a bit slow—displaying
+            // some sort of loading message is a good idea
+
+            setImageLoading(true);
+            const res = await fetch('/api/images', {
+                method: "POST",
+                body: formData
+            });
+            if (res.ok) {
+                await res.json();
+                setImageLoading(false);
+                setRenderModal(false);
+            }
+            else {
+                setImageLoading(false);
+                console.log("error")
+            }
+        }
+
+        const updateImage = (e) => {
+            const file = e.target.files[0];
+            setImage(file);
+        }
+
+        const { getRootProps, getInputProps } = useDropzone({
+            accept: {
+                'image/*': []
+            },
+            onDrop:  acceptedFiles => {
+                // console.log('FILES!!!!', acceptedFiles)
+                setFiles(acceptedFiles.map(file => Object.assign(file, {
+                    preview: URL.createObjectURL(file)
+                })));
+                // setImage(acceptedFiles[0])
+                // setImage(acceptedFiles[0])
+                // onDropFunc(acceptedFiles)
+            }
         });
-        if (res.ok) {
-            await res.json();
-            setImageLoading(false);
-            setRenderModal(false);
-        }
-        else {
-            setImageLoading(false);
-            console.log("error")
-        }
+
+        
+
+        const thumbs = files.map(file => 
+            // setImage(file)
+            (
+            <div style={thumb} key={file.name}>
+                <div style={thumbInner}>
+                    <img 
+                        src={file.preview}
+                        style={img}
+                        alt="pic"
+                        // Revoke data uri after image is loaded
+                        
+                        onLoad={() => { URL.revokeObjectURL(file.preview) }}
+                    />
+                    
+                </div>
+            </div>
+        ));
+        
+        
+
+        useEffect(() => {
+            // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
+            // console.log("FILES", files)
+            // setImage(files[0])
+            return () => files.forEach(file => URL.revokeObjectURL(file.preview));
+        }, [files]);
+
+        // const onNext = (e) => {
+        //     e.preventDefault()
+        //     console.log('Hello Wpr;d')
+        //     // setImage(file[0])
+        // }
+
+        return (
+            <section className="container">
+                <form onSubmit={handleSubmit}>
+                <div {...getRootProps({ className: 'dropzone' })}>
+                    <input {...getInputProps()} />
+                    <p>Drag 'n' drop some files here, or click to select files</p>
+                </div>
+                <aside style={thumbsContainer}>
+                    {thumbs}
+                    
+                </aside>
+                {/* <button onClick={onNext}>Next</button> */}
+                {/* <Dropzone onDrop={(file) => setImage(file[0])}>
+
+                    {({ getRootProps, getInputProps }) => (
+                        <section>
+
+                            <div {...getRootProps()}>
+
+                                <input
+                                    // className='ref-test'
+                                    {...getInputProps()}
+
+                                    
+                                />
+
+
+                            </div>
+                        </section>
+                    )}
+                </Dropzone> */}
+                    {/* <input
+                        type="file"
+                        accept="image/*"
+                        onChange={updateImage}
+                    /> */}
+                    {(imageLoading) && <p>Loading...</p>}
+                    {/* <button onClick={onNext}>Next</button> */}
+
+                    <button type="submit">Submit</button>
+
+                    <div>
+
+                        <textarea
+                            className='caption'
+                            name='caption'
+                            placeholder='Write a caption...'
+                            value={caption}
+                            onChange={(e) => setCaption(e.target.value)}
+                        />
+
+                    </div>
+
+
+
+                    {/* {caperrors.length ? <div className='errors caperrors'>{Object.entries(caperrors).map((error) => (
+                 <div key={error[0]}>{error[1]}</div>
+             ))}
+             </div> : <></>} */}
+
+                </form>
+            </section>
+        );
     }
 
-    const updateImage = (e) => {
-        const file = e.target.files[0];
-        setImage(file);
-    }
+    // <Previews  />
+    // const onNext = (e) => {
+    //     e.preventDefault()
+    //     console.log(...getInputProps)
+    //     // setImage(file[0])
+    // }
     const styles = { border: '1px solid black', width: 600, color: 'black', padding: 20 };
     return (
         <>
-        <form onSubmit={handleSubmit}>
-            
+        {/* <form onSubmit={handleSubmit}> */}
+                <Previews setImage={setImage} />
 
-            <div style={styles}>
-                <FileDrop
-                onFrameDragEnter={(event) => console.log('onFrameDragEnter', event)}
-                onFrameDragLeave={(event) => console.log('onFrameDragLeave', event)}
-                onFrameDrop={(event) => console.log('onFrameDrop', event)}
-                onDragOver={(event) => console.log('onDragOver', event)}
-                onDragLeave={(event) => console.log('onDragLeave', event)}
-                
-                onDrop={(files, event) => {
-                    console.log('OnDrop!', files, event)
-                    const file = files[0];
+
+                {/* <Dropzone onDrop={(file) => setImage(file[0])}>
                     
-                    console.log(file)
-                    setImage(file)}}
-                >
-                    {/* <img
-                        className='imgFormImg'
-                        src={image}
-                        alt="pic"
-                        id='pic'
-                        onError={e => {
-                            e.onerror = null
-                            e.target.src = require('../../images/not-found.jpeg').default
+                    {({ getRootProps, getInputProps }) => (
+                        <section>
+                            
+                            <div {...getRootProps()}>
+                                
+                                <input
+                                    // className='ref-test'
+                                    {...getInputProps()}
+                                    
+                                    style={{
+                                        // width: '500px',
+                                        // height: '500px',
+                                        postition: 'absolute',
+                                        opacity: 0,
+                                        backgroundColor: 'blue'
+                                    }} 
+                                />
 
-                        }} */}
+                                
+                            </div>
+                        </section>
+                    )}
+                </Dropzone> */}
+                
 
+                
 
-                    {/* /> */}
-                Drop some files here!
-                </FileDrop>
-            </div>
+            
+                
             
                  
 
-            <input
+            {/* <input
                 type="file"
                 accept="image/*"
                 onChange={updateImage}
-            />
-            <button type="submit">Submit</button>
-            {(imageLoading) && <p>Loading...</p>}
+                />
+            {(imageLoading) && <p>Loading...</p>} */}
+            {/* <button onClick={onNext}>Next</button> */}
+
+            {/* <button type="submit">Submit</button>
             
             <div>
 
@@ -117,7 +321,7 @@ const AddImageForm = ({ setRenderModal }) =>
                      onChange={(e) => setCaption(e.target.value)}
                  />
 
-             </div>
+             </div> */}
 
                 
 
@@ -126,7 +330,7 @@ const AddImageForm = ({ setRenderModal }) =>
              ))}
              </div> : <></>} */}
 
-        </form>
+        {/* </form> */}
             
             {/* <div>
                 <FilePond
