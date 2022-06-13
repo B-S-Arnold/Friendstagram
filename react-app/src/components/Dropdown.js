@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { logout } from "../store/session";
 
 const Dropdown = () => {
 
     const user = useSelector(state => state.session.user)
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const LogoutButton = () => {
         const dispatch = useDispatch()
@@ -19,7 +19,7 @@ const Dropdown = () => {
     const ProfileButton = () => {
 
         const toProfile = () => {
-            history.push(`/${user.username}`);
+            navigate(`/${user.username}`);
         }
 
         return <div className='dropdownbtn profbtn' onClick={toProfile}>Profile</div>
@@ -30,7 +30,7 @@ const Dropdown = () => {
 
     const SettingsButton = () => {
         const toSettings = () => {
-            history.push(`/accounts/edit/`)
+            navigate(`/accounts/edit/`)
         }
 
         return <div className='dropdownbtn' onClick={toSettings}>Settings</div>
@@ -41,23 +41,24 @@ const Dropdown = () => {
         <>
             <div className='triangle' />
             <div className="dropdown">
-                
-            
-            <div>
-                <ProfileButton />
 
-                {/* <NavLink className='dropdownbtn' to={`/${user.username}`} exact={true} activeClassName='active'>
+
+                <div>
+                    <ProfileButton />
+
+                    {/* <NavLink className='dropdownbtn' to={`/${user.username}`} exact={true} activeClassName='active'>
                     Profile
                 </NavLink> */}
+                </div>
+                <div>
+                    <SettingsButton />
+                </div>
+                <div>
+                    <LogoutButton />
+                </div>
             </div>
-            <div>
-                <SettingsButton />
-            </div>
-            <div>
-                <LogoutButton  />
-            </div>
-        </div>
-                </>
-    )}
+        </>
+    )
+}
 
 export default Dropdown;

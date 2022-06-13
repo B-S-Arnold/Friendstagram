@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -31,20 +31,20 @@ function App() {
     <BrowserRouter>
       {user && <NavBar user={user} />}
       
-      <Switch>
-        <Route path='/' exact={true}>
-          <SplashPage user={user}/>
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/:username/' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/accounts/edit' exact={true}>
-          <Settings />
-        </ProtectedRoute>
-      </Switch>
+      <Routes>
+        <Route path='/' exact={'true'} element={<SplashPage user={user} />}/>
+          {/* <SplashPage user={user}/>
+        </Route> */}
+        <Route path='/sign-up' exact={'true'} element={<SignUpForm />} />
+          {/* <SignUpForm />
+        </Route> */}
+        <Route path='/:username/' exact={'true'} element={<User />} />
+          {/* <User />
+        </ProtectedRoute> */}
+          <Route path='/accounts/edit' exact={'true'} element={<Settings />}/>
+          {/* <Settings />
+        </ProtectedRoute> */}
+      </Routes>
       <Footer />
     </BrowserRouter>
   );

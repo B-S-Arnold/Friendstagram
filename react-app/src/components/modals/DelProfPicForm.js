@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FileDrop } from 'react-file-drop';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
 const DelProfPicForm = ({ renderOptionsModal, user }) => {
 
-    
+
 
 
 
@@ -21,14 +21,14 @@ const DelProfPicForm = ({ renderOptionsModal, user }) => {
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
 
-       
+
         const res = await fetch(`/api/users/del/${user.id}`, {
             method: "PUT",
             // body: formData
         });
         if (res.ok) {
             await res.json();
-            
+
             renderOptionsModal(false);
         }
         else {

@@ -1,6 +1,6 @@
 import React, {  useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { NavLink, Redirect } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import DemoUser from './DemoUser';
 import '../LoginSignup.css'
@@ -131,7 +131,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Navigate to='/' />;
   }
 
   return (
@@ -238,7 +238,7 @@ const SignUpForm = () => {
           
           Have an account? 
           
-          <NavLink to='/' exact={true} className='link' activeClassName='active'>
+          <NavLink to='/' exact={'true'} className='link' >
             Log in
           </NavLink>
           

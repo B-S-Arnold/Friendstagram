@@ -5,7 +5,7 @@ import { updateImage } from '../../store/images'
 
 const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
 
-    
+
     const id = image.id
     // const url = image.url
 
@@ -16,7 +16,7 @@ const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
     // const [urlerrors, seturlerrors] = useState([]);
 
     // const dispatch = useDispatch();
-    // const history = useHistory()
+    // const history = useNavigate()
 
     // const userId = user.id
 
@@ -131,7 +131,7 @@ const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
         <form className='image-form' onSubmit={handleSubmit}>
             <div className='instruct'>
                 <div>Caption</div>
-                
+
                 {/* <div>The url should render on this page.</div> */}
             </div>
             <div>
