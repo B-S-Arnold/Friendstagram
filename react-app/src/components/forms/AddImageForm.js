@@ -15,8 +15,8 @@ import { useDropzone } from 'react-dropzone';
 // import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
 // registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
 
-// import { useDispatch} from 'react-redux';
-// import { createImage } from '../../store/images'
+import { useDispatch} from 'react-redux';
+import { createImage } from '../../store/images'
 
 
 const AddImageForm = ({ setRenderModal }) => {
