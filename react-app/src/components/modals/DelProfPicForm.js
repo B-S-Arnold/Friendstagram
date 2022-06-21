@@ -30,6 +30,7 @@ const DelProfPicForm = ({ renderOptionsModal, user }) => {
             await res.json();
 
             renderOptionsModal(false);
+            
         }
         else {
             console.log("error")

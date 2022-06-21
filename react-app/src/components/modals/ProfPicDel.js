@@ -16,8 +16,8 @@ const ProfPicDel = ({ user, renderOptionsModal }) => {
         });
         if (res.ok) {
             await res.json();
-
             renderOptionsModal(false);
+            window.location.reload()
         }
         else {
             console.log("error")
