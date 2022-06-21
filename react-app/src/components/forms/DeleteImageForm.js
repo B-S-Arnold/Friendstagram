@@ -7,6 +7,7 @@ const DeleteImageForm = ({setRenderModal, image, renderOptionsModal}) => {
         e.preventDefault();
 
         dispatch(deleteImage(image))
+        window.location.reload()
     }
 
     const handleClose = (e) => {

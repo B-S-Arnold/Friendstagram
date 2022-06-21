@@ -28,6 +28,7 @@ const AddImageForm = ({ setRenderModal }) => {
     // const [imageLoading, setImageLoading] = useState(false);
     // console.log(file)
 
+    // const navigate = useNavigate()
 
     const thumbsContainer = {
         display: 'flex',
@@ -130,6 +131,7 @@ const AddImageForm = ({ setRenderModal }) => {
                 await res.json();
                 setImageLoading(false);
                 setRenderModal(false);
+                window.location.reload();
             }
             else {
                 setImageLoading(false);

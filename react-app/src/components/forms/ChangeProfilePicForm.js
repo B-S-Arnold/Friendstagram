@@ -31,6 +31,7 @@ const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
             await res.json();
             setImageLoading(false);
             renderOptionsModal(false);
+            window.location.reload()
         }
         else {
             setImageLoading(false);
@@ -49,7 +50,14 @@ const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
 
 
                 <div style={styles}>
-                    <FileDrop
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={updateImage}
+                    />
+                    <button type="submit">Submit</button>
+                    {(imageLoading) && <p>Loading...</p>}
+                    {/* <FileDrop
                         onFrameDragEnter={(event) => console.log('onFrameDragEnter', event)}
                         onFrameDragLeave={(event) => console.log('onFrameDragLeave', event)}
                         onFrameDrop={(event) => console.log('onFrameDrop', event)}
@@ -66,18 +74,18 @@ const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
                     >
 
                         Drop some files here!
-                    </FileDrop>
+                    </FileDrop> */}
                 </div>
 
 
 
-                <input
+                {/* <input
                     type="file"
                     accept="image/*"
                     onChange={updateImage}
                 />
                 <button type="submit">Submit</button>
-                {(imageLoading) && <p>Loading...</p>}
+                {(imageLoading) && <p>Loading...</p>} */}
 
                 {/* <div>
 

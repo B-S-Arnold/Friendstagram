@@ -3,6 +3,8 @@ from app.models import db, Image
 from flask_login import current_user, login_required
 from app.s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename, delete_file_from_s3)
+from app.forms.image_form import ImageForm
+
 
 image_routes = Blueprint("images", __name__)
 
@@ -53,19 +55,57 @@ def get_all_images():
 @image_routes.route('/<int:id>', methods=['PUT'])
 def image_api(id):
     image = Image.query.get(id)
-    caption = request.form["caption"]
+    # caption = request.form["caption"]
     
-    # form = ImageForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
-    if image.url:
+    form = ImageForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    
+    # if image.url:
+    if form.validate_on_submit():
         
-            # image.userId=current_user.id,
-            # image.url=form.data['url']
-            image.caption=caption,
+            
+            # image.caption=caption,
+            # image.edited=True
+            image.caption=form.data['caption'],
             image.edited=True
 
             db.session.commit()
             return image.to_dict()
+        
+    if form.errors:
+            return {'errors': form.errors}
+    
+# # PUT
+    
+#     form = ImageForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+        
+#             image.userId=current_user.id,
+#             image.url=form.data['url']
+#             image.caption=form.data['caption'],
+#             image.edited=True
+
+#             db.session.commit()
+#             return image.to_dict()
+        
+#     if form.errors:
+#         return {'errors': form.errors}
+        
+    
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+        
+#             image.userId=current_user.id,
+#             image.url=form.data['url']
+#             image.caption=form.data['caption'],
+#             image.edited=True
+
+#             db.session.commit()
+#             return image.to_dict()
+        
+#     if form.errors:
+#         return {'errors': form.errors}
         
 
 # DELETE IMAGE

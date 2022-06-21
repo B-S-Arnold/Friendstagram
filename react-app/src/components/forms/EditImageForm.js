@@ -15,7 +15,7 @@ const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
     const [caperrors, setcaperrors] = useState([]);
     // const [urlerrors, seturlerrors] = useState([]);
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     // const history = useNavigate()
 
     // const userId = user.id
@@ -26,26 +26,28 @@ const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
         const formData = new FormData();
         formData.append("caption", caption)
 
-        // let editedImage = await dispatch(updateImage(id, url, caption));
+        let editedImage = await dispatch(updateImage(id, caption));
 
-        // if (editedImage?.errors) return setErrors(editedImage.errors)
-        // if (editedImage) {
-        //     setRenderModal(false)
-        //     renderOptionsModal(false)
+        if (editedImage?.errors) return setErrors(editedImage.errors)
+        if (editedImage) {
+            setRenderModal(false)
+            renderOptionsModal(false)
+            window.location.reload()
+        }
+        // const res = await fetch(`/api/images/${id}`, {
+        //     method: "PUT",
+        //     body: formData
+        // });
+        // if (res.ok) {
+        //     await res.json();
+        //     // setImageLoading(false);
+        //     setRenderModal(false);
+        //     // window.location.reload()
         // }
-        const res = await fetch(`/api/images/${id}`, {
-            method: "PUT",
-            body: formData
-        });
-        if (res.ok) {
-            await res.json();
-            // setImageLoading(false);
-            setRenderModal(false);
-        }
-        else {
-            // setImageLoading(false);
-            console.log("error")
-        }
+        // else {
+        //     // setImageLoading(false);
+        //     console.log("error")
+        // }
     }
 
     //IMG ERRORS

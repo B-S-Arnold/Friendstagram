@@ -73,11 +73,11 @@ export const deleteImage = (image) => async dispatch => {
 
 //update image
 
-export const updateImage = (id, url, caption) => async dispatch => {
+export const updateImage = (id, caption) => async dispatch => {
     const response = await fetch(`/api/images/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url, caption })
+        body: JSON.stringify({ caption })
     });
     if (response.ok) {
         const editedImage = await response.json()
