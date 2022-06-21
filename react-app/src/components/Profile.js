@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ChangeProfPicForm from './forms/ChangeProfilePicForm';
 import ChangeProfPicModal from './modals/ChangeProfPicModal';
 import ViewImageModal from './modals/ViewImageModal';
@@ -10,6 +10,15 @@ function User() {
   const [user, setUser] = useState({});
   const [users, setUsers] = useState({})
   const { username }  = useParams();
+  // const sessionUser = useSelector(state => state.session.user)
+  // const navigate = useNavigate
+
+  //  if (!sessionUser) {
+  //   navigate(`/`);
+  // }
+
+ 
+
   
   // const images = Object.values(useSelector(state => state.images))
   const [images, setImages] = useState([])
@@ -58,6 +67,8 @@ function User() {
       </div>
     );
   });
+
+ 
 
   return (
     <div className= 'profPageContainer'>

@@ -11,7 +11,9 @@ const Dropdown = () => {
         const dispatch = useDispatch()
         const onLogout = async (e) => {
             await dispatch(logout());
+            navigate(`/`)
         };
+        // navigate(`/`)
 
         return <div className='dropdownbtn logoutbtn' onClick={onLogout}>Logout</div>;
     };
@@ -50,9 +52,9 @@ const Dropdown = () => {
                     Profile
                 </NavLink> */}
                 </div>
-                <div>
+                {/* <div>
                     <SettingsButton />
-                </div>
+                </div> */}
                 <div>
                     <LogoutButton />
                 </div>

@@ -15,7 +15,7 @@ import ProfPicEdit from './ProfPicEdit';
 
 
 const ChangeProfPicModal = ({ user }) => {
-    console.log("THIS USER!!!!", user)
+    // console.log("THIS USER!!!!", user)
     
     const [renderModal, setRenderModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user)
