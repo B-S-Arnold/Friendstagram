@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import AddImageModal from './modals/AddImageModal';
 import './NavBar.css'
-// import { readImages } from '../store/images';
+import { readImages } from '../store/images';
 import { readComments } from '../store/comments';
 import Dropdown from './Dropdown';
 import SearchBar from './NavSearch';
@@ -21,7 +21,7 @@ const NavBar = ({ user }) => {
   useEffect(() => {
 
     async function fetchData() {
-      // await dispatch(readImages())
+      await dispatch(readImages())
       await dispatch(readComments())
     }
     fetchData()
