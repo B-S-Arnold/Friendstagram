@@ -3,15 +3,15 @@ import { useSelector } from 'react-redux';
 import { Route, Navigate } from 'react-router-dom';
 
 
-const ProtectedRoute = props => {
-  const user = useSelector(state => state.session.user)
+const ProtectedRoute = ({user, children}) => {
+  // const user = useSelector(state => state.session.user)
+    if (!user) {
+    return <Navigate to="/" replace />;
+  }
 
-  return (
-    <Route {...props}>
-      {(user)? props.children  : <Navigate to='/' />}
-    </Route>
-  )
+  return children;
 };
+ 
 
 
 export default ProtectedRoute;

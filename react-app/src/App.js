@@ -38,10 +38,17 @@ function App() {
         <Route path='/sign-up' exact={'true'} element={<SignUpForm />} />
           {/* <SignUpForm />
         </Route> */}
-        <Route path='/:username/' exact={'true'} element={<User />} />
+        <Route path='/:username/' exact={'true'} element={
+        <ProtectedRoute user={user}>
+            <User />
+        </ProtectedRoute>} />
           {/* <User />
         </ProtectedRoute> */}
-          <Route path='/accounts/edit' exact={'true'} element={<Settings />}/>
+
+        <Route path='/accounts/edit' exact={'true'} element={
+        <ProtectedRoute user={user}>
+          <Settings />
+        </ProtectedRoute>} />
           {/* <Settings />
         </ProtectedRoute> */}
       </Routes>

@@ -11,7 +11,7 @@ const Dropdown = () => {
         const dispatch = useDispatch()
         const onLogout = async (e) => {
             await dispatch(logout());
-            navigate(`/`)
+            // navigate(`/`)
         };
         // navigate(`/`)
 
