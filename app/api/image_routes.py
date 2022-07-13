@@ -9,9 +9,9 @@ from app.forms.image_form import ImageForm
 image_routes = Blueprint("images", __name__)
 
 # POST IMAGE
-
-@image_routes.route("", methods=["POST"])
+@image_routes.route("", methods=['POST'])
 @login_required
+
 def upload_image():
     if "image" not in request.files:
         return {"errors": "image required"}, 400
@@ -41,12 +41,48 @@ def upload_image():
     db.session.commit()
     return {"url": url}
 
-# GET ALL IMAGES
+@image_routes.route("/", methods=['GET'])
+@login_required
 
-@image_routes.route("")
 def get_all_images():
+    # images = Image.query.all()
+    # return {'images': [image.to_dict() for image in images]}
     images = Image.query.order_by(Image.id.desc()).all()
     return {"images": [image.to_dict() for image in images]}
+
+# def upload_image():
+#     if "image" not in request.files:
+#         return {"errors": "image required"}, 400
+    
+#     image = request.files
+    
+#     image = request.files["image"]
+       
+#     caption = request.form["caption"]
+   
+#     if not allowed_file(image.filename):
+#         return {"errors": "file type not permitted"}, 400
+
+#     image.filename = get_unique_filename(image.filename)
+
+#     upload = upload_file_to_s3(image)
+
+#     if "url" not in upload:
+        
+#         print(upload)
+#         return upload, 400
+
+#     url = upload["url"]
+    
+#     new_image = Image(userId=current_user.id, url=url, caption=caption, edited=False)
+#     db.session.add(new_image)
+#     db.session.commit()
+#     return {"url": url}
+
+# GET ALL IMAGES
+
+# @image_routes.route("/")
+
 
 # GET IMAGE BY USERID
 

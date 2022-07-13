@@ -12,24 +12,24 @@ import ViewImageModal from './modals/ViewImageModal';
 function UsersList() {
   const sessionUser = useSelector(state => state.session.user)
   const [users, setUsers] = useState([]);
-  // const images = Object.values(useSelector(state => state.images))
-  const [images, setImages] = useState([])
+  const images = Object.values(useSelector(state => state.images))
+  // const [images, setImages] = useState([])
   const comments = Object.values(useSelector(state => state.comments))
-
-
+  // const images = imageArr.images
+  console.log(images)
   useEffect(() => {
     async function fetchData() {
       const response = await fetch('/api/users/');
       const responseData = await response.json();
 
-      const res = await fetch('/api/images')
-      if (res.ok) {
-        const data = await res.json();
-        console.log(data)
-        setImages(data.images)
-      } else {
-        console.log('error')
-      }
+      // const res = await fetch('/api/images')
+      // if (res.ok) {
+      //   const data = await res.json();
+      //   console.log(data)
+      //   setImages(data.images)
+      // } else {
+      //   console.log('error')
+      // }
       setUsers(responseData.users);
     }
     fetchData();
@@ -74,7 +74,7 @@ function UsersList() {
   });
 
 
-  const allImages = images.map((image) => {
+  const allImages = images?.map((image) => {
     const thisUser = users?.filter(user => user.id === image.userId)[0]
 
 

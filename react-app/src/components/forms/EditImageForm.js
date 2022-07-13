@@ -32,7 +32,7 @@ const EditImageForm = ({ image, setRenderModal, renderOptionsModal }) => {
         if (editedImage) {
             setRenderModal(false)
             renderOptionsModal(false)
-            window.location.reload()
+            // window.location.reload()
         }
         // const res = await fetch(`/api/images/${id}`, {
         //     method: "PUT",

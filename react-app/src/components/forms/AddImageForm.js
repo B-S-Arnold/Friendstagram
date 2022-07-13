@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { FileDrop } from 'react-file-drop';
-import { useNavigate } from "react-router-dom";
-import Dropzone from 'react-dropzone';
+
 import { useDropzone } from 'react-dropzone';
 
 
@@ -15,15 +13,14 @@ import { useDropzone } from 'react-dropzone';
 // import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
 // registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
 
-// import { useDispatch} from 'react-redux';
-// import { createImage } from '../../store/images'
+
 
 
 const AddImageForm = ({ setRenderModal }) => {
 
     // const history = useNavigate(); // so that we can redirect after the image upload is successful
     // const dropzone = new Dropzone("div#myId", { url: "/file/post" });
-    const [image, setImage] = useState([]);
+    // const [image, setImage] = useState([]);
     // const [caption, setCaption] = useState('');
     // const [imageLoading, setImageLoading] = useState(false);
     // console.log(file)
@@ -95,7 +92,7 @@ const AddImageForm = ({ setRenderModal }) => {
     //     setImage(file);
     // }
 
-    function Previews({ setImage }) {
+    function Previews() {
         const [caption, setCaption] = useState('');
         const [files, setFiles] = useState([]);
         const [imageLoading, setImageLoading] = useState(false);
@@ -139,10 +136,10 @@ const AddImageForm = ({ setRenderModal }) => {
             }
         }
 
-        const updateImage = (e) => {
-            const file = e.target.files[0];
-            setImage(file);
-        }
+        // const updateImage = (e) => {
+        //     const file = e.target.files[0];
+        //     setImage(file);
+        // }
 
         const { getRootProps, getInputProps } = useDropzone({
             accept: {
@@ -328,7 +325,7 @@ const AddImageForm = ({ setRenderModal }) => {
     return (
         <>
             {/* <form onSubmit={handleSubmit}> */}
-            <Previews setImage={setImage} />
+            <Previews />
 
 
             {/* <Dropzone onDrop={(file) => setImage(file[0])}>

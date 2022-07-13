@@ -2,14 +2,7 @@ import { Modal } from '../../context/Modal';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import './ViewImage.css'
-import DeleteCommentModal from './DeleteCommentModal';
-import AddCommentForm from '../forms/AddCommentForm';
-import OptionsModal from './OptionsModal';
-import EditCommentModal from './EditCommentModal';
-import { NavLink } from 'react-router-dom';
-import ChangeProfPicForm from '../forms/ChangeProfilePicForm';
-import DeleteImageModal from './DeleteImageModal';
-import DelProfPicForm from './DelProfPicForm';
+
 import ProfPicDel from './ProfPicDel';
 import ProfPicEdit from './ProfPicEdit';
 
