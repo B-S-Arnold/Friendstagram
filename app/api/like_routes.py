@@ -1,68 +1,67 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db, Comment
-from app.forms.comment_form import CommentForm
+from app.models import db, Like
+from app.forms.like_form import LikeForm
 
-
-comment_routes = Blueprint('comments', __name__)
+like_routes = Blueprint('likes', __name__)
 @login_required
-@comment_routes.route('/', methods=['GET', 'POST'])
-def comments_api():
+@like_routes.route('/', methods=['GET', 'POST'])
+def likes_api():
 
 # POST
 
-    form = CommentForm()
+    form = LikeForm()
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-            comment = Comment(
+            like = Like(
                 userId=current_user.id,
-                imageId=form.data['imageId'],
-                content=form.data['content'],
-                edited=False
+                imageId=form.data['imageId']
             )
             
-            db.session.add(comment)
+            db.session.add(like)
             db.session.commit()
-            return comment.to_dict()
+            return like.to_dict()
     if form.errors:
         return {'errors': form.errors}
 
 # GET
 
-    comments = Comment.query.all()
-    return {'comments': [comment.to_dict() for comment in comments]}
+    likes = Like.query.all()
+    return {'likes': [like.to_dict() for like in likes]}
 
-@comment_routes.route('/<int:id>', methods=['PUT'])
-def comment_api(id):
+# @like_routes.route('/<int:id>', methods=['PUT'])
+# def comment_api(id):
     
-    comment = Comment.query.get(id)
+#     comment = Comment.query.get(id)
     
-# PUT
+# # PUT
     
-    form = CommentForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
+#     form = CommentForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
         
-            comment.userId=current_user.id,
-            comment.imageId=form.data['imageId']
-            comment.content=form.data['content'],
-            comment.edited=True
+#             comment.userId=current_user.id,
+#             comment.imageId=form.data['imageId']
+#             comment.content=form.data['content'],
+#             comment.edited=True
 
-            db.session.commit()
-            return comment.to_dict()
+#             db.session.commit()
+#             return comment.to_dict()
+
+    # if form.errors:
+    #     return {'errors': form.errors}
+
 
 # DELETE
 
-    if form.errors:
-        return {'errors': form.errors}
     
     
-@comment_routes.route('/<int:id>', methods=['DELETE'])
-def comment_del_api(id):
+@like_routes.route('/<int:id>', methods=['DELETE'])
+def like_del_api(id):
     
-        comment = Comment.query.get(id)
+        like = Like.query.get(id)
     
-        db.session.delete(comment)
+        db.session.delete(like)
         db.session.commit()
-        return {'message': 'Comment deleted'}
+        return {'message': 'Like deleted'}
