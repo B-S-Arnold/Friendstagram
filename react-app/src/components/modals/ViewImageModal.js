@@ -7,6 +7,8 @@ import AddCommentForm from '../forms/AddCommentForm';
 import OptionsModal from './OptionsModal';
 import EditCommentModal from './EditCommentModal';
 import { NavLink } from 'react-router-dom';
+import LikeForm from '../forms/LikeForm';
+import UnlikeForm from '../forms/UnlikeForm';
 
 
 const ViewImageModal = ({ image, expand, users }) => {
@@ -14,12 +16,15 @@ const ViewImageModal = ({ image, expand, users }) => {
     const sessionUser = useSelector(state => state.session.user)
     // const users = Object.values(useSelector(state => state.users))
     const comments = Object.values(useSelector(state => state.comments))
-
+    const likes = Object.values(useSelector(state => state.likes))
+    const allLikes = likes.filter(like => like.imageId === image.id)
+    const liked = allLikes?.filter(like => like.userId === sessionUser.id)
     const allComments = comments.filter(comment => comment.imageId === image.id)
     let eachComment
     let imgUser
     if (users.length) {
         imgUser = users?.filter(user => user.id === image.userId)[0]
+
 
         eachComment = allComments.map((comment) => {
 
@@ -194,6 +199,10 @@ const ViewImageModal = ({ image, expand, users }) => {
                                     }
                                 </div>
                             </div>
+                            <hr className='commentline' />
+                            {liked?.length > 0 ? <UnlikeForm like={liked[liked.length-1]}/> : <LikeForm image={image} />}
+                            {/* <LikeForm image={image}/> */}
+                            <div>{allLikes.length} likes</div>
                             <hr className='commentline' />
                             <AddCommentForm image={image} />
                         </div>

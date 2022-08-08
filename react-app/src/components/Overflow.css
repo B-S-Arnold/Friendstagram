@@ -226,3 +226,38 @@
     border: red solid 2px;
     border-radius: 15px;
 }
+
+.likebtn{
+    background-image: url("../images/emptyHeart.png");
+    background-size: contain;
+    
+    width: 56px;
+    height: 56px;
+    /* border: solid #fff 2px; */
+    outline: none;
+    border: none;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.unlikebtn{
+    background-image: url("../images/heart.png");
+    background-size: contain;
+    
+    width: 56px;
+    height: 56px;
+    /* border: solid #fff 2px; */
+    outline: none;
+    border: none;
+    background-color: white;
+    border-radius: 50%;
+
+}
+
+.likebtn:hover{
+    cursor: pointer;
+}
+
+.unlikebtn:hover {
+    cursor: pointer;
+}

@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { FileDrop } from 'react-file-drop';
-import { useNavigate } from "react-router-dom";
 
 
 
