@@ -202,7 +202,7 @@ const ViewImageModal = ({ image, expand, users }) => {
                             <hr className='commentline' />
                             {liked?.length > 0 ? <UnlikeForm like={liked[liked.length-1]}/> : <LikeForm image={image} />}
                             {/* <LikeForm image={image}/> */}
-                            <div>{allLikes.length} likes</div>
+                            <div className='numlikes'>{allLikes.length} likes</div>
                             <hr className='commentline' />
                             <AddCommentForm image={image} />
                         </div>

@@ -8,6 +8,8 @@ import DeleteCommentModal from './modals/DeleteCommentModal';
 import EditCommentModal from './modals/EditCommentModal';
 import OptionsModal from './modals/OptionsModal';
 import ViewImageModal from './modals/ViewImageModal';
+import UnlikeForm from './forms/UnlikeForm';
+import LikeForm from './forms/LikeForm';
 
 function UsersList() {
   const sessionUser = useSelector(state => state.session.user)
@@ -15,6 +17,8 @@ function UsersList() {
   const images = Object.values(useSelector(state => state.images))
   // const [images, setImages] = useState([])
   const comments = Object.values(useSelector(state => state.comments))
+  const likes = Object.values(useSelector(state => state.likes))
+  
   // const images = imageArr.images
   console.log(images)
   useEffect(() => {
@@ -77,7 +81,8 @@ function UsersList() {
   const allImages = images?.map((image) => {
     const thisUser = users?.filter(user => user.id === image.userId)[0]
 
-
+    const allLikes = likes.filter(like => like.imageId === image.id)
+    const liked = allLikes?.filter(like => like.userId === sessionUser.id)
 
 
 
@@ -153,8 +158,11 @@ function UsersList() {
         </div>
 
         <div className='imginfo'>
+          {liked?.length > 0 ? <UnlikeForm like={liked[liked.length - 1]} /> : <LikeForm image={image} />}
+          <div className='numlikes'>{allLikes.length} likes</div>
           <div className='nameAndCapView'>
-            <strong>{thisUser?.username}</strong>
+            <strong className='username'>{thisUser?.username}</strong>
+            
             <div className='cap-com'>{image.caption}</div>
             <div className='EDdivfake' />
 
@@ -171,6 +179,7 @@ function UsersList() {
             : <></>}
 
         </div>
+        
         <hr className='commentline' />
         <AddCommentForm image={image} thisDiv={thisDiv} />
       </div>
