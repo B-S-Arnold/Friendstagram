@@ -8,6 +8,7 @@ import { readImages } from '../store/images';
 import { readComments } from '../store/comments';
 import Dropdown from './Dropdown';
 import SearchBar from './NavSearch';
+import { readLikes } from '../store/likes';
 
 
 
@@ -23,6 +24,7 @@ const NavBar = ({ user }) => {
     async function fetchData() {
       await dispatch(readImages())
       await dispatch(readComments())
+      await dispatch(readLikes())
     }
     fetchData()
   }, [dispatch])
