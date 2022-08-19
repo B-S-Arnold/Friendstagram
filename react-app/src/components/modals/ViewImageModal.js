@@ -155,7 +155,22 @@ const ViewImageModal = ({ image, expand, users }) => {
 
                             <div className='imghead'>
 
-                                <NavLink className='eachPicPP' to={`/${imgUser?.username}`} />
+                                <NavLink className='eachPicPP' to={`/${imgUser?.username}`} >
+                                    {imgUser?.url ? <>
+
+                                        <img
+                                            className='eachPicPP2'
+                                            src={imgUser?.url}
+                                            alt="new"
+
+                                            onError={e => {
+                                                e.onerror = null
+                                                e.target.src = require('../../images/not-found.jpeg').default
+                                            }}
+
+                                        />
+                                    </> : <></>}
+                                </NavLink>
                                 <NavLink className='eachPicUN' to={`/${imgUser?.username}`}>{imgUser?.username}</NavLink>
                                 {sessionUser.id === image.userId ? <>
                                     {/* OPTIONS */}
@@ -202,7 +217,11 @@ const ViewImageModal = ({ image, expand, users }) => {
                             <hr className='commentline' />
                             {liked?.length > 0 ? <UnlikeForm like={liked[liked.length-1]}/> : <LikeForm image={image} />}
                             {/* <LikeForm image={image}/> */}
-                            <div className='numlikes'>{allLikes.length} likes</div>
+                            {allLikes?.length > 0 ? 
+                                <div className='numlikes'>
+                                    {allLikes?.length === 1 ? <>1 like</> : <>{allLikes.length} likes</>}
+                                    </div>
+                                : <></>}
                             <hr className='commentline' />
                             <AddCommentForm image={image} />
                         </div>

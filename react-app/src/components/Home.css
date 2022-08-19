@@ -75,6 +75,7 @@
     height: 56px;
     /* border: solid #fff 2px; */
     outline: none;
+    object-fit: cover;
     border-radius: 50%;
     margin:0;
     padding: 0;
@@ -179,6 +180,7 @@
     height: 32px;
     border: solid #fff 2px;
     outline: none;
+    object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 0 0 3px purple;
     
@@ -194,6 +196,7 @@
     height: 32px;
     /* border: solid #fff 2px; */
     outline: none;
+    object-fit: cover;
     border-radius: 50%;
     /* box-shadow: 0 0 0 3px purple; */
 

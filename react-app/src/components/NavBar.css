@@ -135,6 +135,7 @@
     /* border: solid #fff 2px; */
     background-color: transparent;
     border: transparent;
+    object-fit: cover;
     margin: 0px;
     z-index: 2;
     border-radius: 50%;

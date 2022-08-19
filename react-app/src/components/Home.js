@@ -160,7 +160,11 @@ function UsersList() {
         <div className='imginfo'>
           {liked?.length > 0 ? <UnlikeForm like={liked[liked.length - 1]} /> : <LikeForm image={image} />}
           {/* if allLikes.length === 1 then display "1 like" */}
-          <div className='numlikes'>{allLikes.length} likes</div>
+          {allLikes?.length > 0 ?
+            <div className='numlikes'>
+              {allLikes?.length === 1 ? <>1 like</> : <>{allLikes.length} likes</>}
+            </div>
+            : <></>}
           <div className='nameAndCapView'>
             <strong className='username'>{thisUser?.username}</strong>
             
