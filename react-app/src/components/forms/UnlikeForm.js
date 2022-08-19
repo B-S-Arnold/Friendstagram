@@ -11,8 +11,9 @@ const UnlikeForm = ({ like }) => {
 
    
     return (
-        
-            <button className='unlikebtn' onClick={handleDelete} />      
+        <div className='imgcom'>
+            <button className='unlikebtn' onClick={handleDelete} />
+        </div>      
        
     )
 }
