@@ -180,7 +180,7 @@ const ViewImageModal = ({ image, expand, users }) => {
                                     {/* <EditImageModal image={image}/>
                                     <DeleteImageModal image={image}/> */}
 
-                                </> : <></>}
+                                </> : <><div /> </>}
                             </div>
                             <div className='infoComments'>
                                 <div>

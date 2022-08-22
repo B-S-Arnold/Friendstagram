@@ -84,6 +84,7 @@
 .picViewDiv{
     height: fit-content;
     /* border-radius: 0; */
+    /* max-height: 622px; */
 }
 
 .picViewPic{
@@ -92,8 +93,8 @@
     max-height: 700px; */
     height: 622px;
     width: auto;
-    max-height: 622px;
-    min-height: 622px;
+    max-height: 710px;
+    min-height: 710px;
     max-width: auto;
     min-width: auto;
     
