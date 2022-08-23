@@ -270,29 +270,23 @@
 .dropcontainer{
     display: flex;
     flex-direction: column;
+   
     /* justify-content:center;
     align-content:center; */
     min-width: 500px;
     min-height: 500px;
+    max-height: 800px;
+    /* max-height: ; */
+    /* max-width: 500px; */
+    justify-content: space-between;
+    /* overflow: auto; */
     
 
 }
 .dropinput{
     object-fit: contain;
 }
-.dropzone{
-    display: inline-block;
-    padding: 50px;
-    object-fit: contain;
-    /* height: fit-content;
-    width: fit-content; */
-    /* width: 500px;
-    height: 500px;  */
-    /* align-content: center;
-    justify-content: center; */
-    /* width: contain; */
 
-}
 
 .droptext{
 
@@ -307,9 +301,71 @@
 
 }
 aside{
+    display: flex;
     /* min-width:500px;
     min-height: 500px; */
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    /* padding: 50px; */
+    width: calc(100%);
+    height: calc(100%);
+    z-index: 2;
+}
+aside > div {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    max-width: 800px;
+    border: none;
+    outline: none;
+    align-items: center;
+    background-color: none;
+    padding: 0px;
+    margin: 0px;
+    /* background-color: #0095f6; */
+    /* padding: 10px; */
+}
+
+aside>div>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    max-width: 800px;
+    border: none;
+    outline: none;
+    padding: 0px;
+    margin: 0px;
+    background-color: #0095f6;
+}
+.dropimgdiv{
+    max-height: 600px;
+    padding:0;
+    margin:0;
+    /* overflow-y: hidden; */
+    overflow-x: hidden;
+    resize: none;
+}
+.dropimg {
+    justify-self: center;
     align-self: center;
+    /* max-height: 600px; */
+    max-width: 800px;
+    min-width: 500px;
+    height: fit-content;
+    padding: 0;
+    border: none;
+    outline: none;
+    padding: 0px;
+    margin: 0px;
+    z-index: 3;
+    /* overflow: hidden; */
+    
+    
 }
 
 .submit{
@@ -350,6 +406,9 @@ aside{
     /* align-content: center; */
     /* justify-content: center; */
     /* width: fit-content; */
+    padding: 10px 0px;
+    /* margin:10px 0px; */
+    border-bottom: #dbdbdbad solid 1px;
 
 }
 
@@ -357,29 +416,70 @@ aside{
     cursor: pointer;
 }
 .dropinstr{
-    position:fixed
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position:fixed;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    right: 560px;
+    top: 405px;
+    font-weight: lighter;
+    font-size: 25px;
 }
 
-.caption{
+.captext{
     /* position: relative; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    /* border-radius: 20px; */
+    /* outline: none; */
+    border: none;
+    margin: 0 10px;
+    padding: 10px;
+    /* overflow:-moz-hidden-unscrollable; */
+    width: inherit;
+    text-align: unset;
+    resize: none;
 
 }
-.aside{
-    height: calc(100%);
-    width: calc(100%);
+.capdiv{
+    border-top: #dbdbdbad solid 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+
 }
 
-.addimgline {
-    /* min-width: 505px; */
-    width:calc(100%);
-    border-color: #8e8e8e;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
-    border-top: solid .1px #dbdbdbad;
+.caption > input{
+    /* justify-content: center;
+        align-items: center; */
+
 }
+
+
+
+
+
 /* .dropinput{
 
     padding: 100px
 
 } */
+
+.dropzone {
+    position: absolute;
+    padding: 195px 250px;
+    
+    bottom: 53px;
+    /* background-color: blue; */
+    z-index: 0;  
+}
+
+.dropzone:hover{
+    cursor: pointer;
+}
+
