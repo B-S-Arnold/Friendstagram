@@ -31,26 +31,24 @@ const AddImageForm = ({ setRenderModal }) => {
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        marginTop: 16,
+        
         
     };
 
     const thumb = {
         display: 'inline-flex',
-        borderRadius: 2,
-        border: '1px solid #eaeaea',
-        marginBottom: 8,
-        marginRight: 8,
+        
         width: 'fit-content',
-        height: 500,
-        padding: 4,
+
         boxSizing: 'border-box'
     };
 
     const thumbInner = {
+        className: 'dropimgdiv',
         display: 'flex',
         minWidth: 0,
-        overflow: 'hidden'
+        // overflow: 'hidden'
+        
     };
 
     const img = {
@@ -163,7 +161,7 @@ const AddImageForm = ({ setRenderModal }) => {
         // setImage(file)
         (
             <div style={thumb} key={file.name}>
-                <div style={thumbInner}>
+                <div className= 'dropimgdiv' style={thumbInner}>
                     <img
                         className='dropimg'
                         src={file.preview}
@@ -201,21 +199,24 @@ const AddImageForm = ({ setRenderModal }) => {
                     <div className='dropbox'>
                         <div className='droptext'>Create new post</div>
                         <button className="submit" type="submit">Share</button>
+                        {/* <hr className='addimgline' /> */}
                     </div>
-                    <hr className='addimgline' />
+                    
+
                     <div {...getRootProps({ className: 'dropzone' })}>
-                        {/* <div className='dropbox'>
-                            <p className='droptext'>Create new post</p>
-                            <button className="submit" type="submit">Share</button>
-                        </div> */}
+                        <div className='dropinstr'>
+                            <div>Drag and drop image here</div>
+                            <div>or click to select from computer</div>
+                        </div>   
                         <input className= 'dropinput' {...getInputProps()} />
-                        {/* <div className='dropinstr'>
-                            <p>Drag photo here</p>
-                            <p>or click to select from computer</p>
-                        </div> */}
+                          
                     </div>
+
                     <aside style={thumbsContainer}>
                         {thumbs}
+                        {/* <div {...getRootProps({ className: 'dropzone' })}>
+                            <input className='dropinput' {...getInputProps()} />
+                        </div> */}
 
                     </aside>
                     {/* <button onClick={onNext}>Next</button> */}
@@ -247,11 +248,11 @@ const AddImageForm = ({ setRenderModal }) => {
                     {/* <button onClick={onNext}>Next</button> */}
 
                     
-
-                    <div>
+                    <div className='capdiv'>
+                        {/* <hr className='addimgline' /> */}
 
                         <textarea
-                            className='caption'
+                            className='captext'
                             name='caption'
                             placeholder='Write a caption...'
                             value={caption}
