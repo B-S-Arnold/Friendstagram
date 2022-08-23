@@ -267,3 +267,119 @@
     font-weight: bold;
     font-size: 14px;
 }
+.dropcontainer{
+    display: flex;
+    flex-direction: column;
+    /* justify-content:center;
+    align-content:center; */
+    min-width: 500px;
+    min-height: 500px;
+    
+
+}
+.dropinput{
+    object-fit: contain;
+}
+.dropzone{
+    display: inline-block;
+    padding: 50px;
+    object-fit: contain;
+    /* height: fit-content;
+    width: fit-content; */
+    /* width: 500px;
+    height: 500px;  */
+    /* align-content: center;
+    justify-content: center; */
+    /* width: contain; */
+
+}
+
+.droptext{
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    /* position: relative; */
+    /* bottom: 50px; */
+    align-self:center;
+    justify-self:center;
+    position: relative;
+    top: 10px;
+
+}
+aside{
+    /* min-width:500px;
+    min-height: 500px; */
+    align-self: center;
+}
+
+.submit{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    color:#0095f6;
+    justify-self: flex-end;
+    /* width: fit-content; */
+    /* position: relative; */
+    /* bottom: 160px; */
+    /* right: -50px; */
+    /* float:right; */
+    border: none;
+    position: relative;
+    bottom:7px;
+    right:10px;
+    /* bottom: 33px; */
+    /* left: 30px; */
+    /* padding: 10px; */
+    /* z-index: 3; */
+
+
+    /* padding: 10px; */
+    background-color: transparent;
+    /* font-size: 15px; */
+
+}
+
+.dropbox{
+    display:grid;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    position: relative;
+    /* bottom: 50px; */
+
+    
+    /* align-content: center; */
+    /* justify-content: center; */
+    /* width: fit-content; */
+
+}
+
+.submit:hover{
+    cursor: pointer;
+}
+.dropinstr{
+    position:fixed
+}
+
+.caption{
+    /* position: relative; */
+
+}
+.aside{
+    height: calc(100%);
+    width: calc(100%);
+}
+
+.addimgline {
+    /* min-width: 505px; */
+    width:calc(100%);
+    border-color: #8e8e8e;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-top: solid .1px #dbdbdbad;
+}
+/* .dropinput{
+
+    padding: 100px
+
+} */

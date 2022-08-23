@@ -31,7 +31,8 @@ const AddImageForm = ({ setRenderModal }) => {
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        marginTop: 16
+        marginTop: 16,
+        
     };
 
     const thumb = {
@@ -164,6 +165,7 @@ const AddImageForm = ({ setRenderModal }) => {
             <div style={thumb} key={file.name}>
                 <div style={thumbInner}>
                     <img
+                        className='dropimg'
                         src={file.preview}
                         style={img}
                         alt="pic"
@@ -192,11 +194,25 @@ const AddImageForm = ({ setRenderModal }) => {
         // }
 
         return (
-            <section className="container">
-                {(imageLoading) ? <p>Loading...</p> : <form onSubmit={handleSubmit}>
+            <section >
+                {(imageLoading) ? <p>Loading...</p> : <form className="dropcontainer"  onSubmit={handleSubmit}>
+                        {/* <p className= 'droptext'>Create new post</p> */}
+                    {/* <button className="submit" type="submit">Share</button> */}
+                    <div className='dropbox'>
+                        <div className='droptext'>Create new post</div>
+                        <button className="submit" type="submit">Share</button>
+                    </div>
+                    <hr className='addimgline' />
                     <div {...getRootProps({ className: 'dropzone' })}>
-                        <input {...getInputProps()} />
-                        <p>Drag 'n' drop some files here, or click to select files</p>
+                        {/* <div className='dropbox'>
+                            <p className='droptext'>Create new post</p>
+                            <button className="submit" type="submit">Share</button>
+                        </div> */}
+                        <input className= 'dropinput' {...getInputProps()} />
+                        {/* <div className='dropinstr'>
+                            <p>Drag photo here</p>
+                            <p>or click to select from computer</p>
+                        </div> */}
                     </div>
                     <aside style={thumbsContainer}>
                         {thumbs}
@@ -230,7 +246,7 @@ const AddImageForm = ({ setRenderModal }) => {
                     {/* {(imageLoading) && <p>Loading...</p>} */}
                     {/* <button onClick={onNext}>Next</button> */}
 
-                    <button type="submit">Submit</button>
+                    
 
                     <div>
 
