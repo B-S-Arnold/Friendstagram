@@ -170,7 +170,7 @@ const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
 
         return (
             <section >
-                {(imageLoading) ? <div className='loading'><div className='loadimg' /><div>Loading...</div></div> : <form className="dropcontainer" onSubmit={handleSubmit}>
+                {(imageLoading) ? <div className='loading'><div className='spinner' /><div>Loading...</div></div> : <form className="dropcontainer" onSubmit={handleSubmit}>
                     {/* <p className= 'droptext'>Create new post</p> */}
                     {/* <button className="submit" type="submit">Share</button> */}
                     <div className='dropbox'>
