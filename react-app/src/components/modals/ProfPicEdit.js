@@ -5,6 +5,7 @@ import ChangeProfPicForm from '../forms/ChangeProfilePicForm';
 
 const ProfPicEdit = ({ user, renderOptionsModal }) => {
     const [renderModal, setRenderModal] = useState(false);
+    
 
     return (
         <>

@@ -60,7 +60,7 @@ function User() {
     return null;
   }
   //ALL IMAGES DISPLAYED FUNCTION
-
+  userImages.reverse()
   const allImages = userImages.map((image) => {
     const expand = false;
     return (
