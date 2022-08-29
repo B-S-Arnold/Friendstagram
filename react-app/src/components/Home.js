@@ -171,7 +171,7 @@ function UsersList() {
               <strong className='username'>{thisUser?.username}</strong>
               
               <div className='cap-com'>{image.caption}</div>
-              <div className='EDdivfake' />
+              {/* <div className='EDdivfake' /> */}
             </>
             : <></>}
 

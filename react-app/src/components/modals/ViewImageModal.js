@@ -200,7 +200,7 @@ const ViewImageModal = ({ image, expand, users }) => {
                                                 <strong className='username'>{imgUser.username}</strong>
 
                                                 <div className='cap-com'>{image.caption}</div>
-                                                <div className='EDdivfake' />
+                                                {/* <div className='EDdivfake' /> */}
                                             </>
                                                 : <></>}
                                         </div>
