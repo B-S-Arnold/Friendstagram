@@ -6,6 +6,10 @@ const SearchBar = () => {
     const [params, setParams] = useState('')
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
+    const [focused, setFocused] = useState(false)
+    const onFocus = () =>setFocused(true)
+
+    const onBlur = () => setFocused(false)
 
         useEffect(() => {
             async function fetchData() {
@@ -17,6 +21,18 @@ const SearchBar = () => {
             fetchData();
         }, []);
 
+
+    function waitASec() {
+        return new Promise(() => {
+            setTimeout(() => {
+                setFocused(false)
+            }, 200)
+        })
+    }
+
+    async function defocus() {
+        await waitASec()
+    }
 
     // const handleChange = (e) => {
     //     // e.preventDefault();
@@ -41,6 +57,7 @@ const SearchBar = () => {
         allSearched = searchedUsers.map((user) => {
 
             const toUser = () => {
+                setParams('')
                 navigate(`/${user.username}`)
             }
 
@@ -75,9 +92,9 @@ const SearchBar = () => {
 
     return (
         <div className='searchdiv'>
-            <input autocomplete="off" type='text' className='search' name='search' value={params} placeholder='Search'  onChange={(e) => setParams(e.target.value)} />
+            <input onFocus={onFocus} onBlur={defocus} autocomplete="off" type='text' className='search' name='search' value={params} placeholder='Search'  onChange={(e) => setParams(e.target.value)} />
             
-            <div className='dropsearch'>{allSearched}</div>
+            {allSearched?.length && focused? <div className='dropsearch'>{allSearched}</div> :<></>}
         </div>
     )
 }
