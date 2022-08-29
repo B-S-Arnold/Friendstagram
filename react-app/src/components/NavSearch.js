@@ -45,7 +45,26 @@ const SearchBar = () => {
             }
 
             return (
-                <div className='dropname' key={user.id} onClick={toUser}>{user.username}</div>
+                <div className='dropname' key={user.id} onClick={toUser}>
+                    {user?.url ? <>
+                        <div >
+                            <img
+                                className='listpic'
+                                src={user.url}
+                                alt="new"
+
+                                onError={e => {
+                                    e.onerror = null
+                                    e.target.src = require('../images/not-found.jpeg').default
+                                }}
+
+                            />
+                        </div>
+                    </> : <>
+                        <div className='listpic' />
+                    </>}
+                    <div className='userAndFullDiv'><div className='usersearch'>{user.username}</div><div className='fullsearch'>{user.fullName}</div></div>
+                </div>
             )
 
         })
@@ -56,7 +75,7 @@ const SearchBar = () => {
 
     return (
         <div className='searchdiv'>
-            <input type='text' className='search' name='search' value={params} placeholder='Search'  onChange={(e) => setParams(e.target.value)} />
+            <input autocomplete="off" type='text' className='search' name='search' value={params} placeholder='Search'  onChange={(e) => setParams(e.target.value)} />
             
             <div className='dropsearch'>{allSearched}</div>
         </div>
