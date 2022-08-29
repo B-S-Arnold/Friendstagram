@@ -89,6 +89,7 @@ function User() {
           <div className = 'profUN'>
             {username}
           </div>
+
           <div className = 'profNum'>
             {userImages?.length === 1?<><strong>{userImages?.length}</strong> post</>
             :<><strong>{userImages?.length}</strong> posts</>}

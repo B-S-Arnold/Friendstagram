@@ -45,7 +45,7 @@ const ChangeProfilePicForm = ({ renderOptionsModal, user }) => {
     const styles = { border: '1px solid black', width: 600, color: 'black', padding: 20 };
     return (
         <>
-            {(imageLoading) ? <div className='loading'><div className='loadimg' /><div>Loading...</div></div> : <form onSubmit={handleSubmit}>
+            {(imageLoading) ? <div className='loading'><div className='spinner' /><div>Loading...</div></div> : <form onSubmit={handleSubmit}>
 
 
                 <div style={styles}>
@@ -55,54 +55,17 @@ const ChangeProfilePicForm = ({ renderOptionsModal, user }) => {
                     <input
                         
                         id='files'
-                        // display='none'
                         type="file"
                         accept="image/*"
                         onChange={updateImage}
                     />
                     <button className='upload' type="submit">Submit</button>
-                    {/* {(imageLoading) && <div className='loading'><div className='loadimg' /><div>Loading...</div></div>} */}
-                    {/* <FileDrop
-                        onFrameDragEnter={(event) => console.log('onFrameDragEnter', event)}
-                        onFrameDragLeave={(event) => console.log('onFrameDragLeave', event)}
-                        onFrameDrop={(event) => console.log('onFrameDrop', event)}
-                        onDragOver={(event) => console.log('onDragOver', event)}
-                        onDragLeave={(event) => console.log('onDragLeave', event)}
-
-                        onDrop={(files, event) => {
-                            console.log('OnDrop!', files, event)
-                            const file = files[0];
-
-                            console.log(file)
-                            setImage(file)
-                        }}
-                    >
-
-                        Drop some files here!
-                    </FileDrop> */}
+                    
                 </div>
 
 
 
-                {/* <input
-                    type="file"
-                    accept="image/*"
-                    onChange={updateImage}
-                />
-                <button type="submit">Submit</button>
-                {(imageLoading) && <p>Loading...</p>} */}
-
-                {/* <div>
-
-                 <textarea
-                     className='caption'
-                     name='caption'
-                     placeholder='Write a caption...'
-                     value={caption}
-                     onChange={(e) => setCaption(e.target.value)}
-                 />
-
-             </div> */}
+               
 
 
 
