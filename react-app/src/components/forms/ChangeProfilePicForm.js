@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
 
 
-
-const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
+const ChangeProfilePicForm = ({ renderOptionsModal, user }) => {
 
     const [image, setImage] = useState(null);
     // const [caption, setCaption] = useState('');
@@ -40,6 +40,7 @@ const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
     const updateImage = (e) => {
         const file = e.target.files[0];
         setImage(file);
+        
     }
     const styles = { border: '1px solid black', width: 600, color: 'black', padding: 20 };
     return (
@@ -48,12 +49,18 @@ const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
 
 
                 <div style={styles}>
+                    <label for='files'
+                        className='choosefile'
+                    >Click</label>
                     <input
+                        
+                        id='files'
+                        // display='none'
                         type="file"
                         accept="image/*"
                         onChange={updateImage}
                     />
-                    <button type="submit">Submit</button>
+                    <button className='upload' type="submit">Submit</button>
                     {/* {(imageLoading) && <div className='loading'><div className='loadimg' /><div>Loading...</div></div>} */}
                     {/* <FileDrop
                         onFrameDragEnter={(event) => console.log('onFrameDragEnter', event)}
@@ -109,4 +116,6 @@ const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
 
 
 
-export default ChangeProfPicForm;
+
+
+export default ChangeProfilePicForm;

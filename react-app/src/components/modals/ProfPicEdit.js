@@ -1,11 +1,10 @@
 import { Modal } from '../../context/Modal';
 import { useState } from 'react';
 import EditImageForm from '../forms/EditImageForm';
-import ChangeProfPicForm from '../forms/ChangeProfilePicForm';
+import ChangeProfPicForm from '../forms/ChangeProfPicForm';
 
 const ProfPicEdit = ({ user, renderOptionsModal }) => {
     const [renderModal, setRenderModal] = useState(false);
-    
 
     return (
         <>
