@@ -44,7 +44,7 @@ const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
     const styles = { border: '1px solid black', width: 600, color: 'black', padding: 20 };
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            {(imageLoading) ? <div className='loading'><div className='loadimg' /><div>Loading...</div></div> : <form onSubmit={handleSubmit}>
 
 
                 <div style={styles}>
@@ -54,7 +54,7 @@ const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
                         onChange={updateImage}
                     />
                     <button type="submit">Submit</button>
-                    {(imageLoading) && <p>Loading...</p>}
+                    {/* {(imageLoading) && <div className='loading'><div className='loadimg' /><div>Loading...</div></div>} */}
                     {/* <FileDrop
                         onFrameDragEnter={(event) => console.log('onFrameDragEnter', event)}
                         onFrameDragLeave={(event) => console.log('onFrameDragLeave', event)}
@@ -101,7 +101,7 @@ const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
 
 
 
-            </form>
+            </form>}
 
         </>
     )

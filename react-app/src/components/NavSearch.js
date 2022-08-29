@@ -56,7 +56,7 @@ const SearchBar = () => {
 
     return (
         <div className='searchdiv'>
-            <input type='text' name='search' value={params} placeholder='Search'  onChange={(e) => setParams(e.target.value)} />
+            <input type='text' className='search' name='search' value={params} placeholder='Search'  onChange={(e) => setParams(e.target.value)} />
             
             <div className='dropsearch'>{allSearched}</div>
         </div>

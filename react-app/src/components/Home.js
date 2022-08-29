@@ -76,7 +76,8 @@ function UsersList() {
       </div>
     );
   });
-
+  
+  images.reverse()
 
   const allImages = images?.map((image) => {
     const thisUser = users?.filter(user => user.id === image.userId)[0]
@@ -166,10 +167,13 @@ function UsersList() {
             </div>
             : <></>}
           <div className='nameAndCapView'>
-            <strong className='username'>{thisUser?.username}</strong>
-            
-            <div className='cap-com'>{image.caption}</div>
-            <div className='EDdivfake' />
+            {image.caption ? <>
+              <strong className='username'>{thisUser?.username}</strong>
+              
+              <div className='cap-com'>{image.caption}</div>
+              <div className='EDdivfake' />
+            </>
+            : <></>}
 
           </div>
           {/* RENDER COMMENTS */}

@@ -196,9 +196,17 @@ const ViewImageModal = ({ image, expand, users }) => {
                                             </> : */}
                                     <div>
                                         <div className='nameAndCapView'>
-                                            <strong>{imgUser.username}</strong>
-                                            <div className='cap-com'>{image.caption}</div>
+                                            {image.caption ? <>
+                                                <strong className='username'>{imgUser.username}</strong>
+
+                                                <div className='cap-com'>{image.caption}</div>
+                                                <div className='EDdivfake' />
+                                            </>
+                                                : <></>}
                                         </div>
+
+                                            
+
                                     </div>
                                     {/* } */}
                                 </div>
@@ -206,8 +214,8 @@ const ViewImageModal = ({ image, expand, users }) => {
 
                                     {!eachComment?.length > 0 ? <>
                                         <div className="commentDiv">
-                                            <div>No comments...</div>
-                                            <div>Be the first to comment!</div>
+                                            {/* <div>No comments...</div>
+                                            <div>Be the first to comment!</div> */}
                                         </div>
                                     </> :
                                         <><div className='EVCdiv'>{eachComment}</div> </>
