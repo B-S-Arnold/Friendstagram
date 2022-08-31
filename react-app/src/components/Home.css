@@ -394,6 +394,15 @@
         padding: 0 5px;
     }
 
+    .profpic{
+        margin:0 5px;
+    }
+
+    .noprofpicbtn{
+        /* width: auto; */
+        margin: 0 5px;
+    }
+
     .behindBtn {
         width: auto;
         margin: auto;
