@@ -45,19 +45,19 @@ const Dropdown = () => {
             <div className="dropdown">
 
 
-                <div>
+                {/* <div> */}
                     <ProfileButton />
 
                     {/* <NavLink className='dropdownbtn' to={`/${user.username}`} exact={true} activeClassName='active'>
                     Profile
                 </NavLink> */}
-                </div>
+                {/* </div> */}
                 {/* <div>
                     <SettingsButton />
                 </div> */}
-                <div>
+                {/* <div> */}
                     <LogoutButton />
-                </div>
+                {/* </div> */}
             </div>
         </>
     )

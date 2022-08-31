@@ -4,7 +4,7 @@ import { updateComment } from '../../store/comments';
 import '../Overflow.css'
 
 
-const EditCommentForm = ({ comment, setRenderModal }) => {
+const EditCommentForm = ({ comment, setOptionsModal }) => {
 
     const id = comment.id
     const imageId = comment.imageId
@@ -25,7 +25,7 @@ const EditCommentForm = ({ comment, setRenderModal }) => {
 
         if (editedComment?.errors) return setErrors(editedComment.errors)
         if(editedComment){
-            setRenderModal(false)
+            setOptionsModal(false)
             // setContent('')
         }
         

@@ -35,22 +35,24 @@ const ViewImageModal = ({ image, expand, users }) => {
                     {/* DISPLAY COMMENTS */}
 
                     <div className='nameAndCapView'>
-                        <strong>{commenter.username}</strong>
-                        <div className='cap-com'>{comment.content}</div>
+                        <div className='cap-com'>
+                        <strong className='capcomun'>{commenter.username}</strong>
+                            
+                            {comment.content}
+                            
+                            {sessionUser.id === comment.userId ? <>
+    
+                                    <DeleteCommentModal comment={comment} />                            
+    
+                            </> : <></>}
+                            
+                            </div>
 
                         {/* {comment.edited === true ?
                             <><div className='editedViewCom'>Edited</div></> : */}
                         {/* <> <div className='uneditedViewCom'></div></> */}
                         {/* } */}
 
-                        {sessionUser.id === comment.userId ? <>
-
-                            <div className='EDdiv'>
-                                <EditCommentModal comment={comment} />
-                                <DeleteCommentModal comment={comment} />
-                            </div>
-
-                        </> : <></>}
                     </div>
                 </div>
             )
@@ -152,86 +154,90 @@ const ViewImageModal = ({ image, expand, users }) => {
 
                         </div>
                         <div className='infoView'>
+                            <div className='innerviewtop'>
 
-                            <div className='imghead'>
+                                <div className='imghead'>
 
-                                <NavLink className='eachPicPP' to={`/${imgUser?.username}`} >
-                                    {imgUser?.url ? <>
+                                    <NavLink className='eachPicPP' to={`/${imgUser?.username}`} >
+                                        {imgUser?.url ? <>
 
-                                        <img
-                                            className='eachPicPP2'
-                                            src={imgUser?.url}
-                                            alt="new"
+                                            <img
+                                                className='eachPicPP2'
+                                                src={imgUser?.url}
+                                                alt="new"
+                                                
+                                                onError={e => {
+                                                    e.onerror = null
+                                                    e.target.src = require('../../images/not-found.jpeg').default
+                                                }}
+                                                
+                                                />
+                                        </> : <></>}
+                                    </NavLink>
+                                    <NavLink className='eachPicUN' to={`/${imgUser?.username}`}>{imgUser?.username}</NavLink>
+                                    {sessionUser.id === image.userId ? <>
+                                        {/* OPTIONS */}
+                                        <OptionsModal image={image} />
+                                        {/* <button className='viewImgOptions'/> */}
 
-                                            onError={e => {
-                                                e.onerror = null
-                                                e.target.src = require('../../images/not-found.jpeg').default
-                                            }}
+                                        {/* <EditImageModal image={image}/>
+                                        <DeleteImageModal image={image}/> */}
 
-                                        />
-                                    </> : <></>}
-                                </NavLink>
-                                <NavLink className='eachPicUN' to={`/${imgUser?.username}`}>{imgUser?.username}</NavLink>
-                                {sessionUser.id === image.userId ? <>
-                                    {/* OPTIONS */}
-                                    <OptionsModal image={image} />
-                                    {/* <button className='viewImgOptions'/> */}
-
-                                    {/* <EditImageModal image={image}/>
-                                    <DeleteImageModal image={image}/> */}
-
-                                </> : <><div /> </>}
-                            </div>
-                            <div className='infoComments'>
-                                <div>
-                                    {/* {image.edited === true ?
-                                            <>
+                                    </> : <><div /> </>}
+                                </div>
+                                <div className='infoComments'>
+                                    <div>
+                                        {/* {image.edited === true ?
+                                                <>
                                                 <div className='homeCapDiv'>
-                                                    <strong>{imgUser.username}</strong>
-                                                    <div className='cap-com'>{image.caption}</div>
-                                                    <div>Edited</div>
+                                                <strong>{imgUser.username}</strong>
+                                                <div className='cap-com'>{image.caption}</div>
+                                                <div>Edited</div>
                                                 <div className='EDdivfake' />
                                                 </div>
-
+                                                
                                             </> : */}
-                                    <div>
-                                        <div className='nameAndCapView'>
-                                            {image.caption ? <>
-                                                <strong className='username'>{imgUser.username}</strong>
+                                        <div>
+                                            <div className='nameAndCapView'>
+                                                {image.caption ? <>
+                                                    <strong className='capcomun'>{imgUser.username}</strong>
 
-                                                <div className='cap-com'>{image.caption}</div>
-                                                {/* <div className='EDdivfake' /> */}
-                                            </>
-                                                : <></>}
+                                                    <div className='cap-com'>{image.caption}</div>
+                                                    {/* <div className='EDdivfake' /> */}
+                                                </>
+                                                    : <></>}
+                                            </div>
+
+                                                
+
                                         </div>
-
-                                            
-
+                                        {/* } */}
                                     </div>
-                                    {/* } */}
-                                </div>
-                                <div className='viewCommentDiv'>
+                                    <div className='viewCommentDiv'>
 
-                                    {!eachComment?.length > 0 ? <>
-                                        <div className="commentDiv">
-                                            {/* <div>No comments...</div>
-                                            <div>Be the first to comment!</div> */}
-                                        </div>
-                                    </> :
-                                        <><div className='EVCdiv'>{eachComment}</div> </>
-                                    }
+                                        {!eachComment?.length > 0 ? <>
+                                            <div className="commentDiv">
+                                                {/* <div>No comments...</div>
+                                                <div>Be the first to comment!</div> */}
+                                            </div>
+                                        </> :
+                                            <><div className='EVCdiv'>{eachComment}</div> </>
+                                        }
+                                    </div>
                                 </div>
                             </div>
-                            <hr className='commentline' />
-                            {liked?.length > 0 ? <UnlikeForm like={liked[liked.length-1]}/> : <LikeForm image={image} />}
-                            {/* <LikeForm image={image}/> */}
-                            {allLikes?.length > 0 ? 
-                                <div className='numlikes'>
-                                    {allLikes?.length === 1 ? <>1 like</> : <>{allLikes.length} likes</>}
-                                    </div>
-                                : <></>}
-                            <hr className='commentline' />
-                            <AddCommentForm image={image} />
+                            <div className='innerview'>
+                                <hr className='viewcommentline' />
+                                {liked?.length > 0 ? <UnlikeForm like={liked[liked.length-1]}/> : <LikeForm image={image} />}
+                                {/* <LikeForm image={image}/> */}
+                                {allLikes?.length > 0 ? 
+                                    <div className='numlikes'>
+                                        {allLikes?.length === 1 ? <>1 like</> : <>{allLikes.length} likes</>}
+                                        </div>
+                                    : <></>}
+                                <hr className='viewcommentline' />
+                                <AddCommentForm image={image} />
+                            </div>
                         </div>
 
                     </div>

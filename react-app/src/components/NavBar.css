@@ -10,6 +10,7 @@
 }
 .navContainer{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width:100%;
     align-items: center;
     justify-content: space-around;
     background-color: #fff;
@@ -29,7 +30,31 @@
     font-weight: bolder;
     text-decoration: none;
     color: black;
-    margin: 0px 200px;
+    margin: 0px 00px;
+    /* width: 100px; */
+}
+
+.navtitlediv{
+    display: flex;
+}
+
+.searchdiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.nbcc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttondiv {
+    padding: 0 5px;
+    margin: 0;
 }
 
 /* .navUL{
@@ -43,11 +68,14 @@
 .navBtnContainer{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 0 100px;
-    position:static;
+    align-items: space-between;
+    justify-content: space-between;
+    /* margin: 10px; */
+    /* margin: 0 100px; */
+    /* position:absolute; */
+    /* left:100%; */
 }
+
 
 .navbtn{
     /* position: absolute; */
@@ -69,36 +97,75 @@
 
 
 .dropdown{
-    /* display:none; */
-    /* position:absolute; */
+    display:none;
+
+    position:absolute;
     /* align-items: center; */
     background-color: #fff;
-    z-index: 3;
+    /* z-index: 3; */
     /* border: solid black 1px; */
     /* height: 300px; */
-    margin-top: 43px;
-    width: 300px;
+    margin-top: 130px;
+    margin-right:100px;
+    /* margin-top: 500px; */
+    /* padding-right: 1000px; */
+    width: 200px;
     border-radius: 5px;
     /* margin: 0px; */
-    right:-100px;
-    box-shadow:  0 0 10px #dbdbdb;
+    /* right:-100px; */
+    box-shadow:  0 0 20px #dbdbdb;
     position: absolute;
-    display:none;
+    /* display:none; */
     flex-direction: column;
     outline: 0;
     border: none;
     text-align: center;
-
-    
+    /* right: 100px; */
 
 }
 
+ .userbtn:focus .dropdown {
+     /* position: absolute; */
+     display: block;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     outline: 0;
+     border: none;
+
+ }
+
+  .userbtn:focus .triangle {
+    display: block;
+  }
+
 .dropdownbtn{
-    padding: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: lighter;
+    padding: 10px 15px;
     margin:0px;
+    text-align: left;
+
+
 }
 .dropdownbtn:hover{
     background-color: #fafafa;
+}
+
+.triangle {
+    display: none;
+    position: absolute;
+    margin-top: 41px;
+    z-index: 3;
+
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    
+
+    border-bottom: 10px solid #ffffff;
+    /* box-shadow: 0 0 10px #dbdbdb; */
 }
 
 .profbtn{
@@ -115,13 +182,7 @@
     outline: 0;
 }
 
- .userbtn:focus .dropdown{
-    position: absolute;
-    display:flex;
-    flex-direction: column;
-    outline: 0;
-    border: none;
-}
+
 
 .userimgbtn{
     position: absolute;
@@ -142,10 +203,7 @@
 }
 
 
-.buttondiv{
- padding: 0;
- margin: 0;
-}
+
 
 .homebtn{
     background-image: url("../images/inHouse.png");
@@ -154,6 +212,7 @@
     width: 24px;
     
 }
+
 .search{
     position:static;
     background:#EFEFEF;
@@ -166,38 +225,35 @@
     border-radius: 8px;
 
 }
-/* .searchdiv{
-    background-color: rgb(250, 0, 0);
-    z-index: 3;
 
-    margin-top: 100px;
-    width: 500px;
-    border-radius: 5px;
-
-    right: -100px;
-    box-shadow: 0 0 10px #dbdbdb;
-    position: absolute;
-    display: none;
-    flex-direction: column;
-    outline: 0;
-    border: none;
-    text-align: center;
-} */
 
 .dropsearch{
-    position:fixed;
+
+    position:absolute;
     display: flex;
     flex-direction: column;
     width: 375px;
     height: 450px;
-    box-shadow: 0 0 10px #dbdbdb;
+    box-shadow: 0 0 20px #dbdbdb;
     border-radius: 7px;
     background-color: #fff;
     max-width: 375px;
+    margin-top: 512px;
     
     /* overflow: scroll; */
     /* left: 700px; */
 
+}
+.searchtriangle{
+    position: absolute;
+    margin-top: 52px;
+    z-index: 3;
+
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 10px solid #ffffff;
 }
 /* .dropbox{
     position: absolute;
@@ -238,6 +294,8 @@
     width:355px;
     border-radius: 7px;
 }
+
+
 
 .listpic {
     background-image: url("../images/default.png");
@@ -290,12 +348,20 @@
     position: fixed; */
     background-image: url("../images/default.png");
     /* position: absolute; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     
 }
+
+
 
 .splitter{
     margin: 12px;
 }
+
+
 
 /* @media (max-width: 970px) {
     

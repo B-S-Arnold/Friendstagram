@@ -65,10 +65,9 @@ const DropSearch = (params) => {
 
     return (
         <>
-            <div className='triangle' />
+            {/* <div className='searchtriangle' /> */}
             
             <div >
-                Hello
                 
                 {allSearched}
 
