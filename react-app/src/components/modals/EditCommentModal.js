@@ -2,15 +2,15 @@ import { Modal } from '../../context/Modal';
 import { useState } from 'react';
 import EditCommentForm from '../forms/EditCommentForm';
 
-const EditCommentModal = ({ comment }) => {
+const EditCommentModal = ({ comment, setOptionsModal }) => {
     const [renderModal, setRenderModal] = useState(false);
 
     return (
         <>
-            <div className='editcom' onClick={() => setRenderModal(true)}>Edit</div>
+            <div className='editBtn' onClick={() => setRenderModal(true)}>Edit</div>
             {renderModal ? (
                 <Modal onClose={() => setRenderModal(false)}>
-                    <EditCommentForm comment={comment} setRenderModal={setRenderModal} />
+                    <EditCommentForm comment={comment} setOptionsModal={setOptionsModal} />
                 </Modal>
             ) : null
             }

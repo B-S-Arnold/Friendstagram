@@ -96,17 +96,24 @@ function UsersList() {
       return (
         <div key={comment.id}>
           <div className='nameAndCapView'>
-            <strong>{commenter?.username}</strong>
+            <div className='cap-com'>
+              <strong className='capcomun'>{commenter?.username}</strong>
+              {comment.content}
 
-            {/* <div>{comment.content}</div> */}
-            <div className='cap-com'>{comment.content}</div>
+              {sessionUser.id === comment.userId ? <>
+                {/* <div className='EDdiv'> */}
+                  <DeleteCommentModal comment={comment} />
+                {/* </div> */}
+              </> : <></>}
 
-            {sessionUser.id === comment.userId ? <>
+            </div>
+
+            {/* {sessionUser.id === comment.userId ? <>
               <div className='EDdiv'>
                 <EditCommentModal comment={comment} />
                 <DeleteCommentModal comment={comment} />
               </div>
-            </> : <></>}
+            </> : <></>} */}
 
           </div>
         </div>
@@ -168,9 +175,12 @@ function UsersList() {
             : <></>}
           <div className='nameAndCapView'>
             {image.caption ? <>
-              <strong className='username'>{thisUser?.username}</strong>
+              {/* <strong className='capcomun'>{thisUser?.username}</strong> */}
               
-              <div className='cap-com'>{image.caption}</div>
+              <div className='cap-com'>
+                <strong className='capcomun'>{thisUser?.username}</strong>
+                {image.caption}
+                </div>
               {/* <div className='EDdivfake' /> */}
             </>
             : <></>}
