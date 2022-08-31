@@ -93,8 +93,9 @@ const SearchBar = () => {
     return (
         <div className='searchdiv'>
             <input onFocus={onFocus} onBlur={defocus} autocomplete="off" type='text' className='search' name='search' value={params} placeholder='Search'  onChange={(e) => setParams(e.target.value)} />
+            {/* <div className='searchtriangle' /> */}
             
-            {allSearched?.length && focused? <div className='dropsearch'>{allSearched}</div> :<></>}
+            {allSearched?.length && focused ? <><div className='searchtriangle' /><div className='dropsearch'>{allSearched}</div></> :<></>}
         </div>
     )
 }

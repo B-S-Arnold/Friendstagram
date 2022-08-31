@@ -51,49 +51,49 @@ const NavBar = ({ user }) => {
       <div className='navContainer'>
         {/* <div className='splitter' /> */}
         <div className='splitter' />
-        <div>
+        <div className='navtitlediv'>
           <NavLink className='navbarTitle' to='/' exact={'true'} >
             Friendstagram
           </NavLink>
         </div>
-        <div className='splitter' />
+        {/* <div className='splitter' /> */}
         <SearchBar />
-        <div className='splitter' />
-        <div className='splitter' />
-        <div className='navBtnContainer'>
+        {/* <div className='splitter' /> */}
+        {/* <div className='splitter' /> */}
+        <div className='nbcc'>
+      
+          <div className='navBtnContainer'>
 
-          <div className='buttondiv'>
             <div className='buttondiv'>
               <HomeButton />
             </div>
-          </div>
-          <div>
-            <AddImageModal />
-          </div>
-          <div className=' buttondiv'>
-            <div id='focus' tabIndex="1" className='userbtn navbtn'>
-              {user?.url ? <>
-
-                <img
-                  className='userimgbtn'
-                  src={user.url}
-                  alt="new"
-
-                  onError={e => {
-                    e.onerror = null
-                    e.target.src = require('../images/not-found.jpeg').default
-                  }}
-
-
-                />
-              </> : <>
-                {/* <div id='focus' tabIndex="1" className='userbtn navbtn'> */}
-                {/* <Dropdown /> */}
-                {/* </div> */}
-              </>}
-              <Dropdown />
+            <div className='buttondiv'>
+              <AddImageModal />
             </div>
+            <div className=' buttondiv'>
+              <div id='focus' tabIndex="1" className='userbtn navbtn'>
+                {user?.url ? <>
+
+                  <img
+                    className='userimgbtn'
+                    src={user.url}
+                    alt="new"
+
+                    onError={e => {
+                      e.onerror = null
+                      e.target.src = require('../images/not-found.jpeg').default
+                    }}
+
+
+                  />
+                </> : <></>}
+                <Dropdown />
+              </div>
+              
+            </div>
+          
           </div>
+          {/* <Dropdown /> */}
         </div>
         <div className='splitter' />
       </div>

@@ -1,7 +1,5 @@
 .footerContainer{
     display: flex;
-    
-    
     width:100%;
     left: 0;
     bottom:0;
@@ -25,6 +23,10 @@
 }
 
 .personal{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
     color: #8e8e8e;
     padding: 10px 15px;
     text-decoration: none;
