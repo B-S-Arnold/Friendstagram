@@ -383,84 +383,16 @@
     margin-top:300px;
 }
 
-@media (max-width: 970px) {
-
-    .rightContainer {
-        display: none;
-    }
-
-    .profInfo{
-        width: auto;
-        padding: 0 5px;
-    }
-
-    .profpic{
-        margin:0 5px;
-    }
-
-    .noprofpicbtn{
-        /* width: auto; */
-        margin: 0 5px;
-    }
-
-    .behindBtn {
-        width: auto;
-        margin: auto;
-        padding: 0 5px;
-    }
-
-    .profHead{
-        display: flex;
-        justify-content: center;
-        width: 100%;
-            /* padding: 5px; */
-    }
-    
-    .myImageDiv{
-        width: 100%;
-        display: flex;
-        flex-direction: column;   
-        align-items: center;
-    }
-    
-
-}
-
-@media (max-width: 650px) {
-
-    .splitter{
-        display: none;
-    }
-
-    .searchdiv {
-        display: none;
-    }
-
-}
-
 
 
 @media (max-width:1350px) {
-    #modal-content {
+    /* #modal-content {
         width: 80%;
     }
 
-    /* .dropcontainer {
-        width:80%;
-    } */
+   
 
-    /* .blah{
-      
-        width: 0px;
-        margin: 0;
-        padding: 0;
-    } */
-    
-    /* .picViewDiv{
-        width: 50%;
-    } */
-
-    /* #modal-content:has(.viewModal) {
+    #modal-content:has(.viewModal) {
         width:80%;
     } */
 
@@ -476,26 +408,67 @@
 
 @media (max-width:1000px) {
 
-    .infoView {
-        display: none;
-    }
+    
     .dropcontainer{
         /* display: none; */
     }
     .picViewPic {
         width: 100%;
     }
+
+    .rightContainer {
+        display: none;
+    }
 }
+
+
+@media (max-width: 970px) {
+
+    .infoView {
+        display: none;
+    }
+
+    .profInfo {
+        width: auto;
+        padding: 0 5px;
+    }
+
+    .profpic {
+        margin: 0 5px;
+    }
+
+    .noprofpicbtn {
+        /* width: auto; */
+        margin: 0 5px;
+    }
+
+    .behindBtn {
+        width: auto;
+        margin: auto;
+        padding: 0 5px;
+    }
+
+    .profHead {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        /* padding: 5px; */
+    }
+
+    .myImageDiv {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+}
+
+
 
 @media (max-height:860px) {
 
-    #modal-content {
-        height: 80%;
-    }
-
-    /* #modal-content:has(.viewModal){
-        height:80%;
-    } */
 
     .vmodal {
         height: 80%;
@@ -519,10 +492,24 @@
     
 }
 
+@media (max-width: 650px) {
+
+    .splitter {
+        display: none;
+    }
+
+    .searchdiv {
+        display: none;
+    }
+
+}
+
 .innerviewtop{
     overflow:auto;
     overflow-x: hidden;
 }
+
+
 
 
 

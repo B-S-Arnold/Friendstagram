@@ -13,6 +13,7 @@ import UnlikeForm from '../forms/UnlikeForm';
 
 
 const ViewImageModal = ({ image, expand, users }) => {
+    
     const [renderModal, setRenderModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user)
     // const users = Object.values(useSelector(state => state.users))
@@ -127,6 +128,7 @@ const ViewImageModal = ({ image, expand, users }) => {
     // $("a.active").parents('li').css("property", "value");
     // document.getElementById('modal-content').setAttribute("className", 'vmodal');
     // vModal.setAttribute("className", 'vmodal');
+    let classy = 'vmodal'
 
     return (
         <div className='vmodal'>
@@ -134,8 +136,8 @@ const ViewImageModal = ({ image, expand, users }) => {
             {thisDiv}
 
             {renderModal ? (
-                <Modal className='vmodal' onClose={() => setRenderModal(false)}>
-                    
+                <Modal classy={classy} className='vmodal' onClose={() => setRenderModal(false)}>
+                    {/* pass prop */}
                     <div className='viewModal' onClose={() => setRenderModal(false)}>
 
                         <div className='picViewDiv'>
@@ -203,9 +205,11 @@ const ViewImageModal = ({ image, expand, users }) => {
                                         <div>
                                             <div className='nameAndCapView'>
                                                 {image.caption ? <>
-                                                    <strong className='capcomun'>{imgUser.username}</strong>
 
-                                                    <div className='cap-com'>{image.caption}</div>
+                                                    <div className='cap-com'>
+                                                    <strong className='capcomun'>{imgUser.username}</strong>
+                                                        
+                                                        {image.caption}</div>
                                                     {/* <div className='EDdivfake' /> */}
                                                 </>
                                                     : <></>}
