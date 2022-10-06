@@ -44,12 +44,12 @@ const SignUpForm = () => {
     setunerrors(unerrors.splice(1, 0, 'Username cannot have a space.'))
   }
 
-  if (username.length > 30 && !unerrors.includes('Username must cannot be over 30 characters')) {
-    unerrors.push('Username must cannot be over 30 characters')
+  if (username.length > 30 && !unerrors.includes('Username cannot be over 30 characters')) {
+    unerrors.push('Username cannot be over 30 characters')
     setunerrors(unerrors)
   }
-  if (username.length <= 30 && unerrors.includes('Username must cannot be over 30 characters')) {
-    setunerrors(unerrors.splice(1, 0, 'Username must cannot be over 30 characters'))
+  if (username.length <= 30 && unerrors.includes('Username cannot be over 30 characters')) {
+    setunerrors(unerrors.splice(1, 0, 'Username cannot be over 30 characters'))
   }
 
   //ERRORS
@@ -96,13 +96,24 @@ const SignUpForm = () => {
     }
   }
 
-  if ((!email.includes('@') || email.length > 250 || !validEmail()) && !emailerrors.includes('Email address must be valid and under 250 characters.')) {
-    emailerrors.push('Email address must be valid and under 250 characters.')
+ 
+
+  if ((!email.includes('@') || !email.includes('.') || !validEmail()) && !emailerrors.includes('Email address must be valid.')) {
+    emailerrors.push('Email address must be valid.')
     setemailerrors(emailerrors)
   }
 
-  if (email.includes('@') && email.length <= 250 && validEmail() && emailerrors.includes('Email address must be valid and under 250 characters.')) {
-    setemailerrors(emailerrors.splice(1, 0, 'Email address must be valid and under 250 characters.'))
+  if (email.includes('@') && email.includes('.') && validEmail() && emailerrors.includes('Email address must be valid.')) {
+    setemailerrors(emailerrors.splice(1, 0, 'Email address must be valid.'))
+  }
+
+  if ((email.length > 250) && !emailerrors.includes('Email address must be under 250 characters.')) {
+    emailerrors.push('Email address must be under 250 characters.')
+    setemailerrors(emailerrors)
+  }
+
+  if (email.length <= 250 && emailerrors.includes('Email address must be under 250 characters.')) {
+    setemailerrors(emailerrors.splice(1, 0, 'Email address must be under 250 characters.'))
   }
 
   
@@ -170,24 +181,31 @@ const SignUpForm = () => {
               <div key={ind}>{error}</div>
             ))}
           </div>
-              <div className='errors'>
+              {/* <div className='errors'>
                 {allerrors.map((error, ind) => (
                   <div key={ind}>{error}</div>
                 ))}
-              </div>
-          <div>
+              </div> */}
+          <div className='inputField'>
+            {emailerrors?.length > 0 ? <div className='errmss' >
+              {emailerrors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+                </div> : <div className='errmss' />}
             <input
-              className='inputField'
+              className='realInput'
               placeholder='Email'
               type='email'
               name='email'
               onChange={updateEmail}
               value={email}
-            ></input>
+            >
+              
+            </input>
           </div>
-          <div>
+          <div className='inputField'>
             <input
-              className='inputField'
+              className='realInput'
               placeholder='Full Name'
               type='text'
               name='fullName'
@@ -195,9 +213,15 @@ const SignUpForm = () => {
               value={fullName}
             ></input>
           </div>
-          <div>
+          
+          <div className='inputField'>
+            {unerrors?.length > 0 ? <div className='errmss'>
+              {unerrors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+            </div> : <></>}
             <input
-              className='inputField'
+              className='realInput'
               placeholder='Username'
               type='text'
               name='username'
@@ -205,9 +229,15 @@ const SignUpForm = () => {
               value={username}
             ></input>
           </div>
-          <div>
+          <div className='inputField'>
+            {passerrors?.length > 0 ?
+                <div className='errmss' >
+                {passerrors.map((error, ind) => (
+                  <div key={ind}>{error}</div>
+                ))}
+              </div> : <></>}
             <input
-              className='inputField'
+              className='realInput'
               placeholder='Password'
               type='password'
               name='password'
@@ -216,9 +246,9 @@ const SignUpForm = () => {
             ></input>
           </div>
               
-          <div>
+          <div className='inputField'>
             <input
-              className='inputField'
+              className='realInput'
               placeholder='Repeat Password'
               type='password'
               name='repeat_password'
@@ -245,22 +275,18 @@ const SignUpForm = () => {
         </div>
         </div>
         <div className='errcont'>
-        {passerrors?.length>0?
+        {/* {passerrors?.length>0?
           <div className='errors passerr'>
             {passerrors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
-          </div> : <></>}
-          {emailerrors?.length>0? <div className='errors emerr'>
-            {emailerrors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>: <></>}
-          {unerrors?.length > 0 ? <div className='errors unerr'>
+          </div> : <></>} */}
+          
+          {/* {unerrors?.length > 0 ? <div className='errors unerr'>
             {unerrors.map((error, ind) => (
               <div key={ind}>{error}</div>
               ))}
-            </div> : <></>}
+            </div> : <></>} */}
           </div>
         </div>
       </div>
