@@ -571,5 +571,5 @@ const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
 //     )
 // }
 
-
+console.log('hello')
 export default ChangeProfPicForm;
