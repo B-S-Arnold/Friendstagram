@@ -459,6 +459,10 @@ aside>div>div {
     cursor: pointer;
 }
 
+.submit:disabled{
+    color: #adddfe;
+}
+
 .dropinstr {
     display: flex;
     flex-direction: column;

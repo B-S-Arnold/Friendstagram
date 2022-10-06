@@ -175,7 +175,7 @@ const ChangeProfPicForm = ({ renderOptionsModal, user }) => {
                     {/* <button className="submit" type="submit">Share</button> */}
                     <div className='dropbox'>
                         <div className='droptext'>Add profile photo</div>
-                        <button className="submit" type="submit">Upload</button>
+                        <button disabled={files.length === 0} className="submit" type="submit">Upload</button>
                         {/* <hr className='addimgline' /> */}
                     </div>
 
