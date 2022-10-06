@@ -228,7 +228,7 @@ const SignUpForm = () => {
             ></input>
           </div>
               {/* TOOK DISABLED OUT OF SUBMIT BUTTON */}
-              disabled={errors.length > 0}
+              {/* disabled={errors.length > 0} */}
           
           <button className='btn' disabled={allerrors.length>0 || passerrors.length>0 || emailerrors.length>0 || unerrors.length>0} type='submit'>Sign up</button>
         </form>
