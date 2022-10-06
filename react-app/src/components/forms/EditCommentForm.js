@@ -62,7 +62,7 @@ const EditCommentForm = ({ comment, setOptionsModal }) => {
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
-                <button className='subEdCom' type='submit' disabled={errors.length > 0}>Submit</button>
+                <button className='subEdCom' type='submit' disabled={content.length === 0 || errors.length > 0}>Submit</button>
             </div>
             
         </form>

@@ -50,7 +50,7 @@ const AddCommentForm = ({image}) => {
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                 />
-                <button className='combtn'type='submit' disabled={comerrors.length > 0}>Post</button>
+                <button className='combtn'type='submit' disabled={content.length === 0 || comerrors.length > 0}>Post</button>
             </div>
         </form>
             <div className='errors'>

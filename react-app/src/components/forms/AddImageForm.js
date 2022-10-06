@@ -198,7 +198,7 @@ const AddImageForm = ({ setRenderModal }) => {
                     {/* <button className="submit" type="submit">Share</button> */}
                     <div className='dropbox'>
                         <div className='droptext'>Create new post</div>
-                        <button className="submit" type="submit">Share</button>
+                        <button disabled={files.length===0} className="submit" type="submit">Share</button>
                         {/* <hr className='addimgline' /> */}
                     </div>
                     
