@@ -68,7 +68,7 @@ const SignUpForm = () => {
 
   if (password !== repeatPassword && !newpasserr.includes('Password and Repeat Password must match.')) {
     newpasserr.push('Password and Repeat Password must match.')
-    setnewpasserr(passerrors)
+    setnewpasserr(newpasserr)
   }
   if ((password.length < 8 || password.length > 25) && !passerrors.includes('Password must be between 8 and 25 characters.')) {
     passerrors.push('Password must be between 8 and 25 characters.')
@@ -117,8 +117,26 @@ const SignUpForm = () => {
     setemailerrors(emailerrors.splice(1, 0, 'Email address must be under 250 characters.'))
   }
 
-  
 
+  const showPass = () => {
+    const password = document.querySelector('#id_password');
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+
+    const eye = document.querySelector('#id_eye')
+    const classy = eye.getAttribute('class') === 'far fa-eye eye' ? 'far fa-eye-slash eye' : 'far fa-eye eye';
+    eye.setAttribute('class', classy)
+  }
+
+  const showRPass = () => {
+    const password = document.querySelector('#id_rpassword');
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+
+    const eye = document.querySelector('#id_reye')
+    const classy = eye.getAttribute('class') === 'far fa-eye eye' ? 'far fa-eye-slash eye' : 'far fa-eye eye';
+    eye.setAttribute('class', classy)
+  }
   
   
 
@@ -239,14 +257,26 @@ const SignUpForm = () => {
                 {/* ))} */}
             </div> : <div className='errmss' />}
             <input
-              className='realInput'
+              id='id_password'
+              className='passInput'
               placeholder='Password'
               type='password'
               name='password'
               onChange={updatePassword}
               value={password}
             ></input>
+              {/* <div> */}
+                  {/* <i class="far fa-eye eye" id="togglePassword"></i> */}
+                <i
+                  class="far fa-eye eye"
+                  id='id_eye'
+                  type='checkbox'
+                  onClick={showPass}
+                />
+              {/* </div> */}
+            
           </div>
+          
               
           <div className='inputField'>
             {newpasserr?.length > 0 ?
@@ -256,7 +286,8 @@ const SignUpForm = () => {
                 {/* ))} */}
               </div> : <div className='errmss' />}
             <input
-              className='realInput'
+              id='id_rpassword'
+              className='passInput'
               placeholder='Repeat Password'
               type='password'
               name='repeat_password'
@@ -264,6 +295,12 @@ const SignUpForm = () => {
               value={repeatPassword}
               required={true}
             ></input>
+                <i
+                  class="far fa-eye eye"
+                  id='id_reye'
+                  type='checkbox'
+                  onClick={showRPass}
+                />
           </div>
               {/* TOOK DISABLED OUT OF SUBMIT BUTTON */}
               {/* disabled={errors.length > 0} */}
