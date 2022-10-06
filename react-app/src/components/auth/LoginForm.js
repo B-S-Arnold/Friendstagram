@@ -25,6 +25,16 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  const showPass = () => {
+    const password = document.querySelector('#id_password');
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+
+    const eye = document.querySelector('#id_eye')
+    const classy = eye.getAttribute('class') === 'far fa-eye eye' ? 'far fa-eye-slash eye' : 'far fa-eye eye';
+    eye.setAttribute('class', classy)
+  }
+
 
 
 
@@ -35,9 +45,10 @@ const LoginForm = () => {
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className='inputField'>
+        <div className='errmss' />
         <input
-          className='inputField'
+          className='realInput'
           name='email'
           type='text'
           placeholder='Email'
@@ -45,14 +56,22 @@ const LoginForm = () => {
           onChange={updateEmail}
         />
       </div>
-      <div>
+      <div className='inputField'>
+        <div className='errmss' />
         <input
-          className='inputField'
+          id='id_password' 
+          className='passInput'
           name='password'
           type='password'
           placeholder='Password'
           value={password}
           onChange={updatePassword}
+        />
+        <i
+          class="far fa-eye eye"
+          id='id_eye'
+          type='checkbox'
+          onClick={showPass}
         />
       </div>
       <button className='btn' type='submit'>Log In</button>
