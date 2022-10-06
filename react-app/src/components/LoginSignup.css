@@ -95,7 +95,7 @@
 }
 
 .realInput {
-    margin-top: 2px;
+    /* margin-top: 2px; */
     background-color: transparent;
     /* margin: 3px; */
     font-size: 12px;
@@ -110,7 +110,7 @@
 }
 
 .passInput {
-    margin-top: 2px;
+    /* margin-top: 2px; */
     background-color: transparent;
     /* margin: 3px; */
     font-size: 12px;
