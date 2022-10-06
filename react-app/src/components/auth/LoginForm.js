@@ -74,7 +74,7 @@ const LoginForm = () => {
           onClick={showPass}
         />
       </div>
-      <button className='btn' type='submit'>Log In</button>
+      <button disabled={password.length === 0 || email.length === 0} className='btn' type='submit'>Log In</button>
     </form>
     
   );
