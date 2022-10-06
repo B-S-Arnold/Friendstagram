@@ -9,6 +9,7 @@ const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [emailerrors, setemailerrors] = useState([])
   const [passerrors, setpasserrors] = useState([])
+  const [newpasserr, setnewpasserr] = useState([])
   const [allerrors, setallerrors] = useState([])
   const [unerrors, setunerrors] = useState([])
   const [username, setUsername] = useState('');
@@ -65,9 +66,9 @@ const SignUpForm = () => {
   
   // PASSWORD ERRORS
 
-  if (password !== repeatPassword && !passerrors.includes('Password and Repeat Password must match.')) {
-    passerrors.push('Password and Repeat Password must match.')
-    setpasserrors(passerrors)
+  if (password !== repeatPassword && !newpasserr.includes('Password and Repeat Password must match.')) {
+    newpasserr.push('Password and Repeat Password must match.')
+    setnewpasserr(passerrors)
   }
   if ((password.length < 8 || password.length > 25) && !passerrors.includes('Password must be between 8 and 25 characters.')) {
     passerrors.push('Password must be between 8 and 25 characters.')
@@ -78,8 +79,8 @@ const SignUpForm = () => {
     setpasserrors(passerrors.splice(1, 0, 'Password must be between 8 and 25 characters.'))
   }
   
-  if (password === repeatPassword && passerrors.includes('Password and Repeat Password must match.')){
-    setpasserrors(passerrors.splice(1,0,'Password and Repeat Password must match.'))
+  if (password === repeatPassword && newpasserr.includes('Password and Repeat Password must match.')){
+    setnewpasserr(newpasserr.splice(1,0,'Password and Repeat Password must match.'))
   }
 
   //EMAIL ERRORS
@@ -188,10 +189,10 @@ const SignUpForm = () => {
               </div> */}
           <div className='inputField'>
             {emailerrors?.length > 0 ? <div className='errmss' >
-              {emailerrors.map((error, ind) => (
-                <div key={ind}>{error}</div>
-              ))}
-                </div> : <div className='errmss' />}
+              {/* {emailerrors.map((error, ind) => ( */}
+                <div key={0}>{emailerrors[0]}</div>
+              {/* ))} */}
+            </div> : <div className='errmss' />}
             <input
               className='realInput'
               placeholder='Email'
@@ -204,6 +205,7 @@ const SignUpForm = () => {
             </input>
           </div>
           <div className='inputField'>
+            <div className='errmss' />
             <input
               className='realInput'
               placeholder='Full Name'
@@ -216,10 +218,10 @@ const SignUpForm = () => {
           
           <div className='inputField'>
             {unerrors?.length > 0 ? <div className='errmss'>
-              {unerrors.map((error, ind) => (
-                <div key={ind}>{error}</div>
-              ))}
-            </div> : <></>}
+              {/* {unerrors.map((error, ind) => ( */}
+                <div key={0}>{unerrors[0]}</div>
+              {/* ))} */}
+                </div> : <div className='errmss' />}
             <input
               className='realInput'
               placeholder='Username'
@@ -232,10 +234,10 @@ const SignUpForm = () => {
           <div className='inputField'>
             {passerrors?.length > 0 ?
                 <div className='errmss' >
-                {passerrors.map((error, ind) => (
-                  <div key={ind}>{error}</div>
-                ))}
-              </div> : <></>}
+                {/* {passerrors.map((error, ind) => ( */}
+                  <div key={0}>{passerrors[0]}</div>
+                {/* ))} */}
+            </div> : <div className='errmss' />}
             <input
               className='realInput'
               placeholder='Password'
@@ -247,6 +249,12 @@ const SignUpForm = () => {
           </div>
               
           <div className='inputField'>
+            {newpasserr?.length > 0 ?
+              <div className='errmss' >
+                {/* {passerrors.map((error, ind) => ( */}
+                <div key={0}>{newpasserr[0]}</div>
+                {/* ))} */}
+              </div> : <div className='errmss' />}
             <input
               className='realInput'
               placeholder='Repeat Password'
@@ -260,7 +268,7 @@ const SignUpForm = () => {
               {/* TOOK DISABLED OUT OF SUBMIT BUTTON */}
               {/* disabled={errors.length > 0} */}
           
-          <button className='btn' disabled={allerrors.length>0 || passerrors.length>0 || emailerrors.length>0 || unerrors.length>0} type='submit'>Sign up</button>
+          <button className='btn' disabled={allerrors.length>0 || newpasserr.length>0 ||passerrors.length>0 || emailerrors.length>0 || unerrors.length>0} type='submit'>Sign up</button>
         </form>
       </div>
       <div className='redirContainer'>
