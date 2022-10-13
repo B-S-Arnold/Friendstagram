@@ -38,6 +38,14 @@ const Dropdown = () => {
         return <div className='dropdownbtn' onClick={toSettings}>Settings</div>
     }
 
+    // const GameButton = () => {
+    //     const toGame = () => {
+    //         navigate(`/game`)
+    //     }
+
+    //     return <div className='dropdownbtn' onClick={toGame}>Game</div>
+    // }
+
 
     return (
         <>
@@ -56,7 +64,10 @@ const Dropdown = () => {
                     <SettingsButton />
                 </div> */}
                 {/* <div> */}
+                    {/* <SettingsButton /> */}
+                    {/* <GameButton /> */}
                     <LogoutButton />
+                    {/* <GameButton /> */}
                 {/* </div> */}
             </div>
         </>

@@ -9,6 +9,7 @@ import { authenticate } from './store/session';
 import SplashPage from './components/Splash';
 import Footer from './components/Footer';
 import Settings from './components/Settings';
+import Game from './components/XP/Game';
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         <ProtectedRoute user={user}>
             <User />
         </ProtectedRoute>} />
+    
           {/* <User />
         </ProtectedRoute> */}
 
@@ -51,6 +53,10 @@ function App() {
         </ProtectedRoute>} />
           {/* <Settings />
         </ProtectedRoute> */}
+
+        <Route path='/game' exact={'true'} element={<Game />} />
+
+
       </Routes>
       <Footer />
     </BrowserRouter>

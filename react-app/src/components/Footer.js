@@ -1,7 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Footer.css'
 
 const Footer = () => {
+    const navigate = useNavigate()
+
+    const GameButton = () => {
+        const toGame = () => {
+            navigate(`/game`)
+        }
+
+        return <div className='personal' onClick={toGame}>Game</div>
+    }
 
     return (
         <footer className='footerContainer'>
@@ -15,6 +25,7 @@ const Footer = () => {
                     <a className='personal' href='https://www.appacademy.io/' >
                         App Academy
                     </a>
+                    <GameButton />
             </div>
             <div className='linkContainer'>
                 <div className='personal'>
