@@ -25,7 +25,7 @@ const Footer = () => {
                     <a className='personal' href='https://www.appacademy.io/' >
                         App Academy
                     </a>
-                    <GameButton />
+                    {/* <GameButton /> */}
             </div>
             <div className='linkContainer'>
                 <div className='personal'>
