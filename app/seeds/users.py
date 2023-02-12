@@ -4,15 +4,22 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password', fullName='Demo User')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password', fullName='Marnie Blarnie')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password', fullName='Bobbie Hill')
+        username='demo_user', email='demo@aa.io', password='password', fullName='Demo User')
+    peggy = User(
+        username='peggyhill54', email='margarethill@aa.io', password='password', fullName='Margaret Hill')
+    bart = User(
+        username='elbarto', email='bartman@aa.io', password='password', fullName='El Barto')
+    carl = User(
+        username='2cool4U', email='carl@aa.io', password='password', fullName='Carl Brutananadilewski')
+    butters = User(
+        username='butters_chaos', email='theprofessorchaos@aa.io', password='password', fullName='Leopold Stotch', url='https://i.pinimg.com/736x/e4/a6/97/e4a697c1104b43f9f558cfbf5aec0a82.jpg')
+    
 
     db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(peggy)
+    db.session.add(bart)
+    db.session.add(carl)
+    db.session.add(butters)
 
     db.session.commit()
 
