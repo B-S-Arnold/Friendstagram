@@ -12,7 +12,7 @@ def seed_users():
     carl = User(
         username='2cool4U', email='carl@aa.io', password='password', fullName='Carl Brutananadilewski')
     butters = User(
-        username='butters_chaos', email='theprofessorchaos@aa.io', password='password', fullName='Leopold Stotch')
+        username='butters_chaos', email='theprofessorchaos@aa.io', password='password', fullName='Leopold Stotch', url='https://i.pinimg.com/736x/e4/a6/97/e4a697c1104b43f9f558cfbf5aec0a82.jpg')
     
 
     db.session.add(demo)
