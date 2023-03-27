@@ -20,7 +20,7 @@ def seed_users():
     joey = User(
         username='joeytribbiani', email='joeytribbiani@friends.com', password='password', fullName='Joey Tribbiani', url='https://i.guim.co.uk/img/media/ae14333615408ab5d5ba6c23810be683e0d6f631/389_282_1481_889/master/1481.jpg?width=1200&quality=85&auto=format&fit=max&s=bd2289ab125e182d2219c06f34174943')
     carrie = User(
-        username='carriebradshaw', email='carriebradshaw@sexandthecity.com', password='password', fullName='Carrie Bradshaw', url='https://static.wikia.nocookie.net/sexandthecity/images/0/08/Carrielove.jpg/revision/latest?cb=20110320175424')
+        username='carriebradshaw', email='carriebradshaw@sexandthecity.com', password='password', fullName='Carrie Bradshaw', url='https://www.cheatsheet.com/wp-content/uploads/2019/07/SJP.jpg?w=747&h=1024')
     don = User(
         username='don_draper', email='don_draper@sterlingcooper.com', password='password', fullName='Don Draper', url='https://www.literarytraveler.com/wp-content/uploads/2015/04/Don-Draper-Pic.jpg')
     leslie = User(
@@ -30,7 +30,7 @@ def seed_users():
     liz = User(
         username='lizlemon', email='lizlemon@30rock.com', password='password', fullName='Liz Lemon', url='https://tv-fanatic-res.cloudinary.com/iu/s--0QT9_jU0--/t_full/cs_srgb,f_auto,fl_strip_profile.lossy,q_auto:420/v1371145164/liz-lemon.png')
     michael = User(
-        username='michaelscott', email='michaelscott@dundermifflin.com', password='password', fullName='Michael Scott', url='https://static.wikia.nocookie.net/theoffice/images/b/be/Character_-_MichaelScott.PNG/revision/latest?cb=20200413224550')
+        username='michaelscott', email='michaelscott@dundermifflin.com', password='password', fullName='Michael Scott', url='https://upload.wikimedia.org/wikipedia/en/d/dc/MichaelScott.png')
     daria = User(
         username='dariamorgendorffer', email='dariamorgendorffer@lawndalehigh.com', password='password', fullName='Daria Morgendorffer', url='https://img.buzzfeed.com/buzzfeed-static/static/2022-02/8/12/asset/0bd92bb09cf4/anigif_sub-buzz-3890-1644323336-4_preview.gif?crop=385:300;6,0&resize=990:*&output-quality=auto&output-format=auto&downsize=360:*')
     ron = User(
