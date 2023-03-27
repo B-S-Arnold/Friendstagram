@@ -8,7 +8,7 @@ def seed_users():
     tom = User(
         username='iLoveMyWife25', email='tomwambsgams@aa.io', password='password', fullName='Tom Wambsgams', url='https://media.gq.com/photos/5da61bb0b2ccb20008b494be/4:3/w_2551,h_1913,c_limit/tv-succession-matthew-macfadyen-tom-wambsgans-gq-october-101519.jpg')
     greg = User(
-        username='theOneGregHirsch', email='greghirsch@aa.io', password='password', fullName='Greg Hirsch', url='https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/newscms/2021_41/1788465/cousin-greg-kb-inline-5-211015.jpg')
+        username='theOneGregHirsch', email='greghirsch@aa.io', password='password', fullName='Greg Hirsch', url='https://pbs.twimg.com/profile_images/1482796274621374467/Q7dsAndm_400x400.jpg')
     peggy = User(
         username='peggyhill54', email='margarethill@aa.io', password='password', fullName='Margaret Hill', url='https://www.giantbomb.com/a/uploads/scale_small/0/7383/1813631-peggy_hill.jpg')
     bart = User(
