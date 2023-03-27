@@ -4,7 +4,7 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='demo_user', email='demo@aa.io', password='password', fullName='Demo User')
+        username='demo_user', email='demo@aa.io', password='password', fullName='Demo User', url='https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_2x3.jpg', bio='This is your profile. Feel free to post, edit, and delete whatever you want... including this bio. I hope you enjoy using friendstagram!')
     tom = User(
         username='iLoveMyWife25', email='tomwambsgams@aa.io', password='password', fullName='Tom Wambsgams', url='https://media.gq.com/photos/5da61bb0b2ccb20008b494be/4:3/w_2551,h_1913,c_limit/tv-succession-matthew-macfadyen-tom-wambsgans-gq-october-101519.jpg', bio='Loyal servant to the Roy family, strategic advisor, and aspiring mogul. Helping run the media empire and trying to keep up with the demands of high society. Follow me for behind-the-scenes insights on the business and the glamour. #RoyFamily #MediaMogul #NYCLife')
     greg = User(
