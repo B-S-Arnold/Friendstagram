@@ -96,7 +96,7 @@ function User() {
           </div>
           <div className= 'profFNandBio'>
             <strong>{user.fullName}</strong>
-            <div>{user.bio ? <><strong>Bio</strong> {user.bio}</> : <> </>}</div>
+            <div>{user.bio ? <> {user.bio}</> : <> </>}</div>
           </div>
         </div>
         <div className='minispacer'/>
