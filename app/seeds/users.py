@@ -18,25 +18,25 @@ def seed_users():
     butters = User(
         username='butters_chaos', email='theprofessorchaos@aa.io', password='password', fullName='Leopold Stotch', url='https://i.pinimg.com/736x/e4/a6/97/e4a697c1104b43f9f558cfbf5aec0a82.jpg')
     joey = User(
-        username='joeytribbiani', email='joeytribbiani@friends.com', password='password', fullName='Joey Tribbiani', url='https://www.nme.com/wp-content/uploads/2021/09/GettyImages-71522561.jpg')
+        username='joeytribbiani', email='joeytribbiani@friends.com', password='password', fullName='Joey Tribbiani', url='https://i.guim.co.uk/img/media/ae14333615408ab5d5ba6c23810be683e0d6f631/389_282_1481_889/master/1481.jpg?width=1200&quality=85&auto=format&fit=max&s=bd2289ab125e182d2219c06f34174943')
     carrie = User(
-        username='carriebradshaw', email='carriebradshaw@sexandthecity.com', password='password', fullName='Carrie Bradshaw', url='https://images.hellogiggles.com/uploads/2020/06/03132617/Carrie-Bradshaw-Header.jpg')
+        username='carriebradshaw', email='carriebradshaw@sexandthecity.com', password='password', fullName='Carrie Bradshaw', url='https://static.wikia.nocookie.net/sexandthecity/images/0/08/Carrielove.jpg/revision/latest?cb=20110320175424')
     don = User(
-        username='don_draper', email='don_draper@sterlingcooper.com', password='password', fullName='Don Draper', url='https://www.telegraph.co.uk/content/dam/tv/2017/05/17/Don-Draper_trans_NvBQzQNjv4BqrWYeUU_H0zBKyvljOo6zlkYMapKPjdhyLnv9ax6_too.jpg?imwidth=450')
+        username='don_draper', email='don_draper@sterlingcooper.com', password='password', fullName='Don Draper', url='https://www.literarytraveler.com/wp-content/uploads/2015/04/Don-Draper-Pic.jpg')
     leslie = User(
-        username='leslieknope', email='leslieknope@pawnee.gov', password='password', fullName='Leslie Knope', url='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/leslie-knope-parks-and-rec-1615968227.png')
+        username='leslieknope', email='leslieknope@pawnee.gov', password='password', fullName='Leslie Knope', url='https://assets1.cbsnewsstatic.com/hub/i/2016/11/10/b6412961-dae0-4ee8-901a-75c6c66be11c/leslie-knope.jpg')
     tyler = User(
-        username='tylerdurden', email='tylerdurden@fightclub.com', password='password', fullName='Tyler Durden', url='https://www.indiewire.com/wp-content/uploads/2019/09/fight-club-brad-pitt.jpg')
+        username='tylerdurden', email='tylerdurden@fightclub.com', password='password', fullName='Tyler Durden', url='https://i.pinimg.com/474x/68/0c/38/680c38bb6b84e7d14638abab6cb05442.jpg')
     liz = User(
-        username='lizlemon', email='lizlemon@30rock.com', password='password', fullName='Liz Lemon', url='https://www.indiewire.com/wp-content/uploads/2020/06/liz-lemon-30-rock.jpg')
+        username='lizlemon', email='lizlemon@30rock.com', password='password', fullName='Liz Lemon', url='https://tv-fanatic-res.cloudinary.com/iu/s--0QT9_jU0--/t_full/cs_srgb,f_auto,fl_strip_profile.lossy,q_auto:420/v1371145164/liz-lemon.png')
     michael = User(
-        username='michaelscott', email='michaelscott@dundermifflin.com', password='password', fullName='Michael Scott', url='https://www.indiewire.com/wp-content/uploads/2020/06/the-office-michael-scott.jpg')
+        username='michaelscott', email='michaelscott@dundermifflin.com', password='password', fullName='Michael Scott', url='https://static.wikia.nocookie.net/theoffice/images/b/be/Character_-_MichaelScott.PNG/revision/latest?cb=20200413224550')
     daria = User(
-        username='dariamorgendorffer', email='dariamorgendorffer@lawndalehigh.com', password='password', fullName='Daria Morgendorffer', url='https://www.indiewire.com/wp-content/uploads/2020/06/daria.jpg')
+        username='dariamorgendorffer', email='dariamorgendorffer@lawndalehigh.com', password='password', fullName='Daria Morgendorffer', url='https://img.buzzfeed.com/buzzfeed-static/static/2022-02/8/12/asset/0bd92bb09cf4/anigif_sub-buzz-3890-1644323336-4_preview.gif?crop=385:300;6,0&resize=990:*&output-quality=auto&output-format=auto&downsize=360:*')
     ron = User(
-        username='ronswanson', email='ronswanson@pawnee.gov', password='password', fullName='Ron Swanson', url='https://www.indiewire.com/wp-content/uploads/2020/06/ron-swanson.jpg')
+        username='ronswanson', email='ronswanson@pawnee.gov', password='password', fullName='Ron Swanson', url='https://www.hollywoodreporter.com/wp-content/uploads/2011/07/nick_offermannbc_a_p.jpg')
     chandler = User(
-        username='chandlerbing', email='chandlerbing@friends.com', password='password', fullName='Chandler Bing', url='https://static.wikia.nocookie.net/friends/images/f/f3/Square_Chandler.png/revision/latest?cb=20190819093643')
+        username='chandlerbing', email='chandlerbing@friends.com', password='password', fullName='Chandler Bing', url='https://media1.popsugar-assets.com/files/thumbor/wdoni8-dpP0HaqX4sYfe_RWGUVg/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2016/10/06/806/n/1922283/5d84a4af57f69609b26c99.07034779_edit_img_image_35947698_1468270800/i/Chandler-Bing-Lines-From-Friends-GIFs.jpg')
     
 
     db.session.add(demo)
