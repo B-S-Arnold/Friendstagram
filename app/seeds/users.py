@@ -13,6 +13,8 @@ def seed_users():
         username='peggyhill54', email='margarethill@aa.io', password='password', fullName='Margaret Hill', url='https://www.giantbomb.com/a/uploads/scale_small/0/7383/1813631-peggy_hill.jpg')
     bart = User(
         username='elbarto', email='bartman@aa.io', password='password', fullName='El Barto', url='https://e1.pxfuel.com/desktop-wallpaper/591/300/desktop-wallpaper-bartsimpson-el-barto.jpg')
+    lisa = User(
+        username='LisaForPrez', email='lisasimpson@aa.io', password='password', fullName='Lisa Simpson', url='https://static1.cbrimages.com/wordpress/wp-content/uploads/2020/12/Lisa-Simpson.jpg')
     carl = User(
         username='2cool4U', email='carl@aa.io', password='password', fullName='Carl Brutananadilewski', url='https://i.cdn.turner.com/asfix/repository//8a25c39212c8bcf30112c99af0910001/thumbnail_63404.jpg')
     butters = User(
@@ -55,6 +57,7 @@ def seed_users():
     db.session.add(ron)
     db.session.add(chandler)
     db.session.add(bart)
+    db.session.add(lisa)
     db.session.add(carl)
     db.session.add(butters)
 
