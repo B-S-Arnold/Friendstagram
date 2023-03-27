@@ -6,9 +6,9 @@ def seed_users():
     demo = User(
         username='demo_user', email='demo@aa.io', password='password', fullName='Demo User')
     tom = User(
-        username='iLoveMyWife25', email='tomwambsgams@aa.io', password='password', fullName='Tom Wambsgams', url='https://media.gq.com/photos/5da61bb0b2ccb20008b494be/4:3/w_2551,h_1913,c_limit/tv-succession-matthew-macfadyen-tom-wambsgans-gq-october-101519.jpg')
+        username='iLoveMyWife25', email='tomwambsgams@aa.io', password='password', fullName='Tom Wambsgams', url='https://media.gq.com/photos/5da61bb0b2ccb20008b494be/4:3/w_2551,h_1913,c_limit/tv-succession-matthew-macfadyen-tom-wambsgans-gq-october-101519.jpg', bio='Loyal servant to the Roy family, strategic advisor, and aspiring mogul. Learning the ropes of the media empire and trying to keep up with the demands of high society. Follow me for behind-the-scenes insights on the business and the glamour. #RoyFamily #MediaMogul #NYCLife')
     greg = User(
-        username='theOneGregHirsch', email='greghirsch@aa.io', password='password', fullName='Greg Hirsch', url='https://pbs.twimg.com/profile_images/1482796274621374467/Q7dsAndm_400x400.jpg')
+        username='theOneGregHirsch', email='greghirsch@aa.io', password='password', fullName='Greg Hirsch', url='https://pbs.twimg.com/profile_images/1482796274621374467/Q7dsAndm_400x400.jpg', bio='Official account of Greg Hirsch 📈🤑 Aspiring mogul and all-around chiller. Living life one awkward moment at a time. Catch me at Waystar Royco, making moves and learning the ropes. #EntrepreneurLife #KillinIt')
     peggy = User(
         username='peggyhill54', email='margarethill@aa.io', password='password', fullName='Margaret Hill', url='https://www.giantbomb.com/a/uploads/scale_small/0/7383/1813631-peggy_hill.jpg')
     bart = User(
