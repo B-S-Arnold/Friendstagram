@@ -20,7 +20,7 @@ def seed_likes():
     
     
     
-    db.session.add_all([like1, like2, like3, like_seeds])
+    db.session.add_all([like1, like2, like3], like_seeds)
    
     db.session.commit()
 
