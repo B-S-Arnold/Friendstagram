@@ -50,30 +50,11 @@ def seed_users():
     chandler = User(
         username='chandlerbing', email='chandlerbing@friends.com', password='password', fullName='Chandler Bing', url='https://media1.popsugar-assets.com/files/thumbor/wdoni8-dpP0HaqX4sYfe_RWGUVg/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2016/10/06/806/n/1922283/5d84a4af57f69609b26c99.07034779_edit_img_image_35947698_1468270800/i/Chandler-Bing-Lines-From-Friends-GIFs.jpg')
     
+    db.session.add_all([demo, tom, greg, logan, kendall, shiv, roman, connor,
+                        peggy, joey, carrie, don, leslie, tyler, liz, michael,
+                        daria, ron, chandler, bart, lisa, carl, butters])
 
-    db.session.add(demo)
-    db.session.add(tom)
-    db.session.add(greg)
-    db.session.add(logan)
-    db.session.add(kendall)
-    db.session.add(shiv)
-    db.session.add(roman)
-    db.session.add(connor)
-    db.session.add(peggy)
-    db.session.add(joey)
-    db.session.add(carrie)
-    db.session.add(don)
-    db.session.add(leslie)
-    db.session.add(tyler)
-    db.session.add(liz)
-    db.session.add(michael)
-    db.session.add(daria)
-    db.session.add(ron)
-    db.session.add(chandler)
-    db.session.add(bart)
-    db.session.add(lisa)
-    db.session.add(carl)
-    db.session.add(butters)
+    
 
     db.session.commit()
 
@@ -86,3 +67,9 @@ def seed_users():
 def undo_users():
     db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
     db.session.commit()
+    
+#     User Template
+
+# username = User(
+#         username='', email='', password='password', fullName='', url="")
+    
