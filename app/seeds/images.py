@@ -13,7 +13,7 @@ def seed_images():
         userId='2', url='https://imageio.forbes.com/blogs-images/carolynlipka/files/2018/08/SUC_110_03132018_CH_1510-1200x800.jpg?format=jpg&width=1200', caption="Walking down the aisle with the love of my life. Shiv, you are my rock and my partner in everything. I am grateful for every moment with you, and I can't wait for our future together. #ForeverTogether #ShivAndTom #LoveWins", edited=False)
     
     img4 = Image(
-        userId='2', url='https://static.wikia.nocookie.net/succession/images/9/96/Nobody_is_Ever_Missing_2.png/revision/latest?cb=20190902090853', caption="Today, we celebrated the union of two families and the start of a new chapter. Feeling grateful to have these wonderful people by our side, as we embark on this journey together. Here's to love, family, and a lifetime of happiness. #TomAndShivsWedding #FamilyLove #PowerCouple", edited=False)
+        userId='2', url='https://static.wikia.nocookie.net/succession/images/9/96/Nobody_is_Ever_Missing_2.png', caption="Today, we celebrated the union of two families and the start of a new chapter. Feeling grateful to have these wonderful people by our side, as we embark on this journey together. Here's to love, family, and a lifetime of happiness. #TomAndShivsWedding #FamilyLove #PowerCouple", edited=False)
     
     
     db.session.add_all([img1, img2, img3, img4])
