@@ -14,14 +14,14 @@ def seed_likes():
     
     like_seeds = []
 
-    for i in range(2, 23):
-        like_seeds.append(Like(userId=str(i), imageId=3))
-        
-    for i in range(2, 22):
+    for i in range(2, 20):
         like_seeds.append(Like(userId=str(i), imageId=4))
         
-    for i in range(2, 12):
+    for i in range(2, 23):
         like_seeds.append(Like(userId=str(i), imageId=5))
+        
+    for i in range(2, 11):
+        like_seeds.append(Like(userId=str(i), imageId=3))
     
     
     

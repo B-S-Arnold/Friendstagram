@@ -16,9 +16,9 @@ def seed_comments():
         userId='3', imageId=3, content="Lookin good!", edited=False)
     
     comment5 = Comment(
-        userId='2', imageId=3, content="I guess that makes sense.", edited=False)
+        userId='2', imageId=3, content="You would say that.", edited=False)
     
-    db.session.add_all([comment1, comment2, comment3])
+    db.session.add_all([comment1, comment2, comment3, comment4, comment5])
    
     db.session.commit()
 
