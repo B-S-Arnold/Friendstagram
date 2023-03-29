@@ -12,7 +12,7 @@ def seed_images():
     img2 = Image(
         userId='2', url='https://www.thewrap.com/wp-content/uploads/2019/11/Succession-Greg.png', caption='Watching my man @theOneGregHirsch hold his own on the stand like a pro 🔥💪 #loyalty #justice #teamwork', edited=False)
     
-     img3 = Image(
+    img3 = Image(
         userId='2', url="https://media.distractify.com/brand-img/BFpYDb9GH/0x0/why-does-mr-darcy-flex-his-hand-pride-and-prejudice-1674678422765.jpg", caption="Life was so simple back then. But I wouldn't change anything 😎📷 #ThrowbackThursday #GoodTimes #Memories ", edited=False)
     
     img4 = Image(
