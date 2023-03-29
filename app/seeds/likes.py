@@ -12,17 +12,17 @@ def seed_likes():
     like3 = Like(
         userId='3', imageId=1)
     
-    # like_seeds = []
+    like_seeds = []
 
-    # for i in range(2, 24):
-    #     like_seeds.append(Like(userId=str(i), imageId=3))
-    #     like_seeds.append(Like(userId=str(i), imageId=4))
+    for i in range(2, 24):
+        like_seeds.append(Like(userId=str(i), imageId=3))
+        like_seeds.append(Like(userId=str(i), imageId=4))
     
     
     
     db.session.add_all([like1, like2, like3])
     
-    # db.session.add_all(like_seeds)
+    db.session.add_all(like_seeds)
    
     db.session.commit()
 
