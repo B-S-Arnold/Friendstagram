@@ -5,6 +5,9 @@ import ChangeProfPicForm from './forms/ChangeProfilePicForm';
 import ChangeProfPicModal from './modals/ChangeProfPicModal';
 import ViewImageModal from './modals/ViewImageModal';
 import './Profile.css'
+import FollowForm from './forms/FollowForm';
+import UnfollowForm from './forms/UnfollowForm';
+
 
 function User() {
   const [user, setUser] = useState({});

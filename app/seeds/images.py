@@ -3,9 +3,7 @@ from app.models import db, Image
 
 def seed_images():
     
-    
 
-    
     img1 = Image(
         userId='2', url=' https://media.vanityfair.com/photos/5ccc5c3c0c67926f7fea3e20/3:2/w_1998,h_1332,c_limit/Matthew-Macfadyen-HBO.jpg', caption='Just hanging out and feeling good on this beautiful day! ☀️ #goodvibes #enjoyinglife', edited=False)
     

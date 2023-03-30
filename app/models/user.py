@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     url = db.Column(db.String)
     bio = db.Column(db.Text)
     
+    
     @property
     def password(self):
         return self.hashed_password
