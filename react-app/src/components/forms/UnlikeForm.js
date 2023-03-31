@@ -11,9 +11,12 @@ const UnlikeForm = ({ like }) => {
 
    
     return (
+        <>
         <div className='imgcom'>
             <button className='unlikebtn' onClick={handleDelete} />
         </div>      
+        <div className='errors' />
+        </>
        
     )
 }

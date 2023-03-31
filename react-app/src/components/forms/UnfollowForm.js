@@ -11,9 +11,14 @@ const UnfollowForm = ({ follow }) => {
 
 
     return (
-        <div className='imgcom'>
-            <button className='unfollowbtn' onClick={handleDelete} />
+        <>
+        <div className='button'>
+            <button className='btn' onClick={handleDelete}>Unfollow</button>
         </div>
+        <div className='errors' />
+                
+        </>
+        
 
     )
 }

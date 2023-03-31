@@ -13,14 +13,19 @@ function User() {
   const [user, setUser] = useState({});
   const [users, setUsers] = useState({})
   const { username }  = useParams();
+  const sessionUser = useSelector(state => state.session.user)
   // const sessionUser = useSelector(state => state.session.user)
   // const navigate = useNavigate
 
   //  if (!sessionUser) {
   //   navigate(`/`);
   // }
+  
 
- 
+  const follows = Object.values(useSelector(state => state.follows))
+  const allFollows = follows.filter(follow => follow.followedId === user.id)
+  const followed = allFollows?.filter(follow => follow.userId === sessionUser.id)
+
 
   
   // const images = Object.values(useSelector(state => state.images))
@@ -89,8 +94,15 @@ function User() {
         </>}</div>
         {/* <div className= 'profpic'/> */}
         <div className= 'profInfo'>
-          <div className = 'profUN'>
+          <div className = 'profUN'> 
             {username}
+            {/* HERE */}
+            {console.log(user, "USER!!!")}
+            {console.log(sessionUser, "sessionUSER!")}
+            {sessionUser?.id !== user?.id ?
+                <>{followed?.length > 0? <UnfollowForm follow={followed[followed.length - 1]} />
+                : <FollowForm user={user} />}</>
+              : <></>}
           </div>
 
           <div className = 'profNum'>
