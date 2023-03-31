@@ -29,33 +29,6 @@ def likes_api():
 
     likes = Like.query.all()
     return {'likes': [like.to_dict() for like in likes]}
-
-# @like_routes.route('/<int:id>', methods=['PUT'])
-# def comment_api(id):
-    
-#     comment = Comment.query.get(id)
-    
-# # PUT
-    
-#     form = CommentForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-        
-#             comment.userId=current_user.id,
-#             comment.imageId=form.data['imageId']
-#             comment.content=form.data['content'],
-#             comment.edited=True
-
-#             db.session.commit()
-#             return comment.to_dict()
-
-    # if form.errors:
-    #     return {'errors': form.errors}
-
-
-# DELETE
-
-    
     
 @like_routes.route('/<int:id>', methods=['DELETE'])
 def like_del_api(id):
