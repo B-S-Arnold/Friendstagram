@@ -9,6 +9,7 @@ import { readComments } from '../store/comments';
 import Dropdown from './Dropdown';
 import SearchBar from './NavSearch';
 import { readLikes } from '../store/likes';
+import { readFollows } from '../store/follows';
 
 
 
@@ -25,6 +26,7 @@ const NavBar = ({ user }) => {
       await dispatch(readImages())
       await dispatch(readComments())
       await dispatch(readLikes())
+      await dispatch(readFollows())
     }
     fetchData()
   }, [dispatch])

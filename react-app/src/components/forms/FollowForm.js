@@ -36,7 +36,7 @@ const FollowForm = ({ user }) => {
         <>
             <form onSubmit={handleSubmit}>
                 <div className='button'>
-                    <button className='followbtn' type='submit' ></button>
+                    <button className='btn' type='submit' >Follow</button>
                 </div>
             </form>
             <div className='errors'>
