@@ -1,5 +1,5 @@
 const ADD_LIKE = 'likes/ADD_LIKE'
-const LOAD_LIKES = 'likes/LOAD_LIKE'
+const LOAD_LIKES = 'likes/LOAD_LIKES'
 const REM_LIKE = 'likes/REM_LIKE'
 
 

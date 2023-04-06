@@ -42,7 +42,7 @@
 }
 
 .delModal {
-    
+
 
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: lighter;
@@ -68,7 +68,7 @@
 
 }
 
-.editBtn{
+.editBtn {
 
     background-color: transparent;
     padding: 10px 133px;
@@ -160,7 +160,15 @@
     padding: 0 0px;
 }
 
-.capcomun{
+.cap-comVM {
+    width: 400px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    padding: 0 0px;
+    line-height: 1.2;
+}
+
+.capcomun {
     padding-right: 10px;
 }
 
@@ -295,11 +303,11 @@
     margin-left: 20px;
 }
 
-.unlikebtn{
+.unlikebtn {
     margin-left: 10px;
 }
 
-.likebtn{
+.likebtn {
     margin-left: 10px;
 }
 
@@ -459,7 +467,7 @@ aside>div>div {
     cursor: pointer;
 }
 
-.submit:disabled{
+.submit:disabled {
     color: #adddfe;
 }
 
@@ -540,7 +548,7 @@ aside>div>div {
     cursor: pointer;
 }
 
-.loading{
+.loading {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
     padding: 20px;
@@ -562,62 +570,63 @@ aside>div>div {
     border-radius: 50%;
 } */
 
-.choosefile{
+.choosefile {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     /* border: 1px solid #ccc; */
     /* display: inline-block; */
     padding: 6px 12px;
     /* cursor: pointer; */
 }
-.choosefile:hover{
+
+.choosefile:hover {
     cursor: pointer;
 }
 
 
 
-input[type="file"]{
-    display:none
+input[type="file"] {
+    display: none
 }
 
 
 /* SPINNER */
- @keyframes rotate {
-     from {
-         transform: rotate(0deg);
-     }
-     to {
-         transform: rotate(360deg);
-     }
- }
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
 
- @-webkit-keyframes rotate {
-     from {
-         -webkit-transform: rotate(0deg);
-     }
+    to {
+        transform: rotate(360deg);
+    }
+}
 
-     to {
-         -webkit-transform: rotate(360deg);
-     }
- }
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
 
- .spinner {
-     width: 75px;
-     height: 75px;
-     /* margin: 110px auto 0; */
-     border: solid 10px #000000;
-     border-radius: 50%;
-     border-right-color: transparent;
-     border-bottom-color: transparent;
-     -webkit-transition: all 0.5s ease-in;
-     -webkit-animation-name: rotate;
-     -webkit-animation-duration: 2.0s;
-     -webkit-animation-iteration-count: infinite;
-     -webkit-animation-timing-function: linear;
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
 
-     transition: all 0.1s ease-in;
-     animation-name: rotate;
-     animation-duration: 2.0s;
-     animation-iteration-count: infinite;
-     animation-timing-function: linear;
- }
+.spinner {
+    width: 75px;
+    height: 75px;
+    /* margin: 110px auto 0; */
+    border: solid 10px #000000;
+    border-radius: 50%;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    -webkit-transition: all 0.5s ease-in;
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 2.0s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
 
+    transition: all 0.1s ease-in;
+    animation-name: rotate;
+    animation-duration: 2.0s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}

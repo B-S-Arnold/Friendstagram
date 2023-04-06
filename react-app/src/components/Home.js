@@ -18,66 +18,92 @@ function UsersList() {
   // const [images, setImages] = useState([])
   const comments = Object.values(useSelector(state => state.comments))
   const likes = Object.values(useSelector(state => state.likes))
+  const follows = Object.values(useSelector(state => state.follows))
+  const following = follows.filter(follow => follow.userId === sessionUser.id)
+  const followedUsers = users.filter(user => {
+    for (const follow of following){
+      if (follow.followedId === user.id){
+        return user
+      }
+    }
+  })
+
+  const suggestedUsers = users.filter(user => {
+    for (const follow of following) {
+      if (follow.followedId !== user.id && sessionUser.id !== user.id) {
+        return user
+      }
+    }
+  })
+ 
+  // console.log(followedUsers, "Followed Users")
+  // console.log(suggestedUsers, "Suggested")
+
   
-  // const images = imageArr.images
-  console.log(images)
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch('/api/users/');
       const responseData = await response.json();
 
-      // const res = await fetch('/api/images')
-      // if (res.ok) {
-      //   const data = await res.json();
-      //   console.log(data)
-      //   setImages(data.images)
-      // } else {
-      //   console.log('error')
-      // }
+      
       setUsers(responseData.users);
     }
     fetchData();
   }, []);
 
-  const userComponents = users.map((user) => {
-    return (
-      <div key={user.id} className='innerUserListDiv'>
+  // console.log(following, "FOLLOWING")
+  // const suggested = users?.map((user) => {
+  //   const notFollowing = ()
+  //   // if (follow.id.includes(user.id)){
+  //   //   return
+  //   // }
+  // })
 
-        <NavLink to={`/${user.username}`} className='eachUser' >
-          { user.url ? <>
-
-            <img
-              className='eachUserPic'
-              src={user.url}
-              alt="new"
-
-              onError={e => {
-                e.onerror = null
-                e.target.src = require('../images/not-found.jpeg').default
-              }}
-
-            />
-          </> : <></>}
+  const userComponents = followedUsers.map((user) => {
+    // if (user.id !== sessionUser.id){
+      
+      return (
+        <div key={user.id} className='innerUserListDiv'>
           
-        </NavLink>
-        {user.username.length <= 8 ? <>
-          <div className='eachUserName'>
-            {user.username}
-          </div>
+          <NavLink to={`/${user.username}`} className='eachUser' >
+            { user.url ? <>
 
-        </> : <>
-          <div className='eachUserName'>
-            {user.username.substring(0, 8) + '...'}
-          </div>
+              <img
+                className='eachUserPic'
+                src={user.url}
+                alt="new"
+
+                onError={e => {
+                  e.onerror = null
+                  e.target.src = require('../images/not-found.jpeg').default
+                }}
+
+              />
+            </> : <></>}
+            
+          </NavLink>
+          {user.username.length <= 8 ? <>
+            <div className='eachUserName'>
+              {user.username}
+            </div>
+
+          </> : <>
+            <div className='eachUserName'>
+              {user.username.substring(0, 8) + '...'}
+            </div>
 
 
-        </>}
+          </>}
 
-      </div>
-    );
+        </div>
+      );
+    
   });
   
   images.reverse()
+
+  
 
   const allImages = images?.map((image) => {
     const thisUser = users?.filter(user => user.id === image.userId)[0]
@@ -85,14 +111,16 @@ function UsersList() {
     const allLikes = likes.filter(like => like.imageId === image.id)
     const liked = allLikes?.filter(like => like.userId === sessionUser.id)
 
-
+    const followed = following?.filter(follow => follow?.followedId === image?.userId)
+    
+    
 
     const allComments = comments.filter(comment => comment.imageId === image.id)
 
     //func for rendering comments
     const eachComment = allComments.map((comment) => {
       const commenter = users?.filter(user => user.id === comment.userId)[0]
-
+      
       return (
         <div key={comment.id}>
           <div className='nameAndCapView'>
@@ -126,7 +154,9 @@ function UsersList() {
 
     const expand = true
 
-
+    if (
+      image.userId === sessionUser.id || followed.length
+      ) {
     return (
       <div className='eachImage' key={image.id}>
 
@@ -202,7 +232,7 @@ function UsersList() {
         <hr className='commentline' />
         <AddCommentForm image={image} thisDiv={thisDiv} />
       </div>
-    );
+    )}
   });
 
 
@@ -244,7 +274,7 @@ function UsersList() {
                   </NavLink>
                 </div>
                 <div className='thisUserName'>
-                  <div className='usersUN'>{sessionUser.username}</div>
+                  <NavLink to={`/${sessionUser.username}`} className='usersUN'>{sessionUser.username}</NavLink>
                   <div className='usersFN'> {sessionUser.fullName}</div>
                 </div>
               </div>

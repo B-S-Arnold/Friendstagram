@@ -21,12 +21,12 @@ const DropSearch = (params) => {
     let allSearched = null
     if (params.length > 0 && params !== " ") {
         const searchedUsers = users.filter(user => user.username.includes(params) || user.email.includes(params) || user.fullName.includes(params))
-        console.log(searchedUsers)
+        // console.log(searchedUsers)
         // console.log(users.filter(params))
         // navigate.push(`/search/${params.trim()}`)
         // setParams('')
         allSearched = searchedUsers.map((user) => {
-            console.log(user.id)
+            // console.log(user.id)
             const toUser = () => {
                 navigate(`/${user.username}`)
             }

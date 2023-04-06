@@ -134,6 +134,17 @@ object-fit:cover; */
     grid-template-columns: repeat(3, 1fr);
     /* flex-direction: column; */
 }
+.imgheadVM{
+
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    /* margin-left: 10px; */
+
+    width: inherit;
+    padding: 10px 0px;
+    border-bottom: #dbdbdbad solid 1px;
+}
 
 /* @media (max-width: 970px) {
     .myImageDiv{
