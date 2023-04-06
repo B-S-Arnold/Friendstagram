@@ -161,9 +161,9 @@ const ViewImageModal = ({ image, expand, users }) => {
                         <div className='infoView'>
                             <div className='innerviewtop'>
 
-                                <div className='imghead'>
+                                <div className='imgheadVM'>
 
-                                    <NavLink className='eachPicPP' to={`/${imgUser?.username}`} >
+                                    <NavLink className='eachPicPP VMPP' to={`/${imgUser?.username}`} >
                                         {imgUser?.url ? <>
 
                                             <img
@@ -188,26 +188,33 @@ const ViewImageModal = ({ image, expand, users }) => {
                                         {/* <EditImageModal image={image}/>
                                         <DeleteImageModal image={image}/> */}
 
-                                    </> : <><div /> </>}
+                                    </> : <></>}
                                 </div>
                                 <div className='infoComments'>
-                                    <div>
-                                        {/* {image.edited === true ?
-                                                <>
-                                                <div className='homeCapDiv'>
-                                                <strong>{imgUser.username}</strong>
-                                                <div className='cap-com'>{image.caption}</div>
-                                                <div>Edited</div>
-                                                <div className='EDdivfake' />
-                                                </div>
-                                                
-                                            </> : */}
+                                    <div>{image.caption.length ? <>
+                                        <div className='nameAndCapViewVM'>
+                                        <NavLink className='eachPicPP VMPP' to={`/${imgUser?.username}`} >
+                                            {imgUser?.url ? <>
+
+                                                <img
+                                                    className='eachPicPP2'
+                                                    src={imgUser?.url}
+                                                    alt="new"
+
+                                                    onError={e => {
+                                                        e.onerror = null
+                                                        e.target.src = require('../../images/not-found.jpeg').default
+                                                    }}
+
+                                                />
+                                            </> : <></>}
+                                        </NavLink>
                                         <div>
-                                            <div className='nameAndCapView'>
+                                            
                                                 {image.caption ? <>
 
-                                                    <div className='cap-com'>
-                                                    <strong className='capcomun'>{imgUser.username}</strong>
+                                                    <div className='cap-comVM'>
+                                                    <NavLink className='eachPicUN capcomun' to={`/${imgUser?.username}`}>{imgUser?.username}</NavLink>
                                                         
                                                         {image.caption}</div>
                                                     {/* <div className='EDdivfake' /> */}
@@ -218,6 +225,7 @@ const ViewImageModal = ({ image, expand, users }) => {
                                                 
 
                                         </div>
+                                            </> : <></>}
                                         {/* } */}
                                     </div>
                                     <div className='viewCommentDiv'>

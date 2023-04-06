@@ -34,25 +34,11 @@ const SearchBar = () => {
         await waitASec()
     }
 
-    // const handleChange = (e) => {
-    //     // e.preventDefault();
-    //     setParams(e)
-        
-    //     if (params.length > 0) {
-    //         const searchedUsers = users.filter(user => user.username.includes(params))
-    //         console.log(searchedUsers)
-    //         // console.log(users.filter(params))
-    //         // history.push(`/search/${params.trim()}`)
-    //         // setParams('')
-    //     }
-    // }
+    
     let allSearched = null
     if (params.length > 0 && params !== " ") {
         const searchedUsers = users.filter(user => user.username.includes(params) || user.email.includes(params) || user.fullName.includes(params))
-        console.log(searchedUsers)
-        // console.log(users.filter(params))
-        // history.push(`/search/${params.trim()}`)
-        // setParams('')
+        
         
         allSearched = searchedUsers.map((user) => {
 

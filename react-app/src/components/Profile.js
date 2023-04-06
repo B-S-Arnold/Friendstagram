@@ -25,7 +25,7 @@ function User() {
   const follows = Object.values(useSelector(state => state.follows))
   const allFollows = follows.filter(follow => follow.followedId === user.id)
   const followed = allFollows?.filter(follow => follow.userId === sessionUser.id)
-
+  
 
   
   // const images = Object.values(useSelector(state => state.images))
@@ -47,7 +47,7 @@ function User() {
       const response = await fetch(`/api/users/${username}`);
       const user = await response.json();
       setUser(user);
-      console.log("USER!!!", user)
+      // console.log("USER!!!", user)
 
       // const res = await fetch('/api/images');
       // if (res.ok) {
@@ -97,8 +97,8 @@ function User() {
           <div className = 'profUN'> 
             {username}
             {/* HERE */}
-            {console.log(user, "USER!!!")}
-            {console.log(sessionUser, "sessionUSER!")}
+            {/* {console.log(user, "USER!!!")}
+            {console.log(sessionUser, "sessionUSER!")} */}
             {sessionUser?.id !== user?.id ?
                 <>{followed?.length > 0? <UnfollowForm follow={followed[followed.length - 1]} />
                 : <FollowForm user={user} />}</>

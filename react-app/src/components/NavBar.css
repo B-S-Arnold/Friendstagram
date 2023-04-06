@@ -241,9 +241,17 @@
     margin-top: 512px;
     
     /* overflow: scroll; */
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     /* left: 700px; */
-
 }
+
+.dropsearch::-webkit-scrollbar{
+    display: none;
+}
+
 .searchtriangle{
     position: absolute;
     margin-top: 52px;
@@ -287,6 +295,7 @@
     text-align: center;
 
     z-index: 0;
+    /* overflow: ; */
 }
 .dropname:hover{
     background-color: #fafafa;
