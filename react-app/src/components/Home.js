@@ -39,7 +39,7 @@ function UsersList() {
   // console.log(followedUsers, "Followed Users")
   // console.log(suggestedUsers, "Suggested")
 
-  
+  const optionsCSS = 'options'
 
   useEffect(() => {
     async function fetchData() {
@@ -125,7 +125,7 @@ function UsersList() {
         <div key={comment.id}>
           <div className='nameAndCapView'>
             <div className='cap-com'>
-              <strong className='capcomun'>{commenter?.username}</strong>
+              <NavLink className='capcomun eachPicUN' to={`/${commenter?.username}`}>{commenter?.username}</NavLink>
               {comment.content}
 
               {sessionUser.id === comment.userId ? <>
@@ -178,7 +178,7 @@ function UsersList() {
             </> : <></>}
           </NavLink>
           <NavLink className='eachPicUN' to={`/${thisUser?.username}`}>{thisUser?.username}</NavLink>
-          {image.userId === sessionUser.id ? <OptionsModal image={image} /> : <div className='noimgOptions' />}
+          {image.userId === sessionUser.id ? <OptionsModal image={image} optionsCSS={optionsCSS} /> : <div className='noimgOptions' />}
 
         </div>
         <div className='imgdivhome'>
@@ -208,7 +208,7 @@ function UsersList() {
               {/* <strong className='capcomun'>{thisUser?.username}</strong> */}
               
               <div className='cap-com'>
-                <strong className='capcomun'>{thisUser?.username}</strong>
+                <NavLink className='capcomun eachPicUN' to={`/${thisUser?.username}`}>{thisUser?.username}</NavLink>
                 {image.caption}
                 </div>
               {/* <div className='EDdivfake' /> */}
@@ -219,7 +219,7 @@ function UsersList() {
           {/* RENDER COMMENTS */}
           {eachComment.length ?
             <>
-              {eachComment.length === 1 ?
+              {eachComment.length <= 2 ?
                 <div>{eachComment}</div>
                 : <ViewImageModal image={image} expand={expand} users={users} />}
             </>

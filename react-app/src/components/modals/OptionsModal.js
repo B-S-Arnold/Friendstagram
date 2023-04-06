@@ -3,13 +3,13 @@ import { useState } from 'react';
 import DeleteImageModal from './DeleteImageModal';
 import EditImageModal from './EditImageModal';
 
-const OptionsModal = ({ image }) => {
+const OptionsModal = ({ image, optionsCSS }) => {
     const [renderModal, setRenderModal] = useState(false);
 
 
     return (
         <>
-            <button className='options'onClick={() => setRenderModal(true)}>...</button>
+            <button className={optionsCSS} onClick={() => setRenderModal(true)}>...</button>
             {renderModal ? (
                 <Modal onClose={() => setRenderModal(false)}>
                     <div className='optionsModal'>

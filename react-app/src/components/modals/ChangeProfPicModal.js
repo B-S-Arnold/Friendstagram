@@ -68,7 +68,7 @@ const ChangeProfPicModal = ({ user }) => {
         }
         
     
-    
+   
     return (
         <>
         {thisPic}

@@ -22,6 +22,7 @@ const ViewImageModal = ({ image, expand, users }) => {
     const allLikes = likes.filter(like => like.imageId === image.id)
     const liked = allLikes?.filter(like => like.userId === sessionUser.id)
     const allComments = comments.filter(comment => comment.imageId === image.id)
+    const optionsCSS = 'optionsVM'
     let eachComment
     let imgUser
     if (users.length) {
@@ -36,9 +37,28 @@ const ViewImageModal = ({ image, expand, users }) => {
 
                     {/* DISPLAY COMMENTS */}
 
-                    <div className='nameAndCapView'>
+                    <div className='nameAndCapViewVM'>
+                        <NavLink className='eachPicPP VMPP' to={`/${commenter?.username}`} >
+                            {commenter?.url ? <>
+
+                                <img
+                                    className='eachPicPP2'
+                                    src={commenter?.url}
+                                    alt="new"
+
+                                    onError={e => {
+                                        e.onerror = null
+                                        e.target.src = require('../../images/not-found.jpeg').default
+                                    }}
+
+                                />
+                            </> : <></>}
+                        </NavLink>
                         <div className='cap-com'>
-                        <strong className='capcomun'>{commenter.username}</strong>
+
+
+                            
+                            <NavLink className='eachPicUN capcomun' to={`/${commenter?.username}`}>{commenter?.username}</NavLink>
                             
                             {comment.content}
                             
@@ -180,15 +200,12 @@ const ViewImageModal = ({ image, expand, users }) => {
                                         </> : <></>}
                                     </NavLink>
                                     <NavLink className='eachPicUN' to={`/${imgUser?.username}`}>{imgUser?.username}</NavLink>
-                                    {sessionUser.id === image.userId ? <>
-                                        {/* OPTIONS */}
-                                        <OptionsModal image={image} />
-                                        {/* <button className='viewImgOptions'/> */}
+                                    {/* {sessionUser.id === image.userId ? <> */}
+                                        
+                                        <OptionsModal image={image} optionsCSS={optionsCSS} />
+                                        
 
-                                        {/* <EditImageModal image={image}/>
-                                        <DeleteImageModal image={image}/> */}
-
-                                    </> : <></>}
+                                    {/* </> : <></>} */}
                                 </div>
                                 <div className='infoComments'>
                                     <div>{image.caption.length ? <>
