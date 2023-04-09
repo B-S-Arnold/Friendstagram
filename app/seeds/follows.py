@@ -3,9 +3,10 @@ from app.models import db, Follow
 
 def seed_follows():
     
-   
-    
     follow_seeds = []
+    
+    for i in range(2,7):
+        follow_seeds.append(Follow(userId=1, followedId=str(i)))
     
     for i in range(2, 24):
         for j in range(1, 24):
