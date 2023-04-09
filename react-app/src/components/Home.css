@@ -141,6 +141,15 @@
     align-items: center;
 }
 
+.sugusersdiv{
+    width: 293px;
+    margin: 20px 0 0 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+}
+
 .thisUser{
     background-image: url("../images/default.png");
     background-size:contain;
@@ -167,6 +176,14 @@
     color: #8e8e8e;
 }
 
+.sugfont{
+    margin-top: 10px;
+    font-size: 14px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    color: #8e8e8e;
+}
+
 .imghead{
     display: flex;
     justify-content: space-around;
@@ -187,7 +204,7 @@
     
     width: 32px;
     height: 32px;
-    border: solid #fff 2px;
+    /* border: solid #fff 2px; */
     outline: none;
     object-fit: cover;
     border-radius: 50%;
@@ -394,7 +411,7 @@
 }
 
 .aboveLC{
-    margin-top:300px;
+    margin-top:30px;
 }
 
 
@@ -444,7 +461,7 @@
 
     .profInfo {
         width: auto;
-        padding: 0 5px;
+        padding: 50px 5px;
     }
 
     .profpic {

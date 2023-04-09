@@ -4,7 +4,7 @@ import { createFollow } from '../../store/follows';
 
 
 
-const FollowForm = ({ user }) => {
+const FollowForm = ({ user, followCSS, followDivCSS }) => {
 
     // const [content, setContent] = useState('');
     const [errors, setErrors] = useState([]);
@@ -36,7 +36,7 @@ const FollowForm = ({ user }) => {
         <>
             <form onSubmit={handleSubmit}>
                 <div className='button'>
-                    <button className='btn' type='submit' >Follow</button>
+                    <button className={followCSS} type='submit' >Follow</button>
                 </div>
             </form>
             <div className='errors'>

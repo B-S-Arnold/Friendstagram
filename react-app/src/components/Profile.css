@@ -107,7 +107,7 @@ object-fit:cover; */
     display: flex;
     /* justify-content: space-between; */
     justify-content: space-between;
-    
+    padding: 0 0 50px 0;
 }
 
 .profUN{
@@ -120,8 +120,14 @@ object-fit:cover; */
 }
 
 .profNum{
+    display: flex;
+    justify-content: space-between;
     font-size:16px;
+    margin: 20px 0;
+    width: 300px;
 }
+
+
 
 .profFNandBio{
     font-size:16px;
