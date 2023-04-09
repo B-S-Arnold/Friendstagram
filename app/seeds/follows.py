@@ -5,7 +5,7 @@ def seed_follows():
     
     follow_seeds = []
     
-    for i in range(2,7):
+    for i in range(2,9):
         follow_seeds.append(Follow(userId=1, followedId=str(i)))
     
     for i in range(2, 24):
