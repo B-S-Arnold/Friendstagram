@@ -10,6 +10,7 @@ import OptionsModal from './modals/OptionsModal';
 import ViewImageModal from './modals/ViewImageModal';
 import UnlikeForm from './forms/UnlikeForm';
 import LikeForm from './forms/LikeForm';
+import FollowForm from './forms/FollowForm';
 
 function UsersList() {
   const sessionUser = useSelector(state => state.session.user)
@@ -20,6 +21,7 @@ function UsersList() {
   const likes = Object.values(useSelector(state => state.likes))
   const follows = Object.values(useSelector(state => state.follows))
   const following = follows.filter(follow => follow.userId === sessionUser.id)
+  
   const followedUsers = users.filter(user => {
     for (const follow of following){
       if (follow.followedId === user.id){
@@ -29,15 +31,58 @@ function UsersList() {
   })
 
   const suggestedUsers = users.filter(user => {
-    for (const follow of following) {
-      if (follow.followedId !== user.id && sessionUser.id !== user.id) {
-        return user
-      }
+    
+    const isFollowed = following.some(follow => follow.followedId === user.id);
+    const isSessionUser = sessionUser.id === user.id;
+    
+    return !isFollowed && !isSessionUser;
+  });
+
+
+
+  const suggestedArr = [];
+
+  while (suggestedArr.length < 5 && suggestedArr.length < suggestedUsers.length) {
+    const randomIndex = Math.floor(Math.random() * suggestedUsers.length);
+
+    if (!suggestedArr.includes(suggestedUsers[randomIndex])) {
+      suggestedArr.push(suggestedUsers[randomIndex]);
     }
-  })
+  }
+
+  const suggestedFunc = suggestedArr.map((user) => (
+    <div key={user.id} className='nameAndCapViewVM'>
+      {/* HERE */}
+
+      <NavLink className='eachPicPP VMPP' to={`/${user?.username}`} >
+        {user?.url ? <>
+
+          <img
+            className='eachPicPP2'
+            src={user?.url}
+            alt="new"
+
+            onError={e => {
+              e.onerror = null
+              e.target.src = require('../images/not-found.jpeg').default
+            }}
+
+          />
+        </> : <></>}
+      </NavLink>
+
+      <div className='thisUserName'>
+        <NavLink to={`/${user.username}`} className='usersUN'>{user.username}</NavLink>
+        {/* <div className='usersFN'> {user.fullName}</div> */}
+
+      </div>
+
+      <FollowForm user={user}/>
+      
+    </div>
+  ));
+
  
-  // console.log(followedUsers, "Followed Users")
-  // console.log(suggestedUsers, "Suggested")
 
   const optionsCSS = 'options'
 
@@ -52,16 +97,10 @@ function UsersList() {
     fetchData();
   }, []);
 
-  // console.log(following, "FOLLOWING")
-  // const suggested = users?.map((user) => {
-  //   const notFollowing = ()
-  //   // if (follow.id.includes(user.id)){
-  //   //   return
-  //   // }
-  // })
+  
 
   const userComponents = followedUsers.map((user) => {
-    // if (user.id !== sessionUser.id){
+    
       
       return (
         <div key={user.id} className='innerUserListDiv'>
@@ -276,9 +315,13 @@ function UsersList() {
                 <div className='thisUserName'>
                   <NavLink to={`/${sessionUser.username}`} className='usersUN'>{sessionUser.username}</NavLink>
                   <div className='usersFN'> {sessionUser.fullName}</div>
+                  
                 </div>
+            
               </div>
+              {suggestedFunc}
               <div className='aboveLC'>
+                
                 <div className='linkContainer'>
                   <a className='personal' href='https://github.com/B-S-Arnold' >
                     GitHub

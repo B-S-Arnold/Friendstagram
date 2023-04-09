@@ -68,7 +68,7 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <i
-          class="far fa-eye eye"
+          className="far fa-eye eye"
           id='id_eye'
           type='checkbox'
           onClick={showPass}
