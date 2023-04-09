@@ -38,6 +38,9 @@ function UsersList() {
     return !isFollowed && !isSessionUser;
   });
 
+  const followCSS = 'homefollow'
+  
+
 
 
   const suggestedArr = [];
@@ -51,8 +54,7 @@ function UsersList() {
   }
 
   const suggestedFunc = suggestedArr.map((user) => (
-    <div key={user.id} className='nameAndCapViewVM'>
-      {/* HERE */}
+    <div key={user.id} className='sugusersdiv'>
 
       <NavLink className='eachPicPP VMPP' to={`/${user?.username}`} >
         {user?.url ? <>
@@ -73,11 +75,12 @@ function UsersList() {
 
       <div className='thisUserName'>
         <NavLink to={`/${user.username}`} className='usersUN'>{user.username}</NavLink>
-        {/* <div className='usersFN'> {user.fullName}</div> */}
+        <div className='usersFN'> {user.fullName}</div>
 
       </div>
-
-      <FollowForm user={user}/>
+      <div className='homefollowdiv'>
+        <FollowForm user={user} followCSS={followCSS} />
+      </div>
       
     </div>
   ));
@@ -241,7 +244,7 @@ function UsersList() {
             <div className='numlikes'>
               {allLikes?.length === 1 ? <>1 like</> : <>{allLikes.length} likes</>}
             </div>
-            : <></>}
+            : <></>} 
           <div className='nameAndCapView'>
             {image.caption ? <>
               {/* <strong className='capcomun'>{thisUser?.username}</strong> */}
@@ -319,7 +322,12 @@ function UsersList() {
                 </div>
             
               </div>
+              <div>
+                <div className='sugfont'>
+                Suggestions for you
+                </div>
               {suggestedFunc}
+              </div>
               <div className='aboveLC'>
                 
                 <div className='linkContainer'>

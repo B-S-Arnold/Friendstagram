@@ -631,3 +631,23 @@ input[type="file"] {
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
+
+.homefollow{
+    background: none;
+    padding: 5px;
+    color: #0095f6;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+}
+
+.homefollow:hover{
+    cursor: pointer;
+}
+
+.homefollowdiv{
+    position: absolute;
+    left: 300px;
+    
+}
+

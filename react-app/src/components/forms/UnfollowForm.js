@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { deleteFollow } from '../../store/follows';
 import '../Overflow.css'
 
-const UnfollowForm = ({ follow }) => {
+const UnfollowForm = ({ follow, followCSS }) => {
     const dispatch = useDispatch();
     const handleDelete = async (e) => {
         e.preventDefault();
