@@ -22,7 +22,7 @@ def seed_users():
     peggy = User(
         username='peggyhill54', email='margarethill@aa.io', password='password', fullName='Margaret Hill', url='https://www.giantbomb.com/a/uploads/scale_small/0/7383/1813631-peggy_hill.jpg')
     bart = User(
-        username='elbarto', email='bartman@aa.io', password='password', fullName='El Barto', url='https://e1.pxfuel.com/desktop-wallpaper/591/300/desktop-wallpaper-bartsimpson-el-barto.jpg')
+        username='elbarto', email='bartman@aa.io', password='password', fullName='Bart Simpson', url='https://e1.pxfuel.com/desktop-wallpaper/591/300/desktop-wallpaper-bartsimpson-el-barto.jpg')
     lisa = User(
         username='LisaForPrez', email='lisasimpson@aa.io', password='password', fullName='Lisa Simpson', url='https://static1.cbrimages.com/wordpress/wp-content/uploads/2020/12/Lisa-Simpson.jpg')
     carl = User(

@@ -22,6 +22,7 @@ function UsersList() {
   const follows = Object.values(useSelector(state => state.follows))
   const following = follows.filter(follow => follow.userId === sessionUser.id)
   
+  
   const followedUsers = users.filter(user => {
     for (const follow of following){
       if (follow.followedId === user.id){
@@ -29,6 +30,22 @@ function UsersList() {
       }
     }
   })
+
+  const accessibleUsers = users.filter(user => {
+
+    const isFollowed = following.some(follow => follow.followedId === user.id);
+    const isSessionUser = sessionUser.id === user.id;
+    
+    return isFollowed || isSessionUser;
+  });
+
+  const accessibleImages = images.filter(image => {
+    return accessibleUsers.some(user => user.id === image.userId);
+  });
+
+  console.log('accessibleImages', accessibleImages)
+
+  
 
   const suggestedUsers = users.filter(user => {
     
@@ -38,7 +55,13 @@ function UsersList() {
     return !isFollowed && !isSessionUser;
   });
 
+  // console.log('not sug', suggestedUsers)
+
+  
+
   const followCSS = 'homefollow'
+
+
   
 
 
@@ -52,10 +75,10 @@ function UsersList() {
       suggestedArr.push(suggestedUsers[randomIndex]);
     }
   }
-
+  
   const suggestedFunc = suggestedArr.map((user) => (
     <div key={user.id} className='sugusersdiv'>
-
+      <div className = 'sugPicAndUN'>
       <NavLink className='eachPicPP VMPP' to={`/${user?.username}`} >
         {user?.url ? <>
 
@@ -78,12 +101,18 @@ function UsersList() {
         <div className='usersFN'> {user.fullName}</div>
 
       </div>
-      <div className='homefollowdiv'>
+      </div>
+      <div className = 'homefollowdiv' >
         <FollowForm user={user} followCSS={followCSS} />
       </div>
       
     </div>
   ));
+
+// IF NOT FOLLOWING
+
+
+
 
  
 
@@ -101,8 +130,10 @@ function UsersList() {
   }, []);
 
   
-
+  
   const userComponents = followedUsers.map((user) => {
+
+    
     
       
       return (
@@ -142,12 +173,9 @@ function UsersList() {
       );
     
   });
-  
-  images.reverse()
 
-  
-
-  const allImages = images?.map((image) => {
+  accessibleImages.reverse()
+  const allImages = accessibleImages?.map((image) => {
     const thisUser = users?.filter(user => user.id === image.userId)[0]
 
     const allLikes = likes.filter(like => like.imageId === image.id)
@@ -161,7 +189,7 @@ function UsersList() {
 
     //func for rendering comments
     const eachComment = allComments.map((comment) => {
-      const commenter = users?.filter(user => user.id === comment.userId)[0]
+    const commenter = users?.filter(user => user.id === comment.userId)[0]
       
       return (
         <div key={comment.id}>
@@ -191,10 +219,14 @@ function UsersList() {
     })
 
 
+
+
     const thisDiv = <div></div>
 
 
     const expand = true
+
+    
 
     if (
       image.userId === sessionUser.id || followed.length
@@ -277,22 +309,69 @@ function UsersList() {
     )}
   });
 
-
+  // if (following.length === 0) {
+    
+  //   return(
+  //     <div className='noFollowingContainer'>
+  //       <div className='spacer' />
+  //       {/* <div className='centeredContainer'> */}
+    
+  //       <div className='sugfont'>
+  //         Follow more people so their posts
+  //       </div>
+  //       <div className='sugfont'>
+  //         will appear on your feed
+  //       </div>
+  //     {suggestedFunc}
+  //   {/* </div> */}
+  //   </div>
+  //   )
+  // }
   return (
 
     <div className='homePageContainer'>
       <div className='spacer' />
       <div className='centeredContainer'>
         <div className='rowdiv'>
+          
+          {followedUsers.length > 0 ?
 
           <div>
             <div className='userListDiv'>{userComponents}</div>
-          </div>
-          <div>
-            <div className='imageListDiv'>{allImages}</div>
-          </div>
+          </div> :
+
+          <></>
+
+          }
+          
+          {/* ALL IMAGES */}
+          {allImages.length > 0 ?
+            <div>
+              <div className='imageListDiv'>{allImages}</div>
+              {console.log(allImages)}
+            </div>
+            :
+            <div className='noFollowingContainer' >
+
+              {/* <div className='spacer' /> */}
+              {/* < div className = 'centeredContainer' > */}
+
+              <div className='sugfont' >
+                Follow more people so their posts
+              </div >
+              <div className='sugfont' >
+                will appear on your feed
+              </div >
+              {suggestedFunc}
+              {/* < /div > */}
+            </div>
+          }
+            
+            
+          
 
         </div>
+        {allImages.length > 0 ?
         <div className='rightContainer'>
           <div className='staticContainer'>
             <div className='rowdiv'>
@@ -323,9 +402,11 @@ function UsersList() {
             
               </div>
               <div>
-                <div className='sugfont'>
-                Suggestions for you
-                </div>
+                  {suggestedFunc.length > 0 ?
+                  <div className='sugfont'>
+                    Suggestions for you
+                  </div> : <div className='spacer' />}
+                
               {suggestedFunc}
               </div>
               <div className='aboveLC'>
@@ -356,7 +437,7 @@ function UsersList() {
               </div>
             </div>
           </div>
-        </div>
+        </div> : <></>}
       </div>
     </div>
   );
