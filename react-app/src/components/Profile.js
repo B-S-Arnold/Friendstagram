@@ -27,7 +27,7 @@ function User() {
   const userFollowing = follows.filter(follow => follow.userId === user.id)
   const followed = userFollowers?.filter(follow => follow.userId === sessionUser.id)
 
-  console.log(follows)
+
 
   const followCSS = 'btn'
 
@@ -122,13 +122,16 @@ function User() {
           </div>
           <div className='profFNandBio'>
             <strong>{user.fullName}</strong>
-            <div>{user.bio ? <> {user.bio}</> : <> </>}</div>
+            {followed?.length > 0 ? <div>{user.bio ? <> {user.bio}</> : <> </>}</div>
+              : <><div className='spacer'/><div><strong>This account is private</strong><div></div>Follow this account to see their photos and videos</div></>}
+            
           </div>
         </div>
         <div className='minispacer' />
       </div>
+      {followed?.length > 0 ? <><div className='myImageDiv'>{allImages}</div></>
+        : <></>}
 
-      <div className='myImageDiv'>{allImages}</div>
 
     </div>
 
