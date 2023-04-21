@@ -3,35 +3,13 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 
-
-// filepond
-
-// import { FilePond, File, registerPlugin } from 'react-filepond'
-// import 'filepond/dist/filepond.min.css'
-// import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
-// import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
-// import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
-// registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
-
-
-
-
 const AddImageForm = ({ setRenderModal }) => {
 
-    // const history = useNavigate(); // so that we can redirect after the image upload is successful
-    // const dropzone = new Dropzone("div#myId", { url: "/file/post" });
-    // const [image, setImage] = useState([]);
-    // const [caption, setCaption] = useState('');
-    // const [imageLoading, setImageLoading] = useState(false);
-    // console.log(file)
-
-    // const navigate = useNavigate()
 
     const thumbsContainer = {
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        
         
     };
 
@@ -47,7 +25,6 @@ const AddImageForm = ({ setRenderModal }) => {
         className: 'dropimgdiv',
         display: 'flex',
         minWidth: 0,
-        // overflow: 'hidden'
         
     };
 
@@ -57,40 +34,7 @@ const AddImageForm = ({ setRenderModal }) => {
         height: '100%'
     };
 
-    // console.log(FilePond)
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     const formData = new FormData();
-    //     formData.append("caption", caption)
-    //     formData.append("image", image);
-
-    //     // console.log("JDSAGFJHASDJ", formData["caption"])
-
-    //     // aws uploads can be a bit slow—displaying
-    //     // some sort of loading message is a good idea
-
-    //     setImageLoading(true);
-    //     const res = await fetch('/api/images', {
-    //         method: "POST",
-    //         body: formData
-    //     });
-    //     if (res.ok) {
-    //         await res.json();
-    //         setImageLoading(false);
-    //         setRenderModal(false);
-    //     }
-    //     else {
-    //         setImageLoading(false);
-    //         console.log("error")
-    //     }
-    // }
-
-    // const updateImage = (e) => {
-    //     const file = e.target.files[0];
-    //     setImage(file);
-    // }
-
+   
     function Previews() {
         const [caption, setCaption] = useState('');
         const [files, setFiles] = useState([]);
@@ -109,8 +53,10 @@ const AddImageForm = ({ setRenderModal }) => {
         const handleSubmit = async (e) => {
             e.preventDefault();
 
+            const trimCap = caption.trim()
+
             const formData = new FormData();
-            formData.append("caption", caption)
+            formData.append("caption", trimCap)
             formData.append("image", files[0]);
 
             // console.log("JDSAGFJHASDJ", formData["caption"])

@@ -43,7 +43,7 @@ function UsersList() {
     return accessibleUsers.some(user => user.id === image.userId);
   });
 
-  console.log('accessibleImages', accessibleImages)
+  // console.log('accessibleImages', accessibleImages)
 
   
 
@@ -348,7 +348,7 @@ function UsersList() {
           {allImages.length > 0 ?
             <div>
               <div className='imageListDiv'>{allImages}</div>
-              {console.log(allImages)}
+              {/* {console.log(allImages)} */}
             </div>
             :
             <div className='noFollowingContainer' >

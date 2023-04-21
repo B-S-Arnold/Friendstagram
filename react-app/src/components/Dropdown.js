@@ -30,6 +30,17 @@ const Dropdown = () => {
         // </NavLink>
     };
 
+    const RevertButton = () => {
+        const handleClick = async () => {
+            const response = await fetch('/revert');
+            const result = await response.text();
+            window.location.reload()
+            console.log(result);
+        }
+
+        return <div className='dropdownbtn' onClick={handleClick} >Revert Changes</div>
+    }
+
     const SettingsButton = () => {
         const toSettings = () => {
             navigate(`/accounts/edit/`)
@@ -60,9 +71,12 @@ const Dropdown = () => {
                     Profile
                 </NavLink> */}
                 {/* </div> */}
-                {/* <div>
+                <div>
                     <SettingsButton />
-                </div> */}
+                </div>
+                <div>
+                    <RevertButton />
+                </div>
                 {/* <div> */}
                     {/* <SettingsButton /> */}
                     {/* <GameButton /> */}

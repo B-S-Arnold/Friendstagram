@@ -13,7 +13,13 @@ from .api.comment_routes import comment_routes
 from .api.like_routes import like_routes
 from .api.follow_routes import follow_routes
 
-from .seeds import seed_commands
+from .seeds import seed_commands, undo, seed
+
+from .seeds.users import seed_users, undo_users
+from .seeds.images import seed_images, undo_images
+from .seeds.likes import seed_likes, undo_likes
+from .seeds.comments import seed_comments, undo_comments
+from .seeds.follows import seed_follows, undo_follows
 
 from .config import Config
 
@@ -84,4 +90,22 @@ def react_root(path):
 @app.errorhandler(404)
 def not_found(e):
     return app.send_static_file('index.html')
+
+# seed_commands.init_app(app)
+
+@app.route('/revert')
+def revert():
+    undo_users(),
+    undo_images(),
+    undo_likes(),
+    undo_comments(),
+    undo_follows(),
+    seed_users(),
+    seed_images(),
+    seed_likes(),
+    seed_comments()
+    seed_follows()
+    return 'Reverted!'
+
+
 

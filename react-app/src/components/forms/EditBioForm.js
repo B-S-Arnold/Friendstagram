@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateComment } from '../../store/comments';
+// import {}
 import '../Overflow.css'
 
 
-const EditCommentForm = ({ comment, setOptionsModal }) => {
+const EditBioForm = ({ comment, setOptionsModal }) => {
 
     const id = comment.id
     const imageId = comment.imageId
@@ -15,8 +16,8 @@ const EditCommentForm = ({ comment, setOptionsModal }) => {
 
     const dispatch = useDispatch();
 
-    
-    
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,11 +26,11 @@ const EditCommentForm = ({ comment, setOptionsModal }) => {
         let editedComment = await dispatch(updateComment(id, imageId, trimCon));
 
         if (editedComment?.errors) return setErrors(editedComment.errors)
-        if(editedComment){
+        if (editedComment) {
             setOptionsModal(false)
             // setContent('')
         }
-        
+
     }
 
     //Comment errors
@@ -45,7 +46,7 @@ const EditCommentForm = ({ comment, setOptionsModal }) => {
     return (
         <form className='comeditform' onSubmit={handleSubmit}>
 
-             
+
             <div className='inputComDiv'>
                 <label>Edit Your Comment:</label>
                 <div className='errors'>
@@ -65,10 +66,10 @@ const EditCommentForm = ({ comment, setOptionsModal }) => {
                 />
                 <button className='subEdCom' type='submit' disabled={content.length === 0 || errors.length > 0}>Submit</button>
             </div>
-            
+
         </form>
     )
 }
 
 
-export default EditCommentForm;
+export default EditBioForm;

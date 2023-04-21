@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import ChangeProfPicForm from './forms/ChangeProfilePicForm';
 import ChangeProfPicModal from './modals/ChangeProfPicModal';
 import ViewImageModal from './modals/ViewImageModal';
 import './Profile.css'

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import ChangeProfPicForm from './forms/ChangeProfilePicForm';
 import ChangeProfPicModal from './modals/ChangeProfPicModal';
 import ViewImageModal from './modals/ViewImageModal';
 import './Profile.css'
@@ -122,14 +121,14 @@ function User() {
           </div>
           <div className='profFNandBio'>
             <strong>{user.fullName}</strong>
-            {followed?.length > 0 ? <div>{user.bio ? <> {user.bio}</> : <> </>}</div>
+            {followed?.length > 0 || user.id === sessionUser.id ? <div>{user.bio ? <> {user.bio}</> : <> </>}</div>
               : <><div className='spacer'/><div><strong>This account is private</strong><div></div>Follow this account to see their photos and videos</div></>}
             
           </div>
         </div>
         <div className='minispacer' />
       </div>
-      {followed?.length > 0 ? <><div className='myImageDiv'>{allImages}</div></>
+      {followed?.length > 0 || user.id === sessionUser.id ? <><div className='myImageDiv'>{allImages}</div></>
         : <></>}
 
 

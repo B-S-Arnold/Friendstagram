@@ -15,7 +15,7 @@ def seed():
     seed_users(),
     seed_images(),
     seed_likes(),
-    seed_comments()
+    seed_comments(),
     seed_follows()
     # Add other seed functions here
 
