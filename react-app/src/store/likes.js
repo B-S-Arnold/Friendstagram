@@ -19,7 +19,6 @@ const removeLike = (like) => ({
 })
 
 
-//create like
 
 export const createLike = (imageId) => async dispatch => {
     const response = await fetch(`/api/likes/`, {
@@ -39,7 +38,6 @@ export const createLike = (imageId) => async dispatch => {
 
 }
 
-//read all likes
 
 export const readLikes = () => async (dispatch) => {
     const response = await fetch(`/api/likes/`, {
@@ -51,7 +49,6 @@ export const readLikes = () => async (dispatch) => {
     return data;
 };
 
-//destroy like
 
 export const deleteLike = (like) => async dispatch => {
     const response = await fetch(`/api/likes/${like.id}`, {
@@ -66,9 +63,6 @@ export const deleteLike = (like) => async dispatch => {
 }
 
 
-
-
-//like reducer
 const initialState = {}
 
 const likeReducer = (state = initialState, action) => {

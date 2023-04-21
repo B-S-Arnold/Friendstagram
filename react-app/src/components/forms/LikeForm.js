@@ -27,9 +27,6 @@ const LikeForm = ({ image }) => {
 
     }
 
-    //Comment errors
-
-
 
 
     return (

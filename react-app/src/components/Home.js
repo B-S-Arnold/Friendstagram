@@ -187,7 +187,7 @@ function UsersList() {
 
     const allComments = comments.filter(comment => comment.imageId === image.id)
 
-    //func for rendering comments
+   
     const eachComment = allComments.map((comment) => {
       const commenter = users?.filter(user => user.id === comment.userId)[0]
 

@@ -37,7 +37,7 @@ function Game() {
 
 
 
-    //Animation only works once! Not on click!!!!
+
 
     let dynamicStyles = null
 

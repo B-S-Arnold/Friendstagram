@@ -23,7 +23,6 @@ const editCaption = (image) => ({
     image
 })
 
-//create image
 
 export const createImage = (url, caption) => async dispatch => {
     const response = await fetch(`/api/images/`, {
@@ -45,7 +44,7 @@ export const createImage = (url, caption) => async dispatch => {
 
 }
 
-//read all images
+
 
 export const readImages = () => async (dispatch) => {
     const response = await fetch(`/api/images/`, {
@@ -57,7 +56,6 @@ export const readImages = () => async (dispatch) => {
     return data;
 };
 
-//destroy image
 
 export const deleteImage = (image) => async dispatch => {
     const response = await fetch(`/api/images/${image.id}`, {
@@ -71,7 +69,6 @@ export const deleteImage = (image) => async dispatch => {
 
 }
 
-//update image
 
 export const updateImage = (id, caption) => async dispatch => {
     const response = await fetch(`/api/images/${id}`, {
@@ -89,7 +86,6 @@ export const updateImage = (id, caption) => async dispatch => {
 
 
 
-//image reducer
 const initialState = {}
 
 const imageReducer = (state = initialState, action) => {

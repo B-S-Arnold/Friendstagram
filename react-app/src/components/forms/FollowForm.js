@@ -27,8 +27,6 @@ const FollowForm = ({ user, followCSS, followDivCSS }) => {
 
     }
 
-    //Comment errors
-
 
 
 

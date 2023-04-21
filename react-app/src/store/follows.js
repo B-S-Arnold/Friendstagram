@@ -19,7 +19,6 @@ const removeFollow = (follow) => ({
 })
 
 
-//create follow
 export const createFollow = (followedId) => async dispatch => {
     const response = await fetch(`/api/follows/`, {
         method: 'POST',
@@ -38,7 +37,7 @@ export const createFollow = (followedId) => async dispatch => {
 
 }
 
-//read all follows
+
 
 export const readFollows = () => async (dispatch) => {
     const response = await fetch(`/api/follows/`, {
@@ -50,7 +49,6 @@ export const readFollows = () => async (dispatch) => {
     return data;
 };
 
-//destroy follow
 
 export const deleteFollow = (follow) => async dispatch => {
     const response = await fetch(`/api/follows/${follow.id}`, {
@@ -67,7 +65,6 @@ export const deleteFollow = (follow) => async dispatch => {
 
 
 
-//follow reducer
 const initialState = {}
 
 const followReducer = (state = initialState, action) => {

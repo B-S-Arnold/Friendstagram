@@ -32,7 +32,6 @@ const EditCommentForm = ({ comment, setOptionsModal }) => {
 
     }
 
-    //Comment errors
 
     if (content?.length > 1000 && !comerrors?.includes('Comment length cannot excede 1,000 characters.')) {
         comerrors.push('Comment length cannot excede 1,000 characters.')

@@ -28,8 +28,6 @@ const AddCommentForm = ({image}) => {
         }
         
     }
-
-    //Comment errors
     
 
     if (content?.length > 1000 && !comerrors?.includes('Comment length cannot excede 1,000 characters.')) {
