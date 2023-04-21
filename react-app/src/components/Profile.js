@@ -13,12 +13,12 @@ function User() {
   const [users, setUsers] = useState({})
   const { username } = useParams();
   const sessionUser = useSelector(state => state.session.user)
-  // const sessionUser = useSelector(state => state.session.user)
-  // const navigate = useNavigate
 
-  //  if (!sessionUser) {
-  //   navigate(`/`);
-  // }
+
+
+
+
+
 
 
   const follows = Object.values(useSelector(state => state.follows))
@@ -31,8 +31,8 @@ function User() {
   const followCSS = 'btn'
 
 
-  // const images = Object.values(useSelector(state => state.images))
-  // const [images, setImages] = useState([])
+
+
   const images = Object.values(useSelector(state => state.images))
 
   const userImages = images.filter(img => img.userId === user.id)
@@ -50,19 +50,19 @@ function User() {
       const response = await fetch(`/api/users/${username}`);
       const user = await response.json();
       setUser(user);
-      // console.log("USER!!!", user)
 
-      // const res = await fetch('/api/images');
-      // if (res.ok) {
-      //   const data = await res.json();
-      //   console.log(data)
-      //   setImages(data.images)
-      // } else {
-      //   console.log("error")
-      // }
 
-      // const usersRes = await fetch('/api/users/');
-      // const responseData = await usersRes.json();
+
+
+
+
+
+
+
+
+
+
+
 
     })();
   }, [username]);
@@ -70,7 +70,7 @@ function User() {
   if (!user || !users) {
     return null;
   }
-  //ALL IMAGES DISPLAYED FUNCTION
+
   userImages.reverse()
   const allImages = userImages.map((image) => {
     const expand = false;
@@ -95,7 +95,7 @@ function User() {
 
             <ChangeProfPicModal user={user} />
           </>}</div>
-        {/* <div className= 'profpic'/> */}
+        { }
         <div className='profInfo'>
           <div className='profUN'>
             {username}
@@ -108,22 +108,22 @@ function User() {
 
           <div className='profNum'>
             <div className='eachNum'>
-            {userImages?.length === 1 ? <><strong>{userImages?.length}</strong> post</>
-              : <><strong>{userImages?.length}</strong> posts</>}
+              {userImages?.length === 1 ? <><strong>{userImages?.length}</strong> post</>
+                : <><strong>{userImages?.length}</strong> posts</>}
             </div>
             <div className='eachNum'>
-            {userFollowers?.length === 1 ? <><strong>{userFollowers?.length}</strong> follower</>
-              : <><strong>{userFollowers?.length}</strong> followers</>}
+              {userFollowers?.length === 1 ? <><strong>{userFollowers?.length}</strong> follower</>
+                : <><strong>{userFollowers?.length}</strong> followers</>}
             </div>
             <div className='eachNum'>
-            <strong>{userFollowing.length}</strong> following
+              <strong>{userFollowing.length}</strong> following
             </div>
           </div>
           <div className='profFNandBio'>
             <strong>{user.fullName}</strong>
             {followed?.length > 0 || user.id === sessionUser.id ? <div>{user.bio ? <> {user.bio}</> : <> </>}</div>
-              : <><div className='spacer'/><div><strong>This account is private</strong><div></div>Follow this account to see their photos and videos</div></>}
-            
+              : <><div className='spacer' /><div><strong>This account is private</strong><div></div>Follow this account to see their photos and videos</div></>}
+
           </div>
         </div>
         <div className='minispacer' />

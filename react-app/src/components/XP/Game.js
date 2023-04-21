@@ -16,35 +16,35 @@ function Game() {
     let pointerY;
     let zeroStyle;
 
-    
-    
+
+
     useEffect(() => {
-        
-        const changeXY= (e) => {
+
+        const changeXY = (e) => {
             setOldx(xVal)
             setOldy(yVal)
             pointerX = e.pageX;
             pointerY = e.pageY;
             setxVal(pointerX)
             setyVal(pointerY)
-            
+
         }
-        
+
         document.addEventListener('click', changeXY);
-        
+
         return () => document.removeEventListener("click", changeXY);
     }, []);
 
-   
+
 
     //Animation only works once! Not on click!!!!
 
-    let dynamicStyles=null
+    let dynamicStyles = null
 
     function addAnimation(body) {
         if (!dynamicStyles) {
             dynamicStyles = document.createElement('style');
-            // dynamicStyles.type = 'text/css';
+
             document.head.appendChild(dynamicStyles);
         }
 
@@ -59,8 +59,8 @@ function Game() {
          }
 
          80% {
-            left: ${oldx-xVal};
-            top: ${oldy-yVal}
+            left: ${oldx - xVal};
+            top: ${oldy - yVal}
          }
 
         100% {
@@ -70,30 +70,30 @@ function Game() {
       }
     `);
 
-    // zero.style.animation = "1s linear 0s infinite alternate move"
 
-    
+
+
 
     zeroStyle = { top: `${yVal}px`, left: `${xVal}px`, animation: '3s alternate move' }
 
 
-    
-        return (
-            <div className='container'>
-                <div className='gametitle'>Zer0</div>
-                <div className='gamebox'>
-                    <div className='zero'
-                        style={zeroStyle}>
-                           <div className='bodypart'>0</div>
-                            <div className='bodypart'>/|\</div>
-                            <div className='bodypart'>.//\\.</div>
-                            <div className='bodypart'>_/&nbsp;\_</div>
-                        {/* &nbsp; */}
-                    </div>
 
+    return (
+        <div className='container'>
+            <div className='gametitle'>Zer0</div>
+            <div className='gamebox'>
+                <div className='zero'
+                    style={zeroStyle}>
+                    <div className='bodypart'>0</div>
+                    <div className='bodypart'>/|\</div>
+                    <div className='bodypart'>.//\\.</div>
+                    <div className='bodypart'>_/&nbsp;\_</div>
+                    { }
                 </div>
+
             </div>
-            
+        </div>
+
     );
 }
 

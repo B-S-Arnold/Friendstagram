@@ -8,75 +8,75 @@ import ProfPicEdit from './ProfPicEdit';
 
 
 const ChangeProfPicModal = ({ user }) => {
-    // console.log("THIS USER!!!!", user)
-    
+
+
     const [renderModal, setRenderModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user)
-    // const users = Object.values(useSelector(state => state.users))
+
     let thisPic
 
     const handleCancel = (e) => {
         e.preventDefault()
         setRenderModal(false)
     }
-        if (sessionUser?.id === user?.id){
-            thisPic = (
-                <>
-                    {user?.url ? <>
-                        <div className='leftPPSpacer'/>
-                        <div className='behindBtn' onClick={() => setRenderModal(true)}>
-                            <img
-                                className='profpicbtn'
-                                src={user.url}
-                                alt="new"
+    if (sessionUser?.id === user?.id) {
+        thisPic = (
+            <>
+                {user?.url ? <>
+                    <div className='leftPPSpacer' />
+                    <div className='behindBtn' onClick={() => setRenderModal(true)}>
+                        <img
+                            className='profpicbtn'
+                            src={user.url}
+                            alt="new"
 
-                                onError={e => {
-                                    e.onerror = null
-                                    e.target.src = require('../../images/not-found.jpeg').default
-                                }}
+                            onError={e => {
+                                e.onerror = null
+                                e.target.src = require('../../images/not-found.jpeg').default
+                            }}
 
-                            />
+                        />
                         <div className='rightPPSpacer' />
-                        </div>
-                    </> : <>
-                            <button className='noprofpicbtn' onClick={() => setRenderModal(true)} />
-                    </>}
-                </>
-            
-            )
-        }else {
-            thisPic = (
+                    </div>
+                </> : <>
+                    <button className='noprofpicbtn' onClick={() => setRenderModal(true)} />
+                </>}
+            </>
+
+        )
+    } else {
+        thisPic = (
             <>
                 {user?.url ? <>
                     <div >
-                            <img
-                                className='profpic'
-                                src={user.url}
-                                alt="new"
+                        <img
+                            className='profpic'
+                            src={user.url}
+                            alt="new"
 
-                                onError={e => {
-                                    e.onerror = null
-                                    e.target.src = require('../../images/not-found.jpeg').default
-                                }}
+                            onError={e => {
+                                e.onerror = null
+                                e.target.src = require('../../images/not-found.jpeg').default
+                            }}
 
-                            />
+                        />
                     </div>
                 </> : <>
                     <div className='profpic' />
                 </>}
             </>)
-        }
-        
-    
-   
+    }
+
+
+
     return (
         <>
-        {thisPic}
-        {/* {"hello"} */}
-    
+            {thisPic}
+            { }
+
             {renderModal ? (
                 <Modal onClose={() => setRenderModal(false)}>
-                    <div className ='optionsModal'>
+                    <div className='optionsModal'>
                         <ProfPicEdit renderOptionsModal={setRenderModal} user={user} />
                         <ProfPicDel renderOptionsModal={setRenderModal} user={user} />
                         <div className='canppbtn btnhover' onClick={handleCancel}> Cancel</div>
@@ -87,8 +87,8 @@ const ChangeProfPicModal = ({ user }) => {
 
         </>
     )
-    
-    
+
+
 };
 
-    export default ChangeProfPicModal;
+export default ChangeProfPicModal;

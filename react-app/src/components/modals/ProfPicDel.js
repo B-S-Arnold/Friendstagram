@@ -9,10 +9,10 @@ const ProfPicDel = ({ user, renderOptionsModal }) => {
 
     const handleDel = async (e) => {
         e.preventDefault();
-       
+
         const res = await fetch(`/api/users/del/${user.id}`, {
             method: "PUT",
-            // body: formData
+
         });
         if (res.ok) {
             await res.json();
@@ -27,13 +27,6 @@ const ProfPicDel = ({ user, renderOptionsModal }) => {
     return (
         <>
             <div className='delppbtn btnhover' onClick={handleDel}>Remove Current Photo</div>
-            {/* {renderModal ? (
-                <Modal onClose={() => setRenderModal(false)}>
-                    <button onClick={handleDel} />
-                    <DelProfPicForm onClose={() => setRenderModal(false)} renderOptionsModal={renderOptionsModal} user={user} />
-                </Modal>
-            ) : null
-            } */}
         </>
     )
 };

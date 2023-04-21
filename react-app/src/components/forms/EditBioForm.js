@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateComment } from '../../store/comments';
-// import {}
+
 import '../Overflow.css'
 
 
@@ -28,7 +28,7 @@ const EditBioForm = ({ comment, setOptionsModal }) => {
         if (editedComment?.errors) return setErrors(editedComment.errors)
         if (editedComment) {
             setOptionsModal(false)
-            // setContent('')
+
         }
 
     }

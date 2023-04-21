@@ -11,9 +11,9 @@ const Dropdown = () => {
         const dispatch = useDispatch()
         const onLogout = async (e) => {
             await dispatch(logout());
-            // navigate(`/`)
+
         };
-        // navigate(`/`)
+
 
         return <div className='dropdownbtn logoutbtn' onClick={onLogout}>Logout</div>;
     };
@@ -25,9 +25,9 @@ const Dropdown = () => {
         }
 
         return <div className='dropdownbtn profbtn' onClick={toProfile}>Profile</div>
-        // return <NavLink to={`/${user.username}`} exact={true} activeClassName='active'>
-        //     Profile
-        // </NavLink>
+
+
+
     };
 
     const RevertButton = () => {
@@ -49,13 +49,13 @@ const Dropdown = () => {
         return <div className='dropdownbtn' onClick={toSettings}>Settings</div>
     }
 
-    // const GameButton = () => {
-    //     const toGame = () => {
-    //         navigate(`/game`)
-    //     }
 
-    //     return <div className='dropdownbtn' onClick={toGame}>Game</div>
-    // }
+
+
+
+
+
+
 
 
     return (
@@ -64,25 +64,22 @@ const Dropdown = () => {
             <div className="dropdown">
 
 
-                {/* <div> */}
-                    <ProfileButton />
+                { }
+                <ProfileButton />
 
-                    {/* <NavLink className='dropdownbtn' to={`/${user.username}`} exact={true} activeClassName='active'>
-                    Profile
-                </NavLink> */}
-                {/* </div> */}
+                { }
                 <div>
                     <SettingsButton />
                 </div>
                 <div>
                     <RevertButton />
                 </div>
-                {/* <div> */}
-                    {/* <SettingsButton /> */}
-                    {/* <GameButton /> */}
-                    <LogoutButton />
-                    {/* <GameButton /> */}
-                {/* </div> */}
+                { }
+                { }
+                { }
+                <LogoutButton />
+                { }
+                { }
             </div>
         </>
     )

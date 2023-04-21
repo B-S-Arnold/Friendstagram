@@ -171,7 +171,7 @@ https://friendsta-gram.herokuapp.com/
   * A caption field
   * The "Submit" button
 * To add a post, the image address must:
-  * Come from a valid url (begginning with http:// or https://)
+  * Come from a valid url (begginning with http:
   * End with a valid image file extension (.jpg, .jpeg, .png, .gif, or .bmp)
 * If an image is uploaded, but the image cannot be found, a "Not Found" image will display in it's place
 

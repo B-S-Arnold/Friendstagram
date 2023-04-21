@@ -7,19 +7,19 @@ const SearchBar = () => {
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
     const [focused, setFocused] = useState(false)
-    const onFocus = () =>setFocused(true)
+    const onFocus = () => setFocused(true)
 
     const onBlur = () => setFocused(false)
 
-        useEffect(() => {
-            async function fetchData() {
-                const response = await fetch('/api/users/');
-                const responseData = await response.json();
-                setUsers(responseData.users);
-                
-            }
-            fetchData();
-        }, []);
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch('/api/users/');
+            const responseData = await response.json();
+            setUsers(responseData.users);
+
+        }
+        fetchData();
+    }, []);
 
 
     function waitASec() {
@@ -34,12 +34,12 @@ const SearchBar = () => {
         await waitASec()
     }
 
-    
+
     let allSearched = null
     if (params.length > 0 && params !== " ") {
         const searchedUsers = users.filter(user => user.username.includes(params) || user.email.includes(params) || user.fullName.includes(params))
-        
-        
+
+
         allSearched = searchedUsers.map((user) => {
 
             const toUser = () => {
@@ -72,16 +72,16 @@ const SearchBar = () => {
 
         })
     }
-    
+
 
 
 
     return (
         <div className='searchdiv'>
-            <input onFocus={onFocus} onBlur={defocus} autoComplete="off" type='text' className='search' name='search' value={params} placeholder='Search'  onChange={(e) => setParams(e.target.value)} />
-            {/* <div className='searchtriangle' /> */}
-            
-            {allSearched?.length && focused ? <><div className='searchtriangle' /><div className='dropsearch'>{allSearched}</div></> :<></>}
+            <input onFocus={onFocus} onBlur={defocus} autoComplete="off" type='text' className='search' name='search' value={params} placeholder='Search' onChange={(e) => setParams(e.target.value)} />
+            { }
+
+            {allSearched?.length && focused ? <><div className='searchtriangle' /><div className='dropsearch'>{allSearched}</div></> : <></>}
         </div>
     )
 }

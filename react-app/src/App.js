@@ -18,7 +18,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -31,28 +31,20 @@ function App() {
   return (
     <BrowserRouter>
       {user && <NavBar user={user} />}
-      
+
       <Routes>
-        <Route path='/' exact={'true'} element={<SplashPage user={user} />}/>
-          {/* <SplashPage user={user}/>
-        </Route> */}
+        <Route path='/' exact={'true'} element={<SplashPage user={user} />} />
         <Route path='/sign-up' exact={'true'} element={<SignUpForm />} />
-          {/* <SignUpForm />
-        </Route> */}
         <Route path='/:username/' exact={'true'} element={
-        <ProtectedRoute user={user}>
+          <ProtectedRoute user={user}>
             <User />
-        </ProtectedRoute>} />
-    
-          {/* <User />
-        </ProtectedRoute> */}
+          </ProtectedRoute>} />
+
 
         <Route path='/accounts/edit' exact={'true'} element={
-        <ProtectedRoute user={user}>
-          <Settings />
-        </ProtectedRoute>} />
-          {/* <Settings />
-        </ProtectedRoute> */}
+          <ProtectedRoute user={user}>
+            <Settings />
+          </ProtectedRoute>} />
 
         <Route path='/game' exact={'true'} element={<Game />} />
 
