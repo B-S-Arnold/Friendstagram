@@ -65,8 +65,6 @@ def change_pic(id):
     
     user.url = url
     
-    # new_image = User(url=url)
-    # db.session.add(new_image)
     db.session.commit()
     return {"url": url}
 

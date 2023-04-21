@@ -91,8 +91,6 @@ def react_root(path):
 def not_found(e):
     return app.send_static_file('index.html')
 
-# seed_commands.init_app(app)
-
 @app.route('/revert')
 def revert():
     undo_users(),
