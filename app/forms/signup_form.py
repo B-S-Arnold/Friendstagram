@@ -23,12 +23,6 @@ def username_exists(form, field):
 # BACKEND ERROR EXAMPLE...
 # ALSO MUST PLACE FUNC IN FORM BELOW
 
-# def invalid_email(form, field):
-    
-#     email = field.data
-#     if '@' and '.com' not in email:
-#         raise ValidationError('Email address is not valid.')
-
 class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[DataRequired(), username_exists])

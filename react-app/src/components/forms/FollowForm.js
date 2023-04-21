@@ -6,7 +6,7 @@ import { createFollow } from '../../store/follows';
 
 const FollowForm = ({ user, followCSS, followDivCSS }) => {
 
-    // const [content, setContent] = useState('');
+
     const [errors, setErrors] = useState([]);
 
 
@@ -21,13 +21,11 @@ const FollowForm = ({ user, followCSS, followDivCSS }) => {
 
         if (newFollow?.errors) return setErrors(newFollow.errors)
         if (newFollow) {
-            // setContent('')
+
             setErrors([])
         }
 
     }
-
-    //Comment errors
 
 
 

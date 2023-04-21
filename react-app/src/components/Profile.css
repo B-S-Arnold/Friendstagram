@@ -1,47 +1,42 @@
-
-/* Maybe use GRID?
-ROWS OF 3 */
-
-                            /* PROFILE */
-.profPageContainer{
+.profPageContainer {
     display: flex;
-    /* align-items: center; */
+
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
 
-.spacer{
+.spacer {
     width: 100px;
     height: 150px;
 }
 
-.profHead{
+.profHead {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin: 15px ;
-    /* width: 935px; */
+    margin: 15px;
+
 }
 
 
-.profpic{
+.profpic {
     background-image: url("../images/default.png");
-    background-size:contain;
+    background-size: contain;
     width: 150px;
     height: 150px;
     margin: 0px 100px;
     object-fit: cover;
-    /* padding: 0 141.7px; */
-    /* border: solid #fff 2px; */
-    /* outline: solid purple 2px; */
+
+
+
     border-radius: 50%;
     z-index: 0;
 }
 
-.noprofpicbtn{
+.noprofpicbtn {
     background-image: url("../images/default.png");
     border: none;
     background-size: contain;
@@ -49,20 +44,13 @@ ROWS OF 3 */
     height: 150px;
     margin: 0px 100px;
     object-fit: cover;
-    /* padding: 0 141.7px; */
-    /* border: solid #fff 2px; */
-    /* outline: solid purple 2px; */
+
+
+
     border-radius: 50%;
     z-index: 0;
 }
-/* 
-margin: 0;
-padding: 0;
-min-height: 293px;
-min-width: 293px;
-max-height: 291px;
-max-width: 291px;
-object-fit:cover; */
+
 
 .profpicbtn {
     background-image: url("../images/default.png");
@@ -72,80 +60,83 @@ object-fit:cover; */
     height: 150px;
     margin: 0px 0px;
     object-fit: cover;
-    /* padding: 0 141.7px; */
-    /* border: solid #fff 2px; */
-    /* outline: solid purple 2px; */
+
+
+
     border-radius: 50%;
     z-index: 0;
 }
+
 .noprofpicbtn:hover {
     cursor: pointer;
 }
-.profpicbtn:hover{
+
+.profpicbtn:hover {
     cursor: pointer;
 }
 
-.behindBtn{
-    /* background-image: url("../images/default.png"); */
+.behindBtn {
+
     border: none;
     background-size: contain;
     width: 150px;
     height: 150px;
     margin: 0px 100px;
     padding: 0;
-    /* border: solid #fff 2px; */
-    /* outline: solid purple 2px; */
+
+
     border-radius: 50%;
     z-index: 0;
 }
 
-.profInfo{
+.profInfo {
     width: 613.3px;
     height: 150px;
     flex-direction: column;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: flex;
-    /* justify-content: space-between; */
+
     justify-content: space-between;
     padding: 0 0 50px 0;
 }
 
-.profUN{
+.profUN {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 28px;
-    font-weight:300;
+    font-weight: 300;
     height: 33px;
 }
 
-.profNum{
+.profNum {
     display: flex;
     justify-content: space-between;
-    font-size:16px;
+    font-size: 16px;
     margin: 20px 0;
     width: 300px;
 }
 
 
 
-.profFNandBio{
-    font-size:16px;
+.profFNandBio {
+    font-size: 16px;
 }
 
-.myImageDiv{
-    /* justify-content: center; */
+.myImageDiv {
+
     width: 935px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* flex-direction: column; */
+
 }
-.imgheadVM{
+
+.imgheadVM {
 
     display: flex;
-    /* justify-content: space-around; */
+
     align-items: center;
-    /* margin-left: 10px; */
+
 
     width: inherit;
     padding: 10px 0px;
@@ -159,5 +150,3 @@ object-fit:cover; */
     }
     
 } */
-
-/* Image Grid is in ViewImage.css */

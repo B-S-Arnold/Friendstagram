@@ -90,8 +90,5 @@ def rem_pic(id):
     
     user.url = None
 
-    
-    # new_image = User(url=url)
-    # db.session.add(new_image)
     db.session.commit()
     return {"Profile Pic Deleted": "deleted"}

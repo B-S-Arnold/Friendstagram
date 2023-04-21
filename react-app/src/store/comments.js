@@ -23,8 +23,6 @@ const editComment = (comment) => ({
     comment
 })
 
-//create comment
-
 export const createComment = (imageId, content) => async dispatch => {
     const response = await fetch(`/api/comments/`, {
         method: 'POST',
@@ -44,7 +42,7 @@ export const createComment = (imageId, content) => async dispatch => {
 
 }
 
-//read all comments
+
 
 export const readComments = () => async (dispatch) => {
     const response = await fetch(`/api/comments/`, {
@@ -56,7 +54,6 @@ export const readComments = () => async (dispatch) => {
     return data;
 };
 
-//destroy comments
 
 export const deleteComment = (comment) => async dispatch => {
     const response = await fetch(`/api/comments/${comment.id}`, {
@@ -70,7 +67,6 @@ export const deleteComment = (comment) => async dispatch => {
 
 }
 
-//update comment
 
 export const updateComment = (id, imageId, content) => async dispatch => {
     const response = await fetch(`/api/comments/${id}`, {
@@ -87,8 +83,6 @@ export const updateComment = (id, imageId, content) => async dispatch => {
 }
 
 
-
-//comment reducer
 const initialState = {}
 
 const commentReducer = (state = initialState, action) => {

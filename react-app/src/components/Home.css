@@ -1,28 +1,26 @@
+.spacer {
 
-/* change spacer after navbar fixed */
-.spacer{
-    /* background-color: black; */
     width: 100%;
     height: 63px;
 }
 
-.homePageContainer{
+.homePageContainer {
 
     display: flex;
-    /* align-items: center; */
+
     flex-direction: column;
     align-items: center;
     width: 100%;
 
-    /* position: absolute; */
+
 }
 
 
-.centeredContainer{
+.centeredContainer {
     display: flex;
 }
 
-.userListDiv{
+.userListDiv {
     justify-content: center;
     display: flex;
     align-items: center;
@@ -43,55 +41,50 @@
     display: none;
 }
 
-/* .userListDiv::-webkit-scrollbar{
-    background-color: black;
-} */
 
-.innerUserListDiv{
+.innerUserListDiv {
     display: flex;
     flex-direction: column;
     margin: 10px;
-    /* align-items: flex-start; */
+
 
 }
 
-.eachUser{
-    /* Maybe background in round div surrounding eachuser */
-    /* background: linear-gradient(25deg, orange, purple, purple); */
+.eachUser {
+
+
 
     background-image: url("../images/default.png");
-    background-size:contain;
-    
+    background-size: contain;
+
     width: 56px;
     height: 56px;
     border: solid #fff 2px;
     outline: none;
     border-radius: 50%;
     box-shadow: 0 0 0 3px purple;
-    /* margin:0;
-    padding: 0; */
-    
+
     z-index: 0;
 }
 
-.eachUserPic{
-    /* background-image: url("../images/default.png"); */
-    background-size:contain;
-    
+.eachUserPic {
+
+    background-size: contain;
+
     width: 56px;
     height: 56px;
-    /* border: solid #fff 2px; */
+
     outline: none;
     object-fit: cover;
     border-radius: 50%;
-    margin:0;
+    margin: 0;
     padding: 0;
-    /* box-shadow: 0 0 0 3px purple; */
-    
+
+
     z-index: 0;
 }
 
-.eachUserName{
+.eachUserName {
     text-align: center;
     margin-top: 5px;
     width: 60px;
@@ -100,39 +93,38 @@
     font-size: 12px;
     font-weight: 300;
     overflow: hidden;
-    text-overflow:ellipsis
-    
+    text-overflow: ellipsis
 }
 
-.imageListDiv{
+.imageListDiv {
     justify-content: center;
     width: 470px;
     display: flex;
     flex-direction: column;
-    
+
 }
 
-.eachImage{
+.eachImage {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #fff;
     border: solid 1px #dbdbdb;
-    /* height is temporary */
-    /* should adjust to image size */
-    /* height: 382px; */
+
+
+
     height: auto;
     width: 470px;
-    
+
     margin: 12px 20px;
     margin-bottom: 3px;
-    /* overflow:auto; */
+
 }
 
 
 
-.userinfodiv{
+.userinfodiv {
     width: 293px;
     margin: 30px 0 0 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -141,16 +133,8 @@
     align-items: center;
 }
 
-/* .sugusersdiv{
-    width: 293px;
-    margin: 20px 0 0 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    display: flex;
-    font-size: 14px;
-    align-items: center;
-} */
 
-.sugPicAndUN{
+.sugPicAndUN {
     display: flex;
     flex-direction: row;
 }
@@ -165,33 +149,33 @@
     justify-content: space-between;
 }
 
-.thisUser{
+.thisUser {
     background-image: url("../images/default.png");
-    background-size:contain;
+    background-size: contain;
     width: 56px;
     height: 56px;
-    /* border: solid #fff 2px; */
-    /* outline: solid purple 2px; */
+
+
     border-radius: 50%;
     z-index: 0;
-   
+
 }
 
-.thisUserName{
+.thisUserName {
     margin-left: 5px;
 }
 
-.usersUN{
+.usersUN {
     font-weight: bold;
     color: black;
     text-decoration: none;
 }
 
-.usersFN{
+.usersFN {
     color: #8e8e8e;
 }
 
-.sugfont{
+.sugfont {
     margin-top: 10px;
     font-size: 14px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -199,7 +183,7 @@
     color: #8e8e8e;
 }
 
-.imghead{
+.imghead {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -207,24 +191,24 @@
     width: inherit;
     padding: 10px 0px;
     border-bottom: #dbdbdbad solid 1px;
-    
-    
+
+
 
 }
 
-.eachPicPP{
+.eachPicPP {
 
     background-image: url("../images/default.png");
-    background-size:contain;
-    
+    background-size: contain;
+
     width: 32px;
     height: 32px;
-    /* border: solid #fff 2px; */
+
     outline: none;
     object-fit: cover;
     border-radius: 50%;
-    /* box-shadow: 0 0 0 3px purple; */
-    
+
+
     z-index: 0;
 }
 
@@ -235,71 +219,69 @@
 
     width: 32px;
     height: 32px;
-    /* border: solid #fff 2px; */
+
     outline: none;
     object-fit: cover;
     border-radius: 50%;
-    /* box-shadow: 0 0 0 3px purple; */
+
 
     z-index: 0;
 }
 
-.notfollowing{
-    /* display: flex;
-    align-self: center; */
-}
+.notfollowing {}
 
-.imgOptions{
+.imgOptions {
     background-image: url("../images/options.png");
-    height:100px;
+    height: 100px;
     width: 100px;
-    background-size:contain;
-    
+    background-size: contain;
+
 }
 
-.noimgOptions{
- height: 25px ;
- width: 30px ;
+.noimgOptions {
+    height: 25px;
+    width: 30px;
 }
 
-.eachPicUN{
+.eachPicUN {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-decoration: none;
     color: black;
     font-weight: bold;
 }
 
-.imgdivhome{
-    /* overflow:hidden; */
-    /* height: t */
+.imgdivhome {
+
+
     height: fit-content;
 
 }
-.imgpic{
-    /* overflow:hidden; */
-    object-fit:contain;
+
+.imgpic {
+
+    object-fit: contain;
     max-width: 470px;
-    min-width:470px;
+    min-width: 470px;
     max-height: auto;
     height: auto;
     display: inline;
 }
 
-.rightContainer{
-    position:static;
+.rightContainer {
+    position: static;
     margin-right: 315px;
 }
 
-.staticContainer{
+.staticContainer {
     position: fixed;
 }
 
-.imgcom{
+.imgcom {
     width: 450px;
     display: flex;
     flex-direction: row;
     min-height: 53px;
-    
+
 }
 
 .commentline {
@@ -311,7 +293,7 @@
     border-top: solid .1px #dbdbdbad;
 }
 
-.viewcommentline{
+.viewcommentline {
     width: 470px;
     border-color: #8e8e8e;
     border-bottom: none;
@@ -320,34 +302,34 @@
     border-top: solid .1px #dbdbdbad;
 }
 
-.content{
+.content {
     display: flex;
     height: 60px;
     width: 90%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     height: auto;
-    /* overflow:inherit; */
-    resize:none;
+
+    resize: none;
     border: none;
     font-size: 14px;
     padding: 10px;
-    text-align:unset;
+    text-align: unset;
     outline: none;
-    
+
 }
 
-.combtn{
+.combtn {
     width: 10%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #0095f6;
     background-color: transparent;
     border: none;
-    font-size:14px;
+    font-size: 14px;
     font-weight: 500;
-    
+
 }
 
-.combtn:hover{
+.combtn:hover {
     cursor: pointer;
 }
 
@@ -355,51 +337,44 @@
     color: #adddfe;
 }
 
-.editcom{
-    /* width: 10%; */
+.editcom {
+
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #0095f6;
     background-color: transparent;
     border: none;
-    font-size:12px;
+    font-size: 12px;
     font-weight: 500;
 
 }
 
-.delcom{
-    /* width: 10%; */
-    display:none;
-    /* display: inline; */
+.delcom {
+
+    display: none;
+
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #8e8e8e;
     background-color: transparent;
     border: none;
-    font-size:15px;
+    font-size: 15px;
     font-weight: bolder;
     padding-left: 10px;
 }
 
-.cap-com:hover .delcom{
+.cap-com:hover .delcom {
     display: inline;
 }
-/* .EDdiv {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 10px;
-    width: auto;
-} */
 
-.editcom:hover{
+
+.editcom:hover {
     cursor: pointer;
 }
 
-.delcom:hover{
+.delcom:hover {
     cursor: pointer;
 }
 
-.commentDiv{
+.commentDiv {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: flex;
     flex-direction: row;
@@ -410,19 +385,19 @@
 
 
 
-.homeCapDiv{
+.homeCapDiv {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: inline;
     flex-direction: row;
     justify-content: space-around;
     width: 500px;
-    align-items: center;    
+    align-items: center;
     overflow-wrap: break-word;
 
 
 }
 
-.EDdivfake{
+.EDdivfake {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -430,39 +405,29 @@
     margin: 5px 135px
 }
 
-.aboveLC{
-    margin-top:30px;
+.aboveLC {
+    margin-top: 30px;
 }
 
 
 
 @media (max-width:1350px) {
-    /* #modal-content {
-        width: 80%;
-    }
-
-   
-
-    #modal-content:has(.viewModal) {
-        width:80%;
-    } */
 
     .vmodal {
         width: 80%;
     }
 
-    .picViewPic{
+    .picViewPic {
         width: 100%;
     }
-    
+
 }
 
 @media (max-width:1000px) {
 
-    
-    .dropcontainer{
-        /* display: none; */
-    }
+
+    .dropcontainer {}
+
     .picViewPic {
         width: 100%;
     }
@@ -489,7 +454,7 @@
     }
 
     .noprofpicbtn {
-        /* width: auto; */
+
         margin: 0 5px;
     }
 
@@ -503,7 +468,7 @@
         display: flex;
         justify-content: center;
         width: 100%;
-        /* padding: 5px; */
+
     }
 
     .myImageDiv {
@@ -525,22 +490,22 @@
         height: 80%;
     }
 
-    .infoView{
-        height: 100%;       
-    }
-
-    .viewModal{
+    .infoView {
         height: 100%;
     }
 
-    .picViewPic{
+    .viewModal {
+        height: 100%;
+    }
+
+    .picViewPic {
         height: 100%;
     }
 
     .picViewDiv {
         height: 100%;
     }
-    
+
 }
 
 @media (max-width: 650px) {
@@ -555,8 +520,8 @@
 
 }
 
-.innerviewtop{
-    overflow:auto;
+.innerviewtop {
+    overflow: auto;
     overflow-x: hidden;
 }
 

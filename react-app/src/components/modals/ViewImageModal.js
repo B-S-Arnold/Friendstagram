@@ -13,10 +13,10 @@ import UnlikeForm from '../forms/UnlikeForm';
 
 
 const ViewImageModal = ({ image, expand, users }) => {
-    
+
     const [renderModal, setRenderModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user)
-    // const users = Object.values(useSelector(state => state.users))
+
     const comments = Object.values(useSelector(state => state.comments))
     const likes = Object.values(useSelector(state => state.likes))
     const allLikes = likes.filter(like => like.imageId === image.id)
@@ -35,7 +35,7 @@ const ViewImageModal = ({ image, expand, users }) => {
             return (
                 <div key={comment.id} >
 
-                    {/* DISPLAY COMMENTS */}
+                    { }
 
                     <div className='nameAndCapViewVM'>
                         <NavLink className='eachPicPP VMPP' to={`/${commenter?.username}`} >
@@ -57,23 +57,21 @@ const ViewImageModal = ({ image, expand, users }) => {
                         <div className='cap-com'>
 
 
-                            
-                            <NavLink className='eachPicUN capcomun' to={`/${commenter?.username}`}>{commenter?.username}</NavLink>
-                            
-                            {comment.content}
-                            
-                            {sessionUser.id === comment.userId ? <>
-    
-                                    <DeleteCommentModal comment={comment} />                            
-    
-                            </> : <></>}
-                            
-                            </div>
 
-                        {/* {comment.edited === true ?
-                            <><div className='editedViewCom'>Edited</div></> : */}
-                        {/* <> <div className='uneditedViewCom'></div></> */}
-                        {/* } */}
+                            <NavLink className='eachPicUN capcomun' to={`/${commenter?.username}`}>{commenter?.username}</NavLink>
+
+                            {comment.content}
+
+                            {sessionUser.id === comment.userId ? <>
+
+                                <DeleteCommentModal comment={comment} />
+
+                            </> : <></>}
+
+                        </div>
+
+                        { }
+                        { }
 
                     </div>
                 </div>
@@ -88,33 +86,33 @@ const ViewImageModal = ({ image, expand, users }) => {
 
     } else {
 
-        // TESTING
-
-        // TESTING
 
 
-        // if(image.url.width )
-        // const width = image?.naturalWidth;
-        // const height = image.url.clientHeight;
 
-        // const thisImage =
-        //                 <img
-        //                     height='auto'
-        //                     width='auto'
-        //                     className='foto'
-        //                     src={image.url}
-        //                     alt="new"
-        //                 />
-        // console.log("HEIGHT", thisImage.clientHeight)
 
-        // console.log('WIDTH', width)
-        // Create dummy image to get real width and height
-        // const default
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         thisDiv = <button className='myImage' onClick={() => setRenderModal(true)} image={image}>
             <div>
-                {/* RENDER IMAGE */}
+                { }
 
                 <img
                     className='foto'
@@ -139,15 +137,15 @@ const ViewImageModal = ({ image, expand, users }) => {
     }
 
 
-    // Make function so EDIT CAPTION BUTTON renders in place of CAPTION
-    // Remeber to use pass IMAGE as props
 
-    // const editCaptionBox = ({image}) => {
-    //    return <EditImageForm image={image} />
-    // }
-    // $("a.active").parents('li').css("property", "value");
-    // document.getElementById('modal-content').setAttribute("className", 'vmodal');
-    // vModal.setAttribute("className", 'vmodal');
+
+
+
+
+
+
+
+
     let classy = 'vmodal'
 
     return (
@@ -157,15 +155,15 @@ const ViewImageModal = ({ image, expand, users }) => {
 
             {renderModal ? (
                 <Modal classy={classy} className='vmodal' onClose={() => setRenderModal(false)}>
-                    {/* pass prop */}
+                    { }
                     <div className='viewModal' onClose={() => setRenderModal(false)}>
 
                         <div className='picViewDiv'>
-                            {/* RENDER IMAGE */}
+                            { }
                             <img
                                 className='picViewPic'
-                                // height="293px"
-                                // width="293px"
+
+
                                 src={image.url}
                                 id='thispic'
                                 alt="new"
@@ -190,67 +188,65 @@ const ViewImageModal = ({ image, expand, users }) => {
                                                 className='eachPicPP2'
                                                 src={imgUser?.url}
                                                 alt="new"
-                                                
+
                                                 onError={e => {
                                                     e.onerror = null
                                                     e.target.src = require('../../images/not-found.jpeg').default
                                                 }}
-                                                
-                                                />
+
+                                            />
                                         </> : <></>}
                                     </NavLink>
                                     <NavLink className='eachPicUN' to={`/${imgUser?.username}`}>{imgUser?.username}</NavLink>
-                                    {/* {sessionUser.id === image.userId ? <> */}
-                                        
-                                        <OptionsModal image={image} optionsCSS={optionsCSS} />
-                                        
+                                    { }
 
-                                    {/* </> : <></>} */}
+                                    <OptionsModal image={image} optionsCSS={optionsCSS} />
+
+
+                                    { }
                                 </div>
                                 <div className='infoComments'>
                                     <div>{image.caption.length ? <>
                                         <div className='nameAndCapViewVM'>
-                                        <NavLink className='eachPicPP VMPP' to={`/${imgUser?.username}`} >
-                                            {imgUser?.url ? <>
+                                            <NavLink className='eachPicPP VMPP' to={`/${imgUser?.username}`} >
+                                                {imgUser?.url ? <>
 
-                                                <img
-                                                    className='eachPicPP2'
-                                                    src={imgUser?.url}
-                                                    alt="new"
+                                                    <img
+                                                        className='eachPicPP2'
+                                                        src={imgUser?.url}
+                                                        alt="new"
 
-                                                    onError={e => {
-                                                        e.onerror = null
-                                                        e.target.src = require('../../images/not-found.jpeg').default
-                                                    }}
+                                                        onError={e => {
+                                                            e.onerror = null
+                                                            e.target.src = require('../../images/not-found.jpeg').default
+                                                        }}
 
-                                                />
-                                            </> : <></>}
-                                        </NavLink>
-                                        <div>
-                                            
+                                                    />
+                                                </> : <></>}
+                                            </NavLink>
+                                            <div>
+
                                                 {image.caption ? <>
 
                                                     <div className='cap-comVM'>
-                                                    <NavLink className='eachPicUN capcomun' to={`/${imgUser?.username}`}>{imgUser?.username}</NavLink>
-                                                        
+                                                        <NavLink className='eachPicUN capcomun' to={`/${imgUser?.username}`}>{imgUser?.username}</NavLink>
+
                                                         {image.caption}</div>
-                                                    {/* <div className='EDdivfake' /> */}
+                                                    { }
                                                 </>
                                                     : <></>}
                                             </div>
 
-                                                
+
 
                                         </div>
-                                            </> : <></>}
-                                        {/* } */}
+                                    </> : <></>}
+                                        { }
                                     </div>
                                     <div className='viewCommentDiv'>
 
                                         {!eachComment?.length > 0 ? <>
                                             <div className="commentDiv">
-                                                {/* <div>No comments...</div>
-                                                <div>Be the first to comment!</div> */}
                                             </div>
                                         </> :
                                             <><div className='EVCdiv'>{eachComment}</div> </>
@@ -260,12 +256,12 @@ const ViewImageModal = ({ image, expand, users }) => {
                             </div>
                             <div className='innerview'>
                                 <hr className='viewcommentline' />
-                                {liked?.length > 0 ? <UnlikeForm like={liked[liked.length-1]}/> : <LikeForm image={image} />}
-                                {/* <LikeForm image={image}/> */}
-                                {allLikes?.length > 0 ? 
+                                {liked?.length > 0 ? <UnlikeForm like={liked[liked.length - 1]} /> : <LikeForm image={image} />}
+                                { }
+                                {allLikes?.length > 0 ?
                                     <div className='numlikes'>
                                         {allLikes?.length === 1 ? <>1 like</> : <>{allLikes.length} likes</>}
-                                        </div>
+                                    </div>
                                     : <></>}
                                 <hr className='viewcommentline' />
                                 <AddCommentForm image={image} />

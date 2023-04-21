@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateComment } from '../../store/comments';
+
 import '../Overflow.css'
 
 
-const EditCommentForm = ({ comment, setOptionsModal }) => {
+const EditBioForm = ({ comment, setOptionsModal }) => {
 
     const id = comment.id
     const imageId = comment.imageId
@@ -70,4 +71,4 @@ const EditCommentForm = ({ comment, setOptionsModal }) => {
 }
 
 
-export default EditCommentForm;
+export default EditBioForm;

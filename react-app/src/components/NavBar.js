@@ -39,9 +39,9 @@ const NavBar = ({ user }) => {
     }
 
     return <button className='homebtn navbtn' onClick={goHome} />
-    // return <NavLink to={`/${user.username}`} exact={true} activeClassName='active'>
-    //     Profile
-    // </NavLink>
+
+
+
   };
 
 
@@ -49,21 +49,21 @@ const NavBar = ({ user }) => {
 
   return (
     <div className='containerContainer'>
-      {/* <nav className='navOuterContainer'> */}
+      { }
       <div className='navContainer'>
-        {/* <div className='splitter' /> */}
+        { }
         <div className='splitter' />
         <div className='navtitlediv'>
           <NavLink className='navbarTitle' to='/' exact={'true'} >
             Friendstagram
           </NavLink>
         </div>
-        {/* <div className='splitter' /> */}
+        { }
         <SearchBar />
-        {/* <div className='splitter' /> */}
-        {/* <div className='splitter' /> */}
+        { }
+        { }
         <div className='nbcc'>
-      
+
           <div className='navBtnContainer'>
 
             <div className='buttondiv'>
@@ -91,19 +91,19 @@ const NavBar = ({ user }) => {
                 </> : <></>}
                 <Dropdown />
               </div>
-              
+
             </div>
-          
+
           </div>
-          {/* <Dropdown /> */}
+          { }
         </div>
         <div className='splitter' />
       </div>
-      {/* </nav> */}
+      { }
     </div>
   );
 }
-//   return <></>
-// }
+
+
 
 export default NavBar;

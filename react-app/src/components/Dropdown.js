@@ -11,9 +11,9 @@ const Dropdown = () => {
         const dispatch = useDispatch()
         const onLogout = async (e) => {
             await dispatch(logout());
-            // navigate(`/`)
+
         };
-        // navigate(`/`)
+
 
         return <div className='dropdownbtn logoutbtn' onClick={onLogout}>Logout</div>;
     };
@@ -25,10 +25,21 @@ const Dropdown = () => {
         }
 
         return <div className='dropdownbtn profbtn' onClick={toProfile}>Profile</div>
-        // return <NavLink to={`/${user.username}`} exact={true} activeClassName='active'>
-        //     Profile
-        // </NavLink>
+
+
+
     };
+
+    const RevertButton = () => {
+        const handleClick = async () => {
+            const response = await fetch('/revert');
+            const result = await response.text();
+            window.location.reload()
+            console.log(result);
+        }
+
+        return <div className='dropdownbtn' onClick={handleClick} >Revert Changes</div>
+    }
 
     const SettingsButton = () => {
         const toSettings = () => {
@@ -38,13 +49,13 @@ const Dropdown = () => {
         return <div className='dropdownbtn' onClick={toSettings}>Settings</div>
     }
 
-    // const GameButton = () => {
-    //     const toGame = () => {
-    //         navigate(`/game`)
-    //     }
 
-    //     return <div className='dropdownbtn' onClick={toGame}>Game</div>
-    // }
+
+
+
+
+
+
 
 
     return (
@@ -53,22 +64,22 @@ const Dropdown = () => {
             <div className="dropdown">
 
 
-                {/* <div> */}
-                    <ProfileButton />
+                { }
+                <ProfileButton />
 
-                    {/* <NavLink className='dropdownbtn' to={`/${user.username}`} exact={true} activeClassName='active'>
-                    Profile
-                </NavLink> */}
-                {/* </div> */}
-                {/* <div>
+                { }
+                <div>
                     <SettingsButton />
-                </div> */}
-                {/* <div> */}
-                    {/* <SettingsButton /> */}
-                    {/* <GameButton /> */}
-                    <LogoutButton />
-                    {/* <GameButton /> */}
-                {/* </div> */}
+                </div>
+                <div>
+                    <RevertButton />
+                </div>
+                { }
+                { }
+                { }
+                <LogoutButton />
+                { }
+                { }
             </div>
         </>
     )

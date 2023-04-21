@@ -1,45 +1,43 @@
-
-/* VERTICALLY CENTER? */
-
-.divContainer{
+.divContainer {
     display: flex;
     flex-direction: row;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    
+
 }
-.contContainer{
+
+.contContainer {
     display: flex;
     flex-direction: row;
 }
 
-.phoneImg{
+.phoneImg {
     display: flex;
     background-image: url("../images/phone.png");
     width: 380px;
     height: 580px;
     background-size: contain;
-    /* margin: 0px 100px; */
-    /* border-radius: 50%; */
+
+
     z-index: 0;
     margin-right: 20px;
 }
 
-.loginContainer{
+.loginContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
     border: solid 1px #dbdbdb;
-    /* margin */
+
     height: 382px;
     width: 350px;
     margin-top: 10px;
 }
 
-.signupContainer{
+.signupContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,10 +47,10 @@
     height: 542px;
     width: 350px;
     margin-top: 10px;
-    
+
 }
 
-.redirContainer{
+.redirContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,7 +65,7 @@
     margin-bottom: 60px;
 }
 
-.inputField{
+.inputField {
     background-color: #fafafa;
     margin: 3px;
     font-size: 12px;
@@ -77,102 +75,96 @@
     width: 264px;
     border-radius: 3px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /* font-weight: bold; */
+
 }
 
 .errmss {
-    /* background-color: #fafafa; */
-    /* margin: 3px; */
+
+
     font-size: 10px;
     color: red;
-    /* border: solid 1px #dbdbdb; */
+
     text-overflow: ellipsis;
     height: 10px;
     width: 260px;
-    /* border-radius: 3px; */
+
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /* font-weight: bold; */
+
 }
 
 .realInput {
-    /* margin-top: 2px; */
+
     background-color: transparent;
-    /* margin: 3px; */
+
     font-size: 12px;
-    /* border: solid 1px #dbdbdb; */
+
     text-overflow: ellipsis;
     height: 12px;
     width: 260px;
     border: none;
-    /* border-radius: 3px; */
+
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /* font-weight: bold; */
+
 }
 
 .passInput {
-    /* margin-top: 2px; */
+
     background-color: transparent;
-    /* margin: 3px; */
+
     font-size: 12px;
-    /* border: solid 1px #dbdbdb; */
+
     text-overflow: ellipsis;
     height: 12px;
     width: 230px;
     border: none;
-    /* border-radius: 3px; */
+
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /* font-weight: bold; */
+
 }
 
 .eye {
     position: absolute;
     cursor: pointer;
     margin-top: 2px;
-    /* right: 205px;
-    bottom: 375px; */
 }
 
 .realInput {
     background-color: transparent;
-    /* margin: 3px; */
+
     font-size: 12px;
-    /* border: solid 1px #dbdbdb; */
+
     text-overflow: ellipsis;
     height: 12px;
     width: 260px;
     border: none;
-    /* border-radius: 3px; */
+
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /* font-weight: bold; */
+
 }
 
-.inputField:focus{
+.inputField:focus {
     border-color: #8e8e8ed0;
     outline: none;
-    /* padding-left: 0px;
-    margin-left: 0px; */
 }
 
-input{
-    text-overflow:ellipsis;
+input {
+    text-overflow: ellipsis;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-textarea{
+textarea {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.formContainer{
+.formContainer {
     display: flex;
-    /* position: absolute; */
+
     flex-direction: column;
     align-items: center;
-    /* padding-left: 0px;
-    margin-left: 0px; */
-    /* justify-content: center; */
+
 }
 
-.btn{
+.btn {
     background-color: #0095f6;
     border: transparent;
     color: #fff;
@@ -185,37 +177,58 @@ textarea{
     margin: 10px;
 }
 
-.btn:hover{
-    cursor:pointer;
+.btn:hover {
+    cursor: pointer;
 }
 
-.btn:disabled{
+.btn:disabled {
+    background-color: #adddfe;
+}
+
+.editformbtn {
+    background-color: #0095f6;
+    border: transparent;
+    color: #fff;
+    height: 32px;
+    width: 150px;
+    border-radius: 3px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.editformbtn:hover {
+    cursor: pointer;
+}
+
+.editformbtn:disabled {
     background-color: #adddfe;
 
 }
 
-.mainTitle{
+.mainTitle {
     margin-top: 20px;
     font-family: cursive;
     font-size: 40px;
     font-weight: bolder;
 }
 
-.blurb{
-    
+.blurb {
+
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     color: #8e8e8e
 }
 
-.orLineContainer{
+.orLineContainer {
     display: flex;
     flex-direction: row;
-    
+
 }
 
-.loginline{
+.loginline {
     width: 100px;
     border-color: #8e8e8e;
     border-bottom: none;
@@ -224,25 +237,25 @@ textarea{
     border-top: solid .1px #dbdbdb;
 }
 
-.orWord{
+.orWord {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
     font-size: 13px;
     color: #8e8e8e;
     margin: 0px 20px;
-    
+
 }
 
 
 
-.link{
+.link {
     padding: 5px;
     color: #0095f6;
     text-decoration: none;
     font-weight: bold;
 }
 
-.switchdiv{
+.switchdiv {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
 }

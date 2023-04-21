@@ -6,7 +6,7 @@ import { createLike } from '../../store/likes';
 
 const LikeForm = ({ image }) => {
 
-    // const [content, setContent] = useState('');
+
     const [errors, setErrors] = useState([]);
 
 
@@ -21,16 +21,13 @@ const LikeForm = ({ image }) => {
 
         if (newLike?.errors) return setErrors(newLike.errors)
         if (newLike) {
-            // setContent('')
+
             setErrors([])
         }
 
     }
 
-    //Comment errors
 
-
-    
 
     return (
         <>
@@ -43,7 +40,7 @@ const LikeForm = ({ image }) => {
                 {Object.entries(errors).map((error) => (
                     <div key={error[0]}>{error[1]}</div>
                 ))}
-                
+
             </div>
         </>
     )

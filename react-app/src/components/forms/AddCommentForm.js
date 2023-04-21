@@ -17,8 +17,9 @@ const AddCommentForm = ({image}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const trimCon = content.trim()
 
-        let newComment = await dispatch(createComment(imageId, content));
+        let newComment = await dispatch(createComment(imageId, trimCon));
 
         if (newComment?.errors) return setErrors(newComment.errors)
         if(newComment){
@@ -27,8 +28,6 @@ const AddCommentForm = ({image}) => {
         }
         
     }
-
-    //Comment errors
     
 
     if (content?.length > 1000 && !comerrors?.includes('Comment length cannot excede 1,000 characters.')) {
