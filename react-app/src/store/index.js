@@ -5,13 +5,15 @@ import images from './images';
 import comments from './comments';
 import likes from './likes';
 import follows from './follows';
+import user from './user'
 
 const rootReducer = combineReducers({
   session,
   images,
   comments,
   likes,
-  follows
+  follows,
+  user
 });
 
 

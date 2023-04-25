@@ -4,7 +4,7 @@ from sqlalchemy import null
 from app.models import db, User
 from app.s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename, delete_file_from_s3)
-# from app.forms.signup_form import SignUpForm
+from app.forms.user_form import UserForm
 
 
 user_routes = Blueprint('users', __name__)
@@ -93,28 +93,24 @@ def rem_pic(id):
     db.session.commit()
     return {"Profile Pic Deleted": "deleted"}
 
-# EDIT EMAIL
 
-# EDIT PW
-
-# EDIT UN
-
-# EDIT FN
-
-# EDIT BIO
-# @user_routes.route('/bio/<int:id>', methods=['PUT'])
-# def user_bio(id):
-#     user = User.query.get(id)
+# EDIT USER
+@user_routes.route('/edit/<int:id>', methods=['PUT'])
+def user_edit(id):
+    user = User.query.get(id)
     
-#     form = SignUpForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
+    form = UserForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     
-#     if form.validate_on_submit():
+    if form.validate_on_submit():
         
-#             user.bio=form.data['bio'],
+            user.fullName=form.data['fullName'],
+            user.username=form.data['username'],
+            user.bio=form.data['bio'],
+            user.email=form.data['email']
 
-#             db.session.commit()
-#             return user.to_dict()
+            db.session.commit()
+            return user.to_dict()
         
-#     if form.errors:
-#             return {'errors': form.errors}
+    if form.errors:
+            return {'errors': form.errors}
