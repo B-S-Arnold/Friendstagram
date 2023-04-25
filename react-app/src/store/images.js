@@ -105,7 +105,6 @@ const imageReducer = (state = initialState, action) => {
             return newState
         case EDIT_IMG:
             newState[action.image.id] = action.image;
-
             return newState
         default:
             return state;

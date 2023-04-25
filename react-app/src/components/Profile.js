@@ -14,24 +14,12 @@ function User() {
   const { username } = useParams();
   const sessionUser = useSelector(state => state.session.user)
 
-
-
-
-
-
-
-
   const follows = Object.values(useSelector(state => state.follows))
   const userFollowers = follows.filter(follow => follow.followedId === user.id)
   const userFollowing = follows.filter(follow => follow.userId === user.id)
   const followed = userFollowers?.filter(follow => follow.userId === sessionUser.id)
 
-
-
   const followCSS = 'btn'
-
-
-
 
   const images = Object.values(useSelector(state => state.images))
 
@@ -50,19 +38,6 @@ function User() {
       const response = await fetch(`/api/users/${username}`);
       const user = await response.json();
       setUser(user);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     })();
   }, [username]);
@@ -119,12 +94,16 @@ function User() {
               <strong>{userFollowing.length}</strong> following
             </div>
           </div>
+
           <div className='profFNandBio'>
             <strong>{user.fullName}</strong>
-            {followed?.length > 0 || user.id === sessionUser.id ? <div>{user.bio ? <> {user.bio}</> : <> </>}</div>
+
+            {followed?.length > 0 || user.id === sessionUser.id ? <div className='userBio'>{user.bio ? <> {user.bio}</> : <> </>}</div>
               : <><div className='spacer' /><div><strong>This account is private</strong><div></div>Follow this account to see their photos and videos</div></>}
 
           </div>
+
+
         </div>
         <div className='minispacer' />
       </div>

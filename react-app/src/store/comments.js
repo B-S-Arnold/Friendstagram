@@ -1,7 +1,7 @@
-const ADD_COM = 'comments/ADD_IMG'
-const LOAD_COM = 'comments/LOAD_IMG'
-const REM_COM = 'comments/REM_IMG'
-const EDIT_COM = 'comments/EDIT_IMG'
+const ADD_COM = 'comments/ADD_COM'
+const LOAD_COM = 'comments/LOAD_COM'
+const REM_COM = 'comments/REM_COM'
+const EDIT_COM = 'comments/EDIT_COM'
 
 const addComment = (comment) => ({
     type: ADD_COM,

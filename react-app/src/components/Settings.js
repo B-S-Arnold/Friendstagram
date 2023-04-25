@@ -6,33 +6,37 @@ import ViewImageModal from './modals/ViewImageModal';
 import './Profile.css'
 
 function Settings() {
-    const sessionUser = useSelector(state => state.session.user)
-    
+    const user = useSelector(state => state.session.user)
 
-    
-    
-
-    if (!sessionUser) {
+    if (!user) {
         return null;
     }
    
-
-    
-
     return (
         <div className='homePageContainer'>
             <div className = 'spacer' />
-            <div className= 'userListDiv'>
-            SETTINGS
-           </div>
+            <div>{user.url ?
+                <>
+
+                    <ChangeProfPicModal user={user} />
+                </> : <>
+
+                    <ChangeProfPicModal user={user} />
+                </>}</div>
             <div>
-                SETTINGS
+                Name {user.fullName}
             </div>
             <div>
-                SETTINGS
+                Username {user.username}
             </div>
             <div>
-                SETTINGS
+                Bio {user.bio}
+            </div>
+            <div>
+                Email {user.email}
+            </div>
+            <div>
+                Password {user.password}
             </div>
            
         </div>

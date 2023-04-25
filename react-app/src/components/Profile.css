@@ -143,6 +143,13 @@
     border-bottom: #dbdbdbad solid 1px;
 }
 
+.userBio {
+    margin-top: 20px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    line-height: 1.2;
+}
+
 /* @media (max-width: 970px) {
     .myImageDiv{
         display: flex;
