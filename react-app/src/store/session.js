@@ -2,11 +2,11 @@
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
 
-const EDIT_BIO = 'session/EDIT_BIO'
-const EDIT_UN = 'session/EDIT_UN'
-const EDIT_FN = 'session/EDIT_FN'
-const EDIT_EMAIL = 'session/EDIT_EMAIL'
-const EDIT_PW = 'session/EDIT_PW'
+// const EDIT_BIO = 'session/EDIT_BIO'
+// const EDIT_UN = 'session/EDIT_UN'
+// const EDIT_FN = 'session/EDIT_FN'
+// const EDIT_EMAIL = 'session/EDIT_EMAIL'
+// const EDIT_PW = 'session/EDIT_PW'
 
 
 const setUser = (user) => ({
@@ -18,30 +18,30 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
-const editEmail = (user) => ({
-  type: EDIT_EMAIL,
-  user
-})
+// const editEmail = (user) => ({
+//   type: EDIT_EMAIL,
+//   user
+// })
 
-const editFullName = (user) => ({
-  type: EDIT_FN,
-  user
-})
+// const editFullName = (user) => ({
+//   type: EDIT_FN,
+//   user
+// })
 
-const editUsername = (user) => ({
-  type: EDIT_UN,
-  user
-})
+// const editUsername = (user) => ({
+//   type: EDIT_UN,
+//   user
+// })
 
-const editPassword = (user) => ({
-  type: EDIT_PW,
-  user
-})
+// const editPassword = (user) => ({
+//   type: EDIT_PW,
+//   user
+// })
 
-const editBio = (user) => ({
-  type: EDIT_BIO,
-  user
-})
+// const editBio = (user) => ({
+//   type: EDIT_BIO,
+//   user
+// })
 
 const initialState = { user: null };
 
@@ -130,30 +130,30 @@ export const signUp = (username, email, password, fullName) => async (dispatch) 
   }
 }
 
-export const updateBio = (id, bio) => async dispatch => {
-  const response = await fetch(`/api/bio/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ bio })
-  });
-  if (response.ok) {
-    const editedUser = await response.json()
-    if (editedUser?.errors) return editedUser
-    dispatch(editBio(editedUser))
-    return editedUser
-  }
-}
+// export const updateBio = (id, bio) => async dispatch => {
+//   const response = await fetch(`/api/bio/${id}`, {
+//     method: 'PUT',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({ bio })
+//   });
+//   if (response.ok) {
+//     const editedUser = await response.json()
+//     if (editedUser?.errors) return editedUser
+//     dispatch(editBio(editedUser))
+//     return editedUser
+//   }
+// }
 
 export default function reducer(state = initialState, action) {
-  let newState = { ...state }
+  // let newState = { ...state }
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
-    case EDIT_BIO:
-      newState[action.user.id] = action.user;
-      return newState
+    // case EDIT_BIO:
+    //   newState[action.user.id] = action.user;
+    //   return newState
     default:
       return state;
   }
