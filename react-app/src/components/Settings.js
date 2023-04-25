@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import ChangeProfPicModal from './modals/ChangeProfPicModal';
 import ViewImageModal from './modals/ViewImageModal';
 import './Profile.css'
+import EditUserForm from './forms/EditUserForm';
 
 function Settings() {
     const user = useSelector(state => state.session.user)
@@ -15,28 +16,18 @@ function Settings() {
     return (
         <div className='homePageContainer'>
             <div className = 'spacer' />
-            <div>{user.url ?
-                <>
+            <div>
+                <div>{user.url ?
+                    <>
 
-                    <ChangeProfPicModal user={user} />
-                </> : <>
+                        <ChangeProfPicModal user={user} />
+                    </> : <>
 
-                    <ChangeProfPicModal user={user} />
-                </>}</div>
-            <div>
-                Name {user.fullName}
-            </div>
-            <div>
-                Username {user.username}
-            </div>
-            <div>
-                Bio {user.bio}
-            </div>
-            <div>
-                Email {user.email}
-            </div>
-            <div>
-                Password {user.password}
+                        <ChangeProfPicModal user={user} />
+                    </>}</div>
+                <div>
+                    <EditUserForm user={user}/>
+                </div>
             </div>
            
         </div>

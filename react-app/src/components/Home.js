@@ -14,7 +14,8 @@ import FollowForm from './forms/FollowForm';
 
 function UsersList() {
   const sessionUser = useSelector(state => state.session.user)
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
+  const users = Object.values(useSelector(state => state.user))
   const images = Object.values(useSelector(state => state.images))
 
   const comments = Object.values(useSelector(state => state.comments))
@@ -22,6 +23,7 @@ function UsersList() {
   const follows = Object.values(useSelector(state => state.follows))
   const following = follows.filter(follow => follow.userId === sessionUser.id)
 
+  // console.log(theseUsers, "These Users")
 
   const followedUsers = users.filter(user => {
     for (const follow of following) {
@@ -118,16 +120,16 @@ function UsersList() {
 
   const optionsCSS = 'options'
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('/api/users/');
-      const responseData = await response.json();
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch('/api/users/');
+  //     const responseData = await response.json();
 
 
-      setUsers(responseData.users);
-    }
-    fetchData();
-  }, []);
+  //     setUsers(responseData.users);
+  //   }
+  //   fetchData();
+  // }, []);
 
 
 

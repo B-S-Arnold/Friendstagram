@@ -1,17 +1,32 @@
-# from flask_wtf import FlaskForm
-# from wtforms import TextAreaField, StringField, SubmitField
-# from wtforms.validators import DataRequired
-# from werkzeug.security import generate_password_hash, check_password_hash
+from flask_wtf import FlaskForm
+from wtforms import TextAreaField, StringField, SubmitField
+from wtforms.validators import DataRequired, ValidationError
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import current_user
+from app.models import User
 
-# class UserForm(FlaskForm):
+def user_exists(form, field):
+    # Checking if user exists
+    email = field.data
+    user = User.query.filter(User.email == email).first()
+    if user and current_user.id != user.id:
+        raise ValidationError('Email address is already in use.')
+
+
+def username_exists(form, field):
+    # Checking if username is already in use
+    username = field.data
+    user = User.query.filter(User.username == username).first()
+    if user and current_user.id != user.id:
+        raise ValidationError('Username is already in use.')
+
+class UserForm(FlaskForm):
     
-#     username = StringField('Username')
-#     email = StringField('Email')
-#     hashed_password = StringField('HashedPassword')
-#     fullName = StringField('FullName')
-#     url = StringField('Url')
-#     bio = TextAreaField('Bio')
-#     submit = SubmitField('Submit')
+    username = StringField('username', validators=[DataRequired(), username_exists])
+    email = StringField('email', validators=[DataRequired(), username_exists])
+    fullName = StringField('fullName', validators=[DataRequired()])
+    bio = TextAreaField('bio')
+    submit = SubmitField('submit')
    
 #     @property
 #     def password(self):

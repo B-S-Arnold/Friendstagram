@@ -9,38 +9,43 @@ import UnfollowForm from './forms/UnfollowForm';
 
 
 function User() {
-  const [user, setUser] = useState({});
-  const [users, setUsers] = useState({})
+  // const [user, setUser] = useState({});
+  // const [users, setUsers] = useState({})
   const { username } = useParams();
   const sessionUser = useSelector(state => state.session.user)
-
+  // const user =
+  const users = Object.values(useSelector(state => state.user))
+  const user = users.filter(user => user.username === username)[0]
   const follows = Object.values(useSelector(state => state.follows))
-  const userFollowers = follows.filter(follow => follow.followedId === user.id)
-  const userFollowing = follows.filter(follow => follow.userId === user.id)
-  const followed = userFollowers?.filter(follow => follow.userId === sessionUser.id)
+  const userFollowers = follows.filter(follow => follow.followedId === user?.id)
+  const userFollowing = follows.filter(follow => follow.userId === user?.id)
+  const followed = userFollowers?.filter(follow => follow.userId === sessionUser?.id)
+
+
+  // console.log(thisUser)
 
   const followCSS = 'btn'
 
   const images = Object.values(useSelector(state => state.images))
 
-  const userImages = images.filter(img => img.userId === user.id)
+  const userImages = images.filter(img => img.userId === user?.id)
 
-  useEffect(() => {
-    if (!username) {
-      return;
-    }
-    (async () => {
-      const usersRes = await fetch('/api/users/');
-      const responseData = await usersRes.json();
-      setUsers(responseData.users);
+  // useEffect(() => {
+  //   if (!username) {
+  //     return;
+  //   }
+  //   (async () => {
+  //     // const usersRes = await fetch('/api/users/');
+  //     // const responseData = await usersRes.json();
+  //     // setUsers(responseData.users);
 
 
-      const response = await fetch(`/api/users/${username}`);
-      const user = await response.json();
-      setUser(user);
+  //     const response = await fetch(`/api/users/${username}`);
+  //     const user = await response.json();
+  //     setUser(user);
 
-    })();
-  }, [username]);
+  //   })();
+  // }, [username]);
 
   if (!user || !users) {
     return null;
