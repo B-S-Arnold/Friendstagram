@@ -617,3 +617,8 @@ input[type="file"] {
     align-items: center;
     width: 100%;
 }
+
+.settingsField{
+    display: flex;
+    
+}

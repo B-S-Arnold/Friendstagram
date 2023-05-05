@@ -50,7 +50,7 @@ const EditUserForm = ({ user }) => {
         let editedUser = await dispatch(updateUser(id, fullName, username, bio, email));
 
         if (editedUser?.errors) return setErrors(editedUser.errors)
-        
+        window.location.reload();
 
     }
 
@@ -106,71 +106,77 @@ const EditUserForm = ({ user }) => {
 
     return (
         <form className='comeditform' onSubmit={handleSubmit}>
-
-            <div className='inputField'>
-                <div className='errmss' />
-                <input
-                    className='realInput'
-                    placeholder='Full Name'
-                    type='text'
-                    name='fullName'
-                    onChange={updateFullName}
-                    value={fullName}
-                ></input>
-            </div>
-
-            <div className='inputField'>
-                {unerrors?.length > 0 ? <div className='errmss'>
-                    { }
-                    <div key={0}>{unerrors[0]}</div>
-                    { }
-                </div> : <div className='errmss' />}
-                <input
-                    className='realInput'
-                    placeholder='Username'
-                    type='text'
-                    name='username'
-                    onChange={updateUsername}
-                    value={username}
-                ></input>
-            </div>
-
-            <div className='inputComDiv'>
-                <label>Bio:</label>
-                <div className='errors'>
-                    {Object.entries(errors).map((error) => (
-                        <div key={error[0]}>{error[1]}</div>
-                    ))}
-                    {/* {Object.entries(comerrors).map((error) => (
-                        <div key={error[0]}>{error[1]}</div>
-                    ))} */}
+            <div className='settingsField'>
+                <div className='inputField'>
+                    <div className='errmss' />
+                    <input
+                        className='realInput'
+                        placeholder='Full Name'
+                        type='text'
+                        name='fullName'
+                        onChange={updateFullName}
+                        value={fullName}
+                    ></input>
                 </div>
-                <textarea
-                    className='bio-edit'
-                    name='content'
-                    placeholder='Edit your bio...'
-                    value={bio}
-                    onChange={updateBio}
-                />
-                
             </div>
+            <div className='settingsField'>
+                <div className='inputField'>
+                    {unerrors?.length > 0 ? <div className='errmss'>
+                        { }
+                        <div key={0}>{unerrors[0]}</div>
+                        { }
+                    </div> : <div className='errmss' />}
+                    <input
+                        className='realInput'
+                        placeholder='Username'
+                        type='text'
+                        name='username'
+                        onChange={updateUsername}
+                        value={username}
+                    ></input>
+                </div>
+            </div>
+            <div className='settingsField'>
+                <label>Bio:</label>
+                <div className='inputBio'>
+                    
+                    <div className='errors'>
+                        {Object.entries(errors).map((error) => (
+                            <div key={error[0]}>{error[1]}</div>
+                        ))}
+                        {/* {Object.entries(comerrors).map((error) => (
+                            <div key={error[0]}>{error[1]}</div>
+                        ))} */}
+                    </div>
+                    
+                    <textarea
+                        className='bio-edit'
+                        name='content'
+                        placeholder='Edit your bio...'
+                        value={bio}
+                        onChange={updateBio}
+                    />
+                    
+                </div>
+            </div>
+            <div className='settingsField'>
+                <div className='inputField'>
+                    {emailerrors?.length > 0 ? <div className='errmss' >
+                        { }
+                        <div key={0}>{emailerrors[0]}</div>
+                        { }
+                    </div> : <div className='errmss' />}
+                    <input
+                        className='realInput'
+                        placeholder='Email'
+                        type='email'
+                        name='email'
+                        onChange={updateEmail}
+                        value={email}
+                    >
 
-            <div className='inputField'>
-                {emailerrors?.length > 0 ? <div className='errmss' >
-                    { }
-                    <div key={0}>{emailerrors[0]}</div>
-                    { }
-                </div> : <div className='errmss' />}
-                <input
-                    className='realInput'
-                    placeholder='Email'
-                    type='email'
-                    name='email'
-                    onChange={updateEmail}
-                    value={email}
-                >
-
-                </input>
+                    </input>
+                </div>
             </div>
             <button className='btn' disabled={emailerrors.length > 0 || unerrors.length > 0} type='submit'>Submit</button>
 
